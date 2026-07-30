@@ -3387,3 +3387,101 @@ body:not(:has(.landing)) .nav:not(.is-stuck) .burger span { background: #17150f;
   .show3d__head::before { display: none; }
   .show3d__sticky { justify-content: flex-start; }
 }
+
+
+/* 39. WHY — glowing glassmorphic feature cards (2026-07-30e) ================
+   The six standards become premium glowing cards. Behind each: a blurred
+   gradient glow. The card itself: a gradient border drawn with the padding-box
+   / border-box background-clip technique over a dark glass interior, so it
+   reads as lit glass floating on the light grid. Section background and copy
+   are unchanged — only the standards' presentation. Adapted from the supplied
+   React/Tailwind spec (this site is vanilla HTML/CSS/JS). ==================== */
+
+/* Clean 3-column grid (was an asymmetric 2-col spread). */
+.why__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(1.5rem, 2.6vw, 2.4rem);
+  margin-top: clamp(2.75rem, 5.5vh, 4.5rem);
+}
+/* Drop the old editorial vertical offsets so the cards sit on clean rows. */
+.std--a, .std--b, .std--c, .std--d, .std--e, .std--f { margin-top: 0 !important; }
+
+/* The article is now just a positioning context for the glow + card. Strip the
+   old hairline / underline / padding treatment. Reveal (opacity + rise) stays. */
+.std {
+  position: relative;
+  border: 0 !important;
+  padding: 0 !important;
+  background: none !important;
+  border-radius: 34px;
+}
+.std::after { display: none !important; }
+.std:hover { background: none !important; transform: none; }
+
+/* Blurred gradient glow behind the card. */
+.std__glow {
+  position: absolute; z-index: 0; pointer-events: none;
+  inset: 6% 4%;
+  border-radius: 40px;
+  background: var(--grad);
+  filter: blur(45px);
+  opacity: 0.45;
+  transition: opacity 0.55s var(--ease);
+}
+.std:hover .std__glow { opacity: 0.72; }
+
+/* The card: gradient border (border-box) over a dark glass fill (padding-box),
+   plus a real backdrop blur so the light grid diffuses through — glassmorphism. */
+.std__card {
+  position: relative; z-index: 1;
+  min-height: clamp(232px, 24vw, 288px);
+  border: 8px solid transparent;
+  border-radius: 34px;
+  padding: clamp(1.4rem, 1.9vw, 2rem);
+  display: flex; flex-direction: column; justify-content: space-between; gap: 1.4rem;
+  background:
+    linear-gradient(rgba(20, 20, 23, 0.82), rgba(20, 20, 23, 0.82)) padding-box,
+    var(--grad) border-box;
+  -webkit-backdrop-filter: blur(18px) saturate(125%);
+  backdrop-filter: blur(18px) saturate(125%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 34px 70px -34px rgba(20, 18, 30, 0.5);
+  transition: transform 0.55s var(--ease), box-shadow 0.55s var(--ease);
+}
+.std:hover .std__card {
+  transform: translateY(-6px);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.12),
+    0 52px 100px -38px rgba(20, 18, 30, 0.6);
+}
+
+.std__top { display: flex; align-items: center; justify-content: space-between; }
+.std__ico { width: 34px; height: 34px; color: rgba(255, 255, 255, 0.92); flex: none; }
+.std__ico svg { width: 100%; height: 100%; display: block; }
+.std__num {
+  font-size: 0.8rem; letter-spacing: 0.16em; font-variant-numeric: tabular-nums;
+  color: rgba(255, 255, 255, 0.42) !important;
+}
+.std__title {
+  color: #ffffff !important;
+  font-size: clamp(1.15rem, 1.5vw, 1.42rem);
+  font-weight: 500; letter-spacing: -0.02em; line-height: 1.15;
+  margin: 0 0 0.55rem;
+}
+.std__body {
+  color: rgba(255, 255, 255, 0.62) !important;
+  font-size: 0.92rem; line-height: 1.6; max-width: none;
+}
+
+@media (max-width: 900px) {
+  .why__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 560px) {
+  .why__grid { grid-template-columns: 1fr; gap: 1.5rem; }
+  .std__card { min-height: 200px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .std:hover .std__card { transform: none; }
+}
