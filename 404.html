@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Page not found — Site Your Story</title>
+<meta name="description" content="That page isn't here. Let's get you back to something useful.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#070707">
+
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@200;300;400;500;600&family=Instrument+Serif:ital@1&display=swap">
+<link rel="stylesheet" href="assets/css/main.css?v=20260727">
+</head>
+
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="curtain" aria-hidden="true"></div>
+
+<svg style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true" focusable="false">
+  <symbol id="i-arrow-r" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8h12M9 3l5 5-5 5"/></symbol>
+</svg>
+
+<header class="nav">
+  <div class="nav__inner">
+    <a class="brand" href="index.html" aria-label="Site Your Story, home">Site Your Story<span>.</span></a>
+    <nav class="nav__links" aria-label="Primary">
+      <a class="nav__link" href="services.html">Services</a>
+      <a class="nav__link" href="about.html">About</a>
+      <a class="nav__link" href="process.html">Process</a>
+    </nav>
+    <button class="burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="menu"><span></span><span></span></button>
+  </div>
+</header>
+
+<div class="menu" id="menu" aria-hidden="true">
+  <nav aria-label="Mobile">
+    <ul class="menu__list">
+      <li><a href="services.html">Services</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="process.html">Process</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+  <div class="menu__foot">
+    <a href="mailto:clients@siteyourstory.com">clients@siteyourstory.com</a>
+    <span>&copy; <span data-year>2026</span> Site Your Story</span>
+  </div>
+</div>
+
+<main id="main">
+
+  <!-- Everything on this page plays over bg-sys.mp4: fixed to the viewport,
+       never autoplaying, its timeline scrubbed by scroll position. -->
+  <div class="film">
+    <div class="film__bg" aria-hidden="true">
+      <video muted playsinline preload="metadata" disablepictureinpicture tabindex="-1" poster="assets/img/bg-poster.jpg?v=20260727b">
+        <source src="assets/video/bg-sys.mp4?v=20260727b" type="video/mp4">
+      </video>
+    </div>
+    <div class="film__grade" aria-hidden="true"></div>
+    <div class="film__stage">
+  <section class="notfound">
+    <p class="eyebrow eyebrow--plain" style="justify-content:center">Error 404</p>
+    <h1 class="notfound__code">404</h1>
+    <p class="h3">This page went <em class="serif">missing</em>.</p>
+    <p class="lead" style="margin-inline:auto">
+      The link is broken or the page has moved. Nothing you did wrong.
+    </p>
+    <div class="notfound__links">
+      <a class="btn btn--lg" href="index.html">Back to home<svg class="btn__arrow" aria-hidden="true"><use href="#i-arrow-r"/></svg></a>
+      <a class="btn btn--lg btn--ghost" href="contact.html">Tell us your story</a>
+    </div>
+  </section>
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="shell">
+    <div class="footer__bar" style="border-top:0;padding-top:0">
+      <span>&copy; <span data-year>2026</span> Site Your Story</span>
+      <nav class="footer__legal" aria-label="Legal">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms &amp; Conditions</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.20/dist/lenis.min.js" defer></script>
+<script src="assets/js/main.js?v=20260727" defer></script>
+</body>
+</html>
