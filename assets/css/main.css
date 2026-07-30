@@ -3045,3 +3045,242 @@ body:has(.landing) .nav:not(.is-stuck) .burger span { background: #fff; }
   .bcell:hover, .tcard:hover, .std:hover { transform: none; }
   .why__spot, .bcell__sheen { display: none; }
 }
+
+
+/* 37. GRID-BACKGROUND LIGHT THEME (2026-07-30b) ============================
+   Replaces the midnight film (bg-sys.mp4 + grade) with the "Magenta Orb Grid"
+   background — a white ground, a 40px slate grid, and a soft magenta→purple
+   radial orb — across the WHOLE site EXCEPT the hero. The hero (.landing) sits
+   outside .film, so nothing here touches it: its video plays untouched.
+
+   Vanilla port of the supplied React/Tailwind component: the exact gradients
+   and sizes from grid-background.tsx live on the fixed .film__bg layer, and the
+   post-hero palette flips from illuminated-white-on-dark to ink-on-light so
+   every section stays legible and premium on the new ground.
+   ========================================================================== */
+
+/* --- 37.1 The background layer (exact values from the component) --------- */
+html, body { background: #ffffff; }
+.film { background: #ffffff; }
+
+.film__bg {
+  background-color: #ffffff !important;
+  background-image:
+    linear-gradient(to right,  rgba(71,85,105,0.15) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(71,85,105,0.15) 1px, transparent 1px),
+    radial-gradient(circle at 50% 60%,
+      rgba(236,72,153,0.15) 0%,
+      rgba(168,85,247,0.05) 40%,
+      transparent 70%) !important;
+  background-size: 40px 40px, 40px 40px, 100% 100% !important;
+  background-repeat: repeat, repeat, no-repeat !important;
+  background-position: 0 0, 0 0, center !important;
+  opacity: 1 !important;           /* no longer a video — always present */
+}
+.film__bg video { display: none !important; }   /* remove the midnight footage */
+.film__grade { display: none !important; }       /* and its darkening scrim */
+
+/* --- 37.2 Light palette for everything on the film ----------------------- */
+/*
+   Redefining the ink/line tokens on .film (the wrapper present on every page)
+   flips the bulk of the site to dark-ink-on-light automatically — leads, notes,
+   borders, muted labels all follow. The hero is outside .film and keeps the
+   original white tokens. The footer is outside .film, so it is re-tokened too.
+*/
+.film, .footer {
+  --ink:       #17150f;
+  --ink-dim:   rgba(23, 21, 15, 0.80);
+  --ink-muted: rgba(23, 21, 15, 0.58);
+  --ink-faint: rgba(23, 21, 15, 0.34);
+  --line:      rgba(71, 85, 105, 0.22);
+  --line-soft: rgba(71, 85, 105, 0.12);
+  --fill:      rgba(23, 21, 15, 0.04);
+}
+.film__stage { color: #17150f; }
+
+/* Kill the illuminated-white glow — it only reads on dark footage. Text that
+   sits over photographs keeps its own dark shadow (declared on those elements),
+   so captions over images stay legible. */
+.film__stage { text-shadow: none; }
+.film .on-film, .film .on-film-strong { text-shadow: none !important; }
+.footer { text-shadow: none !important; }
+
+/* Large display headings carried a white gradient fill + white drop-shadow.
+   Re-fill them with ink and drop the glow so they read on the light ground. */
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+  .film__stage .h2,
+  .film__stage .statement,
+  .film__stage .closing__title,
+  .film__stage .phero__title {
+    background-image: linear-gradient(180deg, #17150f 0%, #17150f 62%, rgba(23,21,15,0.80) 100%);
+    filter: none;
+  }
+}
+
+/* --- 37.3 Home: Services / bento ----------------------------------------- */
+.services__title { color: #17150f; }
+.services__title .serif { color: var(--accent); }
+.services .chapter b { color: var(--accent); }
+
+.bcell {
+  background: rgba(255, 255, 255, 0.62);
+  border-color: rgba(71, 85, 105, 0.16);
+  -webkit-backdrop-filter: blur(8px) saturate(120%);
+  backdrop-filter: blur(8px) saturate(120%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.85),
+    0 22px 46px -30px rgba(23, 21, 15, 0.30),
+    0 2px 8px rgba(23, 21, 15, 0.05);
+}
+.bcell:hover {
+  border-color: rgba(71, 85, 105, 0.30);
+  background: rgba(255, 255, 255, 0.78);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.95),
+    0 40px 80px -34px rgba(23, 21, 15, 0.34),
+    0 0 30px rgba(236, 72, 153, 0.10);
+}
+.bcell__sheen { background: radial-gradient(240px circle at var(--mx,50%) var(--my,0%), rgba(236,72,153,0.10), transparent 60%); }
+.bcell__h { color: #17150f; }
+.bcell__h .serif { color: var(--accent); }
+.bcell__p, .bcell__eyebrow { color: rgba(23,21,15,0.58); }
+.bchip { background: #17150f; color: #fff; border-color: transparent; }
+.btag { border-color: rgba(71,85,105,0.24); color: rgba(23,21,15,0.78); }
+.btag:hover { border-color: var(--accent); color: #fff; background: var(--accent); }
+.bsteps span { border-color: rgba(71,85,105,0.24); color: rgba(23,21,15,0.58); }
+.bsteps span:first-child { border-color: var(--accent); color: var(--accent); }
+/* The statistic tile stays a dark ink card — a deliberate focal contrast on the
+   light page. Its white figure/label are kept. */
+.bcell--stat { background: linear-gradient(158deg, #1a1712, #0f0d0a); border-color: rgba(255,255,255,0.08); }
+
+/* --- 37.4 Home: Why (light) ---------------------------------------------- */
+/* The midnight photograph is part of the old dark theme — dropped. Why becomes
+   a clean light chapter on the grid, its spotlight retinted to the orb hues. */
+.why__media { display: none; }
+.why__particles { display: none; }
+.why::before {
+  background: radial-gradient(120% 80% at 82% 10%, rgba(236,72,153,0.10), transparent 55%);
+}
+.why__spot {
+  background: radial-gradient(440px circle at var(--mx,50%) var(--my,30%),
+    rgba(236,72,153,0.14), rgba(168,85,247,0.07) 36%, transparent 62%);
+  mix-blend-mode: normal;
+}
+.std__title { color: #17150f; }
+.std__body { color: rgba(23,21,15,0.72); }
+.std { border-top-color: rgba(71,85,105,0.22); }
+.std:hover { background: linear-gradient(180deg, rgba(23,21,15,0.035), transparent); }
+.why__stats { border-top-color: rgba(71,85,105,0.22); }
+.wstat__fig { color: #17150f; }
+.why__more .btn { color: #17150f; }
+
+/* --- 37.5 Home: Testimonials --------------------------------------------- */
+.testi__quote { color: #17150f; }
+.testi__quote .serif { color: var(--accent); }
+.testi__who b { color: #17150f; }
+.testi__cite .testi__avatar { border-color: rgba(71,85,105,0.22); }
+.testi__feature { border-bottom-color: rgba(71,85,105,0.14); }
+.testi__metrics {
+  background: rgba(255,255,255,0.62); border-color: rgba(71,85,105,0.16);
+  -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.85), 0 22px 46px -32px rgba(23,21,15,0.3);
+}
+.tmetric__fig { color: #17150f; }
+.tcard {
+  background: rgba(255,255,255,0.62); border-color: rgba(71,85,105,0.16);
+  -webkit-backdrop-filter: blur(8px) saturate(120%); backdrop-filter: blur(8px) saturate(120%);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.85), 0 20px 44px -32px rgba(23,21,15,0.3);
+}
+.tcard:hover { border-color: rgba(71,85,105,0.3);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.95), 0 38px 78px -34px rgba(23,21,15,0.34); }
+.tcard__body { color: rgba(23,21,15,0.78); }
+.tcard__who b { color: #17150f; }
+.logorow span:hover { color: #17150f; }
+
+/* --- 37.6 Home: Process + closing ---------------------------------------- */
+.pstep__title { color: #17150f; }
+.pstep__body { color: rgba(23,21,15,0.78); }
+.ptime__rail { background: rgba(71,85,105,0.14); }
+.closing__sub { color: rgba(23,21,15,0.82); }
+.closing__mail { color: rgba(23,21,15,0.58); }
+.closing__mail a { color: rgba(23,21,15,0.8); border-bottom-color: rgba(71,85,105,0.3); }
+
+/* --- 37.7 Home: 3D showcase dots + marquee ------------------------------- */
+.show3d__dot { background: rgba(23,21,15,0.22); }
+.show3d__dot.is-on { background: var(--accent); }
+.wkmarq { border-color: transparent; }
+
+/* --- 37.8 Inner pages (services/about/process/contact/legal) ------------- */
+/* These share .film, so tokens above already flip most copy. Flip the frosted
+   dark panels + glass to light, and the remaining hardcoded whites to ink. */
+.section--raised { background: rgba(255,255,255,0.55) !important; border-color: rgba(71,85,105,0.14) !important;
+  -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
+.stat { background: rgba(255,255,255,0.55) !important; }
+.stats { background: rgba(71,85,105,0.12); border-block-color: rgba(71,85,105,0.12); }
+.ind { background: rgba(255,255,255,0.5) !important; }
+.inds { background: rgba(71,85,105,0.12); border-color: rgba(71,85,105,0.12); }
+.reason { background: rgba(255,255,255,0.5) !important; }
+.reasons { background: rgba(71,85,105,0.12); border-color: rgba(71,85,105,0.12); }
+.plates, .plate { border-color: rgba(71,85,105,0.14); }
+.plate::before { background: linear-gradient(100deg, rgba(23,21,15,0.06), rgba(23,21,15,0.02) 60%, transparent); }
+.stat__fig, .step__title, .step__num { color: #17150f; }
+.prose h2, .prose h3, .prose strong { color: #17150f; }
+.prose a { color: #17150f; }
+
+/* Service showcase glass cards (inner services page) -> light glass + ink */
+.gcard {
+  background: linear-gradient(152deg, rgba(255,255,255,0.72), rgba(255,255,255,0.5));
+  border-color: rgba(71,85,105,0.18);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.9), 0 18px 38px -22px rgba(23,21,15,0.28);
+}
+.gcard:hover, .gcard:focus-visible { border-color: rgba(71,85,105,0.32);
+  background: linear-gradient(152deg, rgba(255,255,255,0.85), rgba(255,255,255,0.62));
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.95), 0 26px 54px -24px rgba(23,21,15,0.32); }
+.gcard__desc { color: rgba(23,21,15,0.7); }
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+  .gcard__title {
+    background-image: linear-gradient(166deg, #17150f 0%, #1a1712 40%, rgba(23,21,15,0.86) 100%);
+    filter: drop-shadow(0 1px 1px rgba(23,21,15,0.12));
+  }
+  .gcard:hover .gcard__title, .gcard:focus-visible .gcard__title {
+    filter: drop-shadow(0 1px 2px rgba(23,21,15,0.18));
+  }
+}
+
+/* Forms (contact page) */
+.field select option { background: #ffffff; color: #17150f; }
+.field input::placeholder, .field textarea::placeholder { color: rgba(23,21,15,0.34); }
+
+/* --- 37.9 Navigation + footer on the light ground ------------------------ */
+/* Stuck bar (any page, scrolled): white glass, ink labels. */
+.nav.is-stuck {
+  background: rgba(255,255,255,0.72);
+  border-bottom: 1px solid rgba(71,85,105,0.14);
+}
+.nav.is-stuck .brand { color: #17150f; }
+.nav.is-stuck .nav__link { color: rgba(23,21,15,0.7); }
+.nav.is-stuck .nav__link:hover, .nav.is-stuck .nav__link[aria-current='page'] { color: #17150f; }
+.nav.is-stuck .burger span { background: #17150f; }
+.nav.is-stuck .brand span { color: var(--accent); }
+
+/* Inner pages have no hero, so the bar at the top (not yet stuck) must be ink,
+   not the white-glow set the hero uses. Homepage (has .landing) is unchanged. */
+body:not(:has(.landing)) .nav:not(.is-stuck) .brand,
+body:not(:has(.landing)) .nav:not(.is-stuck) .nav__link { color: rgba(23,21,15,0.82); text-shadow: none; }
+body:not(:has(.landing)) .nav:not(.is-stuck) .brand span { color: var(--accent); }
+body:not(:has(.landing)) .nav:not(.is-stuck) .burger span { background: #17150f; }
+
+/* Footer */
+.footer {
+  background: rgba(255,255,255,0.78);
+  border-top: 1px solid rgba(71,85,105,0.14);
+  color: #17150f;
+}
+
+/* --- 37.10 Odds and ends ------------------------------------------------- */
+.grain { mix-blend-mode: multiply; opacity: 0.025; }   /* multiply reads on white */
+::selection { background: var(--accent); color: #fff; }
+
+@media (hover: none), (pointer: coarse) {
+  .footer { background: rgba(255,255,255,0.9) !important; }
+}
