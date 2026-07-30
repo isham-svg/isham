@@ -3699,3 +3699,24 @@ body:not(:has(.landing)) .nav:not(.is-stuck) .burger span { background: #17150f;
 .brand:hover { opacity: 0.82; }
 /* Footer credit line. */
 .footer__blurb { line-height: 1.6; }
+
+
+/* 43. Contact (closing) — ambient globe in the composition (2026-07-30i) ====
+   The same animated globe from the contact page, placed BEHIND the untouched
+   closing content on the homepage. Background element only: non-interactive so
+   it never intercepts the CTA, centred and sized to sit within the section. == */
+.closing .globe-canvas--home {
+  position: absolute;
+  z-index: 0;                 /* behind .closing__inner (z-index 3) */
+  left: 50%; top: 50%;
+  width: min(720px, 92vw);
+  aspect-ratio: 1 / 1;
+  transform: translate(-50%, -48%);
+  opacity: 0;                 /* faded up to data-opacity by globe-init.js */
+  transition: opacity 1s var(--ease);
+  pointer-events: none;
+  contain: layout paint size;
+}
+@media (max-width: 640px) {
+  .closing .globe-canvas--home { width: 118vw; transform: translate(-50%, -46%); }
+}
