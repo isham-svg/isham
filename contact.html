@@ -21,7 +21,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@200;300;400;500;600&family=Instrument+Serif:ital@1&display=swap">
-<link rel="stylesheet" href="assets/css/main.css?v=20260730f">
+<link rel="stylesheet" href="assets/css/main.css?v=20260730g">
 
 <script type="application/ld+json">
 {
@@ -189,6 +189,28 @@
     </div>
   </section>
 
+  <!-- Interactive globe feature (ported from the cobe React component into
+       vanilla; brand-accent markers, drag to spin). Additive section — the
+       page background and the content above are unchanged. -->
+  <section class="section globe-sec">
+    <div class="shell">
+      <div class="globe-card" data-reveal>
+        <div class="globe-card__copy">
+          <p class="eyebrow">Wherever you are</p>
+          <h2 class="globe-card__title">Premium websites for ambitious businesses <span class="serif">everywhere</span>.</h2>
+          <p class="globe-card__lead">From a single studio to a brand crossing borders — sites that load fast, rank, and earn trust the moment they open, wherever your customers are.</p>
+          <a class="btn btn--accent globe-card__cta" href="#main">
+            <span class="btn__label">Start your project</span>
+            <svg class="btn__arrow" aria-hidden="true"><use href="#i-arrow-r"/></svg>
+          </a>
+        </div>
+        <div class="globe-card__globe">
+          <canvas class="globe-canvas" data-globe role="img" aria-label="A globe marking cities we build for around the world"></canvas>
+        </div>
+      </div>
+    </div>
+  </section>
+
     </div>
   </div>
 </main>
@@ -236,6 +258,76 @@
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.20/dist/lenis.min.js" defer></script>
-<script src="assets/js/main.js?v=20260730f" defer></script>
+<script src="assets/js/main.js?v=20260730g" defer></script>
+
+<!-- Interactive globe (cobe, vendored locally). Ported from the React
+     component: auto-spins, drag to rotate, brand-accent markers. Progressive
+     enhancement — if WebGL or the module is unavailable, or reduced motion is
+     set, the section simply shows its copy and CTA. -->
+<script type="module">
+  (async function () {
+    var canvas = document.querySelector('[data-globe]');
+    if (!canvas) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    var createGlobe;
+    try { createGlobe = (await import('./assets/js/cobe.js?v=20260730g')).default; }
+    catch (e) { return; }
+
+    var phi = 0, width = 0, pointer = null, movement = 0, r = 0;
+
+    var onResize = function () { width = canvas.offsetWidth; };
+    window.addEventListener('resize', onResize);
+    onResize();
+
+    try {
+      var globe = createGlobe(canvas, {
+        devicePixelRatio: 2,
+        width: width * 2,
+        height: width * 2,
+        phi: 0,
+        theta: 0.3,
+        dark: 0,
+        diffuse: 0.4,
+        mapSamples: 16000,
+        mapBrightness: 1.2,
+        baseColor: [1, 1, 1],
+        markerColor: [192 / 255, 57 / 255, 43 / 255],   // Site Your Story accent
+        glowColor: [1, 1, 1],
+        markers: [
+          { location: [14.5995, 120.9842], size: 0.03 },
+          { location: [19.076, 72.8777],   size: 0.10 },
+          { location: [23.8103, 90.4125],  size: 0.05 },
+          { location: [30.0444, 31.2357],  size: 0.07 },
+          { location: [39.9042, 116.4074], size: 0.08 },
+          { location: [-23.5505, -46.6333],size: 0.10 },
+          { location: [19.4326, -99.1332], size: 0.10 },
+          { location: [40.7128, -74.006],  size: 0.10 },
+          { location: [34.6937, 135.5022], size: 0.05 },
+          { location: [41.0082, 28.9784],  size: 0.06 }
+        ],
+        onRender: function (state) {
+          if (pointer === null) phi += 0.005;   // idle auto-spin
+          state.phi = phi + r;
+          state.width = width * 2;
+          state.height = width * 2;
+        }
+      });
+      setTimeout(function () { canvas.style.opacity = '1'; }, 0);
+
+      // Drag to spin (pointer + touch), mirroring the component.
+      canvas.addEventListener('pointerdown', function (e) { pointer = e.clientX - movement; canvas.style.cursor = 'grabbing'; });
+      var release = function () { pointer = null; canvas.style.cursor = 'grab'; };
+      canvas.addEventListener('pointerup', release);
+      canvas.addEventListener('pointerout', release);
+      canvas.addEventListener('mousemove', function (e) {
+        if (pointer !== null) { movement = e.clientX - pointer; r = movement / 200; }
+      });
+      canvas.addEventListener('touchmove', function (e) {
+        if (pointer !== null && e.touches[0]) { movement = e.touches[0].clientX - pointer; r = movement / 200; }
+      }, { passive: true });
+    } catch (e) { /* WebGL unavailable — leave the copy + CTA as-is */ }
+  })();
+</script>
 </body>
 </html>
