@@ -3485,3 +3485,98 @@ body:not(:has(.landing)) .nav:not(.is-stuck) .burger span { background: #17150f;
 @media (prefers-reduced-motion: reduce) {
   .std:hover .std__card { transform: none; }
 }
+
+
+/* 40. WHY cards — LIGHT glass + animated glowing borders (2026-07-30f) ======
+   Flips the six feature cards from dark glass to LIGHT glass (ink text) while
+   keeping the crisp gradient border, and adds continuous motion: a rotating,
+   breathing colour-glow halo (the glowing border in motion), a floating
+   gradient icon chip, a pointer tilt, and a scale/blur entrance. ============ */
+
+/* Registered so the conic glow's angle can be animated smoothly. Falls back to
+   a static (still lovely) glow where @property is unsupported. */
+@property --a { syntax: "<angle>"; initial-value: 0deg; inherits: false; }
+
+/* Per-card glow palettes for the rotating conic halo (kept in the card's family
+   so each keeps its identity; whites are nudged to a tint so the glow reads). */
+.why__grid .std:nth-child(1) { --c1:#FF3D77; --c2:#FFB1CE; --c3:#FF9D3C; }
+.why__grid .std:nth-child(2) { --c1:#5B76FF; --c2:#E0AEFF; --c3:#F72585; }
+.why__grid .std:nth-child(3) { --c1:#7DD3FC; --c2:#38BDF8; --c3:#06B6D4; }
+.why__grid .std:nth-child(4) { --c1:#7C3AED; --c2:#C4B5FD; --c3:#F472B6; }
+.why__grid .std:nth-child(5) { --c1:#06B6D4; --c2:#67E8F9; --c3:#34D399; }
+.why__grid .std:nth-child(6) { --c1:#F59E0B; --c2:#FCD34D; --c3:#FB7185; }
+
+/* Entrance: rise + settle from a touch smaller and blurred. */
+.std {
+  opacity: 0;
+  transform: translateY(34px) scale(0.965);
+  filter: blur(6px);
+  transition: opacity 0.9s var(--ease), transform 1s var(--ease), filter 0.9s var(--ease);
+}
+.std.is-in { opacity: 1; transform: none; filter: blur(0); }
+
+/* Rotating, breathing colour glow — the animated glowing border. */
+.std__glow {
+  inset: -10%;
+  border-radius: 46px;
+  background: conic-gradient(from var(--a, 0deg),
+    var(--c1), var(--c2), var(--c3), var(--c2), var(--c1));
+  filter: blur(46px);
+  opacity: 0.42;
+  animation: stdSpin 9s linear infinite, stdBreathe 5.5s ease-in-out infinite alternate;
+}
+.std:hover .std__glow { opacity: 0.74; }
+.why__grid .std:nth-child(2) .std__glow { animation-delay: -1.4s, -0.8s; }
+.why__grid .std:nth-child(3) .std__glow { animation-delay: -2.8s, -1.6s; }
+.why__grid .std:nth-child(4) .std__glow { animation-delay: -4.2s, -2.4s; }
+.why__grid .std:nth-child(5) .std__glow { animation-delay: -5.6s, -3.2s; }
+.why__grid .std:nth-child(6) .std__glow { animation-delay: -7.0s, -4.0s; }
+@keyframes stdSpin   { to { --a: 360deg; } }
+@keyframes stdBreathe { from { filter: blur(40px); } to { filter: blur(60px); } }
+
+/* LIGHT glass interior + crisp gradient border. Transform is owned by the tilt
+   script, so the transition here only carries the shadow. */
+.std__card {
+  background:
+    linear-gradient(rgba(255,255,255,0.78), rgba(255,255,255,0.78)) padding-box,
+    var(--grad) border-box;
+  -webkit-backdrop-filter: blur(16px) saturate(135%);
+  backdrop-filter: blur(16px) saturate(135%);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.92),
+    0 30px 60px -34px rgba(70,55,95,0.35);
+  transition: box-shadow 0.55s var(--ease);
+}
+.std:hover .std__card {
+  box-shadow:
+    inset 0 1px 0 #ffffff,
+    0 48px 92px -38px rgba(70,55,95,0.42);
+}
+
+/* Ink text on the light glass. */
+.std__title { color: #17150f !important; }
+.std__body  { color: rgba(23,21,15,0.62) !important; }
+.std__num   { color: rgba(23,21,15,0.40) !important; }
+
+/* Icon becomes a floating gradient chip with a white glyph. */
+.std__ico {
+  width: 52px; height: 52px; border-radius: 15px;
+  display: grid; place-items: center;
+  color: #fff;
+  background: var(--grad);
+  box-shadow: 0 12px 24px -10px rgba(30,20,50,0.32), inset 0 1px 0 rgba(255,255,255,0.5);
+  animation: stdIco 5.5s ease-in-out infinite;
+}
+.std__ico svg { width: 26px; height: 26px; }
+.why__grid .std:nth-child(2) .std__ico { animation-delay: -0.9s; }
+.why__grid .std:nth-child(3) .std__ico { animation-delay: -1.8s; }
+.why__grid .std:nth-child(4) .std__ico { animation-delay: -2.7s; }
+.why__grid .std:nth-child(5) .std__ico { animation-delay: -3.6s; }
+.why__grid .std:nth-child(6) .std__ico { animation-delay: -4.5s; }
+@keyframes stdIco { 0%,100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-5px) rotate(-3deg); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .std, .std.is-in { filter: none; }
+  .std__glow { animation: none; }
+  .std__ico { animation: none; }
+}
