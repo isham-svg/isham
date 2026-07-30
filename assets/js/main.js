@@ -1446,6 +1446,117 @@
     });
   }
 
+  /* 11k. Parallax layers — the continuous-canvas depth ------------------------ */
+  /*
+     Any [data-parallax] element eases along Y as it crosses the viewport, at a
+     fraction of the host's height given by the attribute (0.1 = gentle, 0.2 =
+     stronger). Media carries the largest values so images LEAD; text and UI use
+     the smaller scene drift, so nothing hard-switches — the whole page reads as
+     one moving canvas. Amplitude is clamped to any overscan an absolutely-sized
+     image has, so a parallax layer never reveals its own edge.
+  */
+  function initParallax() {
+    if (reduced || !hasST) return;
+
+    $$('[data-parallax]').forEach(function (el) {
+      var speed = parseFloat(el.getAttribute('data-parallax')) || 0.12;
+      var host = el.parentElement || el;
+
+      var amp = function () {
+        var base = (host.offsetHeight || window.innerHeight) * speed;
+        if (getComputedStyle(el).position === 'absolute') {
+          // Clamp to the slack this layer overscans its container by, less a
+          // couple of pixels, so a scale/overscan image never shows an edge.
+          var over = (el.offsetHeight - (host.clientHeight || host.offsetHeight)) / 2 - 2;
+          base = over > 0 ? Math.min(base, over) : 0;
+        }
+        return base;
+      };
+
+      gsap.fromTo(el,
+        { y: function () { return amp(); } },
+        {
+          y: function () { return -amp(); },
+          ease: 'none',
+          scrollTrigger: {
+            trigger: host, start: 'top bottom', end: 'bottom top',
+            scrub: true, invalidateOnRefresh: true
+          }
+        });
+    });
+  }
+
+  /* 11l. Glass sheen — pointer light across the bento tiles -------------------- */
+  /*
+     Writes --mx/--my on each glass tile so the CSS radial sheen tracks the
+     cursor. Desktop pointers only; on touch there is no hover to reveal it.
+  */
+  function initGlassSheen() {
+    if (!fine || reduced) return;
+    $$('.bcell').forEach(function (cell) {
+      cell.addEventListener('mousemove', function (e) {
+        var r = cell.getBoundingClientRect();
+        cell.style.setProperty('--mx', ((e.clientX - r.left) / r.width * 100).toFixed(1) + '%');
+        cell.style.setProperty('--my', ((e.clientY - r.top) / r.height * 100).toFixed(1) + '%');
+      });
+    });
+  }
+
+  /* 11m. Why spotlight — a warm light tracking the pointer --------------------- */
+  /*
+     The Why chapter comes alive under the cursor: --mx/--my set on the section
+     move a soft warm spotlight (CSS .why__spot) across the standards. The custom
+     properties inherit down to the spotlight layer.
+  */
+  function initWhySpotlight() {
+    if (!fine || reduced) return;
+    var why = $('.why');
+    if (!why) return;
+    // Set directly — the spotlight tracks the cursor 1:1. --mx/--my inherit down
+    // to the .why__spot layer, whose gradient reads them for its centre.
+    why.addEventListener('mousemove', function (e) {
+      var r = why.getBoundingClientRect();
+      why.style.setProperty('--mx', ((e.clientX - r.left) / r.width * 100).toFixed(1) + '%');
+      why.style.setProperty('--my', ((e.clientY - r.top) / r.height * 100).toFixed(1) + '%');
+    });
+  }
+
+  /* 11n. Card tilt — a few degrees of 3D toward the pointer -------------------- */
+  /*
+     A restrained parallax tilt on the glass cards. Desktop pointers only; the
+     card also lifts a touch while hovered. gsap owns the transform so it never
+     fights the CSS hover shadow/border, and eases back to flat on leave.
+  */
+  function initTilt() {
+    if (!fine || reduced || !hasGSAP) return;
+    $$('[data-tilt]').forEach(function (el) {
+      var rx, ry, yy, ready = false;
+
+      // Deferred to the first hover so nothing writes an inline transform before
+      // the scroll reveal has finished — otherwise the card would skip its rise.
+      var arm = function () {
+        if (ready) return;
+        gsap.set(el, { transformPerspective: 900, transformOrigin: 'center' });
+        rx = gsap.quickTo(el, 'rotationX', { duration: 0.6, ease: 'power3' });
+        ry = gsap.quickTo(el, 'rotationY', { duration: 0.6, ease: 'power3' });
+        yy = gsap.quickTo(el, 'y', { duration: 0.6, ease: 'power3' });
+        ready = true;
+      };
+
+      el.addEventListener('mouseenter', arm);
+      el.addEventListener('mousemove', function (e) {
+        if (!ready) return;
+        var r = el.getBoundingClientRect();
+        var px = (e.clientX - (r.left + r.width / 2)) / (r.width / 2);
+        var py = (e.clientY - (r.top + r.height / 2)) / (r.height / 2);
+        rx(-py * 4);           // a few degrees, never more
+        ry(px * 5);
+        yy(-6);                // the hover lift, owned here so CSS can't collide
+      });
+      el.addEventListener('mouseleave', function () { if (ready) { rx(0); ry(0); yy(0); } });
+    });
+  }
+
   /* 16. Boot ------------------------------------------------------------------ */
 
   function initYear() {
@@ -1515,9 +1626,12 @@
     safe('servicesIndex',   initServicesIndex);
     safe('showcase3d',      initShowcase3d);
     safe('processTimeline', initProcessTimeline);
-    safe('sectionWipe',     initSectionWipe);
     safe('bottomNav',       initBottomNav);
     safe('mouseTrail',      initMouseTrail);
+    safe('parallax',        initParallax);
+    safe('glassSheen',      initGlassSheen);
+    safe('whySpotlight',    initWhySpotlight);
+    safe('tilt',            initTilt);
     safe('form',            initForm);
     safe('anchors',         initAnchors);
     safe('transitions',     initTransitions);

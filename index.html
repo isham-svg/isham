@@ -24,7 +24,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@200;300;400;500;600&family=Instrument+Serif:ital@1&display=swap">
-<link rel="stylesheet" href="assets/css/main.css?v=20260729k">
+<link rel="stylesheet" href="assets/css/main.css?v=20260730a">
 
 <script type="application/ld+json">
 {
@@ -207,14 +207,14 @@
       </section>
 
       <!-- ===================== I · SERVICES ======================= -->
-      <!-- LIGHT gallery. An editorial index of the ten services on the right;
-           a sticky viewer on the left whose photograph DEVELOPS from grey to
-           colour as you move down the list. -->
-      <section class="scene scene--light services" id="services">
+      <!-- Dark glass bento riding the film. No paper ground any more, so the
+           film runs continuously behind the whole grid and there is no light↔
+           dark seam for a black band to patch. -->
+      <section class="scene services" id="services">
         <div class="services__inner shell">
 
           <header class="services__head">
-            <p class="chapter chapter--ink"><b>01</b><span>Services</span></p>
+            <p class="chapter"><b>01</b><span>Services</span></p>
             <h2 class="services__title" data-split>Everything the site needs to <em class="serif">work</em>.</h2>
             <p class="services__lead" data-reveal>
               Design, build, copy, search, speed. One team, one standard,
@@ -224,21 +224,22 @@
 
           <div class="services__body">
 
-            <!-- Bento grid (ported from the BentoGridShowcase component): a
-                 3x3 arrangement of six slots, staggered in on scroll. Same
-                 services content and existing pictures; brand tokens throughout. -->
+            <!-- Dark-glass bento: six panes of glass floating on the film. Each
+                 carries a pointer-tracked sheen and a subtle 3D tilt; image
+                 tiles zoom in parallax as the section scrolls. -->
             <div class="bento" data-stagger="0.09">
 
               <!-- Slot 1: one team (integrations) -->
-              <article class="bcell bcell--team on-reveal" data-reveal>
+              <article class="bcell bcell--team" data-reveal data-tilt>
+                <span class="bcell__sheen" aria-hidden="true"></span>
                 <h3 class="bcell__h">One team, <span class="serif">end to end</span>.</h3>
                 <p class="bcell__p">Design, build, copy, search, speed — no handing you off halfway through.</p>
                 <div class="bchips"><span class="bchip">Design</span><span class="bchip">Build</span><span class="bchip">Grow</span></div>
               </article>
 
               <!-- Slot 2: main feature (tall image) -->
-              <article class="bcell bcell--main on-reveal" data-reveal>
-                <img src="assets/img/work/work-workspace.jpg" alt="A studio designing a new website" loading="lazy">
+              <article class="bcell bcell--main" data-reveal data-tilt>
+                <img src="assets/img/work/work-workspace.jpg" alt="A studio designing a new website" loading="lazy" data-parallax="0.12">
                 <div class="bcell__over">
                   <span class="bcell__kicker">Every service, one standard</span>
                   <b class="bcell__big">Websites, built — never templated.</b>
@@ -246,7 +247,8 @@
               </article>
 
               <!-- Slot 3: feature tags (the ten services) -->
-              <article class="bcell bcell--tags on-reveal" data-reveal>
+              <article class="bcell bcell--tags" data-reveal data-tilt>
+                <span class="bcell__sheen" aria-hidden="true"></span>
                 <p class="bcell__eyebrow">What we do</p>
                 <div class="btags">
                   <span class="btag">Web Design</span><span class="btag">Redesign</span>
@@ -258,13 +260,14 @@
               </article>
 
               <!-- Slot 4: secondary feature (image + caption) -->
-              <article class="bcell bcell--secondary on-reveal" data-reveal>
-                <img src="assets/img/work/work-branding.jpg" alt="Brand identity materials on a designer's desk" loading="lazy">
+              <article class="bcell bcell--secondary" data-reveal data-tilt>
+                <img src="assets/img/work/work-branding.jpg" alt="Brand identity materials on a designer's desk" loading="lazy" data-parallax="0.14">
                 <p class="bcell__caption">A look that holds up everywhere — website, van and business card.</p>
               </article>
 
               <!-- Slot 5: statistic (tall, accent tile) -->
-              <article class="bcell bcell--stat on-reveal" data-reveal>
+              <article class="bcell bcell--stat" data-reveal data-tilt>
+                <span class="bcell__sheen" aria-hidden="true"></span>
                 <svg class="bcell__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg>
                 <div class="bcell__statbody">
                   <span class="bcell__fig" data-count="0.8" data-decimals="1" data-suffix="s">0.0s</span>
@@ -273,7 +276,8 @@
               </article>
 
               <!-- Slot 6: journey -->
-              <article class="bcell bcell--journey on-reveal" data-reveal>
+              <article class="bcell bcell--journey" data-reveal data-tilt>
+                <span class="bcell__sheen" aria-hidden="true"></span>
                 <h3 class="bcell__h">Live in <span class="serif">weeks</span></h3>
                 <div class="bsteps"><span>01</span><span>02</span><span>03</span><span>04</span></div>
               </article>
@@ -287,10 +291,11 @@
       <!-- DARK. A single graded photograph bleeds behind the standards; the six
            run as an asymmetric spread, not a grid of cards. -->
       <section class="scene why" id="about">
-        <div class="why__media" aria-hidden="true">
+        <div class="why__media" aria-hidden="true" data-parallax="0.16">
           <img src="assets/img/work/work-atrium.jpg" alt="" loading="lazy" data-why-img>
         </div>
         <div class="why__particles" aria-hidden="true"></div>
+        <div class="why__spot" aria-hidden="true"></div>
         <div class="why__inner shell">
           <header class="why__head">
             <p class="chapter"><b>02</b><span>Why us</span></p>
@@ -404,6 +409,115 @@
         </div>
       </section>
 
+      <!-- ===================== IV · TESTIMONIALS ================= -->
+      <!-- Planned into the flow: proof, then the ask. Rides the same film as
+           every chapter around it. The structure is built to later carry
+           founder quotes, video, company logos, before/after and metrics —
+           dropping real content in changes nothing else on the page. -->
+      <section class="scene testi" id="testimonials">
+        <div class="scene__inner shell">
+          <header class="testi__head">
+            <p class="chapter"><b>04</b><span>Testimonials</span></p>
+            <h2 class="h2 on-film" data-split>Work that earns the <em class="serif">next call</em>.</h2>
+            <p class="lead on-film" data-reveal>
+              The measure of a site is what happens after launch — more enquiries,
+              faster answers, and a brand people trust before they pick up the phone.
+            </p>
+          </header>
+
+          <!-- Featured quote + success metrics -->
+          <div class="testi__feature">
+            <figure class="testi__quote-wrap" data-reveal>
+              <span class="testi__mark" aria-hidden="true">&ldquo;</span>
+              <blockquote class="testi__quote on-film">
+                They didn&rsquo;t hand us a template — they built something that finally
+                <em class="serif">looks like us</em>. Enquiries came in the first week.
+              </blockquote>
+              <figcaption class="testi__cite">
+                <span class="testi__avatar"><img src="assets/img/work/work-spa.jpg" alt="" loading="lazy"></span>
+                <span class="testi__who"><b>Founder</b><span>Wellness studio</span></span>
+              </figcaption>
+            </figure>
+
+            <div class="testi__metrics" data-reveal data-tilt>
+              <div class="tmetric">
+                <span class="tmetric__fig" data-count="3.4" data-decimals="1" data-suffix="×">0.0×</span>
+                <span class="tmetric__label">More enquiries</span>
+              </div>
+              <div class="tmetric">
+                <span class="tmetric__fig" data-count="0.8" data-decimals="1" data-suffix="s">0.0s</span>
+                <span class="tmetric__label">Average load</span>
+              </div>
+              <div class="tmetric">
+                <span class="tmetric__fig" data-count="98" data-suffix="%">0%</span>
+                <span class="tmetric__label">Would refer us</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Review cards -->
+          <div class="testi__grid" data-stagger="0.08">
+            <article class="tcard" data-reveal data-tilt>
+              <div class="tcard__stars" aria-label="Five out of five">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 18.9 6.1 22l1.2-6.6L2.5 9l6.6-.9z"/></svg>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 18.9 6.1 22l1.2-6.6L2.5 9l6.6-.9z"/></svg>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 18.9 6.1 22l1.2-6.6L2.5 9l6.6-.9z"/></svg>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 18.9 6.1 22l1.2-6.6L2.5 9l6.6-.9z"/></svg>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 18.9 6.1 22l1.2-6.6L2.5 9l6.6-.9z"/></svg>
+              </div>
+              <p class="tcard__body on-film">The whole thing felt effortless. We saw a homepage concept before we&rsquo;d spent a cent, and it only got better from there.</p>
+              <div class="tcard__cite">
+                <span class="tcard__dot" aria-hidden="true">D</span>
+                <span class="tcard__who"><b>Practice owner</b><span>Dental clinic</span></span>
+              </div>
+            </article>
+
+            <article class="tcard" data-reveal data-tilt>
+              <div class="tcard__stars" aria-label="Five out of five">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 18.9 6.1 22l1.2-6.6L2.5 9l6.6-.9z"/></svg>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 18.9 6.1 22l1.2-6.6L2.5 9l6.6-.9z"/></svg>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 18.9 6.1 22l1.2-6.6L2.5 9l6.6-.9z"/></svg>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 18.9 6.1 22l1.2-6.6L2.5 9l6.6-.9z"/></svg>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 18.9 6.1 22l1.2-6.6L2.5 9l6.6-.9z"/></svg>
+              </div>
+              <p class="tcard__body on-film">It loads instantly and it finally shows up on Google. Clients tell us the site is the reason they got in touch.</p>
+              <div class="tcard__cite">
+                <span class="tcard__dot" aria-hidden="true">M</span>
+                <span class="tcard__who"><b>Managing director</b><span>Manufacturer</span></span>
+              </div>
+            </article>
+
+            <article class="tcard" data-reveal data-tilt>
+              <div class="tcard__stars" aria-label="Five out of five">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 18.9 6.1 22l1.2-6.6L2.5 9l6.6-.9z"/></svg>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 18.9 6.1 22l1.2-6.6L2.5 9l6.6-.9z"/></svg>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 18.9 6.1 22l1.2-6.6L2.5 9l6.6-.9z"/></svg>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 18.9 6.1 22l1.2-6.6L2.5 9l6.6-.9z"/></svg>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 18.9 6.1 22l1.2-6.6L2.5 9l6.6-.9z"/></svg>
+              </div>
+              <p class="tcard__body on-film">From first chat to launch was a few weeks, not months. Calm, clear, and the result feels genuinely premium.</p>
+              <div class="tcard__cite">
+                <span class="tcard__dot" aria-hidden="true">C</span>
+                <span class="tcard__who"><b>Creative director</b><span>Design agency</span></span>
+              </div>
+            </article>
+          </div>
+
+          <!-- Trusted-by / logo row (placeholder wordmarks, ready to swap) -->
+          <div class="testi__logos" data-reveal>
+            <p class="testi__logos-label">Trusted across studios, clinics and workshops</p>
+            <div class="logorow">
+              <span class="serif">Atelier</span>
+              <span>NORTHWIND</span>
+              <span class="serif">Meridian</span>
+              <span>FORMWORK</span>
+              <span class="serif">Lumen</span>
+              <span>VERTEX</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <!-- Work-in-motion marquee (ported interaction; EXISTING pictures only, no
            new content). An infinite strip of the work, moving. -->
       <div class="wkband" aria-hidden="true">
@@ -426,7 +540,7 @@
       <section class="scene closing" id="contact">
         <div class="scene__inner shell">
           <div class="closing__inner">
-            <p class="chapter" style="justify-content:center"><b>04</b><span>Contact</span></p>
+            <p class="chapter" style="justify-content:center"><b>05</b><span>Contact</span></p>
 
             <div class="closing__statement">
               <h2 class="closing__title on-film" data-split>We build with <span class="heart" role="img" aria-label="love"><svg viewBox="0 0 24 24" focusable="false" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></span></h2>
@@ -512,6 +626,6 @@
   <a class="botnav__cta" href="contact.html">Tell us your story</a>
 </nav>
 
-<script src="assets/js/main.js?v=20260729j" defer></script>
+<script src="assets/js/main.js?v=20260730a" defer></script>
 </body>
 </html>
