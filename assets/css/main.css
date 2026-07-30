@@ -3284,3 +3284,106 @@ body:not(:has(.landing)) .nav:not(.is-stuck) .burger span { background: #17150f;
 @media (hover: none), (pointer: coarse) {
   .footer { background: rgba(255,255,255,0.9) !important; }
 }
+
+
+/* 38. BUSINESSES WE WORK FOR — heading / carousel hierarchy (2026-07-30c) ===
+   The heading and the 3D ring were both fighting for the vertical centre of the
+   sticky stage, so the cards rode up over the title. Now the sticky is a column:
+   the heading owns the top with its own breathing room, the ring owns the space
+   beneath it. They can no longer overlap, and the type is rebuilt as a premium
+   two-line lockup (luxury sans + editorial serif) with an elegant contrast halo.
+   ========================================================================== */
+
+/* Column stack: heading on top, ring fills the rest. */
+.show3d__sticky {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+/* Cards sized to the available height so the ring always fits BELOW the heading
+   (capped so they stay large on tall screens), and a gentler perspective so the
+   front board no longer magnifies up into the title. The ring keeps its full
+   depth, rotation and float — it is repositioned and tamed, never shrunk. */
+.show3d { --cardW: clamp(186px, 28vh, 292px); --cardH: clamp(248px, 37vh, 390px); }
+.show3d__stage { perspective: 3000px; margin-top: clamp(0.25rem, 1.5vh, 1rem); }
+
+.show3d__head {
+  position: relative;
+  z-index: 6;
+  flex: none;
+  padding-top: clamp(5.5rem, 11vh, 8rem);
+  padding-bottom: clamp(1.5rem, 4vh, 3rem);
+  text-align: center;
+  isolation: isolate;
+}
+/* Elegant contrast — a soft light halo (with a whisper of orb warmth) lifts the
+   type off the grid. No box; it simply calms the grid lines beneath the words. */
+.show3d__head::before {
+  content: '';
+  position: absolute; z-index: -1;
+  left: 50%; top: 52%; transform: translate(-50%, -50%);
+  width: min(820px, 94%); height: 168%;
+  background:
+    radial-gradient(58% 58% at 50% 50%, rgba(255,255,255,0.94) 0%, rgba(255,255,255,0.62) 46%, transparent 72%),
+    radial-gradient(52% 60% at 50% 40%, rgba(236,72,153,0.10), transparent 70%);
+  pointer-events: none;
+}
+.show3d__stage { flex: 1 1 auto; min-height: 0; height: auto; }
+
+/* Eyebrow — confident, not faint. */
+.show3d__head .hgal__eyebrow {
+  color: var(--accent);
+  font-weight: 600;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  margin-bottom: clamp(1rem, 2.4vh, 1.6rem);
+}
+
+/* Two-line luxury lockup. */
+.show3d .hgal__title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(0.1rem, 0.9vh, 0.55rem);
+  margin: 0 auto;
+  max-width: none;
+  line-height: 1;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-kerning: normal;
+}
+/* "Businesses" — elegant luxury sans, substantial weight (never washed-out). */
+.show3d__l1 {
+  display: block;
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: clamp(2.5rem, 6vw, 5.3rem);
+  letter-spacing: -0.035em;
+  color: #14120d;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+/* "we work for" — premium editorial serif italic, warm accent, gently lit. */
+.show3d__l2 {
+  display: block;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(2.85rem, 6.6vw, 5.9rem);
+  line-height: 0.94;
+  letter-spacing: 0.006em;
+  color: var(--accent);
+  text-shadow: 0 1px 26px rgba(226, 81, 60, 0.20);
+}
+
+@media (max-width: 640px) {
+  .show3d__head { padding-top: clamp(5.5rem, 16vh, 8rem); }
+  .show3d .hgal__title { gap: 0.05rem; }
+  .show3d__l1 { letter-spacing: -0.03em; }
+}
+
+/* Reduced motion / static fallback: drop the halo and keep the column readable. */
+@media (prefers-reduced-motion: reduce) {
+  .show3d__head::before { display: none; }
+  .show3d__sticky { justify-content: flex-start; }
+}

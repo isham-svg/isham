@@ -1246,6 +1246,25 @@
     }
     var dots = $$('.show3d__dot', sec);
 
+    // Heading pieces + the cinematic-intro state. `intro.r` scales the ring's
+    // radius (cards start collapsed at centre and expand out with depth) and
+    // `intro.a` fades the cards in; both are tweened by playIntro(). Without
+    // GSAP they start at their finished values so nothing stays hidden.
+    var l1      = $('.show3d__l1', sec);
+    var l2      = $('.show3d__l2', sec);
+    var eyebrow = $('.hgal__eyebrow', sec);
+    var intro = { r: 0.0001, a: 0 };
+    var introGo = hasGSAP && !reduced;
+    var introPlayed = false;
+    if (!introGo) { intro.r = 1; intro.a = 1; }
+    else {
+      // Hide the heading up front so it can rise/slide in rather than flash.
+      if (eyebrow) gsap.set(eyebrow, { opacity: 0 });
+      if (l1) gsap.set(l1, { opacity: 0 });
+      if (l2) gsap.set(l2, { opacity: 0 });
+    }
+    var baseR = 0;
+
     function clamp(v, a, b) { return v < a ? a : (v > b ? b : v); }
 
     // Radius derived from the card's real rendered width (offsetWidth ignores the
@@ -1257,14 +1276,11 @@
       return (cw / 2) / Math.tan(Math.PI / N) * 1.5;
     }
 
-    // Each card gets a fixed place on the ring; the ring itself is what spins.
-    function layout() {
-      var R = radius();
-      cards.forEach(function (c, i) {
-        c.style.transform = 'rotateY(' + (i * anglePer) + 'deg) translateZ(' + R.toFixed(1) + 'px)';
-      });
-    }
-    layout();
+    // Cache the ring radius (reading offsetWidth every frame would thrash
+    // layout). The per-card placement is applied inside render() so it can ride
+    // the intro's radius scale.
+    function measure() { baseR = radius(); }
+    measure();
 
     var rot = 0, idle = 0, lastFront = -1;
     var inView = true, running = false, scrolling = false, stopTimer = null;
@@ -1284,11 +1300,13 @@
       rot += (target - rot) * 0.12;               // eased, so nothing snaps
       track.style.transform = 'rotateY(' + rot.toFixed(2) + 'deg)';
 
+      var R = baseR * intro.r;                    // intro grows the ring outward
       var front = -1, frontDelta = 999;
       for (var i = 0; i < N; i++) {
+        cards[i].style.transform = 'rotateY(' + (i * anglePer) + 'deg) translateZ(' + R.toFixed(1) + 'px)';
         var world = (i * anglePer + rot) % 360; if (world < 0) world += 360;
         var d = world > 180 ? 360 - world : world; // 0 at front, 180 at back
-        cards[i].style.opacity = Math.max(0.28, 1 - d / 180).toFixed(3);
+        cards[i].style.opacity = (Math.max(0.28, 1 - d / 180) * intro.a).toFixed(3);
         if (d < frontDelta) { frontDelta = d; front = i; }
       }
       if (front !== lastFront) {
@@ -1313,6 +1331,30 @@
     }
     start();
 
+    // The cinematic intro. Heading rises, the serif line slides in a beat later,
+    // then the cards expand out of the centre with depth and the ring's floating
+    // rotation takes over — a staged first impression rather than everything at
+    // once. Fires once as the section arrives; the rAF loop above reads intro.r
+    // / intro.a every frame, so the card motion stays perfectly in sync.
+    function playIntro() {
+      if (introPlayed) return; introPlayed = true;
+      if (!introGo) { intro.r = 1; intro.a = 1; return; }
+      var tl = gsap.timeline();
+      if (eyebrow) tl.fromTo(eyebrow, { y: 18, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7, ease: 'power3.out' }, 0.0);
+      if (l1) tl.fromTo(l1, { yPercent: 60, opacity: 0 }, { yPercent: 0, opacity: 1, duration: 0.95, ease: 'expo.out' }, 0.05);
+      if (l2) tl.fromTo(l2, { xPercent: -7, opacity: 0 }, { xPercent: 0, opacity: 1, duration: 1.0, ease: 'expo.out' }, 0.34);
+      tl.to(intro, { r: 1, a: 1, duration: 1.15, ease: 'power3.out' }, 0.6);
+    }
+
+    if (hasST) {
+      ScrollTrigger.create({ trigger: sec, start: 'top 65%', once: true, onEnter: playIntro });
+      // If the section is already on screen at load (short page / anchor jump),
+      // onEnter won't fire — play it straight away so nothing stays hidden.
+      if (sec.getBoundingClientRect().top < window.innerHeight * 0.65) playIntro();
+    } else {
+      playIntro();
+    }
+
     function onScroll() {
       scrolling = true;
       clearTimeout(stopTimer);
@@ -1322,10 +1364,10 @@
     if (lenis) lenis.on('scroll', onScroll);
     window.addEventListener('scroll', onScroll, { passive: true });
 
-    window.addEventListener('resize', function () { layout(); render(); });
-    // Re-place once everything has settled (webfont/layout), in case the first
-    // measurement of the card width happened before the responsive size applied.
-    window.addEventListener('load', function () { layout(); render(); });
+    window.addEventListener('resize', function () { measure(); render(); });
+    // Re-measure once everything has settled (webfont/layout), in case the first
+    // read of the card width happened before the responsive size applied.
+    window.addEventListener('load', function () { measure(); render(); });
   }
 
   /* 11f. Process timeline — vertical cinematic reveal -------------------------- */
