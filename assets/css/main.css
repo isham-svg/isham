@@ -3664,3 +3664,38 @@ body:not(:has(.landing)) .nav:not(.is-stuck) .burger span { background: #17150f;
   /* The globe script no-ops under reduced motion; keep the area tidy. */
   .globe-card__globe { height: 220px; }
 }
+
+
+/* 42. Cinematic pass — floating boards + no black wipe (2026-07-30h) ========
+   Supports the spline rewrite of initShowcase3d: the centre board is the sharp,
+   lit hero; neighbours stay visible but recede in focus. Also removes the black
+   page-transition curtain (a light dissolve now) and adds a few micro-motions. */
+
+/* Boards: no CSS transition on transform (rAF owns it); only the focus cues
+   cross-fade as a card passes through the centre. */
+.show3d .card3d { transition: none; }
+.show3d .card3d__inner {
+  border-radius: 14px;
+  box-shadow: 0 50px 90px -34px rgba(30,25,45,0.42), 0 10px 26px rgba(30,25,45,0.20);
+}
+.show3d .card3d__media img {
+  filter: grayscale(0.4) contrast(1.03) brightness(0.98);
+  transform: scale(1.04);
+  transition: filter 0.7s var(--ease), transform 1.2s var(--ease);
+}
+.show3d .card3d.is-center .card3d__media img { filter: grayscale(0) contrast(1.05) brightness(1); transform: scale(1); }
+.show3d .card3d__media::after { background: linear-gradient(180deg, transparent 34%, rgba(8,8,12,0.85)); transition: opacity 0.6s var(--ease); }
+/* Only the hero shows its label at full strength — the eye always knows where
+   to look; neighbours read as context. */
+.show3d .card3d__meta { opacity: 0.22; transition: opacity 0.55s var(--ease), transform 0.55s var(--ease); transform: translateY(6px); }
+.show3d .card3d.is-center .card3d__meta { opacity: 1; transform: none; }
+
+/* --- No black wipe: the page-transition curtain is now a soft light veil --- */
+.curtain { background: #ffffff; }
+
+/* --- Micro-interactions ---------------------------------------------------- */
+/* Brand mark gives a hair of life on hover. */
+.brand { transition: opacity 0.35s var(--ease), transform 0.5s var(--ease); }
+.brand:hover { opacity: 0.82; }
+/* Footer credit line. */
+.footer__blurb { line-height: 1.6; }

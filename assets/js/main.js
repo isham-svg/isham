@@ -63,12 +63,13 @@
     if (!hasLenis || reduced) return;
 
     lenis = new Lenis({
-      // A heavier, more cinematic glide — every wheel notch eases in and coasts,
-      // so the page reads like a controlled camera rather than jumping.
-      duration: 1.5,
+      // A heavier, more cinematic glide — every wheel notch eases in and coasts
+      // for longer, so the page reads like a controlled camera rather than
+      // jumping. Longer duration + a gentler wheel step = weightier scrolling.
+      duration: 2.0,
       easing: function (t) { return Math.min(1, 1.001 - Math.pow(2, -10 * t)); },
       smoothWheel: true,
-      wheelMultiplier: 0.9,
+      wheelMultiplier: 0.82,
       touchMultiplier: 1.5
     });
 
@@ -1018,14 +1019,9 @@
     var curtain = $('.curtain');
     if (!curtain) return;
 
-    requestAnimationFrame(function () {
-      curtain.classList.add('is-covering');
-      requestAnimationFrame(function () {
-        curtain.classList.remove('is-covering');
-        curtain.classList.add('is-lifting');
-      });
-    });
-
+    // No cover-on-arrival: the old intro wipe read as a harsh flash. The page
+    // simply appears (content reveals handle the entrance). The curtain is kept
+    // only as a soft LIGHT veil for link navigation below.
     if (reduced) return;
 
     document.addEventListener('click', function (e) {
@@ -1263,31 +1259,40 @@
       if (l1) gsap.set(l1, { opacity: 0 });
       if (l2) gsap.set(l2, { opacity: 0 });
     }
-    var baseR = 0;
-
     function clamp(v, a, b) { return v < a ? a : (v > b ? b : v); }
+    function smooth(x) { x = clamp(x, 0, 1); return x * x * (3 - 2 * x); }
 
-    // Radius derived from the card's real rendered width (offsetWidth ignores the
-    // 3D transform and reflects the responsive --cardW reliably, unlike reading
-    // the custom property, which can race the media query at first paint). Min
-    // radius that avoids overlap, ×1.5 for air between boards.
-    function radius() {
-      var cw = cards[0].offsetWidth || 300;
-      return (cw / 2) / Math.tan(Math.PI / N) * 1.5;
+    /*
+      FLOATING BOARDS ON A CURVED SPLINE — not a ring, not a carousel.
+
+      Each card is placed from a single continuous position `p` measured from the
+      centre of the path. `s` is the scene's offset (scroll + a slow idle drift);
+      a card's p = wrap(i - s) folded into [-N/2, N/2). As `s` advances every card
+      slides along the path — entering from the far side, curving forward to the
+      centre where it becomes the sharp, lit hero, then continuing on and away.
+      Cards fade to nothing before the fold point, so the wrap is invisible and
+      the motion reads as endless. No rot'n-around-a-circle, no visible loop.
+    */
+    var SPACING = 340;                 // horizontal gap between neighbours (px)
+    var EDGE = 2.7;                    // half-window: cards beyond this are hidden
+    var FADE = 1.0;                    // how far from EDGE the fade spans
+    function measure() {
+      var cw = cards[0].offsetWidth || 280;
+      SPACING = cw * 1.16;             // just past the hero's width — visible, no mess
     }
-
-    // Cache the ring radius (reading offsetWidth every frame would thrash
-    // layout). The per-card placement is applied inside render() so it can ride
-    // the intro's radius scale.
-    function measure() { baseR = radius(); }
     measure();
 
-    var rot = 0, idle = 0, lastFront = -1;
+    var s = 0, idle = 0, lastFront = -1;
     var inView = true, running = false, scrolling = false, stopTimer = null;
-    var AUTO = 0.04; // degrees / frame — the idle drift when not scrolling
+    var AUTO = 0.0016;                 // idle drift (cards / frame) — slow, premium
 
-    // How far the tall scroll region has passed the sticky stage: 0 -> 1 maps to
-    // a full turn, so scrolling through the section spins the ring 360deg.
+    function wrap(x) {
+      var h = N / 2;
+      return ((x + h) % N + N) % N - h;
+    }
+
+    // 0 at the top of the sticky region, 1 at the bottom: scrolling the section
+    // advances the scene by N (one full pass through the boards).
     function progress() {
       var r = scroll.getBoundingClientRect();
       var travel = r.height - window.innerHeight;
@@ -1296,27 +1301,41 @@
     }
 
     function render() {
-      var target = progress() * 360 + idle;
-      rot += (target - rot) * 0.12;               // eased, so nothing snaps
-      track.style.transform = 'rotateY(' + rot.toFixed(2) + 'deg)';
+      var target = progress() * N + idle;
+      s += (target - s) * 0.085;                 // heavy, eased — every scroll glides
+      var t = performance.now() / 1000;
 
-      var R = baseR * intro.r;                    // intro grows the ring outward
-      var front = -1, frontDelta = 999;
+      var front = -1, frontAbs = 1e9;
       for (var i = 0; i < N; i++) {
-        cards[i].style.transform = 'rotateY(' + (i * anglePer) + 'deg) translateZ(' + R.toFixed(1) + 'px)';
-        var world = (i * anglePer + rot) % 360; if (world < 0) world += 360;
-        var d = world > 180 ? 360 - world : world; // 0 at front, 180 at back
-        cards[i].style.opacity = (Math.max(0.28, 1 - d / 180) * intro.a).toFixed(3);
-        if (d < frontDelta) { frontDelta = d; front = i; }
+        var p = wrap(i - s);
+        var ap = Math.abs(p);
+        var d = Math.cos(clamp(p / EDGE, -1, 1) * Math.PI / 2);   // 1 centre -> 0 edge
+        var tx = p * SPACING;
+        var ty = (1 - d) * 30 + Math.sin(t * 0.5 + i * 1.7) * 7;  // gentle arc + float
+        var scale = 0.58 + d * 0.5;                               // hero largest
+        var ry = clamp(-p * 13, -34, 34);                         // boards turn on the path
+        var op = smooth((EDGE - ap) / FADE) * intro.a;            // fade before the fold
+
+        var c = cards[i];
+        c.style.transform =
+          'translate3d(' + tx.toFixed(1) + 'px,' + ty.toFixed(1) + 'px,0) ' +
+          'rotateY(' + ry.toFixed(2) + 'deg) scale(' + (scale * (0.9 + 0.1 * intro.r)).toFixed(3) + ')';
+        c.style.opacity = op.toFixed(3);
+        c.style.zIndex = Math.round(d * 100);
+        c.style.pointerEvents = op > 0.5 ? 'auto' : 'none';
+
+        if (ap < frontAbs) { frontAbs = ap; front = i; }
       }
+
       if (front !== lastFront) {
         lastFront = front;
+        cards.forEach(function (c, i) { c.classList.toggle('is-center', i === front); });
         dots.forEach(function (dd, i) { dd.classList.toggle('is-on', i === front); });
       }
     }
 
     function frame() {
-      if (!scrolling) idle += AUTO;            // auto-rotate only when idle
+      if (!scrolling) idle += AUTO;            // keeps flowing when nobody scrolls
       render();
       if (inView) requestAnimationFrame(frame); else running = false;
     }
