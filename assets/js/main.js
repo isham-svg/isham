@@ -1483,10 +1483,25 @@
     var nav = $('.botnav');
     if (!nav) return;
     var landing = $('.landing');
+    var threshold = function () { return landing ? landing.offsetHeight * 0.85 : 300; };
+    var lastY = window.scrollY || 0;
+    // Directional reveal: past the hero the pill hides while reading (scrolling
+    // DOWN) and slides back in on scroll UP, so it never sits on top of content
+    // for long; near the very bottom (the CTA/footer) it stays put.
     var upd = function (y) {
       if (typeof y !== 'number') y = window.scrollY || root.scrollTop || 0;
-      var past = landing ? y > landing.offsetHeight * 0.85 : y > 300;
-      nav.classList.toggle('is-shown', past);
+      var past = y > threshold();
+      var nearBottom = (y + window.innerHeight) > ((root.scrollHeight || document.documentElement.scrollHeight) - 220);
+      var goingUp = y < lastY - 4;
+      var goingDown = y > lastY + 6;
+      if (!past) {
+        nav.classList.remove('is-shown');
+      } else if (nearBottom || goingUp) {
+        nav.classList.add('is-shown');
+      } else if (goingDown) {
+        nav.classList.remove('is-shown');
+      }
+      if (Math.abs(y - lastY) > 2) lastY = y;
     };
     if (lenis) lenis.on('scroll', function (e) { upd(e.scroll); });
     window.addEventListener('scroll', function () { upd(); }, { passive: true });

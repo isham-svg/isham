@@ -2501,7 +2501,7 @@ body:has(.landing) .nav:not(.is-stuck) .burger span { background: #fff; }
    with a slow auto-rotate; opacity falls toward the back. Existing images and
    brand tokens only — border-border -> --line, bg-card -> site glass. ========= */
 .show3d { position: relative; --cardW: 300px; --cardH: 400px; background: transparent; display: block; padding: 0; }
-.show3d__scroll { position: relative; height: 340vh; }
+.show3d__scroll { position: relative; height: 240vh; }
 .show3d__sticky { position: sticky; top: 0; height: 100vh; overflow: hidden;
   display: flex; align-items: center; justify-content: center; }
 .show3d__head { position: absolute; top: clamp(4.5rem, 11vh, 8rem); left: 0; right: 0; z-index: 6; text-align: center; }
@@ -4285,3 +4285,14 @@ html { overflow-x: hidden; }
   .card3d__meta { opacity: 1 !important; transform: none !important; }
   .show3d__dots, .show3d__hint { display: none !important; }
 }
+
+/* 52. DEAD-SCROLL + STICKY CTA PASS (2026-07-31l) ============================
+   Trim the pinned Businesses carousel on tablet so it never becomes empty
+   scroll, and pair with the JS that now hides the sticky CTA on scroll-down and
+   reveals it on scroll-up (see initBottomNav). ============================== */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .show3d__scroll { height: 200vh; }          /* tablet: shorter pin, no dead scroll */
+}
+/* Smooth, premium slide for the pill's show/hide (already transitioned; this
+   just guarantees the transform easing survives the directional toggle). */
+.botnav { transition: transform 0.55s var(--ease), opacity 0.45s var(--ease); }
