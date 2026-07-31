@@ -3720,3 +3720,198 @@ body:not(:has(.landing)) .nav:not(.is-stuck) .burger span { background: #17150f;
 @media (max-width: 640px) {
   .closing .globe-canvas--home { width: 118vw; transform: translate(-50%, -46%); }
 }
+
+
+/* 44. GLOBAL DARK WORLD — CSS golden-grid floor + dark re-theme (2026-07-31) =
+   Replaces the light grid with a dark charcoal ground and a warm golden
+   perspective-grid FLOOR (pure CSS, so it stays crisp and scales cleanly at any
+   size), and flips every chapter back to light-on-dark so the whole site reads
+   as one continuous premium 3D environment. The dark hero video now dissolves
+   into a matching dark ground — no light/dark seam at the fold. ============== */
+
+/* --- 44.1 Base + tokens (dark) ------------------------------------------- */
+html, body { background: #0a0b0e; }
+.film { background: #0a0b0e; }
+.film, .footer {
+  --ink:       #ffffff;
+  --ink-dim:   rgba(255, 255, 255, 0.86);
+  --ink-muted: rgba(255, 255, 255, 0.58);
+  --ink-faint: rgba(255, 255, 255, 0.32);
+  --line:      rgba(255, 255, 255, 0.14);
+  --line-soft: rgba(255, 255, 255, 0.07);
+  --fill:      rgba(255, 255, 255, 0.04);
+}
+.film__stage { color: #ffffff; }
+
+/* --- 44.2 The CSS floor: charcoal ground + golden perspective grid ------- */
+.film__bg {
+  background-color: #0a0b0e !important;
+  background-image:
+    radial-gradient(78% 46% at 50% 84%, rgba(214, 150, 58, 0.18), transparent 60%),
+    radial-gradient(120% 92% at 50% 2%,  #15161c 0%, #0c0d11 46%, #070709 100%) !important;
+  background-repeat: no-repeat, no-repeat !important;
+  background-size: auto, auto !important;
+  background-position: center, center !important;
+  opacity: 1 !important;
+}
+/* the receding golden grid floor */
+.film__bg::before {
+  content: ''; position: absolute; z-index: 0; pointer-events: none;
+  left: 50%; bottom: -8%; width: 360%; height: 150%;
+  transform: translateX(-50%) perspective(360px) rotateX(66deg);
+  transform-origin: 50% 100%;
+  background-image:
+    linear-gradient(to right,  rgba(226, 172, 82, 0.32) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(226, 172, 82, 0.32) 1px, transparent 1px);
+  background-size: 46px 46px;
+  -webkit-mask-image: linear-gradient(to top, #000 3%, rgba(0,0,0,0.5) 32%, transparent 70%);
+  mask-image: linear-gradient(to top, #000 3%, rgba(0,0,0,0.5) 32%, transparent 70%);
+  opacity: 0.6;
+}
+/* warm floor glow + sparks + top/bottom vignette */
+.film__bg::after {
+  content: ''; position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  background:
+    radial-gradient(1.6px 1.6px at 22% 72%, rgba(230,180,96,0.55), transparent),
+    radial-gradient(1.4px 1.4px at 58% 80%, rgba(230,180,96,0.45), transparent),
+    radial-gradient(1.4px 1.4px at 80% 67%, rgba(230,180,96,0.40), transparent),
+    radial-gradient(1.2px 1.2px at 38% 88%, rgba(230,180,96,0.35), transparent),
+    radial-gradient(70% 44% at 50% 80%, rgba(214,150,58,0.14), transparent 62%),
+    linear-gradient(180deg, rgba(6,7,9,0.55) 0%, transparent 24%, transparent 72%, rgba(6,7,9,0.5) 100%);
+}
+/* keep the old video + grade hidden; a whisper of grade for body-copy contrast */
+.film__bg video { display: none !important; }
+.film__grade { display: none !important; }
+.curtain { background: #0a0b0e; }
+.grain { mix-blend-mode: overlay; opacity: 0.05; }
+
+/* --- 44.3 Display headings: white gradient fill again -------------------- */
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+  .film__stage .h2,
+  .film__stage .statement,
+  .film__stage .closing__title,
+  .film__stage .phero__title {
+    background-image: linear-gradient(180deg, #ffffff 0%, #ffffff 58%, rgba(255,255,255,0.86) 100%);
+    filter:
+      drop-shadow(0 0 3px rgba(255,255,255,0.22))
+      drop-shadow(0 2px 10px rgba(0,0,0,0.45));
+  }
+}
+.services__title { color: #fff; }
+.services__title .serif { color: var(--accent-lift); }
+.services .chapter b { color: var(--accent-lift); }
+
+/* --- 44.4 Bento (dark glass) -------------------------------------------- */
+.bcell {
+  background: linear-gradient(152deg, rgba(255,255,255,0.085), rgba(255,255,255,0.02));
+  border-color: var(--line);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.13), 0 26px 54px -32px rgba(0,0,0,0.82);
+}
+.bcell:hover {
+  background: linear-gradient(152deg, rgba(255,255,255,0.14), rgba(255,255,255,0.04));
+  border-color: rgba(255,255,255,0.28);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.22), 0 42px 84px -34px rgba(0,0,0,0.9);
+}
+.bcell__sheen { background: radial-gradient(240px circle at var(--mx,50%) var(--my,0%), rgba(255,255,255,0.10), transparent 60%); }
+.bcell__h { color: #fff; } .bcell__h .serif { color: var(--accent-lift); }
+.bcell__p, .bcell__eyebrow { color: rgba(255,255,255,0.6); }
+.bchip { background: rgba(255,255,255,0.10); color: #fff; border-color: transparent; }
+.btag { border-color: var(--line); color: rgba(255,255,255,0.8); }
+.btag:hover { border-color: var(--accent); color: #fff; background: var(--accent); }
+.bsteps span { border-color: var(--line); color: rgba(255,255,255,0.6); }
+.bsteps span:first-child { border-color: var(--accent-lift); color: var(--accent-lift); }
+.bcell--stat { background: linear-gradient(158deg, #1a1712, #0f0d0a); border-color: rgba(255,255,255,0.08); }
+
+/* --- 44.5 Why cards (dark glass, glow kept) ----------------------------- */
+.std__card {
+  background:
+    linear-gradient(rgba(19,19,23,0.80), rgba(19,19,23,0.80)) padding-box,
+    var(--grad) border-box;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.08), 0 34px 70px -34px rgba(0,0,0,0.72);
+}
+.std:hover .std__card { box-shadow: inset 0 1px 0 rgba(255,255,255,0.14), 0 52px 100px -38px rgba(0,0,0,0.82); }
+.std__title { color: #fff !important; }
+.std__body  { color: rgba(255,255,255,0.6) !important; }
+.std__num   { color: rgba(255,255,255,0.4) !important; }
+.why__spot { background: radial-gradient(440px circle at var(--mx,50%) var(--my,30%), rgba(255,255,255,0.06), rgba(226,81,60,0.06) 36%, transparent 62%); mix-blend-mode: screen; }
+.wstat__fig { color: #fff; }
+
+/* --- 44.6 Testimonials (dark glass) ------------------------------------- */
+.testi__quote { color: #fff; } .testi__quote .serif { color: var(--accent-lift); }
+.testi__who b, .tcard__who b, .tmetric__fig { color: #fff; }
+.testi__metrics, .tcard {
+  background: linear-gradient(152deg, rgba(255,255,255,0.075), rgba(255,255,255,0.02));
+  border-color: var(--line);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.13), 0 24px 50px -32px rgba(0,0,0,0.82);
+}
+.tcard:hover { border-color: rgba(255,255,255,0.28); box-shadow: inset 0 1px 0 rgba(255,255,255,0.22), 0 40px 80px -34px rgba(0,0,0,0.9); }
+.tcard__body { color: rgba(255,255,255,0.78); }
+.testi__feature { border-bottom-color: var(--line-soft); }
+.testi__avatar { border-color: var(--line); }
+.logorow span:hover { color: #fff; }
+
+/* --- 44.7 Process / closing / showcase --------------------------------- */
+.pstep__title { color: #fff; } .pstep__body { color: rgba(255,255,255,0.78); }
+.ptime__rail { background: rgba(255,255,255,0.10); }
+.closing__sub { color: rgba(255,255,255,0.9); }
+.closing__mail { color: rgba(255,255,255,0.55); }
+.closing__mail a { color: rgba(255,255,255,0.82); border-bottom-color: rgba(255,255,255,0.3); }
+.show3d__dot { background: rgba(255,255,255,0.28); }
+.show3d__dot.is-on { background: var(--accent-lift); }
+
+/* --- 44.8 Nav + footer -------------------------------------------------- */
+.nav.is-stuck { background: rgba(10,11,14,0.7); border-bottom: 1px solid var(--line-soft); }
+.nav.is-stuck .brand { color: #fff; }
+.nav.is-stuck .nav__link { color: rgba(255,255,255,0.7); }
+.nav.is-stuck .nav__link:hover, .nav.is-stuck .nav__link[aria-current='page'] { color: #fff; }
+.nav.is-stuck .burger span { background: #fff; }
+.nav.is-stuck .brand span { color: var(--accent-lift); }
+body:not(:has(.landing)) .nav:not(.is-stuck) .brand,
+body:not(:has(.landing)) .nav:not(.is-stuck) .nav__link {
+  color: #fff;
+  text-shadow: 0 0 1px rgba(255,255,255,0.5), 0 1px 3px rgba(0,0,0,0.5);
+}
+body:not(:has(.landing)) .nav:not(.is-stuck) .brand span { color: var(--accent-lift); }
+body:not(:has(.landing)) .nav:not(.is-stuck) .burger span { background: #fff; }
+.footer { background: rgba(8,9,12,0.62); border-top: 1px solid var(--line-soft); color: #fff; }
+
+/* --- 44.9 Inner-page panels (dark) ------------------------------------- */
+.section--raised { background: rgba(255,255,255,0.04) !important; border-color: var(--line-soft) !important; }
+.stat  { background: rgba(255,255,255,0.03) !important; }
+.stats { background: var(--line-soft); border-block-color: var(--line-soft); }
+.ind   { background: rgba(255,255,255,0.03) !important; }
+.inds  { background: var(--line-soft); border-color: var(--line-soft); }
+.reason { background: rgba(255,255,255,0.03) !important; }
+.reasons { background: var(--line-soft); border-color: var(--line-soft); }
+.plates, .plate { border-color: var(--line-soft); }
+.plate::before { background: linear-gradient(100deg, rgba(255,255,255,0.10), rgba(255,255,255,0.02) 60%, transparent); }
+.stat__fig, .step__title, .step__num { color: #fff; }
+.prose h2, .prose h3, .prose strong, .prose a { color: #fff; }
+.gcard {
+  background: linear-gradient(152deg, rgba(255,255,255,0.12), rgba(255,255,255,0.04));
+  border-color: var(--line);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.2), 0 18px 38px -22px rgba(0,0,0,0.72);
+}
+.gcard__desc { color: rgba(255,255,255,0.8); }
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+  .gcard__title {
+    background-image: linear-gradient(166deg, #ffffff 0%, #fffdfa 40%, rgba(255,240,222,0.94) 100%);
+    filter: drop-shadow(0 0 9px rgba(255,236,212,0.4)) drop-shadow(0 1px 2px rgba(0,0,0,0.5));
+  }
+}
+.field select option { background: #101014; color: #fff; }
+.field input::placeholder, .field textarea::placeholder { color: rgba(255,255,255,0.34); }
+
+/* --- 44.10 Contact globe card (dark) ----------------------------------- */
+.globe-card {
+  background: linear-gradient(160deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+  border-color: var(--line);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.10), 0 36px 74px -38px rgba(0,0,0,0.72);
+}
+.globe-card__title { color: #fff; }
+.globe-card__title .serif { color: var(--accent); }
+.globe-card__lead { color: rgba(255,255,255,0.62); }
+
+@media (prefers-reduced-motion: reduce) {
+  .film__bg::before, .film__bg::after { }
+}
