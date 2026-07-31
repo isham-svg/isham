@@ -274,12 +274,11 @@
         try { if (Math.abs(video.currentTime - start) > 0.05) video.currentTime = start; } catch (e) {}
       };
 
-      // Play ~25% slower for a more premium, cinematic feel (no quality loss —
-      // the source frames are untouched, they just display longer).
-      var slowRate = function () { try { video.playbackRate = 0.75; } catch (e) {} };
-      slowRate();
-      video.addEventListener('loadedmetadata', slowRate, { once: true });
-      video.addEventListener('loadeddata', slowRate, { once: true });
+      // Native playback speed — the clip plays exactly as authored, as smooth as
+      // the original MP4. (Earlier we slowed it to 0.75x for a cinematic feel, but
+      // that made the hero feel heavy; native rate is lighter and truer.)
+      var nativeRate = function () { try { video.playbackRate = 1; } catch (e) {} };
+      nativeRate();
 
       var play = function () {
         var p = video.play();

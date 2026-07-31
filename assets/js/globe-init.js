@@ -57,7 +57,7 @@
         mapBrightness: 3,
         baseColor: [0.16, 0.15, 0.17],                  // dark charcoal sphere
         markerColor: [232 / 255, 170 / 255, 84 / 255],  // warm amber markers
-        glowColor: [0.28, 0.20, 0.10],                  // soft warm halo (no white)
+        glowColor: [0.05, 0.045, 0.035],                // near-off: a physical object, not a light source
         markers: MARKERS,
         onRender: function (state) {
           if (pointer === null) phi += 0.005;
