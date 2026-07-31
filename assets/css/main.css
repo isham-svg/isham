@@ -4018,3 +4018,27 @@ body:not(:has(.landing)) .nav:not(.is-stuck) .burger span { background: #fff; }
     linear-gradient(180deg, rgba(3,3,5,0.62) 0%, transparent 22%, transparent 74%, rgba(3,3,5,0.52) 100%);
 }
 html, body, .film { background: #050506; }
+
+/* 47. Businesses white radial removed + CTA globe placement (2026-07-31f) ===
+   Deletes the white spotlight behind the "Businesses we work for" heading and
+   replaces it with subtle dark/amber ambience; moves the closing globe farther
+   right + lower with a richer amber glow so it reads as a background object. == */
+
+/* Businesses heading: no white halo — dark ambience + a whisper of warm gold. */
+.show3d__head::before {
+  background:
+    radial-gradient(58% 58% at 50% 50%, rgba(20,18,14,0.55) 0%, rgba(20,18,14,0.28) 45%, transparent 72%),
+    radial-gradient(50% 60% at 50% 42%, rgba(226,160,70,0.07), transparent 70%) !important;
+}
+
+/* Closing globe: farther right, a touch lower, richer amber glow, subtler. */
+.closing .globe-canvas--home {
+  left: 72%;
+  top: 66%;
+  transform: translate(-50%, -50%);
+  width: min(500px, 68vw);
+  filter: drop-shadow(0 0 70px rgba(226,150,60,0.28)) drop-shadow(0 0 26px rgba(226,150,60,0.20));
+}
+@media (max-width: 640px) {
+  .closing .globe-canvas--home { left: 60%; top: 64%; width: 96vw; }
+}

@@ -274,6 +274,13 @@
         try { if (Math.abs(video.currentTime - start) > 0.05) video.currentTime = start; } catch (e) {}
       };
 
+      // Play ~25% slower for a more premium, cinematic feel (no quality loss —
+      // the source frames are untouched, they just display longer).
+      var slowRate = function () { try { video.playbackRate = 0.75; } catch (e) {} };
+      slowRate();
+      video.addEventListener('loadedmetadata', slowRate, { once: true });
+      video.addEventListener('loadeddata', slowRate, { once: true });
+
       var play = function () {
         var p = video.play();
         if (p && p.catch) p.catch(function () { video.muted = true; video.play().catch(function () {}); });
