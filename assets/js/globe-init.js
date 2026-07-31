@@ -51,13 +51,13 @@
         height: width * 2,
         phi: 0,
         theta: 0.3,
-        dark: 0,
-        diffuse: 0.4,
+        dark: 1,
+        diffuse: 1.1,
         mapSamples: 16000,
-        mapBrightness: 1.2,
-        baseColor: [1, 1, 1],
-        markerColor: [192 / 255, 57 / 255, 43 / 255],   // Site Your Story accent
-        glowColor: [1, 1, 1],
+        mapBrightness: 3,
+        baseColor: [0.16, 0.15, 0.17],                  // dark charcoal sphere
+        markerColor: [232 / 255, 170 / 255, 84 / 255],  // warm amber markers
+        glowColor: [0.28, 0.20, 0.10],                  // soft warm halo (no white)
         markers: MARKERS,
         onRender: function (state) {
           if (pointer === null) phi += 0.005;

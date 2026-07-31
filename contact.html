@@ -21,7 +21,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@200;300;400;500;600&family=Instrument+Serif:ital@1&display=swap">
-<link rel="stylesheet" href="assets/css/main.css?v=20260731a">
+<link rel="stylesheet" href="assets/css/main.css?v=20260731b">
 
 <script type="application/ld+json">
 {
@@ -258,7 +258,7 @@
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.20/dist/lenis.min.js" defer></script>
-<script src="assets/js/main.js?v=20260731a" defer></script>
+<script src="assets/js/main.js?v=20260731b" defer></script>
 
 <!-- Interactive globe (cobe, vendored locally). Ported from the React
      component: auto-spins, drag to rotate, brand-accent markers. Progressive
@@ -287,13 +287,13 @@
         height: width * 2,
         phi: 0,
         theta: 0.3,
-        dark: 0,
-        diffuse: 0.4,
+        dark: 1,
+        diffuse: 1.1,
         mapSamples: 16000,
-        mapBrightness: 1.2,
-        baseColor: [1, 1, 1],
-        markerColor: [192 / 255, 57 / 255, 43 / 255],   // Site Your Story accent
-        glowColor: [1, 1, 1],
+        mapBrightness: 3,
+        baseColor: [0.16, 0.15, 0.17],                  // dark charcoal sphere
+        markerColor: [232 / 255, 170 / 255, 84 / 255],  // warm amber markers
+        glowColor: [0.28, 0.20, 0.10],                  // soft warm halo (no white)
         markers: [
           { location: [14.5995, 120.9842], size: 0.03 },
           { location: [19.076, 72.8777],   size: 0.10 },
