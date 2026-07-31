@@ -1239,7 +1239,13 @@
     var track = $('.show3d__track', sec);
     var cards = $$('.card3d', sec);
     var dotsWrap = $('.show3d__dots', sec);
-    if (!scroll || !track || !cards.length || reduced) return;
+    // On phones the scroll-driven coverflow needs a 300vh pin to advance, which
+    // reads as a huge empty scroll gap before Services. Below 640px we hand the
+    // section to CSS instead: a static, swipeable horizontal row (see the mobile
+    // rules in section 51), so it takes only its own height and flows straight
+    // into the next section.
+    var smallScreen = window.matchMedia('(max-width: 640px)').matches;
+    if (!scroll || !track || !cards.length || reduced || smallScreen) return;
 
     var N = cards.length;
     var anglePer = 360 / N;

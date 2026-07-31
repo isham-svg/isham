@@ -4223,3 +4223,65 @@ html { overflow-x: hidden; }
 
 /* --- 50.5 Closing without the globe: keep the copy centred on the floor --- */
 .closing__inner { text-align: center; }
+
+/* 51. MOBILE COMPOSITION PASS — art-directed hero + gap fix (2026-07-31k) =====
+   Two mobile-only rebuilds: (a) the hero shows the WHOLE cinematic frame on a
+   phone instead of a portrait crop, and (b) the Businesses coverflow becomes a
+   swipeable row so the 300vh scroll-pin no longer leaves a huge empty gap
+   before Services. Desktop/laptop/tablet are untouched. ==================== */
+
+/* --- 51.1 Hero: full composition on phones (contain, not crop) ------------ */
+/* 16:9 footage can't show the whole laptop + figures + panels + floor under
+   object-fit:cover in portrait — it fills and crops. On phones we fit the entire
+   frame (contain) high in the view; the letterbox is the same #060608 as the
+   floor world, so it reads as one environment, and the headline/buttons sit in
+   the safe area below with no overlap. */
+@media (max-width: 640px) {
+  .landing { background: #060608; }
+  .landing__media::after { display: none; }               /* no bottom crop-fade in contain mode */
+  .landing__video {
+    object-fit: contain !important;
+    object-position: 50% 26% !important;
+    transform: none !important;
+  }
+  .landing__inner { justify-content: flex-end; padding-bottom: calc(2.25rem + env(safe-area-inset-bottom, 0px)); }
+  .landing__actions { width: 100%; }
+  .landing__actions .btn { width: 100%; justify-content: center; }
+}
+@media (max-width: 400px) {
+  .landing__video { object-position: 50% 24% !important; }
+}
+/* Landscape phones: the frame is close to 16:9, so full-bleed cover is right. */
+@media (max-height: 520px) and (orientation: landscape) {
+  .landing__video { object-fit: cover !important; object-position: 50% 50% !important; transform: none !important; }
+  .landing__media::after { display: block; }
+}
+
+/* --- 51.2 Businesses: swipeable row on phones (kills the empty-scroll gap) - */
+@media (max-width: 640px) {
+  .show3d__scroll { height: auto !important; }
+  .show3d__sticky { position: static !important; height: auto !important; padding-block: 1rem 2rem !important; display: block !important; }
+  .show3d__head { position: relative !important; z-index: 6; padding-bottom: 2.25rem !important; }
+  .show3d__stage { margin-top: 1.25rem; }
+  .show3d__stage {
+    perspective: none !important; height: auto !important;
+    overflow-x: auto; overflow-y: hidden;
+    scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .show3d__stage::-webkit-scrollbar { display: none; }
+  .show3d__track {
+    transform: none !important; width: auto !important; height: auto !important;
+    display: flex; gap: 1rem; padding: 0.5rem var(--gutter) 1rem;
+  }
+  .card3d {
+    position: static !important; transform: none !important; opacity: 1 !important;
+    margin: 0 !important; flex: 0 0 auto;
+    width: 74vw; max-width: 300px; height: 60vh; max-height: 430px;
+    scroll-snap-align: center; z-index: auto !important; pointer-events: auto !important;
+  }
+  /* every card fully legible in the row (no coverflow dimming) */
+  .card3d__media img { filter: none !important; transform: none !important; }
+  .card3d__meta { opacity: 1 !important; transform: none !important; }
+  .show3d__dots, .show3d__hint { display: none !important; }
+}
