@@ -4043,15 +4043,15 @@ html, body, .film { background: #050506; }
   .closing .globe-canvas--home { left: 60%; top: 64%; width: 96vw; }
 }
 
-/* 48. GLOBAL BACKGROUND = the real floor image (2026-07-31g) ================
-   Uses public/images/floor-bg.png as the fixed, cover, centered global
+/* 48. GLOBAL BACKGROUND = the real floor image (2026-07-31h) ================
+   Uses assets/img/floor-bg.png as the fixed, cover, centered global
    background across the whole site, retiring the CSS-grid recreation. Kept full
    quality (no blur, no recolour); only a soft top/bottom vignette for copy
    contrast. .film__bg is position:fixed, so it stays put while content scrolls
    — one continuous environment through every section. ====================== */
 html, body, .film { background: #060608; }
 .film__bg {
-  background: #060608 url('/public/images/floor-bg.png') center center / cover no-repeat !important;
+  background: #060608 url('/assets/img/floor-bg.png') center center / cover no-repeat !important;
   opacity: 1 !important;
 }
 .film__bg::before { display: none !important; }          /* drop the CSS grid */
