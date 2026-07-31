@@ -250,7 +250,12 @@
     var video = $('.landing__video', landing);
     var media = $('.landing__media', landing);
 
-    if (video) {
+    // Scroll-scrubbed hero: playback is driven by scroll position (initHeroScrub),
+    // never autoplayed. Skip the autoplay/loop wiring for it, but keep the
+    // subtle drift + mouse parallax below.
+    var scrub = !!(video && video.hasAttribute('data-scrub'));
+
+    if (video && !scrub) {
       /*
         WATERMARK REMOVAL.
 
@@ -1618,6 +1623,67 @@
     });
   }
 
+  /* 11o. Hero scroll-scrub — the video timeline is driven by scroll ----------- */
+  /*
+     The hero clip does not autoplay. Its first frame shows at rest; scrolling
+     down advances currentTime, scrolling up reverses it — the scroll position
+     maps linearly to the video timeline. A seek "pump" keeps at most ONE seek
+     outstanding (issuing a new one only after `seeked`), which self-throttles to
+     whatever the decoder can deliver and keeps the scrub smooth rather than
+     queuing seeks faster than they retire. Reduced motion / no-ST just plays it.
+  */
+  function initHeroScrub() {
+    var landing = $('.landing');
+    if (!landing) return;
+    var video = $('.landing__video', landing);
+    if (!video || !video.hasAttribute('data-scrub')) return;
+
+    video.pause();
+    try { video.removeAttribute('autoplay'); } catch (e) {}
+
+    // Reduced motion / no ScrollTrigger: hold the first frame (a clean poster).
+    if (reduced || !hasST) {
+      var hold = function () { try { video.currentTime = 0.001; } catch (e) {} };
+      if (video.readyState >= 1) hold(); else video.addEventListener('loadedmetadata', hold, { once: true });
+      return;
+    }
+
+    var dur = 0, target = 0, last = -1, seeking = false;
+    var setDur = function () { dur = video.duration || 0; };
+    if (video.readyState >= 1) setDur();
+    video.addEventListener('loadedmetadata', function () { setDur(); try { video.currentTime = 0.001; } catch (e) {} }, { once: true });
+    try { video.load(); } catch (e) {}
+
+    function pump() {
+      if (seeking || !dur) return;
+      // Clamp a hair inside the ends so the decoder always has a frame to show.
+      var t = Math.max(0.001, Math.min(dur - 0.05, target));
+      if (Math.abs(t - last) < 0.015) return;
+      seeking = true;
+      var onSeeked = function () {
+        video.removeEventListener('seeked', onSeeked);
+        last = video.currentTime;
+        seeking = false;
+        pump();                       // chase the latest target
+      };
+      video.addEventListener('seeked', onSeeked);
+      try { video.currentTime = t; } catch (e) { seeking = false; }
+    }
+
+    // Map the hero's own scroll span (its one viewport) to the whole clip.
+    gsap.to({}, {
+      ease: 'none',
+      scrollTrigger: {
+        trigger: landing, start: 'top top', end: 'bottom top', scrub: 0.6,
+        onUpdate: function (self) {
+          if (!dur) setDur();
+          target = self.progress * (dur || 0);
+          pump();
+        }
+      }
+    });
+  }
+
   /* 16. Boot ------------------------------------------------------------------ */
 
   function initYear() {
@@ -1674,6 +1740,7 @@
     safe('marquee',         initMarquee);
     safe('type',            initType);
     safe('landing',         initLanding);
+    safe('heroScrub',       initHeroScrub);
     safe('film',            initFilm);
     // Must follow initFilm (which configures the clip) and initLanding.
     safe('mobileVideo',     initMobileVideoOrchestration);
