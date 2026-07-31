@@ -4164,3 +4164,62 @@ html, body, .film { background: #060608; }
   box-shadow: inset 0 1px 0 rgba(255,255,255,0.10) !important;
   animation: none !important;
 }
+
+/* 50. FINAL LAUNCH PASS — footer, responsive hero, mobile safety (2026-07-31j)
+   Closes the last launch blockers: the footer went WHITE on touch devices
+   (a !important rule), the CTA globe is retired for good, the hero is now
+   art-directed per breakpoint, and mobile is hardened against overflow and the
+   sticky CTA covering content. One dark cinematic world, every screen. ======= */
+
+/* --- 50.1 Footer: same dark world on EVERY device ------------------------- */
+/* Overrides the earlier `.footer{background:rgba(255,255,255,0.9)!important}`
+   that only fired on (hover:none)/(pointer:coarse) — i.e. phones & tablets. */
+.footer {
+  background: rgba(8, 9, 12, 0.72) !important;
+  color: #ffffff !important;
+  border-top: 1px solid var(--line-soft) !important;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+@media (hover: none), (pointer: coarse) {
+  .footer { background: rgba(8, 9, 12, 0.72) !important; }
+}
+.footer__brand span { color: var(--accent-lift) !important; }
+.footer__list a, .footer__bar a { color: rgba(255,255,255,0.66) !important; }
+.footer__list a:hover, .footer__bar a:hover { color: #ffffff !important; }
+.footer__head { color: rgba(255,255,255,0.52) !important; }
+.footer__blurb { color: rgba(255,255,255,0.62) !important; }
+
+/* --- 50.2 CTA globe: retired for good (no glowing object in the scene) ---- */
+.closing .globe-canvas--home, .closing [data-globe] { display: none !important; }
+
+/* --- 50.3 Hero: art-directed composition per breakpoint ------------------- */
+/* 16:9 footage in every viewport — object-position keeps the laptop, the tiny
+   figures and the floor framed instead of letting a portrait crop swallow them.
+   On phones the drift/over-scale is dropped so more of the frame stays visible. */
+.landing__video { object-fit: cover; object-position: 50% 50%; }
+@media (max-width: 1200px) { .landing__video { object-position: 50% 48%; } }
+@media (max-width: 900px)  { .landing__video { object-position: 50% 46%; } }   /* tablet */
+@media (max-width: 640px)  {                                                    /* large mobile portrait */
+  .landing__video { object-position: 50% 42%; transform: none; }
+}
+@media (max-width: 400px)  { .landing__video { object-position: 50% 40%; } }    /* small mobile */
+@media (max-height: 520px) and (orientation: landscape) {                       /* mobile landscape */
+  .landing__video { object-position: 50% 50%; transform: none; }
+}
+
+/* --- 50.4 Mobile safety: no h-scroll, sticky CTA never covers content ----- */
+html { overflow-x: hidden; }
+.botnav {
+  bottom: calc(1.5rem + env(safe-area-inset-bottom, 0px)) !important;
+  max-width: calc(100vw - 2rem);
+}
+@media (max-width: 640px) {
+  .botnav { bottom: calc(1rem + env(safe-area-inset-bottom, 0px)) !important; }
+  /* leave room under the last content so the floating pill never sits on top of
+     the footer legal line */
+  .footer__bar { padding-bottom: 4.5rem; }
+}
+
+/* --- 50.5 Closing without the globe: keep the copy centred on the floor --- */
+.closing__inner { text-align: center; }
