@@ -4200,10 +4200,9 @@ html, body, .film { background: #060608; }
 .landing__video { object-fit: cover; object-position: 50% 50%; }
 @media (max-width: 1200px) { .landing__video { object-position: 50% 48%; } }
 @media (max-width: 900px)  { .landing__video { object-position: 50% 46%; } }   /* tablet */
-@media (max-width: 640px)  {                                                    /* large mobile portrait */
-  .landing__video { object-position: 50% 42%; transform: none; }
+@media (max-width: 640px)  {                                                    /* mobile: full-bleed cover, centred */
+  .landing__video { object-position: 50% 50%; transform: none; }
 }
-@media (max-width: 400px)  { .landing__video { object-position: 50% 40%; } }    /* small mobile */
 @media (max-height: 520px) and (orientation: landscape) {                       /* mobile landscape */
   .landing__video { object-position: 50% 50%; transform: none; }
 }
@@ -4230,32 +4229,12 @@ html { overflow-x: hidden; }
    swipeable row so the 300vh scroll-pin no longer leaves a huge empty gap
    before Services. Desktop/laptop/tablet are untouched. ==================== */
 
-/* --- 51.1 Hero: full composition on phones (contain, not crop) ------------ */
-/* 16:9 footage can't show the whole laptop + figures + panels + floor under
-   object-fit:cover in portrait — it fills and crops. On phones we fit the entire
-   frame (contain) high in the view; the letterbox is the same #060608 as the
-   floor world, so it reads as one environment, and the headline/buttons sit in
-   the safe area below with no overlap. */
-@media (max-width: 640px) {
-  .landing { background: #060608; }
-  .landing__media::after { display: none; }               /* no bottom crop-fade in contain mode */
-  .landing__video {
-    object-fit: contain !important;
-    object-position: 50% 26% !important;
-    transform: none !important;
-  }
-  .landing__inner { justify-content: flex-end; padding-bottom: calc(2.25rem + env(safe-area-inset-bottom, 0px)); }
-  .landing__actions { width: 100%; }
-  .landing__actions .btn { width: 100%; justify-content: center; }
-}
-@media (max-width: 400px) {
-  .landing__video { object-position: 50% 24% !important; }
-}
-/* Landscape phones: the frame is close to 16:9, so full-bleed cover is right. */
-@media (max-height: 520px) and (orientation: landscape) {
-  .landing__video { object-fit: cover !important; object-position: 50% 50% !important; transform: none !important; }
-  .landing__media::after { display: block; }
-}
+/* --- 51.1 Hero: REVERTED (2026-07-31m) -----------------------------------
+   The earlier object-fit:contain "mobile composition" was a mistake — it shrank
+   the video to the top and pushed copy down, leaving a black empty band and
+   extra scroll. The hero is restored to its original full-bleed object-fit:cover
+   look (see the base .landing__video rule and 50.3); no mobile hero overrides
+   here. The genuine excess-scroll fixes live in 51.2 (Businesses row) + 52. --- */
 
 /* --- 51.2 Businesses: swipeable row on phones (kills the empty-scroll gap) - */
 @media (max-width: 640px) {
