@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /404.html
 
-Sitemap: https://siteyourstory.com/sitemap.xml
+Sitemap: https://www.sitech-corp.com/sitemap.xml
