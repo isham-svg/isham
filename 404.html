@@ -3,95 +3,54 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
-<title>Page not found — Site Your Story</title>
-<meta name="description" content="That page isn't here. Let's get you back to something useful.">
+<title>Page not found — SiTech</title>
 <meta name="robots" content="noindex">
-<meta name="theme-color" content="#0a0b0e">
-
-<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
-<link rel="preconnect" href="https://fonts.googleapis.com">
+<meta name="theme-color" content="#0C2432">
+<link rel="icon" href="assets/img/sitech/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://api.fontshare.com" crossorigin>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@200;300;400;500;600&family=Instrument+Serif:ital@1&display=swap">
-<link rel="stylesheet" href="assets/css/main.css?v=20260731m">
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="assets/css/sitech.css?v=2">
+<script>document.documentElement.className=document.documentElement.className.replace('no-js','js');</script>
 </head>
-
 <body>
-<a class="skip-link" href="#main">Skip to content</a>
-<div class="curtain" aria-hidden="true"></div>
-
 <svg style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true" focusable="false">
-  <symbol id="i-arrow-r" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8h12M9 3l5 5-5 5"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 8h11M9 4l4 4-4 4"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5c0 8 7 15 15 15l2.2-3.3-4.4-2-2 1.6a13 13 0 0 1-5.7-5.7l1.6-2-2-4.4L5 3C4.4 3.4 4 4.1 4 5z"/></symbol>
 </svg>
 
-<header class="nav">
+<header class="nav is-stuck" id="nav">
+  <div class="nav__bar" aria-hidden="true" style="opacity:1"></div>
   <div class="nav__inner">
-    <a class="brand" href="index.html" aria-label="Site Your Story, home">Site Your Story<span>.</span></a>
-    <nav class="nav__links" aria-label="Primary">
-      <a class="nav__link" href="services.html">Services</a>
-      <a class="nav__link" href="about.html">About</a>
-      <a class="nav__link" href="process.html">Process</a>
-    </nav>
-    <button class="burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="menu"><span></span><span></span></button>
+    <a class="nav__brand" href="index.html" aria-label="SiTech — Silicone Technology Corporation, home"><img src="assets/img/sitech/logo.png" alt="SiTech — Silicone Technology Corporation" width="120" height="34"></a>
+    <div class="nav__right">
+      <a class="nav__phone" href="tel:+17578878488"><svg><use href="#i-phone"/></svg>757-887-8488</a>
+      <a class="btn btn--primary btn--sm" href="contact.html"><span>Request a Quote</span><svg><use href="#i-arrow"/></svg></a>
+    </div>
   </div>
 </header>
 
-<div class="menu" id="menu" aria-hidden="true">
-  <nav aria-label="Mobile">
-    <ul class="menu__list">
-      <li><a href="services.html">Services</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="process.html">Process</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
-  </nav>
-  <div class="menu__foot">
-    <a href="mailto:clients@siteyourstory.com">clients@siteyourstory.com</a>
-    <span>&copy; <span data-year>2026</span> Site Your Story</span>
-  </div>
-</div>
-
 <main id="main">
-
-  <!-- Everything on this page plays over bg-sys.mp4: fixed to the viewport,
-       never autoplaying, its timeline scrubbed by scroll position. -->
-  <div class="film">
-    <div class="film__bg" aria-hidden="true">
-    </div>
-    <div class="film__grade" aria-hidden="true"></div>
-    <div class="film__stage">
-  <section class="notfound">
-    <p class="eyebrow eyebrow--plain" style="justify-content:center">Error 404</p>
-    <h1 class="notfound__code">404</h1>
-    <p class="h3">This page went <em class="serif">missing</em>.</p>
-    <p class="lead" style="margin-inline:auto">
-      The link is broken or the page has moved. Nothing you did wrong.
-    </p>
-    <div class="notfound__links">
-      <a class="btn btn--lg" href="index.html">Back to home<svg class="btn__arrow" aria-hidden="true"><use href="#i-arrow-r"/></svg></a>
-      <a class="btn btn--lg btn--ghost" href="contact.html">Tell us your story</a>
+  <section class="nf blueprint blueprint--fine">
+    <div class="shell" style="position:relative">
+      <p class="eyebrow eyebrow--plain" style="justify-content:center">Error 404</p>
+      <p class="nf__code">404</p>
+      <h1 class="h2" style="margin-top:.4rem">This page slipped out of the mold.</h1>
+      <p class="lead" style="max-width:46ch;margin:1rem auto 0">The page you&rsquo;re looking for doesn&rsquo;t exist or has moved. Let&rsquo;s get you back on track.</p>
+      <div class="btnrow" style="justify-content:center;margin-top:2rem">
+        <a class="btn btn--primary btn--lg" href="index.html"><span>Back to home</span><svg><use href="#i-arrow"/></svg></a>
+        <a class="btn btn--ghost btn--lg" href="capabilities.html"><span>View capabilities</span></a>
+      </div>
     </div>
   </section>
-    </div>
-  </div>
 </main>
 
 <footer class="footer">
   <div class="shell">
-    <div class="footer__bar" style="border-top:0;padding-top:0">
-      <span>&copy; <span data-year>2026</span> Site Your Story</span>
-      <nav class="footer__legal" aria-label="Legal">
-        <a href="privacy.html">Privacy Policy</a>
-        <a href="terms.html">Terms &amp; Conditions</a>
-      </nav>
-    </div>
+    <div class="footer__bar" style="margin-top:0;border-top:0"><span>&copy; <span data-year>2026</span> Silicone Technology Corporation · Newport News, VA</span><nav class="footer__legal" aria-label="Legal"><a href="tel:+17578878488">757-887-8488</a><a href="mailto:sales@sitech-corp.com">sales@sitech-corp.com</a></nav></div>
   </div>
 </footer>
-
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js" defer></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js" defer></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js" defer></script>
-<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.20/dist/lenis.min.js" defer></script>
-<script src="assets/js/main.js?v=20260731m" defer></script>
+<script src="assets/js/sitech.js?v=2" defer></script>
 </body>
 </html>
