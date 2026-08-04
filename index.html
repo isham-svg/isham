@@ -27,7 +27,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap">
-<link rel="stylesheet" href="assets/css/sitech.css?v=3">
+<link rel="stylesheet" href="assets/css/sitech.css?v=4">
 
 <script>
 document.documentElement.className=document.documentElement.className.replace('no-js','js');
@@ -133,7 +133,7 @@ window.addEventListener('load',function(){setTimeout(function(){var i=document.g
 </div>
 
 <!-- ===================== NAV ===================== -->
-<header class="nav" id="nav">
+<header class="nav over-hero" id="nav">
   <div class="nav__bar" aria-hidden="true"></div>
   <div class="nav__inner">
     <a class="nav__brand" href="index.html" aria-label="SiTech — Silicone Technology Corporation, home">
@@ -177,10 +177,14 @@ window.addEventListener('load',function(){setTimeout(function(){var i=document.g
 
 <main id="main">
 
-  <!-- ===================== 02 · HERO ===================== -->
-  <section class="hero">
-    <div class="hero__bg" aria-hidden="true"></div>
-    <div class="hero__grid" aria-hidden="true"></div>
+  <!-- ===================== 02 · HERO (full-bleed cinematic video) ===================== -->
+  <section class="hero hero--video">
+    <div class="hero__media" aria-hidden="true" data-hero-video="412715504">
+      <img class="hero__poster" src="assets/img/sitech/floor-412715504.jpg" alt="" width="1280" height="720">
+      <div class="hero__video"></div>
+    </div>
+    <div class="hero__scrim" aria-hidden="true"></div>
+    <div class="hero__gridlines" aria-hidden="true"></div>
     <div class="shell">
       <div class="hero__inner">
         <div class="hero__copy">
@@ -191,8 +195,8 @@ window.addEventListener('load',function(){setTimeout(function(){var i=document.g
             Liquid Injection Molding — using Dow and Momentive silicones, backed by over 75 years of
             keypad design and molding expertise, from our facility in Newport News, Virginia.
           </p>
-          <div class="hero__actions btnrow" data-reveal data-delay="180">
-            <a class="btn btn--primary btn--lg" href="#contact"><span>Request a Quote</span><svg><use href="#i-arrow"/></svg></a>
+          <div class="hero__actions btnrow" data-reveal-stagger data-reveal>
+            <a class="btn btn--primary btn--lg" href="contact.html"><span>Request a Quote</span><svg><use href="#i-arrow"/></svg></a>
             <a class="btn btn--ghost btn--lg" href="tel:+17578878488"><span>Talk to an Engineer</span></a>
             <a class="btn btn--light btn--lg" href="#capabilities"><span>Explore Capabilities</span></a>
           </div>
@@ -203,22 +207,9 @@ window.addEventListener('load',function(){setTimeout(function(){var i=document.g
             <div><div class="hmeta__fig tabular">1&nbsp;&Delta;E</div><div class="hmeta__label">Color match</div></div>
           </div>
         </div>
-
-        <div class="hero__visual" data-reveal data-delay="160">
-          <div class="hero__panel" data-tilt data-hero-video="412715504">
-            <img class="hero__poster" src="assets/img/sitech/floor-412715504.jpg" alt="Liquid silicone injection molding on the SiTech manufacturing floor in Newport News, Virginia" width="1280" height="720">
-            <div class="hero__video" aria-hidden="true"></div>
-            <div class="hero__panel-grid" aria-hidden="true"></div>
-            <div class="hero__scrim" aria-hidden="true"></div>
-            <span class="hero__annot hero__annot--a">Liquid injection molding</span>
-            <span class="hero__annot hero__annot--b">Newport News, VA</span>
-            <span class="hero__annot hero__annot--c">ISO 9001:2015</span>
-            <div class="hero__badge"><b></b> On the floor</div>
-          </div>
-        </div>
       </div>
-      <div class="hero__scroll" aria-hidden="true"><i></i><span>Scroll to explore</span></div>
     </div>
+    <div class="hero__scroll" aria-hidden="true"><i></i><span>Scroll to explore</span></div>
   </section>
 
   <!-- ===================== 03 · TRUST BAR ===================== -->
@@ -301,37 +292,62 @@ window.addEventListener('load',function(){setTimeout(function(){var i=document.g
         <h2 class="h2" data-reveal data-delay="60">Built for mission-critical applications.</h2>
         <p class="lead" data-reveal data-delay="120">From the flight deck to the operating room, our silicone components perform where reliability is non-negotiable.</p>
       </div>
-      <div class="ind" data-reveal-stagger>
-        <article class="ind__card ind__card--tall" style="--img:url('assets/img/sitech/floor-412715504.jpg')">
-          <span class="ind__num">01 / 05</span>
-          <h3 class="ind__name">Defense &amp; Aerospace</h3>
-          <p class="ind__desc">ITAR-registered manufacturing of avionics, control-panel and communication-device components for mission-critical, vibration- and shock-resistant applications.</p>
-          <div class="ind__apps"><span class="ind__app">Avionics</span><span class="ind__app">Control panels</span><span class="ind__app">Military keypads &amp; seals</span></div>
-        </article>
-        <article class="ind__card ind__card--wide">
-          <span class="ind__ico" aria-hidden="true"><svg><use href="#i-cross"/></svg></span>
-          <span class="ind__num">02 / 05</span>
-          <h3 class="ind__name">Medical</h3>
-          <p class="ind__desc">Biocompatible, sterilizable silicone for defibrillators, patient monitors, diagnostic equipment and infusion pumps — with backlighting, custom seals and PSA installation.</p>
-        </article>
-        <article class="ind__card">
-          <span class="ind__ico" aria-hidden="true"><svg><use href="#i-gear"/></svg></span>
-          <span class="ind__num">03 / 05</span>
-          <h3 class="ind__name">Industrial</h3>
-          <p class="ind__desc">Rugged keypads, seals and gaskets for heavy machinery, automation systems and instrumentation.</p>
-        </article>
-        <article class="ind__card">
-          <span class="ind__ico" aria-hidden="true"><svg><use href="#i-plane"/></svg></span>
-          <span class="ind__num">04 / 05</span>
-          <h3 class="ind__name">Aviation</h3>
-          <p class="ind__desc">Precision, durable silicone components engineered for the demands of aviation environments.</p>
-        </article>
-        <article class="ind__card">
-          <span class="ind__ico" aria-hidden="true"><svg><use href="#i-anchor"/></svg></span>
-          <span class="ind__num">05 / 05</span>
-          <h3 class="ind__name">Marine</h3>
-          <p class="ind__desc">Sealed, corrosion- and moisture-resistant components for harsh marine conditions.</p>
-        </article>
+      <div class="indgrid" data-reveal-stagger>
+        <a class="indcard" href="industries.html" style="--img:url('assets/img/sitech/industries/defense.jpg')">
+          <span class="indcard__img" aria-hidden="true"></span>
+          <span class="indcard__scrim" aria-hidden="true"></span>
+          <span class="indcard__blue" aria-hidden="true"></span>
+          <span class="indcard__body">
+            <span class="indcard__eyebrow">01 — Defense &amp; Aerospace</span>
+            <h3 class="indcard__name">Defense &amp; Aerospace</h3>
+            <span class="indcard__desc">Engineered silicone components trusted in mission-critical defense and aerospace applications — ITAR registered, vibration- and shock-resistant.</span>
+            <span class="indcard__cta">Explore <svg><use href="#i-arrow"/></svg></span>
+          </span>
+        </a>
+        <a class="indcard" href="industries.html" style="--img:url('assets/img/sitech/industries/medical.jpg')">
+          <span class="indcard__img" aria-hidden="true"></span>
+          <span class="indcard__scrim" aria-hidden="true"></span>
+          <span class="indcard__blue" aria-hidden="true"></span>
+          <span class="indcard__body">
+            <span class="indcard__eyebrow">02 — Medical</span>
+            <h3 class="indcard__name">Medical</h3>
+            <span class="indcard__desc">High-purity, biocompatible silicone components engineered for life-critical medical applications — sterilizable, with backlighting and custom seals.</span>
+            <span class="indcard__cta">Explore <svg><use href="#i-arrow"/></svg></span>
+          </span>
+        </a>
+        <a class="indcard indcard--sm" href="industries.html" style="--img:url('assets/img/sitech/industries/industrial.jpg')">
+          <span class="indcard__img" aria-hidden="true"></span>
+          <span class="indcard__scrim" aria-hidden="true"></span>
+          <span class="indcard__blue" aria-hidden="true"></span>
+          <span class="indcard__body">
+            <span class="indcard__eyebrow">03 — Industrial</span>
+            <h3 class="indcard__name">Industrial</h3>
+            <span class="indcard__desc">High-performance silicone for equipment, machinery and systems that demand reliability every day.</span>
+            <span class="indcard__cta">Explore <svg><use href="#i-arrow"/></svg></span>
+          </span>
+        </a>
+        <a class="indcard indcard--sm" href="industries.html" style="--img:url('assets/img/sitech/industries/marine.jpg')">
+          <span class="indcard__img" aria-hidden="true"></span>
+          <span class="indcard__scrim" aria-hidden="true"></span>
+          <span class="indcard__blue" aria-hidden="true"></span>
+          <span class="indcard__body">
+            <span class="indcard__eyebrow">04 — Marine</span>
+            <h3 class="indcard__name">Marine</h3>
+            <span class="indcard__desc">Durable, weather-resistant components built to perform in the harshest marine environments.</span>
+            <span class="indcard__cta">Explore <svg><use href="#i-arrow"/></svg></span>
+          </span>
+        </a>
+        <a class="indcard indcard--sm" href="industries.html" style="--img:url('assets/img/sitech/industries/aviation.jpg')">
+          <span class="indcard__img" aria-hidden="true"></span>
+          <span class="indcard__scrim" aria-hidden="true"></span>
+          <span class="indcard__blue" aria-hidden="true"></span>
+          <span class="indcard__body">
+            <span class="indcard__eyebrow">05 — Aviation</span>
+            <h3 class="indcard__name">Aviation</h3>
+            <span class="indcard__desc">High-performance silicone components engineered for the most demanding aerospace and aviation applications.</span>
+            <span class="indcard__cta">Explore <svg><use href="#i-arrow"/></svg></span>
+          </span>
+        </a>
       </div>
     </div>
   </section>
@@ -343,15 +359,20 @@ window.addEventListener('load',function(){setTimeout(function(){var i=document.g
         <p class="eyebrow" data-reveal>Products</p>
         <h2 class="h2" data-reveal data-delay="60">Custom silicone keypads &amp; components.</h2>
       </div>
-      <div class="prod__grid">
-        <div class="prod__showcase" data-reveal data-tilt>
-          <div class="prod__showcase-grid" aria-hidden="true"></div>
-          <span class="prod__tag">First-surface silicone keypad · LIM</span>
-          <img src="assets/img/sitech/keypad-topcon-full.png" alt="Black silicone rubber keypad with individually molded white keys, produced by SiTech" width="900" height="700">
-          <span class="hotspot" style="left:32%;top:34%" tabindex="0"><span class="hotspot__dot" aria-hidden="true"></span><span class="hotspot__label">First-surface molded keys</span></span>
-          <span class="hotspot" style="left:63%;top:50%" tabindex="0"><span class="hotspot__dot" aria-hidden="true"></span><span class="hotspot__label">Backlit light pipes</span></span>
-          <span class="hotspot" style="left:45%;top:73%" tabindex="0"><span class="hotspot__dot" aria-hidden="true"></span><span class="hotspot__label">Sealed one-piece body</span></span>
-        </div>
+      <!-- Large product showcase with engineering annotations + hotspots -->
+      <div class="prodhero" data-reveal>
+        <div class="prodhero__grid" aria-hidden="true"></div>
+        <span class="prodhero__tag">Backlit first-surface keypad · Liquid Injection Molded</span>
+        <img class="prodhero__img" src="assets/img/sitech/keypad-garmin-full.jpg" alt="High-resolution SiTech silicone keypad with backlit windows and individually molded keys" width="1780" height="420">
+        <span class="prodhero__annot" style="left:6%;top:22%">First-surface keys <span></span></span>
+        <span class="prodhero__annot" style="right:7%;top:30%"><span></span> Backlit light windows</span>
+        <span class="prodhero__annot" style="left:10%;bottom:20%">Light-blocking barriers <span></span></span>
+        <span class="hotspot" style="left:24%;top:46%" tabindex="0"><span class="hotspot__dot" aria-hidden="true"></span><span class="hotspot__label">Individually molded keys</span></span>
+        <span class="hotspot" style="left:58%;top:40%" tabindex="0"><span class="hotspot__dot" aria-hidden="true"></span><span class="hotspot__label">Clear/color windows &amp; lenses</span></span>
+        <span class="hotspot" style="left:82%;top:56%" tabindex="0"><span class="hotspot__dot" aria-hidden="true"></span><span class="hotspot__label">Sealed one-piece body</span></span>
+      </div>
+
+      <div class="prod__grid" style="margin-top:clamp(24px,3vw,44px)">
         <div data-reveal-stagger>
           <div class="prod__feature">
             <span class="prod__feature-ico" aria-hidden="true"><svg><use href="#i-layers"/></svg></span>
@@ -373,6 +394,29 @@ window.addEventListener('load',function(){setTimeout(function(){var i=document.g
             <span class="prod__feature-ico" aria-hidden="true"><svg><use href="#i-shield"/></svg></span>
             <div><h4>Chemical &amp; abrasion coatings</h4><p>Proprietary chemical barriers and abrasion-resistant coatings extend product life in demanding use.</p></div>
           </div>
+        </div>
+
+        <!-- Secondary showcase (macro product) -->
+        <div class="prod__showcase" data-reveal data-tilt style="align-self:stretch">
+          <div class="prod__showcase-grid" aria-hidden="true"></div>
+          <span class="prod__tag">Macro · molded silicone</span>
+          <img src="assets/img/sitech/keypad-topcon-full.png" alt="Macro view of a black SiTech silicone keypad with individually molded white keys" width="900" height="700">
+        </div>
+      </div>
+
+      <!-- Real process/product detail grid (original company photography) -->
+      <div class="prodmacro" data-reveal-stagger>
+        <div class="macrocard">
+          <div class="macrocard__img"><img src="assets/img/sitech/screening.png" alt="SiTech operator screen-printing silicone keypads by hand in Newport News, Virginia" loading="lazy"></div>
+          <div class="macrocard__cap"><p class="macrocard__k">Decorating</p><p class="macrocard__t">Screen printing</p><p class="macrocard__d">Proprietary silicone inks cross-link bonded to the keypad during curing.</p></div>
+        </div>
+        <div class="macrocard">
+          <div class="macrocard__img"><img src="assets/img/sitech/keypad-assembly.jpg" alt="A SiTech handheld device keypad being fitted during assembly" loading="lazy"></div>
+          <div class="macrocard__cap"><p class="macrocard__k">Assembly</p><p class="macrocard__t">Over-mold &amp; PSA</p><p class="macrocard__d">Finished assemblies and pressure-sensitive adhesive installation, in-house.</p></div>
+        </div>
+        <div class="macrocard">
+          <div class="macrocard__img"><img src="assets/img/sitech/floor-412715504.jpg" alt="Silicone liquid injection molding machine running on the SiTech factory floor" loading="lazy"></div>
+          <div class="macrocard__cap"><p class="macrocard__k">Molding</p><p class="macrocard__t">Liquid injection</p><p class="macrocard__d">Closed-loop LSR molding for precision, repeatability and clean parts.</p></div>
         </div>
       </div>
     </div>
@@ -703,6 +747,6 @@ window.addEventListener('load',function(){setTimeout(function(){var i=document.g
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.20/dist/lenis.min.js" defer></script>
-<script src="assets/js/sitech.js?v=3" defer></script>
+<script src="assets/js/sitech.js?v=4" defer></script>
 </body>
 </html>
