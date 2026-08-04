@@ -238,4 +238,79 @@
     }
     if (btn) btn.addEventListener("click", play);
   });
+
+  /* ---------- Scroll progress bar (auto-injected) ---------- */
+  (function () {
+    var bar = doc.createElement("div");
+    bar.className = "progress"; bar.setAttribute("aria-hidden", "true");
+    var fill = doc.createElement("span"); bar.appendChild(fill);
+    doc.body.appendChild(bar);
+    function upd() {
+      var h = doc.documentElement.scrollHeight - window.innerHeight;
+      var p = h > 0 ? (window.pageYOffset || doc.documentElement.scrollTop) / h : 0;
+      fill.style.transform = "scaleX(" + Math.min(1, Math.max(0, p)).toFixed(4) + ")";
+    }
+    window.addEventListener("scroll", upd, { passive: true });
+    window.addEventListener("resize", upd);
+    upd();
+  })();
+
+  /* ---------- Magnetic primary buttons ---------- */
+  if (!reduce && window.matchMedia("(pointer:fine)").matches) {
+    $$(".btn--primary, .btn--lg").forEach(function (btn) {
+      var raf = null;
+      btn.addEventListener("pointermove", function (e) {
+        var r = btn.getBoundingClientRect();
+        var mx = (e.clientX - r.left - r.width / 2) * 0.18;
+        var my = (e.clientY - r.top - r.height / 2) * 0.28;
+        if (raf) cancelAnimationFrame(raf);
+        raf = requestAnimationFrame(function () { btn.style.transform = "translate(" + mx.toFixed(1) + "px," + (my - 2).toFixed(1) + "px)"; });
+      });
+      btn.addEventListener("pointerleave", function () { if (raf) cancelAnimationFrame(raf); btn.style.transform = ""; });
+    });
+  }
+
+  /* ---------- Hero manufacturing video (chromeless Vimeo background) ---------- */
+  (function () {
+    var panel = $("[data-hero-video]");
+    if (!panel || reduce) return;
+    var holder = $(".hero__video", panel);
+    if (!holder) return;
+    var id = panel.getAttribute("data-hero-video");
+    // Load only when the panel is near view and after first paint
+    function load() {
+      if (holder.dataset.loaded) return; holder.dataset.loaded = "1";
+      var f = doc.createElement("iframe");
+      f.src = "https://player.vimeo.com/video/" + id + "?background=1&autoplay=1&loop=1&muted=1&dnt=1";
+      f.allow = "autoplay; fullscreen; picture-in-picture";
+      f.setAttribute("tabindex", "-1");
+      f.title = "SiTech manufacturing";
+      f.addEventListener("load", function () { holder.classList.add("is-on"); });
+      holder.appendChild(f);
+    }
+    if ("requestIdleCallback" in window) requestIdleCallback(load, { timeout: 1500 });
+    else setTimeout(load, 900);
+  })();
+
+  /* ---------- Lightbox for gallery (auto-injected) ---------- */
+  (function () {
+    var imgs = $$(".gallery .gtile--img img");
+    if (!imgs.length) return;
+    var lb = doc.createElement("div");
+    lb.className = "lightbox"; lb.id = "lightbox"; lb.setAttribute("aria-hidden", "true");
+    lb.innerHTML = '<button class="lightbox__close" type="button" aria-label="Close">×</button><img alt="">';
+    doc.body.appendChild(lb);
+    var pic = $("img", lb), closeBtn = $(".lightbox__close", lb);
+    function open(src, alt) { pic.src = src; pic.alt = alt || ""; lb.classList.add("is-open"); doc.body.classList.add("is-locked"); lb.setAttribute("aria-hidden", "false"); }
+    function close() { lb.classList.remove("is-open"); doc.body.classList.remove("is-locked"); lb.setAttribute("aria-hidden", "true"); }
+    imgs.forEach(function (im) {
+      im.parentElement.setAttribute("role", "button");
+      im.parentElement.setAttribute("tabindex", "0");
+      im.parentElement.addEventListener("click", function () { open(im.currentSrc || im.src, im.alt); });
+      im.parentElement.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); open(im.currentSrc || im.src, im.alt); } });
+    });
+    closeBtn.addEventListener("click", close);
+    lb.addEventListener("click", function (e) { if (e.target === lb) close(); });
+    doc.addEventListener("keydown", function (e) { if (e.key === "Escape") close(); });
+  })();
 })();

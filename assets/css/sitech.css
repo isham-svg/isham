@@ -681,3 +681,44 @@ html.no-js .intro{display:none}
   .split--sticky .split__aside{position:static}
   .idet__media{min-height:220px}
 }
+
+/* =============================================================================
+   PREMIUM POLISH — scroll progress, hero video, hotspots, lightbox
+   ========================================================================== */
+/* Scroll progress */
+.progress{position:fixed;top:0;left:0;right:0;height:2px;z-index:70;pointer-events:none}
+.progress span{display:block;height:100%;width:100%;transform:scaleX(0);transform-origin:left;background:linear-gradient(90deg,var(--steel-600),var(--azure))}
+
+/* Hero manufacturing video panel */
+.hero__poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+.hero__video{position:absolute;inset:0;z-index:0;opacity:0;transition:opacity 1s var(--ease);overflow:hidden}
+.hero__video.is-on{opacity:1}
+.hero__video iframe{position:absolute;top:50%;left:50%;width:177.78vh;height:56.25vw;min-width:100%;min-height:100%;transform:translate(-50%,-50%);border:0;pointer-events:none}
+.hero__scrim{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(12,36,50,.12),rgba(12,36,50,.5))}
+.hero__panel .hero__panel-grid{z-index:1;opacity:.5}
+.hero__panel .hero__annot,.hero__panel .hero__badge{z-index:3}
+
+/* Product hotspots */
+.hotspot{position:absolute;z-index:4;width:18px;height:18px;transform:translate(-50%,-50%)}
+.hotspot__dot{position:absolute;inset:0;border-radius:50%;background:var(--azure);box-shadow:0 0 0 0 rgba(28,160,222,.5);animation:pulse 2.4s var(--ease) infinite}
+.hotspot__dot::after{content:"";position:absolute;inset:5px;background:#fff;border-radius:50%}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(28,160,222,.5)}70%{box-shadow:0 0 0 12px rgba(28,160,222,0)}100%{box-shadow:0 0 0 0 rgba(28,160,222,0)}}
+.hotspot__label{position:absolute;left:24px;top:50%;transform:translateY(-50%) translateX(-6px);white-space:nowrap;
+  background:rgba(12,36,50,.94);color:#fff;font-family:var(--font-mono);font-size:.64rem;letter-spacing:.05em;
+  padding:.42em .72em;border-radius:6px;opacity:0;pointer-events:none;transition:opacity .3s var(--ease),transform .3s var(--ease)}
+.hotspot:hover .hotspot__label,.hotspot:focus-within .hotspot__label{opacity:1;transform:translateY(-50%) translateX(0)}
+
+/* Lightbox */
+.lightbox{position:fixed;inset:0;z-index:120;background:rgba(12,36,50,.92);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+  display:grid;place-items:center;padding:6vw;opacity:0;visibility:hidden;transition:opacity .35s var(--ease),visibility .35s}
+.lightbox.is-open{opacity:1;visibility:visible}
+.lightbox img{max-width:100%;max-height:86vh;border-radius:12px;box-shadow:var(--shadow-lg);transform:scale(.95);transition:transform .4s var(--ease)}
+.lightbox.is-open img{transform:scale(1)}
+.lightbox__close{position:absolute;top:18px;right:22px;width:46px;height:46px;border-radius:50%;background:rgba(255,255,255,.14);color:#fff;font-size:1.5rem;line-height:1;display:grid;place-items:center;transition:background .25s}
+.lightbox__close:hover{background:rgba(255,255,255,.26)}
+.gallery .gtile--img{cursor:zoom-in}
+
+@media (prefers-reduced-motion:reduce){
+  .hotspot__dot{animation:none}
+  .hero__video{display:none}
+}

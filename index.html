@@ -27,7 +27,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap">
-<link rel="stylesheet" href="assets/css/sitech.css?v=2">
+<link rel="stylesheet" href="assets/css/sitech.css?v=3">
 
 <script>
 document.documentElement.className=document.documentElement.className.replace('no-js','js');
@@ -205,14 +205,15 @@ window.addEventListener('load',function(){setTimeout(function(){var i=document.g
         </div>
 
         <div class="hero__visual" data-reveal data-delay="160">
-          <div class="hero__panel" data-tilt>
+          <div class="hero__panel" data-tilt data-hero-video="412715504">
+            <img class="hero__poster" src="assets/img/sitech/floor-412715504.jpg" alt="Liquid silicone injection molding on the SiTech manufacturing floor in Newport News, Virginia" width="1280" height="720">
+            <div class="hero__video" aria-hidden="true"></div>
             <div class="hero__panel-grid" aria-hidden="true"></div>
-            <div class="hero__panel-glow" aria-hidden="true"></div>
-            <img class="hero__product" src="assets/img/sitech/keypad-topcon-full.png" alt="Custom molded first-surface silicone rubber keypad manufactured by SiTech" width="900" height="700" data-parallax="0.06">
-            <span class="hero__annot hero__annot--a">First-surface keys</span>
-            <span class="hero__annot hero__annot--b">Backlit light pipes</span>
-            <span class="hero__annot hero__annot--c">One-piece construction</span>
-            <div class="hero__badge"><b></b> Liquid Injection Molded</div>
+            <div class="hero__scrim" aria-hidden="true"></div>
+            <span class="hero__annot hero__annot--a">Liquid injection molding</span>
+            <span class="hero__annot hero__annot--b">Newport News, VA</span>
+            <span class="hero__annot hero__annot--c">ISO 9001:2015</span>
+            <div class="hero__badge"><b></b> On the floor</div>
           </div>
         </div>
       </div>
@@ -346,7 +347,10 @@ window.addEventListener('load',function(){setTimeout(function(){var i=document.g
         <div class="prod__showcase" data-reveal data-tilt>
           <div class="prod__showcase-grid" aria-hidden="true"></div>
           <span class="prod__tag">First-surface silicone keypad · LIM</span>
-          <img src="assets/img/sitech/keypad-topcon-full.png" alt="Black silicone rubber keypad with individually molded white keys, produced by SiTech" width="900" height="700" data-parallax="0.05">
+          <img src="assets/img/sitech/keypad-topcon-full.png" alt="Black silicone rubber keypad with individually molded white keys, produced by SiTech" width="900" height="700">
+          <span class="hotspot" style="left:32%;top:34%" tabindex="0"><span class="hotspot__dot" aria-hidden="true"></span><span class="hotspot__label">First-surface molded keys</span></span>
+          <span class="hotspot" style="left:63%;top:50%" tabindex="0"><span class="hotspot__dot" aria-hidden="true"></span><span class="hotspot__label">Backlit light pipes</span></span>
+          <span class="hotspot" style="left:45%;top:73%" tabindex="0"><span class="hotspot__dot" aria-hidden="true"></span><span class="hotspot__label">Sealed one-piece body</span></span>
         </div>
         <div data-reveal-stagger>
           <div class="prod__feature">
@@ -699,6 +703,6 @@ window.addEventListener('load',function(){setTimeout(function(){var i=document.g
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.20/dist/lenis.min.js" defer></script>
-<script src="assets/js/sitech.js?v=2" defer></script>
+<script src="assets/js/sitech.js?v=3" defer></script>
 </body>
 </html>
