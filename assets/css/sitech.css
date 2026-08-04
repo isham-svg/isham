@@ -812,6 +812,10 @@ h3,.h3{letter-spacing:-.022em}
   .hero--video .hero__scrim{background:linear-gradient(180deg,rgba(8,26,38,.55) 0%,rgba(8,26,38,.35) 30%,rgba(8,26,38,.5) 60%,rgba(8,26,38,.9) 100%)}
 }
 
+/* Two-column product feature list (secondary showcase removed to cut image repeats) */
+.prodfeatures{display:grid;grid-template-columns:1fr 1fr;column-gap:clamp(28px,4vw,60px)}
+@media (max-width:900px){.prodfeatures{grid-template-columns:1fr}}
+
 /* Premium detail refinements */
 .btn{border-radius:10px}
 .indcard,.gtile,.macrocard,.rescard,.certcard,.mediaframe,.prodhero,.prod__showcase{border-radius:16px}
