@@ -27,6 +27,7 @@
 
     root.classList.add("is-intro");
     var grid = $(".intro__grid", el),
+        glow = $(".intro__glow", el),
         lines = $$(".bp-line", el),
         nodes = $$(".bp-node", el),
         diamond = $(".bp-diamond", el),
@@ -38,6 +39,8 @@
     var E = "cubic-bezier(.22,.61,.36,1)";
     grid.animate([{ opacity: 0, transform: "scale(1.04)" }, { opacity: 1, transform: "scale(1)" }],
       { duration: 700, easing: E, fill: "forwards" });
+    if (glow) glow.animate([{ opacity: 0, transform: "scale(.55)" }, { opacity: 1, transform: "scale(1)" }],
+      { duration: 1100, delay: 700, easing: E, fill: "forwards" });
 
     lines.forEach(function (ln, i) {
       var len = 0; try { len = ln.getTotalLength(); } catch (e) { len = 120; }

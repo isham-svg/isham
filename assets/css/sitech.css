@@ -724,6 +724,87 @@ html.no-js .intro{display:none}
 }
 
 /* =============================================================================
+   FINAL POLISH — intro, typography, section rhythm, engineering detailing
+   ========================================================================== */
+
+/* ---- Intro refinement: soft glow + camera-in on exit ---- */
+.intro__glow{position:absolute;width:min(560px,82vw);aspect-ratio:1;border-radius:50%;
+  background:radial-gradient(circle,rgba(28,160,222,.20),transparent 62%);opacity:0;filter:blur(10px);pointer-events:none}
+.intro__svg{transition:transform .8s var(--ease)}
+.intro.is-done{opacity:0;visibility:hidden;transition:opacity .8s var(--ease),visibility .8s}
+.intro.is-done .intro__svg{transform:scale(1.22)}
+.intro.is-done .intro__grid{transform:scale(1.1)}
+.intro.is-done .intro__word{opacity:0}
+
+/* ---- Typography: editorial refinement ---- */
+.display,.hero__title{letter-spacing:-.035em}
+.h2{letter-spacing:-.03em;line-height:1.0}
+h3,.h3{letter-spacing:-.022em}
+.lead{line-height:1.58;letter-spacing:-.008em}
+.section__head{max-width:800px;margin-bottom:clamp(42px,5.5vw,72px)}
+.section__head .lead{margin-top:1.25rem}
+.eyebrow{gap:.85em}
+.eyebrow::before{width:32px}
+/* Optional coordinate/technical tag beside an eyebrow */
+.coordtag{font-family:var(--font-mono);font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-4)}
+.section--dark .coordtag{color:rgba(255,255,255,.4)}
+
+/* ---- Section rhythm: dark engineering sections ---- */
+.section--dark{background:var(--steel-900);color:rgba(255,255,255,.78);position:relative;overflow:hidden;border-block:1px solid rgba(255,255,255,.08)}
+.section--dark::before{content:"";position:absolute;inset:0;z-index:0;--grid:rgba(255,255,255,.045);
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:52px 52px;mask-image:radial-gradient(130% 120% at 80% 0%,#000 30%,transparent 78%)}
+.section--dark>.shell{position:relative;z-index:1}
+.section--dark .eyebrow{color:var(--azure)}
+.section--dark .eyebrow::before{background:var(--azure)}
+.section--dark h2,.section--dark .h2,.section--dark h3{color:#fff}
+.section--dark .lead{color:rgba(255,255,255,.7)}
+.section--dark .cap{background:rgba(255,255,255,.09);border-color:rgba(255,255,255,.1)}
+.section--dark .cap__cell{background:#0e2b3b;color:rgba(255,255,255,.72)}
+.section--dark .cap__cell:hover{background:#123647}
+.section--dark .cap__cell::after{background:var(--azure)}
+.section--dark .cap__num{color:rgba(255,255,255,.38)}
+.section--dark .cap__ico{color:var(--azure)}
+.section--dark .cap__name{color:#fff}
+.section--dark .cap__desc{color:rgba(255,255,255,.66)}
+.section--dark .video__label b{color:#fff}
+.section--dark .arrowlink{color:#fff}
+.section--dark .arrowlink svg{color:var(--azure)}
+.section--dark .qspec{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.12)}
+.section--dark .qspec__row{border-color:rgba(255,255,255,.1)}
+.section--dark .qspec__k{color:rgba(255,255,255,.7)}
+.section--dark .qspec__v{color:#fff}
+
+/* ---- Full-bleed engineering image band ---- */
+.band{position:relative;overflow:hidden;color:#fff;padding-block:clamp(96px,15vw,190px)}
+.band__img{position:absolute;inset:0;z-index:0;background-size:cover;background-position:center;transform:scale(1.05);will-change:transform}
+.band__scrim{position:absolute;inset:0;z-index:1;
+  background:linear-gradient(115deg,rgba(8,26,38,.93) 0%,rgba(8,26,38,.66) 48%,rgba(8,26,38,.42) 100%)}
+.band__grid{position:absolute;inset:0;z-index:1;--grid:rgba(255,255,255,.06);
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:48px 48px;mask-image:linear-gradient(90deg,#000,transparent 70%)}
+.band .shell{position:relative;z-index:2}
+.band__eyebrow{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--azure);display:inline-flex;align-items:center;gap:.7em}
+.band__eyebrow::before{content:"";width:30px;height:1px;background:var(--azure)}
+.band__title{font-family:var(--font-display);font-weight:600;font-size:clamp(2rem,4vw,3.4rem);letter-spacing:-.03em;line-height:1.02;margin-top:1.2rem;max-width:20ch;color:#fff}
+.band__title em{font-style:normal;color:var(--azure)}
+.band__sub{margin-top:1.3rem;max-width:52ch;color:rgba(255,255,255,.82)}
+.band__stats{display:flex;flex-wrap:wrap;gap:2.6rem;margin-top:2.6rem;padding-top:1.8rem;border-top:1px solid rgba(255,255,255,.16)}
+.band__stat b{display:block;font-family:var(--font-display);font-weight:600;font-size:clamp(1.7rem,2.8vw,2.4rem);letter-spacing:-.02em;color:#fff;line-height:1}
+.band__stat span{font-family:var(--font-mono);font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-top:.55rem;display:block}
+.band__corner{position:absolute;z-index:2;font-family:var(--font-mono);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.5)}
+.band__corner--tr{top:22px;right:24px}
+.band__corner--bl{left:24px;bottom:20px}
+
+/* Make the video section a dark cinematic block */
+#video.section--dark{background:var(--steel-900)}
+#video.section--dark .video__frame{box-shadow:0 40px 90px rgba(0,0,0,.45)}
+
+@media (max-width:900px){
+  .band__stats{gap:1.6rem 2.2rem}
+}
+
+/* =============================================================================
    REVISION — full-bleed video hero, dark-nav-over-hero, industry image cards,
    enriched product experience
    ========================================================================== */
@@ -732,11 +813,14 @@ html.no-js .intro{display:none}
 .hero--video{position:relative;min-height:100vh;min-height:100svh;display:flex;align-items:flex-end;
   padding-top:clamp(120px,18vh,190px);padding-bottom:clamp(46px,7vh,88px);color:#fff;overflow:hidden}
 .hero--video>.hero__bg,.hero--video>.hero__grid{display:none}
-.hero__media{position:absolute;inset:0;z-index:0;background:var(--steel-900)}
-.hero__media .hero__poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.hero__media .hero__video{position:absolute;inset:0;opacity:0;transition:opacity 1.2s var(--ease)}
+.hero__media{position:absolute;inset:-2px;z-index:0;background:var(--steel-900);overflow:hidden}
+.hero__media .hero__poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center}
+.hero__media .hero__video{position:absolute;inset:0;opacity:0;transition:opacity 1.2s var(--ease);overflow:hidden}
 .hero__media .hero__video.is-on{opacity:1}
-.hero__media .hero__video iframe{position:absolute;top:50%;left:50%;width:177.78vh;height:56.25vw;min-width:100%;min-height:100%;transform:translate(-50%,-50%);border:0;pointer-events:none}
+/* Overscan the background video so it always fully covers — no top seam / letterbox */
+.hero__media .hero__video iframe{position:absolute;top:50%;left:50%;
+  width:max(100vw,177.78vh);height:max(100vh,56.25vw);
+  transform:translate(-50%,-50%) scale(1.06);border:0;pointer-events:none}
 .hero--video .hero__scrim{position:absolute;inset:0;z-index:1;
   background:linear-gradient(180deg,rgba(8,26,38,.74) 0%,rgba(8,26,38,.32) 30%,rgba(8,26,38,.42) 60%,rgba(8,26,38,.86) 100%),
              radial-gradient(120% 80% at 15% 60%,rgba(18,71,95,.35),transparent 60%)}

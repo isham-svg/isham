@@ -27,7 +27,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap">
-<link rel="stylesheet" href="assets/css/sitech.css?v=5">
+<link rel="stylesheet" href="assets/css/sitech.css?v=6">
 
 <script>
 document.documentElement.className=document.documentElement.className.replace('no-js','js');
@@ -115,6 +115,7 @@ window.addEventListener('load',function(){setTimeout(function(){var i=document.g
 <!-- ===================== OPENING ANIMATION ===================== -->
 <div class="intro" id="intro" aria-hidden="true">
   <div class="intro__grid"></div>
+  <div class="intro__glow" aria-hidden="true"></div>
   <svg class="intro__svg" viewBox="0 0 200 140" fill="none">
     <!-- connecting blueprint lines -->
     <path class="bp-line" d="M20 20 100 70"/><path class="bp-line" d="M180 20 100 70"/>
@@ -393,7 +394,7 @@ window.addEventListener('load',function(){setTimeout(function(){var i=document.g
   </section>
 
   <!-- ===================== 07 · MANUFACTURING CAPABILITIES ===================== -->
-  <section class="section section--tight" id="capabilities" style="background:var(--paper-2);border-block:1px solid var(--line)">
+  <section class="section section--tight section--dark" id="capabilities">
     <div class="shell">
       <div class="section__head">
         <p class="eyebrow" data-reveal>Manufacturing capabilities</p>
@@ -431,6 +432,26 @@ window.addEventListener('load',function(){setTimeout(function(){var i=document.g
           <li class="proc__step" data-proc><span class="proc__dot" aria-hidden="true"></span><p class="proc__num">05</p><h3 class="proc__name">Assembly</h3><p class="proc__body">Over-mold assemblies, PSA installation and finishing are completed in-house.</p></li>
           <li class="proc__step" data-proc><span class="proc__dot" aria-hidden="true"></span><p class="proc__num">06</p><h3 class="proc__name">Quality Assurance</h3><p class="proc__body">Tear strength, compression set and abrasion testing under our ISO 9001:2015 QMS.</p></li>
         </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== 08.5 · FACTORY BAND (full-bleed) ===================== -->
+  <section class="band" aria-label="Made in the USA">
+    <div class="band__img" aria-hidden="true" data-parallax="0.08" style="background-image:url('assets/img/sitech/screening.png')"></div>
+    <div class="band__scrim" aria-hidden="true"></div>
+    <div class="band__grid" aria-hidden="true"></div>
+    <span class="band__corner band__corner--tr" aria-hidden="true">37.0871&deg; N · 76.5203&deg; W</span>
+    <span class="band__corner band__corner--bl" aria-hidden="true">Newport News, Virginia · USA</span>
+    <div class="shell">
+      <p class="band__eyebrow" data-reveal>Made in the USA</p>
+      <h2 class="band__title" data-reveal data-delay="60">Every keypad is printed, cured and <em>inspected by hand</em>.</h2>
+      <p class="band__sub lead" data-reveal data-delay="120">From our Newport News floor, silicone inks are screen-printed and cross-link bonded during curing — then checked against an ISO 9001:2015 quality system before a single part ships.</p>
+      <div class="band__stats" data-reveal-stagger>
+        <div class="band__stat"><b class="tabular"><span data-count="75">75</span>+</b><span>Years of expertise</span></div>
+        <div class="band__stat"><b class="tabular">1&nbsp;&Delta;E</b><span>Color match</span></div>
+        <div class="band__stat"><b class="tabular">&minus;75&ndash;400&deg;F</b><span>Operating range</span></div>
+        <div class="band__stat"><b>ITAR</b><span>Registered</span></div>
       </div>
     </div>
   </section>
@@ -480,7 +501,7 @@ window.addEventListener('load',function(){setTimeout(function(){var i=document.g
   </section>
 
   <!-- ===================== 11 · VIDEO ===================== -->
-  <section class="section section--tight" id="video" style="background:var(--paper-2);border-block:1px solid var(--line)">
+  <section class="section section--tight section--dark" id="video">
     <div class="shell">
       <div class="section__head section__head--center">
         <p class="eyebrow" data-reveal>Inside the factory</p>
@@ -717,6 +738,6 @@ window.addEventListener('load',function(){setTimeout(function(){var i=document.g
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.20/dist/lenis.min.js" defer></script>
-<script src="assets/js/sitech.js?v=5" defer></script>
+<script src="assets/js/sitech.js?v=6" defer></script>
 </body>
 </html>
