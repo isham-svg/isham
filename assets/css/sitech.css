@@ -298,11 +298,11 @@ html.no-js .intro{display:none}
    TRUST BAR
    ========================================================================== */
 .trust{border-block:1px solid var(--line);background:var(--paper-2)}
-.trust__inner{display:flex;align-items:center;gap:clamp(24px,4vw,56px);flex-wrap:wrap;justify-content:space-between;padding-block:26px}
-.trust__item{display:flex;align-items:center;gap:.7em;font-family:var(--font-mono);font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-2)}
-.trust__item img{height:38px;width:auto;filter:saturate(.9)}
-.trust__item svg{width:18px;height:18px;color:var(--steel-600)}
-.trust__sep{width:1px;height:26px;background:var(--line);flex:none}
+.trust__inner{display:flex;align-items:center;gap:clamp(28px,4.5vw,64px);flex-wrap:wrap;justify-content:space-between;padding-block:34px}
+.trust__item{display:flex;align-items:center;gap:.8em;font-family:var(--font-mono);font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-2)}
+.trust__item img{height:52px;width:auto;filter:saturate(.95)}
+.trust__item svg{width:22px;height:22px;color:var(--steel-600)}
+.trust__sep{width:1px;height:34px;background:var(--line);flex:none}
 @media (max-width:900px){.trust__sep{display:none}}
 
 /* =============================================================================
@@ -804,6 +804,22 @@ h3,.h3{letter-spacing:-.022em}
   .band__stats{gap:1.6rem 2.2rem}
 }
 
+/* Mobile hero: use the seamless poster instead of the iframe (which can't cover a
+   taller-than-viewport hero) — removes any edge/strip, and saves data */
+@media (max-width:820px){
+  .hero--video{min-height:90svh}
+  .hero__media .hero__video{display:none}
+  .hero--video .hero__scrim{background:linear-gradient(180deg,rgba(8,26,38,.55) 0%,rgba(8,26,38,.35) 30%,rgba(8,26,38,.5) 60%,rgba(8,26,38,.9) 100%)}
+}
+
+/* Premium detail refinements */
+.btn{border-radius:10px}
+.indcard,.gtile,.macrocard,.rescard,.certcard,.mediaframe,.prodhero,.prod__showcase{border-radius:16px}
+.trust{background:linear-gradient(180deg,var(--paper-2),var(--paper))}
+.section__head .h2,.section__head h2{max-width:20ch}
+.eyebrow{margin-bottom:.2rem}
+[data-reveal],[data-reveal-stagger]>*{transition-duration:.85s}
+
 /* =============================================================================
    REVISION — full-bleed video hero, dark-nav-over-hero, industry image cards,
    enriched product experience
@@ -820,10 +836,10 @@ h3,.h3{letter-spacing:-.022em}
 /* Overscan the background video so it always fully covers — no top seam / letterbox */
 .hero__media .hero__video iframe{position:absolute;top:50%;left:50%;
   width:max(100vw,177.78vh);height:max(100vh,56.25vw);
-  transform:translate(-50%,-50%) scale(1.06);border:0;pointer-events:none}
+  transform:translate(-50%,-50%) scale(1.14);border:0;pointer-events:none}
 .hero--video .hero__scrim{position:absolute;inset:0;z-index:1;
-  background:linear-gradient(180deg,rgba(8,26,38,.74) 0%,rgba(8,26,38,.32) 30%,rgba(8,26,38,.42) 60%,rgba(8,26,38,.86) 100%),
-             radial-gradient(120% 80% at 15% 60%,rgba(18,71,95,.35),transparent 60%)}
+  background:linear-gradient(180deg,rgba(8,26,38,.68) 0%,rgba(8,26,38,.30) 26%,rgba(8,26,38,.40) 58%,rgba(8,26,38,.88) 100%),
+             linear-gradient(90deg,rgba(8,26,38,.72) 0%,rgba(8,26,38,.28) 42%,transparent 72%)}
 .hero--video .hero__gridlines{position:absolute;inset:0;z-index:2;--grid:rgba(255,255,255,.06);
   background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
   background-size:54px 54px;mask-image:radial-gradient(120% 100% at 20% 70%,#000 30%,transparent 75%)}
@@ -848,10 +864,7 @@ h3,.h3{letter-spacing:-.022em}
 .hero--video .btn--light:hover{--bg:rgba(255,255,255,.2)}
 @media (prefers-reduced-motion:reduce){.hero--video .hero__scroll i::after{display:none}}
 
-/* ---- Nav light state over the dark hero ---- */
-.nav.over-hero::after{content:"";position:absolute;inset:0 0 auto 0;height:130px;z-index:0;pointer-events:none;
-  background:linear-gradient(180deg,rgba(8,26,38,.55),transparent);transition:opacity .4s}
-.nav.over-hero.is-stuck::after{opacity:0}
+/* ---- Nav light state over the dark hero (no gradient band; hero scrim gives contrast) ---- */
 .nav.over-hero:not(.is-stuck) .nav__brand img{filter:brightness(0) invert(1)}
 .nav.over-hero:not(.is-stuck) .nav__link{color:rgba(255,255,255,.88)}
 .nav.over-hero:not(.is-stuck) .nav__link:hover{color:#fff;background:rgba(255,255,255,.14)}
