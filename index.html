@@ -46,8 +46,7 @@ h1,h2,h3{font-weight:400;line-height:.9;letter-spacing:-.01em}
 /* overlays */
 .grain{position:fixed;inset:0;z-index:2000;pointer-events:none;opacity:.045;mix-blend-mode:overlay;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
-.vignette{position:fixed;inset:0;z-index:1990;pointer-events:none;box-shadow:inset 0 0 240px 60px rgba(0,0,0,.7)}
-.scanline{position:fixed;inset:0;z-index:1989;pointer-events:none;opacity:.5;background:repeating-linear-gradient(0deg,transparent 0 2px,rgba(0,0,0,.14) 2px 3px)}
+.vignette{position:fixed;inset:0;z-index:1990;pointer-events:none;box-shadow:inset 0 0 260px 70px rgba(0,0,0,.66)}
 
 .cursor{position:fixed;top:0;left:0;width:8px;height:8px;border-radius:50%;background:var(--red);z-index:3000;pointer-events:none;transform:translate(-50%,-50%);mix-blend-mode:difference}
 .cursor-ring{position:fixed;top:0;left:0;width:40px;height:40px;border:1px solid rgba(242,241,236,.55);border-radius:50%;z-index:2999;pointer-events:none;transform:translate(-50%,-50%);transition:width .3s var(--ease),height .3s var(--ease),background .3s,border-color .3s}
@@ -89,6 +88,22 @@ h1,h2,h3{font-weight:400;line-height:.9;letter-spacing:-.01em}
 .eyebrow::before{content:"";width:26px;height:1px;background:var(--red);display:inline-block}
 .rl{overflow:hidden;display:block}
 .rl>span{display:block;will-change:transform}
+/* editorial chapter marker */
+.chapter{display:flex;align-items:baseline;gap:1.2rem}
+.chapter .no{font-family:'Anton',sans-serif;font-size:clamp(1rem,1.4vw,1.3rem);color:var(--red);letter-spacing:0}
+.chapter .lbl{font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.34em;font-size:.64rem;font-weight:500;color:var(--smoke)}
+.chapter .ln{flex:1;height:1px;background:var(--line);transform-origin:left}
+/* oversized editorial statement (kinetic type on negative space) */
+.statement{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:clamp(4rem,12vw,10rem) 0;background:var(--black);position:relative;overflow:hidden}
+.statement .lead{font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.3em;font-size:.66rem;color:var(--red);font-weight:500;margin-bottom:clamp(2rem,5vw,3.5rem)}
+.statement h2{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:clamp(2.6rem,10.5vw,11rem);line-height:.9;letter-spacing:-.02em;color:var(--bone)}
+.statement h2 .g{color:transparent;-webkit-text-stroke:1.4px var(--steel)}
+.statement h2 .r{color:var(--red)}
+.statement .foot{margin-top:clamp(2.5rem,6vw,4.5rem);display:flex;justify-content:space-between;gap:2rem;flex-wrap:wrap;align-items:flex-end}
+.statement .foot p{max-width:40ch;color:var(--ash);font-size:.98rem;line-height:1.75}
+.statement .foot .mono{font-size:.6rem;color:var(--smoke)}
+.char{display:inline-block;will-change:transform}
+.statement h2 .word{overflow:hidden;display:inline-block;vertical-align:top;padding-bottom:.08em}
 .stage{position:relative;overflow:hidden}
 .media{position:absolute;inset:0;overflow:hidden}
 .media img{position:absolute;inset:-8% 0;width:100%;height:116%;object-fit:cover;will-change:transform}
@@ -222,25 +237,27 @@ h1,h2,h3{font-weight:400;line-height:.9;letter-spacing:-.01em}
 .mem-head{text-align:center;margin-bottom:clamp(3rem,6vw,5rem)}
 .mem-head h2{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:clamp(2.6rem,8vw,7rem);line-height:.85;letter-spacing:-.02em;margin-top:1rem}
 .mem-head p{color:var(--ash);max-width:50ch;margin:1.3rem auto 0;font-size:.95rem;line-height:1.7}
-.mem-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
-.plan{position:relative;border:1px solid var(--line);background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.004));padding:clamp(1.8rem,3vw,2.8rem);display:flex;flex-direction:column;min-height:440px;overflow:hidden;transition:transform .55s var(--ease),border-color .55s;will-change:transform}
-.plan:hover{transform:translateY(-8px);border-color:rgba(225,25,25,.4)}
-.plan.feature{background:linear-gradient(180deg,rgba(225,25,25,.14),rgba(225,25,25,.02));border-color:rgba(225,25,25,.4)}
-.plan .tier{font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.22em;font-size:.64rem;color:var(--red);font-weight:600}
-.plan .name{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:clamp(1.7rem,3.4vw,2.4rem);line-height:.95;margin-top:1rem}
-.plan .price{margin-top:1.3rem;display:flex;align-items:baseline;gap:.3rem}
-.plan .price .amt{font-family:'Anton',sans-serif;font-size:clamp(2.4rem,5vw,3.6rem);line-height:1}
-.plan .price .per{font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.1em;font-size:.66rem;color:var(--smoke)}
-.plan ul{list-style:none;margin:1.5rem 0;display:flex;flex-direction:column;gap:.8rem}
-.plan li{display:flex;gap:.6rem;align-items:flex-start;color:var(--ash);font-size:.84rem;line-height:1.4}
-.plan li svg{width:14px;height:14px;flex:none;margin-top:2px;color:var(--red)}
-.plan .btn{margin-top:auto;text-align:center;font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.14em;font-weight:600;font-size:.76rem;padding:.95rem;border:1px solid var(--bone);color:var(--bone);transition:.4s var(--ease)}
-.plan .btn:hover{background:var(--bone);color:#000}
-.plan.feature .btn{background:var(--red);border-color:var(--red);color:#fff}
-.plan.feature .btn:hover{background:var(--bone);border-color:var(--bone);color:#000}
-.mem-note{text-align:center;margin-top:2.2rem;font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.14em;font-size:.64rem;color:var(--smoke)}
+/* editorial price index */
+.pindex{max-width:1160px;margin:0 auto;border-top:1px solid var(--line)}
+.prow{position:relative;display:grid;grid-template-columns:minmax(180px,1fr) 2fr auto 40px;align-items:center;gap:2rem;padding:clamp(1.5rem,3.2vw,2.5rem) .4rem;border-bottom:1px solid var(--line);overflow:hidden;transition:padding .5s var(--ease)}
+.prow::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(225,25,25,.10),transparent 70%);transform:scaleX(0);transform-origin:left;transition:transform .6s var(--ease);z-index:-1}
+.prow:hover{padding-left:1.4rem}
+.prow:hover::before{transform:scaleX(1)}
+.prow .term{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:clamp(1.5rem,3.6vw,2.6rem);line-height:.95;color:var(--bone)}
+.prow .term em{font-style:normal;font-family:'Oswald',sans-serif;font-weight:600;font-size:.5em;letter-spacing:.16em;color:var(--red);vertical-align:middle;margin-left:.4em}
+.prow .det{font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.08em;font-size:.68rem;color:var(--smoke);line-height:1.5}
+.prow .amt{font-family:'Anton',sans-serif;font-size:clamp(1.6rem,3.6vw,2.8rem);line-height:1;color:var(--bone);white-space:nowrap;justify-self:end}
+.prow .amt small{font-family:'Oswald',sans-serif;font-weight:500;font-size:.34em;letter-spacing:.1em;color:var(--smoke);margin-left:.2em}
+.prow .go{justify-self:end;color:var(--smoke);font-size:1.1rem;transition:.4s var(--ease);transform:translateX(-6px);opacity:0}
+.prow:hover .go{transform:translateX(0);opacity:1;color:var(--red)}
+.prow.feature .term,.prow.feature .amt{color:var(--red)}
+@media(max-width:760px){
+  .prow{grid-template-columns:1fr auto;gap:.4rem 1rem;row-gap:.5rem}
+  .prow .det{grid-column:1 / -1;order:3}
+  .prow .go{display:none}
+}
+.mem-note{text-align:center;margin-top:2.4rem;font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.14em;font-size:.64rem;color:var(--smoke)}
 .mem-note b{color:var(--red)}
-@media(max-width:960px){.mem-grid{grid-template-columns:1fr;max-width:460px;margin:0 auto}}
 
 /* ===== TERRITORIES / CONTACT ===== */
 .terr{position:relative;overflow:hidden;background:var(--black)}
@@ -277,7 +294,10 @@ h1,h2,h3{font-weight:400;line-height:.9;letter-spacing:-.01em}
   *{animation-duration:.001ms!important;transition-duration:.001ms!important}
   .intro{display:none}
   .rl>span,.intro-word span{transform:none!important}
+  .char{transform:none!important}
+  .statement h2 .word{overflow:visible}
   .zpin,.machines .zpin{height:auto}
+  .statement{min-height:0;padding:5rem 0}
   .coach,.community,.gallery,.threshold,.hero{height:auto;min-height:0;padding:4rem 0}
   .gallery .slide{position:relative;opacity:1}
   .zone img,.machine img,.gallery .slide img,.media img{transform:none;position:relative;height:auto}
@@ -287,7 +307,6 @@ h1,h2,h3{font-weight:400;line-height:.9;letter-spacing:-.01em}
 <body>
 
 <div class="grain"></div>
-<div class="scanline"></div>
 <div class="vignette"></div>
 <div class="cursor"></div>
 <div class="cursor-ring"></div>
@@ -364,10 +383,23 @@ h1,h2,h3{font-weight:400;line-height:.9;letter-spacing:-.01em}
   </div>
 </section>
 
+<!-- ===== STATEMENT (editorial kinetic type) ===== -->
+<section class="statement" id="doctrine">
+  <div class="wrap">
+    <div class="chapter" style="margin-bottom:clamp(2.4rem,6vw,4rem)"><span class="no">01</span><span class="lbl">The Doctrine</span><span class="ln"></span></div>
+    <div class="lead">Every plate has a purpose</div>
+    <h2 id="stmt">We will never let the <span class="r">War House</span> <span class="g">become</span> a circus.</h2>
+    <div class="foot">
+      <p>Individual memberships. A hard cap on the door. No fluff, no fees, no contracts — only the people who showed up to work. That is the promise, and we have never broken it.</p>
+      <span class="mono">No Circus · No Exceptions</span>
+    </div>
+  </div>
+</section>
+
 <!-- ===== THE FLOOR / ZONES ===== -->
 <section class="zones" id="floor">
   <div class="wrap zones-intro">
-    <span class="eyebrow">The Walkthrough</span>
+    <div class="chapter" style="margin-bottom:2rem"><span class="no">02</span><span class="lbl">The Walkthrough</span><span class="ln"></span></div>
     <h2>WALK THE<br><span class="stroke">FLOOR</span></h2>
     <p>Keep moving. Every zone is built for a different kind of war — scroll to track through the house.</p>
   </div>
@@ -389,7 +421,7 @@ h1,h2,h3{font-weight:400;line-height:.9;letter-spacing:-.01em}
 <!-- ===== WAR MACHINES ===== -->
 <section class="machines" id="machines">
   <div class="wrap machines-intro">
-    <span class="eyebrow" style="justify-content:center;display:inline-flex">The Arsenal</span>
+    <div class="chapter" style="justify-content:center;margin-bottom:1.4rem"><span class="no">03</span><span class="lbl">The Arsenal</span></div>
     <h2>THE WAR MACHINES</h2>
     <p>Home to the one and only War Machines — <b>designed and fabricated by Atom Steel</b>. Dolly past the arsenal.</p>
   </div>
@@ -416,7 +448,7 @@ h1,h2,h3{font-weight:400;line-height:.9;letter-spacing:-.01em}
 <!-- ===== COACHES ===== -->
 <section class="coaches" id="coaches">
   <div class="wrap coaches-intro">
-    <span class="eyebrow">The Ones Who Forge You</span>
+    <div class="chapter" style="margin-bottom:2rem"><span class="no">04</span><span class="lbl">The Ones Who Forge You</span><span class="ln"></span></div>
     <h2>THE<br><span class="stroke">COACHES</span></h2>
   </div>
 
@@ -562,46 +594,31 @@ h1,h2,h3{font-weight:400;line-height:.9;letter-spacing:-.01em}
 <section class="mem" id="membership">
   <div class="wrap">
     <div class="mem-head">
-      <span class="eyebrow" style="justify-content:center;display:inline-flex">Enlistment</span>
+      <div class="chapter" style="justify-content:center;margin-bottom:1.4rem"><span class="no">05</span><span class="lbl">Enlistment</span></div>
       <h2>BECOME A MEMBER</h2>
-      <p>Open 24/7 for members only. All memberships are individual — no buddy passes. When the cap is hit, the doors close. One membership, both territories.</p>
+      <p>Open 24/7 for members only. Every membership is individual — no buddy passes, no fees, no contracts. When the cap is hit, the doors close. One membership, both territories.</p>
     </div>
-    <div class="mem-grid">
-      <div class="plan" data-cursor>
-        <div class="tier">Standard</div><div class="name">Monthly</div>
-        <div class="price"><span class="amt">$89</span><span class="per">/ mo</span></div>
-        <ul>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>Unlimited 24/7 member access</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>All War Machines by Atom Steel</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>Access to CA & TX locations</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>No contract · cancel anytime</li>
-        </ul>
-        <a href="https://warhousegyms.com/program/monthly-membership" target="_blank" rel="noopener" class="btn" data-cursor>Choose Monthly</a>
-      </div>
-      <div class="plan feature" data-cursor>
-        <div class="tier">★ Best Value · Committed</div><div class="name">Annual</div>
-        <div class="price"><span class="amt">$799</span><span class="per">/ yr</span></div>
-        <ul>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>Everything in Monthly</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>Best per-month rate</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>Locked in before the cap fills</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>Priority on new territories</li>
-        </ul>
-        <a href="https://warhousegyms.com/program/annual-membership" target="_blank" rel="noopener" class="btn" data-cursor>Go Annual</a>
-      </div>
-      <div class="plan" data-cursor>
-        <div class="tier">Flexible</div><div class="name">3 &amp; 6 Month</div>
-        <div class="price"><span class="amt">$239</span><span class="per">/ 3 mo</span></div>
-        <ul>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>Commit to a training block</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>3-month & 6-month options</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>Student memberships available</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>Access to both territories</li>
-        </ul>
-        <a href="https://warhousegyms.com/program/3-month-membership" target="_blank" rel="noopener" class="btn" data-cursor>Choose Term</a>
-      </div>
+    <div class="pindex">
+      <a class="prow" href="https://warhousegyms.com/courses" target="_blank" rel="noopener" data-cursor>
+        <span class="term">Day Pass</span><span class="det">Drop in · feel the floor</span><span class="amt">$30</span><span class="go">→</span>
+      </a>
+      <a class="prow" href="https://warhousegyms.com/courses" target="_blank" rel="noopener" data-cursor>
+        <span class="term">Week Pass</span><span class="det">Seven days · full access</span><span class="amt">$70</span><span class="go">→</span>
+      </a>
+      <a class="prow" href="https://warhousegyms.com/program/monthly-membership" target="_blank" rel="noopener" data-cursor>
+        <span class="term">Monthly</span><span class="det">24/7 access · Full Access $150 adds sauna, cold plunge &amp; compression</span><span class="amt">$100<small>/mo</small></span><span class="go">→</span>
+      </a>
+      <a class="prow" href="https://warhousegyms.com/program/3-month-membership" target="_blank" rel="noopener" data-cursor>
+        <span class="term">3 Months</span><span class="det">Commit to a training block</span><span class="amt">$270</span><span class="go">→</span>
+      </a>
+      <a class="prow" href="https://warhousegyms.com/program/6-month-membership" target="_blank" rel="noopener" data-cursor>
+        <span class="term">6 Months</span><span class="det">Half a year of war · student rates available</span><span class="amt">$520</span><span class="go">→</span>
+      </a>
+      <a class="prow feature" href="https://warhousegyms.com/program/annual-membership" target="_blank" rel="noopener" data-cursor>
+        <span class="term">Annual <em>· IYKYK</em></span><span class="det">The best rate in the house · lock it before the cap fills</span><span class="amt">$1,000</span><span class="go">→</span>
+      </a>
     </div>
-    <div class="mem-note">Membership cap <b>enforced</b> — we will never let the War House become a circus.</div>
+    <div class="mem-note">No fees · no contracts · individual only · membership cap <b>enforced</b> — we will never let the War House become a circus.</div>
   </div>
 </section>
 
@@ -778,6 +795,25 @@ function buildScroll(){
       scrollTrigger:{trigger:el,start:'top 88%'}});
   });
 
+  /* chapter markers — line grows, label + numeral settle */
+  gsap.utils.toArray('.chapter').forEach(ch=>{
+    const tl=gsap.timeline({scrollTrigger:{trigger:ch,start:'top 90%'}});
+    tl.from(ch.querySelector('.no'),{opacity:0,x:-10,duration:.6,ease:'expo.out'})
+      .from(ch.querySelector('.lbl'),{opacity:0,x:-8,duration:.6,ease:'expo.out'},'-=.4');
+    const ln=ch.querySelector('.ln');
+    if(ln)tl.from(ln,{scaleX:0,duration:1,ease:'expo.inOut'},'-=.4');
+  });
+
+  /* STATEMENT — oversized kinetic char reveal (restrained, elegant) */
+  const stmt=new SplitType('#stmt',{types:'chars,words'});
+  gsap.set(stmt.chars,{yPercent:115});
+  gsap.to(stmt.chars,{yPercent:0,duration:1,ease:'expo.out',stagger:.018,
+    scrollTrigger:{trigger:'#stmt',start:'top 78%'}});
+  gsap.from('#doctrine .lead',{opacity:0,y:14,duration:.8,ease:'expo.out',
+    scrollTrigger:{trigger:'#doctrine .lead',start:'top 88%'}});
+  gsap.from('#doctrine .foot > *',{opacity:0,y:20,duration:.9,ease:'expo.out',stagger:.12,
+    scrollTrigger:{trigger:'#doctrine .foot',start:'top 86%'}});
+
   /* ---- ZONES tracking shot (horizontal) ---- */
   horizontal('#zonePin','#ztrack','#zoneProg','[data-zimg]',1.12);
 
@@ -803,9 +839,11 @@ function buildScroll(){
   /* ---- GALLERY dissolve journey (pinned crossfade) ---- */
   buildGallery();
 
-  /* plans */
-  gsap.from('.plan',{y:56,opacity:0,duration:1,ease:'expo.out',stagger:.1,
-    scrollTrigger:{trigger:'.mem-grid',start:'top 82%'}});
+  /* price index rows — editorial line reveal */
+  gsap.utils.toArray('.prow').forEach((row,i)=>{
+    gsap.from(row,{y:30,opacity:0,duration:.9,ease:'expo.out',
+      scrollTrigger:{trigger:'.pindex',start:'top 82%'},delay:i*0.07});
+  });
   gsap.from('.loc',{y:40,opacity:0,duration:1,ease:'expo.out',stagger:.12,
     scrollTrigger:{trigger:'.terr-grid',start:'top 84%'}});
 
