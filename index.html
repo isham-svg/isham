@@ -33,9 +33,10 @@ html{-webkit-text-size-adjust:100%}
 html,body{background:var(--black);color:var(--bone)}
 body{
   font-family:'Inter',system-ui,sans-serif;line-height:1.5;overflow-x:hidden;
-  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;cursor:none;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
 }
-@media (hover:none){body{cursor:auto}}
+html.custom-cursor body{cursor:none}
+@media (hover:none){html.custom-cursor body{cursor:auto}}
 ::selection{background:var(--ember);color:#0a0a0b}
 a{color:inherit;text-decoration:none}
 img{max-width:100%;display:block}
@@ -611,6 +612,7 @@ section{position:relative}
 <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/split-type@0.3.4/umd/index.min.js"></script>
 <script>
+(function(){
 const REDUCE = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 /* ===== EMBER / SPARK CANVAS ===== */
@@ -648,8 +650,34 @@ function ForgeCanvas(canvas, opts={}){
   return {stop(){run=false;cancelAnimationFrame(raf);},start(){if(!run){run=true;frame();}}};
 }
 
+/* ===== CUSTOM CURSOR (independent of motion libs) ===== */
+(function(){
+  if(window.matchMedia('(hover:none)').matches)return;
+  document.documentElement.classList.add('custom-cursor');
+  const dot=document.querySelector('.cursor'),ring=document.querySelector('.cursor-ring');
+  let mx=innerWidth/2,my=innerHeight/2,rx=mx,ry=my;
+  window.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;
+    dot.style.transform=`translate(${mx}px,${my}px) translate(-50%,-50%)`;});
+  (function loop(){rx+=(mx-rx)*.15;ry+=(my-ry)*.15;
+    ring.style.transform=`translate(${rx}px,${ry}px) translate(-50%,-50%)`;requestAnimationFrame(loop);})();
+  document.addEventListener('mouseover',e=>{if(e.target.closest('[data-cursor],a,button'))ring.classList.add('hover');});
+  document.addEventListener('mouseout',e=>{if(e.target.closest('[data-cursor],a,button'))ring.classList.remove('hover');});
+})();
+
 /* ===== PRELOADER ===== */
 const loader=document.getElementById('loader');
+
+/* Graceful degradation: if the motion libraries are unavailable
+   (CDN blocked/offline), reveal all content statically instead of
+   trapping the visitor behind the preloader. */
+if(typeof gsap==='undefined'){
+  if(loader){loader.style.transition='opacity .4s ease';loader.style.opacity='0';
+    setTimeout(()=>{if(loader)loader.style.display='none';},450);}
+  document.body.style.overflow='';
+  try{ForgeCanvas(document.getElementById('heroSparks'),{density:0.00006});}catch(e){}
+  return; // content is already visible; skip the motion layer
+}
+
 const loaderForge=ForgeCanvas(document.getElementById('loaderCanvas'),{density:0.00020});
 
 function startSite(){
@@ -771,19 +799,6 @@ function buildScroll(){
   ScrollTrigger.refresh();
 }
 
-/* ===== CUSTOM CURSOR ===== */
-(function(){
-  if(window.matchMedia('(hover:none)').matches)return;
-  const dot=document.querySelector('.cursor'),ring=document.querySelector('.cursor-ring');
-  let mx=innerWidth/2,my=innerHeight/2,rx=mx,ry=my;
-  window.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;
-    dot.style.transform=`translate(${mx}px,${my}px) translate(-50%,-50%)`;});
-  (function loop(){rx+=(mx-rx)*.15;ry+=(my-ry)*.15;
-    ring.style.transform=`translate(${rx}px,${ry}px) translate(-50%,-50%)`;requestAnimationFrame(loop);})();
-  document.addEventListener('mouseover',e=>{if(e.target.closest('[data-cursor],a,button'))ring.classList.add('hover');});
-  document.addEventListener('mouseout',e=>{if(e.target.closest('[data-cursor],a,button'))ring.classList.remove('hover');});
-})();
-
 /* ===== MAGNETIC CTA ===== */
 document.querySelectorAll('.hero-cta,.enlist-cta,.nav-cta').forEach(btn=>{
   btn.addEventListener('mousemove',e=>{
@@ -792,6 +807,7 @@ document.querySelectorAll('.hero-cta,.enlist-cta,.nav-cta').forEach(btn=>{
   });
   btn.addEventListener('mouseleave',()=>gsap.to(btn,{x:0,y:0,duration:.5,ease:'elastic.out(1,.4)'}));
 });
+})();
 </script>
 </body>
 </html>
