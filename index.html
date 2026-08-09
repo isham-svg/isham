@@ -1,682 +1,1004 @@
 <!DOCTYPE html>
-<html lang="en" class="no-js">
+<html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-<title>Site Your Story — Premium websites for ambitious businesses</title>
-<meta name="description" content="We build premium websites for Pilates studios, health and wellness brands, dentists, medical practices, manufacturers and ambitious businesses. Fast, findable, and built to be trusted.">
-<link rel="canonical" href="https://siteyourstory.com/">
-
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="Site Your Story">
-<meta property="og:title" content="Site Your Story — Premium websites for ambitious businesses">
-<meta property="og:description" content="Websites that load fast, rank on Google, work with AI, and make people trust you before they call.">
-<meta property="og:url" content="https://siteyourstory.com/">
-<meta property="og:image" content="https://siteyourstory.com/assets/img/og.jpg">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Site Your Story — Premium websites for ambitious businesses">
-<meta name="twitter:description" content="Websites that load fast, rank on Google, work with AI, and make people trust you before they call.">
-<meta name="theme-color" content="#0a0b0e">
-
-<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@200;300;400;500;600&family=Instrument+Serif:ital@1&display=swap">
-<link rel="stylesheet" href="assets/css/main.css?v=20260731m">
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  "name": "Site Your Story",
-  "url": "https://siteyourstory.com/",
-  "email": "clients@siteyourstory.com",
-  "description": "Premium website design and development for Pilates studios, health and wellness brands, dentists, medical practices, manufacturers and ambitious businesses.",
-  "areaServed": "Worldwide",
-  "knowsAbout": [
-    "Website Design", "Website Redesign", "Brand Identity", "UI/UX Design",
-    "Search Engine Optimization", "Conversion Rate Optimization", "Motion Design",
-    "Landing Pages", "Website Maintenance", "Content Strategy"
-  ]
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>WAR HOUSE GYMS — Because You Were Born To Send It</title>
+<meta name="description" content="Welcome to the WAR HOUSE. Not a gym — a proving ground. Home to the one and only War Machines by Atom Steel. San Diego & San Antonio. Open 24/7 for members." />
+<meta property="og:title" content="WAR HOUSE GYMS — Born To Send It" />
+<meta property="og:description" content="Not a gym. A proving ground. War Machines by Atom Steel." />
+<meta property="og:image" content="assets/warhouse/hero-training.jpg" />
+<meta name="theme-color" content="#08080a" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<link rel="preload" as="image" href="assets/warhouse/hero-training.jpg" />
+<style>
+:root{
+  --black:#08080a; --ink:#0b0b0d; --steel:#26272c; --smoke:#8b8c92; --ash:#c3c4c9;
+  --bone:#f2f1ec; --red:#e11919; --line:rgba(242,241,236,.12); --maxw:1640px;
+  --ease:cubic-bezier(.16,1,.3,1);
 }
-</script>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{background:var(--black);color:var(--bone)}
+body{font-family:'Inter',system-ui,sans-serif;line-height:1.5;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+html.custom-cursor body{cursor:none}
+@media (hover:none){html.custom-cursor body{cursor:auto}}
+::selection{background:var(--red);color:#fff}
+a{color:inherit;text-decoration:none} img{max-width:100%;display:block}
+h1,h2,h3{font-weight:400;line-height:.9;letter-spacing:-.01em}
+.mono{font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.28em;font-weight:500}
+
+.grain{position:fixed;inset:0;z-index:2000;pointer-events:none;opacity:.045;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
+.vignette{position:fixed;inset:0;z-index:1990;pointer-events:none;box-shadow:inset 0 0 260px 70px rgba(0,0,0,.62)}
+.cursor{position:fixed;top:0;left:0;width:8px;height:8px;border-radius:50%;background:var(--red);z-index:3000;pointer-events:none;transform:translate(-50%,-50%);mix-blend-mode:difference}
+.cursor-ring{position:fixed;top:0;left:0;width:40px;height:40px;border:1px solid rgba(242,241,236,.5);border-radius:50%;z-index:2999;pointer-events:none;transform:translate(-50%,-50%);transition:width .3s var(--ease),height .3s var(--ease),border-color .3s}
+.cursor-ring.hover{width:64px;height:64px;border-color:var(--red)}
+@media (hover:none){.cursor,.cursor-ring{display:none}}
+
+/* INTRO — pure black, logo only */
+.intro{position:fixed;inset:0;z-index:4000;background:#000;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.intro-in{position:relative;z-index:2;width:min(72vw,520px);display:flex;align-items:center;justify-content:center}
+.intro-logo{width:clamp(120px,20vw,300px);will-change:transform,opacity,filter}
+.intro-logo img{width:100%;display:block}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;width:100%;z-index:1500;display:flex;align-items:center;justify-content:space-between;padding:1.3rem clamp(1.1rem,4vw,3rem);mix-blend-mode:difference;pointer-events:none}
+.nav>*{pointer-events:auto}
+.nav-logo{display:flex;align-items:center;gap:.6rem;font-family:'Anton',sans-serif;text-transform:uppercase;font-size:1.02rem;letter-spacing:.02em;color:#fff}
+.nav-logo img{width:24px;filter:invert(1)}
+.nav-links{display:flex;gap:1.9rem;align-items:center}
+.nav-links a{font-family:'Oswald',sans-serif;text-transform:uppercase;font-size:.68rem;letter-spacing:.2em;font-weight:500;color:#fff;position:relative}
+.nav-links a::after{content:"";position:absolute;left:0;bottom:-4px;width:0;height:1px;background:var(--red);transition:width .4s var(--ease)}
+.nav-links a:hover::after{width:100%}
+.nav-cta{font-family:'Oswald',sans-serif;text-transform:uppercase;font-size:.68rem;letter-spacing:.18em;font-weight:600;border:1px solid #fff;padding:.55rem 1.1rem;color:#fff;transition:.4s var(--ease)}
+.nav-cta:hover{background:#fff;color:#000}
+@media(max-width:900px){.nav-links{display:none}}
+
+/* ============ THE FILM (one continuous pinned camera) ============ */
+.film{position:relative;height:1856vh;background:var(--black)}
+.film-stage{position:sticky;top:0;height:100svh;overflow:hidden}
+.frame{position:absolute;inset:0;opacity:0;will-change:opacity}
+.frame-img{position:absolute;inset:0;overflow:hidden}
+.frame-img img{position:absolute;inset:-6% -6%;width:112%;height:112%;object-fit:cover;will-change:transform}
+.frame.coach .frame-img img{object-position:50% 22%}
+/* hero facility video (Vimeo background) — 16:9 covering the viewport */
+.hero-video{position:absolute;inset:0;overflow:hidden;z-index:1;opacity:0;transition:opacity 1.2s ease;pointer-events:none}
+.hero-video.on{opacity:1}
+.hero-video iframe{position:absolute;top:50%;left:50%;width:100vw;height:56.25vw;min-height:100svh;min-width:177.78svh;transform:translate(-50%,-50%);border:0}
+.hero-grade{z-index:2;background:linear-gradient(0deg,rgba(8,8,10,.9) 2%,rgba(8,8,10,.12) 44%,rgba(8,8,10,.5)),radial-gradient(120% 90% at 50% 42%,rgba(225,25,25,.10),transparent 62%)}
+.frame.hero .cap{z-index:3}
+.frame-scrim{position:absolute;inset:0;background:linear-gradient(0deg,rgba(8,8,10,.9) 2%,rgba(8,8,10,.15) 42%,rgba(8,8,10,.55))}
+.frame.coach .frame-scrim{background:linear-gradient(90deg,rgba(8,8,10,.82),rgba(8,8,10,.15) 55%),linear-gradient(0deg,rgba(8,8,10,.8),transparent 45%)}
+.cap{position:absolute;left:clamp(1.1rem,5vw,4.5rem);bottom:clamp(3.6rem,10vw,7rem);z-index:3;max-width:min(90vw,1100px)}
+.cap .kick{display:block;font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.32em;font-size:clamp(.6rem,1vw,.72rem);font-weight:600;color:var(--red);margin-bottom:1rem;will-change:transform,opacity}
+.cap .ftitle{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:clamp(3rem,11vw,10rem);line-height:.86;letter-spacing:-.02em;color:var(--bone);will-change:transform}
+.cap .fsub{font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.14em;font-weight:500;font-size:clamp(.8rem,1.5vw,1.1rem);color:var(--ash);margin-top:1.1rem;will-change:transform,opacity}
+.cap.title .ftitle{font-size:clamp(4rem,17vw,17rem)}
+.cap.big .ftitle{font-size:clamp(2.6rem,8.4vw,8rem)}
+.cap.coach{bottom:auto;top:50%;transform:translateY(-50%)}
+.cap.coach .ftitle{font-size:clamp(2.6rem,7.5vw,7rem)}
+.cap .ln .word{display:inline-block;overflow:hidden}
+
+/* scrubbing rail */
+.rail{position:fixed;right:clamp(1rem,2.2vw,2rem);top:50%;transform:translateY(-50%);z-index:1400;display:flex;flex-direction:column;gap:.9rem;mix-blend-mode:difference}
+.rail .tick{background:none;border:0;cursor:pointer;display:flex;align-items:center;justify-content:flex-end;gap:.6rem;color:#fff;font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.2em;font-size:.56rem;font-weight:500;opacity:.5;transition:opacity .3s}
+.rail .tick span{opacity:0;transform:translateX(6px);transition:.35s var(--ease)}
+.rail .tick::after{content:"";width:22px;height:1px;background:#fff;transition:width .35s var(--ease)}
+.rail .tick:hover{opacity:1} .rail .tick:hover span{opacity:1;transform:none}
+.rail .tick.on{opacity:1} .rail .tick.on::after{width:40px;background:var(--red)}
+@media(max-width:760px){.rail{display:none}}
+.film-progress{position:fixed;left:0;top:0;height:2px;width:0;background:var(--red);z-index:1600}
+.scroll-cue{position:fixed;left:50%;bottom:2rem;transform:translateX(-50%);z-index:1400;display:flex;flex-direction:column;align-items:center;gap:.5rem;mix-blend-mode:difference;transition:opacity .5s}
+.scroll-cue .mono{font-size:.54rem;color:#fff;letter-spacing:.34em}
+.scroll-cue i{width:1px;height:34px;background:rgba(255,255,255,.4);position:relative;overflow:hidden}
+.scroll-cue i::after{content:"";position:absolute;inset:0;background:#fff;animation:cue 2s var(--ease) infinite}
+@keyframes cue{0%{transform:translateY(-100%)}50%{transform:translateY(0)}100%{transform:translateY(100%)}}
+
+/* ============ MEMBERSHIP (editorial index) ============ */
+.mem{padding:clamp(6rem,13vw,11rem) 0;position:relative;overflow:hidden;background:var(--ink)}
+.wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 clamp(1.1rem,4vw,3rem)}
+.chapter{display:flex;align-items:baseline;gap:1.1rem;margin-bottom:1.4rem}
+.chapter .no{font-family:'Anton',sans-serif;font-size:1.1rem;color:var(--red)}
+.chapter .lbl{font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.32em;font-size:.62rem;font-weight:500;color:var(--smoke)}
+.mem-head{text-align:center;margin-bottom:clamp(2.6rem,6vw,4.5rem)}
+.mem-head .chapter{justify-content:center}
+.mem-head h2{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:clamp(2.6rem,8vw,7rem);line-height:.85;letter-spacing:-.02em}
+.mem-head p{color:var(--ash);max-width:50ch;margin:1.2rem auto 0;font-size:.95rem;line-height:1.7}
+.pindex{max-width:1160px;margin:0 auto;border-top:1px solid var(--line)}
+.prow{position:relative;display:grid;grid-template-columns:minmax(180px,1fr) 2fr auto 40px;align-items:center;gap:2rem;padding:clamp(1.5rem,3.2vw,2.5rem) .4rem;border-bottom:1px solid var(--line);overflow:hidden;transition:padding .5s var(--ease)}
+.prow::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(225,25,25,.10),transparent 70%);transform:scaleX(0);transform-origin:left;transition:transform .6s var(--ease);z-index:-1}
+.prow:hover{padding-left:1.4rem} .prow:hover::before{transform:scaleX(1)}
+.prow .term{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:clamp(1.5rem,3.6vw,2.6rem);line-height:.95;color:var(--bone)}
+.prow .term em{font-style:normal;font-family:'Oswald',sans-serif;font-weight:600;font-size:.5em;letter-spacing:.16em;color:var(--red);vertical-align:middle;margin-left:.4em}
+.prow .det{font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.08em;font-size:.68rem;color:var(--smoke);line-height:1.5}
+.prow .amt{font-family:'Anton',sans-serif;font-size:clamp(1.6rem,3.6vw,2.8rem);line-height:1;color:var(--bone);white-space:nowrap;justify-self:end}
+.prow .amt small{font-family:'Oswald',sans-serif;font-weight:500;font-size:.34em;letter-spacing:.1em;color:var(--smoke);margin-left:.2em}
+.prow .go{justify-self:end;color:var(--smoke);font-size:1.1rem;transition:.4s var(--ease);transform:translateX(-6px);opacity:0}
+.prow:hover .go{transform:none;opacity:1;color:var(--red)}
+.prow.feature .term,.prow.feature .amt{color:var(--red)}
+@media(max-width:760px){.prow{grid-template-columns:1fr auto;gap:.4rem 1rem}.prow .det{grid-column:1 / -1;order:3}.prow .go{display:none}}
+.mem-note{text-align:center;margin-top:2.4rem;font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.14em;font-size:.64rem;color:var(--smoke)}
+.mem-note b{color:var(--red)}
+
+/* ============ CONTACT ============ */
+.terr{position:relative;overflow:hidden;background:var(--black)}
+.terr-media{position:absolute;inset:0}
+.terr-media img{width:100%;height:100%;object-fit:cover;filter:brightness(.34) contrast(1.04)}
+.terr-in{position:relative;z-index:3;padding:clamp(6rem,13vw,11rem) 0}
+.terr-head{text-align:center;margin-bottom:clamp(3rem,7vw,5rem)}
+.terr-head h2{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:clamp(3rem,12vw,11rem);line-height:.82;letter-spacing:-.02em;margin:1rem 0}
+.terr-head .stroke{-webkit-text-stroke:1.6px var(--bone);color:transparent;text-shadow:0 0 24px rgba(225,25,25,.35)}
+.terr-head p{color:var(--ash);max-width:40ch;margin:0 auto;font-size:1rem;line-height:1.7}
+.terr-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;max-width:1100px;margin:0 auto}
+.loc{border:1px solid var(--line);background:rgba(11,11,13,.5);backdrop-filter:blur(6px);padding:clamp(1.8rem,3.4vw,2.8rem);transition:.5s var(--ease)}
+.loc:hover{border-color:rgba(225,25,25,.4);background:rgba(11,11,13,.72)}
+.loc .city{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:clamp(1.8rem,4vw,2.8rem);line-height:.95}
+.loc .city small{display:block;font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.2em;font-size:.58rem;color:var(--red);margin-top:.5rem;font-weight:600}
+.loc .rows{margin-top:1.6rem;display:flex;flex-direction:column;gap:1rem}
+.loc .row{display:flex;justify-content:space-between;gap:1rem;border-bottom:1px solid var(--line);padding-bottom:1rem}
+.loc .row .k{font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.16em;font-size:.55rem;color:var(--smoke);font-weight:500}
+.loc .row .v{font-family:'Oswald',sans-serif;font-weight:500;font-size:.85rem;color:var(--ash);text-align:right}
+.loc .row .v a:hover{color:var(--red)}
+.btn-primary{display:inline-flex;align-items:center;gap:.9rem;font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.14em;font-weight:600;font-size:.82rem;padding:1.05rem 2rem;background:var(--red);color:#fff;border-radius:2px;transition:background .4s var(--ease);will-change:transform}
+.btn-primary:hover{background:var(--bone);color:#000}
+.terr-cta{text-align:center;margin-top:clamp(3rem,6vw,4.5rem)}
+@media(max-width:760px){.terr-grid{grid-template-columns:1fr}}
+.footer{border-top:1px solid var(--line);padding:clamp(3rem,6vw,5rem) 0 2rem;background:var(--black)}
+.footer-big{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:clamp(3rem,19vw,16rem);line-height:.78;letter-spacing:-.02em;color:transparent;-webkit-text-stroke:1px var(--steel);text-align:center;user-select:none;overflow:hidden;margin-bottom:2rem}
+.footer-row{display:flex;justify-content:space-between;gap:1.4rem;flex-wrap:wrap;align-items:center;color:var(--smoke)}
+.footer-row .mono{font-size:.56rem}
+.footer-links{display:flex;gap:1.3rem;flex-wrap:wrap}
+.footer-links a{font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.14em;font-size:.6rem;color:var(--smoke);transition:.3s}
+.footer-links a:hover{color:var(--red)}
+
+@media (prefers-reduced-motion:reduce){
+  *{animation-duration:.001ms!important;transition-duration:.001ms!important}
+  .intro{display:none}
+  .film{height:auto} .film-stage{position:static;height:auto}
+  .frame{position:relative;opacity:1;height:100svh}
+  .frame-img img{transform:none}
+  .rail,.scroll-cue,.film-progress{display:none}
+}
+</style>
 </head>
-
 <body>
-<a class="skip-link" href="#main">Skip to content</a>
-<div class="curtain" aria-hidden="true"></div>
-<div class="progress" aria-hidden="true"></div>
-<div class="grain" aria-hidden="true"></div>
+<div class="grain"></div>
+<div class="vignette"></div>
+<div class="cursor"></div><div class="cursor-ring"></div>
+<div class="film-progress" id="filmProgress"></div>
 
-<svg style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true" focusable="false">
-  <symbol id="i-arrow-r" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8h12M9 3l5 5-5 5"/></symbol>
-  <symbol id="i-arrow-ne" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3.5 12.5 12.5 3.5M5.5 3.5h7v7"/></symbol>
-</svg>
-
-<!-- ===================== NAV ===================== -->
-<header class="nav">
-  <div class="nav__inner">
-    <a class="brand on-film" href="index.html" aria-label="Site Your Story, home">Site Your Story<span>.</span></a>
-
-    <nav class="nav__links" aria-label="Primary">
-      <a class="nav__link on-film" href="#services">Services</a>
-      <a class="nav__link on-film" href="#about">About</a>
-      <a class="nav__link on-film" href="#process">Process</a>
-    </nav>
-
-    <button class="burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="menu">
-      <span></span><span></span>
-    </button>
-  </div>
-</header>
-
-<div class="menu" id="menu" aria-hidden="true">
-  <nav aria-label="Mobile">
-    <ul class="menu__list">
-      <li><a href="#services">Services</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#process">Process</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
-  </nav>
-  <div class="menu__foot">
-    <a href="mailto:clients@siteyourstory.com">clients@siteyourstory.com</a>
-    <span>&copy; <span data-year>2026</span> Site Your Story</span>
+<!-- OPENING — pure black; only the white distressed WAR HOUSE mark -->
+<div class="intro" id="intro">
+  <div class="intro-in">
+    <div class="intro-logo" id="introLogo"><img src="assets/warhouse/logo-distressed.png" alt="WAR HOUSE" /></div>
   </div>
 </div>
 
-<main id="main">
-
-  <!-- =====================================================================
-       LANDING SCREEN — exactly one viewport. UNCHANGED.
-       hero-sys.mp4 plays at full strength. There is deliberately no overlay,
-       gradient, tint, vignette or filter anywhere in this block. Legibility
-       comes from .on-film text-shadow on the glyphs alone.
-       ===================================================================== -->
-  <section class="landing">
-    <div class="landing__media">
-      <video class="landing__video"
-             autoplay muted loop playsinline
-             preload="auto"
-             disablepictureinpicture
-             poster="assets/img/hero-scroll-poster.jpg"
-             aria-hidden="true"
-             tabindex="-1">
-        <source src="assets/video/hero-scroll.mp4?v=20260731f" type="video/mp4">
-      </video>
-    </div>
-
-    <div class="landing__inner">
-      <h1 class="landing__title on-film-strong" data-split>
-        Your website is about to get <em class="serif">very, very good</em>.
-      </h1>
-
-      <div class="landing__foot">
-        <div class="landing__actions" data-reveal data-delay="0.4">
-          <a class="btn btn--lg" href="contact.html">
-            <span class="btn__label">Tell us your story</span>
-            <svg class="btn__arrow" aria-hidden="true"><use href="#i-arrow-r"/></svg>
-          </a>
-          <a class="btn btn--lg btn--ghost" href="#services">
-            <span class="btn__label">What we do</span>
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <div class="landing__scroll on-film" aria-hidden="true">
-      <span>Scroll</span><i></i>
-    </div>
-  </section>
-
-  <!-- =====================================================================
-       THE REEL — everything past the hero is a set of chapters, each with its
-       own ground, layout and motion. bg-sys.mp4 is kept as the fixed film that
-       BOOKENDS the reel: it shows through the industry bridge and the closing
-       chapter, while the middle chapters lay their own opaque ground over it
-       (a light gallery for the work, a graded frame for the standards).
-       ===================================================================== -->
-  <div class="film">
-
-    <div class="film__bg" aria-hidden="true">
-    </div>
-    <div class="film__grade" aria-hidden="true"></div>
-
-    <div class="film__stage">
-
-      <!-- ===================== BUSINESSES WE WORK FOR — 3D showcase ========== -->
-      <!-- A cinematic coverflow on a curved 3D path. Cards travel through the
-           stage, receding and rotating with depth blur and soft shadow; the one
-           at centre grows sharp and reveals its name + CTA. Desktop advances it
-           by scroll (the section pins); touch drags it with momentum. See
-           initShowcase3d in main.js. -->
-      <section class="show3d" id="built-for">
-       <div class="show3d__scroll">
-        <div class="show3d__sticky">
-          <div class="show3d__head shell">
-            <p class="hgal__eyebrow">Industries</p>
-            <h2 class="hgal__title">
-              <span class="show3d__l1">Businesses</span>
-              <span class="show3d__l2 serif">we work for</span>
-            </h2>
-          </div>
-
-          <div class="show3d__stage" data-show3d>
-            <div class="show3d__track">
-            <article class="card3d" data-card><div class="card3d__inner">
-              <div class="card3d__media"><img src="assets/img/work/work-pilates.jpg" alt="A luxury Pilates studio" loading="lazy"></div>
-              <div class="card3d__meta"><span class="card3d__idx">01</span><h3 class="card3d__name">Pilates Studios</h3><p class="card3d__note">Calm, premium, built to fill the timetable.</p></div>
-            </div></article>
-            <article class="card3d" data-card><div class="card3d__inner">
-              <div class="card3d__media"><img src="assets/img/work/work-bf-dentist.jpg" alt="A dentist treating a patient" loading="lazy"></div>
-              <div class="card3d__meta"><span class="card3d__idx">02</span><h3 class="card3d__name">Dental Clinics</h3><p class="card3d__note">Clean, trusted, and easy to book.</p></div>
-            </div></article>
-            <article class="card3d" data-card><div class="card3d__inner">
-              <div class="card3d__media"><img src="assets/img/work/work-bf-medical.jpg" alt="A doctor in consultation with a patient" loading="lazy"></div>
-              <div class="card3d__meta"><span class="card3d__idx">03</span><h3 class="card3d__name">Medical Practices</h3><p class="card3d__note">Credible from the first three seconds.</p></div>
-            </div></article>
-            <article class="card3d" data-card><div class="card3d__inner">
-              <div class="card3d__media"><img src="assets/img/work/work-therapy.jpg" alt="A warm recovery and therapy room" loading="lazy"></div>
-              <div class="card3d__meta"><span class="card3d__idx">04</span><h3 class="card3d__name">Therapy Clinics</h3><p class="card3d__note">Warm, human, and reassuring.</p></div>
-            </div></article>
-            <article class="card3d" data-card><div class="card3d__inner">
-              <div class="card3d__media"><img src="assets/img/work/work-spa.jpg" alt="A luxury wellness interior" loading="lazy"></div>
-              <div class="card3d__meta"><span class="card3d__idx">05</span><h3 class="card3d__name">Wellness Brands</h3><p class="card3d__note">A feeling first, a website second.</p></div>
-            </div></article>
-            <article class="card3d" data-card><div class="card3d__inner">
-              <div class="card3d__media"><img src="assets/img/work/work-factory.jpg" alt="A cinematic factory interior" loading="lazy"></div>
-              <div class="card3d__meta"><span class="card3d__idx">06</span><h3 class="card3d__name">Manufacturers</h3><p class="card3d__note">Serious work, presented seriously.</p></div>
-            </div></article>
-            <article class="card3d" data-card><div class="card3d__inner">
-              <div class="card3d__media"><img src="assets/img/work/work-industrial.jpg" alt="Architectural industrial photography" loading="lazy"></div>
-              <div class="card3d__meta"><span class="card3d__idx">07</span><h3 class="card3d__name">Industrial Businesses</h3><p class="card3d__note">Precision, scale, and quiet confidence.</p></div>
-            </div></article>
-            <article class="card3d" data-card><div class="card3d__inner">
-              <div class="card3d__media"><img src="assets/img/work/work-agency.jpg" alt="A moody creative agency studio" loading="lazy"></div>
-              <div class="card3d__meta"><span class="card3d__idx">08</span><h3 class="card3d__name">Creative Agencies</h3><p class="card3d__note">Work that makes other good work look ordinary.</p></div>
-            </div></article>
-            </div>
-          </div>
-
-          <div class="show3d__dots" aria-hidden="true"></div>
-          <p class="show3d__hint on-film" aria-hidden="true">Scroll to rotate</p>
-        </div>
-       </div>
-      </section>
-
-      <!-- ===================== I · SERVICES ======================= -->
-      <!-- Dark glass bento riding the film. No paper ground any more, so the
-           film runs continuously behind the whole grid and there is no light↔
-           dark seam for a black band to patch. -->
-      <section class="scene services" id="services">
-        <div class="services__inner shell">
-
-          <header class="services__head">
-            <p class="chapter"><b>01</b><span>Services</span></p>
-            <h2 class="services__title" data-split>Everything the site needs to <em class="serif">work</em>.</h2>
-            <p class="services__lead" data-reveal>
-              Design, build, copy, search, speed. One team, one standard,
-              no handing you off halfway through.
-            </p>
-          </header>
-
-          <div class="services__body">
-
-            <!-- Dark-glass bento: six panes of glass floating on the film. Each
-                 carries a pointer-tracked sheen and a subtle 3D tilt; image
-                 tiles zoom in parallax as the section scrolls. -->
-            <div class="bento" data-stagger="0.09">
-
-              <!-- Slot 1: one team (integrations) -->
-              <article class="bcell bcell--team" data-reveal data-tilt>
-                <span class="bcell__sheen" aria-hidden="true"></span>
-                <h3 class="bcell__h">One team, <span class="serif">end to end</span>.</h3>
-                <p class="bcell__p">Design, build, copy, search, speed — no handing you off halfway through.</p>
-                <div class="bchips"><span class="bchip">Design</span><span class="bchip">Build</span><span class="bchip">Grow</span></div>
-              </article>
-
-              <!-- Slot 2: main feature (tall image) -->
-              <article class="bcell bcell--main" data-reveal data-tilt>
-                <img src="assets/img/work/work-workspace.jpg" alt="A studio designing a new website" loading="lazy" data-parallax="0.12">
-                <div class="bcell__over">
-                  <span class="bcell__kicker">Every service, one standard</span>
-                  <b class="bcell__big">Websites, built — never templated.</b>
-                </div>
-              </article>
-
-              <!-- Slot 3: feature tags (the ten services) -->
-              <article class="bcell bcell--tags" data-reveal data-tilt>
-                <span class="bcell__sheen" aria-hidden="true"></span>
-                <p class="bcell__eyebrow">What we do</p>
-                <div class="btags">
-                  <span class="btag">Web Design</span><span class="btag">Redesign</span>
-                  <span class="btag">Brand Identity</span><span class="btag">UI &amp; UX</span>
-                  <span class="btag">SEO</span><span class="btag">Conversion</span>
-                  <span class="btag">Motion Design</span><span class="btag">Landing Pages</span>
-                  <span class="btag">Maintenance</span><span class="btag">Content Strategy</span>
-                </div>
-              </article>
-
-              <!-- Slot 4: secondary feature (image + caption) -->
-              <article class="bcell bcell--secondary" data-reveal data-tilt>
-                <img src="assets/img/work/work-branding.jpg" alt="Brand identity materials on a designer's desk" loading="lazy" data-parallax="0.14">
-                <p class="bcell__caption">A look that holds up everywhere — website, van and business card.</p>
-              </article>
-
-              <!-- Slot 5: statistic (tall, accent tile) -->
-              <article class="bcell bcell--stat" data-reveal data-tilt>
-                <span class="bcell__sheen" aria-hidden="true"></span>
-                <svg class="bcell__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg>
-                <div class="bcell__statbody">
-                  <span class="bcell__fig" data-count="0.8" data-decimals="1" data-suffix="s">0.0s</span>
-                  <p class="bcell__statlabel">Average load speed across every site we ship — fast enough that no one thinks about leaving.</p>
-                </div>
-              </article>
-
-              <!-- Slot 6: journey -->
-              <article class="bcell bcell--journey" data-reveal data-tilt>
-                <span class="bcell__sheen" aria-hidden="true"></span>
-                <h3 class="bcell__h">Live in <span class="serif">weeks</span></h3>
-                <div class="bsteps"><span>01</span><span>02</span><span>03</span><span>04</span></div>
-              </article>
-
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ===================== II · WHY CHOOSE ==================== -->
-      <!-- DARK. A single graded photograph bleeds behind the standards; the six
-           run as an asymmetric spread, not a grid of cards. -->
-      <section class="scene why" id="about">
-        <div class="why__media" aria-hidden="true" data-parallax="0.16">
-          <img src="assets/img/work/work-atrium.jpg" alt="" loading="lazy" data-why-img>
-        </div>
-        <div class="why__particles" aria-hidden="true"></div>
-        <div class="why__spot" aria-hidden="true"></div>
-        <div class="why__inner shell">
-          <header class="why__head">
-            <p class="chapter"><b>02</b><span>Why us</span></p>
-            <h2 class="statement on-film" data-split>Why choose <em class="serif">Site Your Story</em>.</h2>
-            <p class="lead on-film" data-reveal>
-              Six standards every site meets before it goes live. Not aspirations &mdash;
-              the checklist we build against.
-            </p>
-            <p class="why__more" data-reveal>
-              <a class="btn btn--ghost on-film" href="about.html">
-                <span class="btn__label">More about us</span>
-                <svg class="btn__arrow" aria-hidden="true"><use href="#i-arrow-r"/></svg>
-              </a>
-            </p>
-          </header>
-
-          <!-- Glowing glassmorphic feature cards: a blurred gradient glow sits
-               behind each card, and the card itself carries a gradient border
-               drawn with the padding-box / border-box background-clip technique
-               over a dark glass interior. Content is unchanged. -->
-          <div class="why__grid" data-stagger="0.08">
-            <article class="std" data-reveal style="--grad:linear-gradient(137deg,#FF3D77 0%,#FFB1CE 45%,#FF9D3C 100%)">
-              <span class="std__glow" aria-hidden="true"></span>
-              <div class="std__card" data-tilt>
-                <div class="std__top">
-                  <span class="std__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 2 7l10 5 10-5-10-5z"/><path d="M2 12l10 5 10-5"/><path d="M2 17l10 5 10-5"/></svg></span>
-                  <span class="std__num">01</span>
-                </div>
-                <div class="std__text">
-                  <h3 class="std__title">Built, not templated</h3>
-                  <p class="std__body">Every page designed around your business. No theme bought, no layout forced to fit.</p>
-                </div>
-              </div>
-            </article>
-            <article class="std" data-reveal style="--grad:linear-gradient(137deg,#4361EE 0%,#E0AEFF 45%,#F72585 100%)">
-              <span class="std__glow" aria-hidden="true"></span>
-              <div class="std__card" data-tilt>
-                <div class="std__top">
-                  <span class="std__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg></span>
-                  <span class="std__num">02</span>
-                </div>
-                <div class="std__text">
-                  <h3 class="std__title">Unreasonably fast</h3>
-                  <p class="std__body">Sites that load before a visitor can think about leaving. Any device, any connection.</p>
-                </div>
-              </div>
-            </article>
-            <article class="std" data-reveal style="--grad:linear-gradient(137deg,#FFFFFF 0%,#7DD3FC 45%,#06B6D4 100%)">
-              <span class="std__glow" aria-hidden="true"></span>
-              <div class="std__card" data-tilt>
-                <div class="std__top">
-                  <span class="std__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg></span>
-                  <span class="std__num">03</span>
-                </div>
-                <div class="std__text">
-                  <h3 class="std__title">Found by search and AI</h3>
-                  <p class="std__body">Structured so search engines and AI assistants can read you, understand you, and recommend you.</p>
-                </div>
-              </div>
-            </article>
-            <article class="std" data-reveal style="--grad:linear-gradient(137deg,#7C3AED 0%,#C4B5FD 45%,#F472B6 100%)">
-              <span class="std__glow" aria-hidden="true"></span>
-              <div class="std__card" data-tilt>
-                <div class="std__top">
-                  <span class="std__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 5 5.5v5.5c0 4.2 2.9 6.9 7 8 4.1-1.1 7-3.8 7-8V5.5L12 3z"/><path d="M8.5 12l2.2 2.2L15.5 9.7"/></svg></span>
-                  <span class="std__num">04</span>
-                </div>
-                <div class="std__text">
-                  <h3 class="std__title">Trusted in three seconds</h3>
-                  <p class="std__body">That is how long you get. Every design decision is made to pass that test.</p>
-                </div>
-              </div>
-            </article>
-            <article class="std" data-reveal style="--grad:linear-gradient(137deg,#06B6D4 0%,#67E8F9 45%,#34D399 100%)">
-              <span class="std__glow" aria-hidden="true"></span>
-              <div class="std__card" data-tilt>
-                <div class="std__top">
-                  <span class="std__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="2.5" width="10" height="19" rx="2.2"/><path d="M11 18.5h2"/></svg></span>
-                  <span class="std__num">05</span>
-                </div>
-                <div class="std__text">
-                  <h3 class="std__title">Right on every screen</h3>
-                  <p class="std__body">Designed for the phone first, because that is where most of your visitors already are.</p>
-                </div>
-              </div>
-            </article>
-            <article class="std" data-reveal style="--grad:linear-gradient(137deg,#F59E0B 0%,#FCD34D 45%,#FB7185 100%)">
-              <span class="std__glow" aria-hidden="true"></span>
-              <div class="std__card" data-tilt>
-                <div class="std__top">
-                  <span class="std__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 1.8"/></svg></span>
-                  <span class="std__num">06</span>
-                </div>
-                <div class="std__text">
-                  <h3 class="std__title">Live in weeks</h3>
-                  <p class="std__body">Launched while the idea still feels urgent, not stalled in endless rounds of revisions.</p>
-                </div>
-              </div>
-            </article>
-          </div>
-
-          <div class="why__stats" data-stagger="0.07">
-            <div class="wstat" data-reveal><span class="wstat__fig" data-count="218" data-suffix="+">0+</span><span class="wstat__label">Projects &amp; counting</span></div>
-            <div class="wstat" data-reveal><span class="wstat__fig" data-count="13">0</span><span class="wstat__label">Industries</span></div>
-            <div class="wstat" data-reveal><span class="wstat__fig" data-count="2.8" data-decimals="1" data-suffix="w">0.0w</span><span class="wstat__label">Avg. build time</span></div>
-            <div class="wstat" data-reveal><span class="wstat__fig" data-count="0.8" data-decimals="1" data-suffix="s">0.0s</span><span class="wstat__label">Avg. load speed</span></div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ===================== III · PROCESS ===================== -->
-      <!-- The cinematic centre. The section pins and the four steps advance
-           HORIZONTALLY as you scroll — a filmstrip of the work, each frame a
-           photograph with its number, title and line. Falls back to a vertical
-           stack without ScrollTrigger or under reduced motion. -->
-      <section class="scene ptime" id="process">
-        <div class="scene__inner shell">
-          <header class="ptime__head">
-            <p class="chapter"><b>03</b><span>Process</span></p>
-            <h2 class="h2 on-film" data-split>Four steps. A few <em class="serif">weeks</em>.</h2>
-            <p class="lead on-film" data-reveal>
-              No months of back and forth. No endless revisions. Four steps, a few weeks,
-              and your new site is live.
-            </p>
-          </header>
-
-          <div class="ptime__rail" aria-hidden="true"><span class="ptime__rail-fill"></span></div>
-
-          <ol class="ptime__list">
-            <li class="pstep" data-pstep>
-              <div class="pstep__media"><span class="pstep__mask"><img src="assets/img/work/work-studio.jpg" alt="A design team talking through a new project" loading="lazy"></span></div>
-              <div class="pstep__text">
-                <span class="pstep__num">01</span>
-                <h3 class="pstep__title on-film">Quick chat</h3>
-                <p class="pstep__body on-film">20 minutes to understand your business and what you need.</p>
-              </div>
-            </li>
-            <li class="pstep" data-pstep>
-              <div class="pstep__media"><span class="pstep__mask"><img src="assets/img/work/work-mockup.jpg" alt="A designer presenting a homepage concept" loading="lazy"></span></div>
-              <div class="pstep__text">
-                <span class="pstep__num">02</span>
-                <h3 class="pstep__title on-film">Free mockup</h3>
-                <p class="pstep__body on-film">We design a homepage concept so you see the vision before you spend a cent.</p>
-              </div>
-            </li>
-            <li class="pstep" data-pstep>
-              <div class="pstep__media"><span class="pstep__mask"><img src="assets/img/work/work-build.jpg" alt="A designer refining a website build" loading="lazy"></span></div>
-              <div class="pstep__text">
-                <span class="pstep__num">03</span>
-                <h3 class="pstep__title on-film">Build &amp; refine</h3>
-                <p class="pstep__body on-film">We build every page, write the copy, and polish every detail with your feedback.</p>
-              </div>
-            </li>
-            <li class="pstep" data-pstep>
-              <div class="pstep__media"><span class="pstep__mask"><img src="assets/img/work/work-launch.jpg" alt="A site coming alive on launch night" loading="lazy"></span></div>
-              <div class="pstep__text">
-                <span class="pstep__num">04</span>
-                <h3 class="pstep__title on-film">Launch</h3>
-                <p class="pstep__body on-film">We go live, connect your domain, and make sure everything runs perfectly.</p>
-              </div>
-            </li>
-          </ol>
-        </div>
-      </section>
-
-      <!-- ===================== IV · TESTIMONIALS ================= -->
-      <!-- Planned into the flow: proof, then the ask. Rides the same film as
-           every chapter around it. The structure is built to later carry
-           founder quotes, video, company logos, before/after and metrics —
-           dropping real content in changes nothing else on the page. -->
-      <section class="scene testi" id="testimonials">
-        <div class="scene__inner shell">
-          <header class="testi__head">
-            <p class="chapter"><b>04</b><span>Testimonials</span></p>
-            <h2 class="h2 on-film" data-split>Work that earns the <em class="serif">next call</em>.</h2>
-            <p class="lead on-film" data-reveal>
-              The measure of a site is what happens after launch — more enquiries,
-              faster answers, and a brand people trust before they pick up the phone.
-            </p>
-          </header>
-
-          <!-- Featured quote + success metrics -->
-          <div class="testi__feature">
-            <figure class="testi__quote-wrap" data-reveal>
-              <span class="testi__mark" aria-hidden="true">&ldquo;</span>
-              <blockquote class="testi__quote on-film">
-                They didn&rsquo;t hand us a template — they built something that finally
-                <em class="serif">looks like us</em>. Enquiries came in the first week.
-              </blockquote>
-              <figcaption class="testi__cite">
-                <span class="testi__avatar"><img src="assets/img/work/work-spa.jpg" alt="" loading="lazy"></span>
-                <span class="testi__who"><b>Founder</b><span>Wellness studio</span></span>
-              </figcaption>
-            </figure>
-
-            <div class="testi__metrics" data-reveal data-tilt>
-              <div class="tmetric">
-                <span class="tmetric__fig" data-count="3.4" data-decimals="1" data-suffix="×">0.0×</span>
-                <span class="tmetric__label">More enquiries</span>
-              </div>
-              <div class="tmetric">
-                <span class="tmetric__fig" data-count="0.8" data-decimals="1" data-suffix="s">0.0s</span>
-                <span class="tmetric__label">Average load</span>
-              </div>
-              <div class="tmetric">
-                <span class="tmetric__fig" data-count="98" data-suffix="%">0%</span>
-                <span class="tmetric__label">Would refer us</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Review cards -->
-          <div class="testi__grid" data-stagger="0.08">
-            <article class="tcard" data-reveal data-tilt>
-              <div class="tcard__stars" aria-label="Five out of five">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 18.9 6.1 22l1.2-6.6L2.5 9l6.6-.9z"/></svg>
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 18.9 6.1 22l1.2-6.6L2.5 9l6.6-.9z"/></svg>
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 18.9 6.1 22l1.2-6.6L2.5 9l6.6-.9z"/></svg>
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 18.9 6.1 22l1.2-6.6L2.5 9l6.6-.9z"/></svg>
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 18.9 6.1 22l1.2-6.6L2.5 9l6.6-.9z"/></svg>
-              </div>
-              <p class="tcard__body on-film">The whole thing felt effortless. We saw a homepage concept before we&rsquo;d spent a cent, and it only got better from there.</p>
-              <div class="tcard__cite">
-                <span class="tcard__dot" aria-hidden="true">D</span>
-                <span class="tcard__who"><b>Practice owner</b><span>Dental clinic</span></span>
-              </div>
-            </article>
-
-            <article class="tcard" data-reveal data-tilt>
-              <div class="tcard__stars" aria-label="Five out of five">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 18.9 6.1 22l1.2-6.6L2.5 9l6.6-.9z"/></svg>
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 18.9 6.1 22l1.2-6.6L2.5 9l6.6-.9z"/></svg>
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 18.9 6.1 22l1.2-6.6L2.5 9l6.6-.9z"/></svg>
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 18.9 6.1 22l1.2-6.6L2.5 9l6.6-.9z"/></svg>
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 18.9 6.1 22l1.2-6.6L2.5 9l6.6-.9z"/></svg>
-              </div>
-              <p class="tcard__body on-film">It loads instantly and it finally shows up on Google. Clients tell us the site is the reason they got in touch.</p>
-              <div class="tcard__cite">
-                <span class="tcard__dot" aria-hidden="true">M</span>
-                <span class="tcard__who"><b>Managing director</b><span>Manufacturer</span></span>
-              </div>
-            </article>
-
-            <article class="tcard" data-reveal data-tilt>
-              <div class="tcard__stars" aria-label="Five out of five">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 18.9 6.1 22l1.2-6.6L2.5 9l6.6-.9z"/></svg>
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 18.9 6.1 22l1.2-6.6L2.5 9l6.6-.9z"/></svg>
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 18.9 6.1 22l1.2-6.6L2.5 9l6.6-.9z"/></svg>
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 18.9 6.1 22l1.2-6.6L2.5 9l6.6-.9z"/></svg>
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 18.9 6.1 22l1.2-6.6L2.5 9l6.6-.9z"/></svg>
-              </div>
-              <p class="tcard__body on-film">From first chat to launch was a few weeks, not months. Calm, clear, and the result feels genuinely premium.</p>
-              <div class="tcard__cite">
-                <span class="tcard__dot" aria-hidden="true">C</span>
-                <span class="tcard__who"><b>Creative director</b><span>Design agency</span></span>
-              </div>
-            </article>
-          </div>
-
-          <!-- Trusted-by / logo row (placeholder wordmarks, ready to swap) -->
-          <div class="testi__logos" data-reveal>
-            <p class="testi__logos-label">Trusted across studios, clinics and workshops</p>
-            <div class="logorow">
-              <span class="serif">Atelier</span>
-              <span>NORTHWIND</span>
-              <span class="serif">Meridian</span>
-              <span>FORMWORK</span>
-              <span class="serif">Lumen</span>
-              <span>VERTEX</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Work-in-motion marquee (ported interaction; EXISTING pictures only, no
-           new content). An infinite strip of the work, moving. -->
-      <div class="wkband" aria-hidden="true">
-        <div class="marquee wkmarq">
-          <div class="marquee__track wkmarq__track">
-            <img src="assets/img/work/work-workspace.jpg" alt="" loading="lazy">
-            <img src="assets/img/work/work-code.jpg" alt="" loading="lazy">
-            <img src="assets/img/work/work-branding.jpg" alt="" loading="lazy">
-            <img src="assets/img/work/work-mobile.jpg" alt="" loading="lazy">
-            <img src="assets/img/work/work-industrial.jpg" alt="" loading="lazy">
-            <img src="assets/img/work/work-spa.jpg" alt="" loading="lazy">
-            <img src="assets/img/work/work-atrium.jpg" alt="" loading="lazy">
-            <img src="assets/img/work/work-desk.jpg" alt="" loading="lazy">
-          </div>
-        </div>
-      </div>
-
-      <!-- ===================== IV · CLOSING ====================== -->
-      <!-- Back onto the film. The reel ends where it began. Content unchanged. -->
-      <section class="scene closing" id="contact">
-        <div class="scene__inner shell">
-          <div class="closing__inner">
-            <p class="chapter" style="justify-content:center"><b>05</b><span>Contact</span></p>
-
-            <div class="closing__statement">
-              <h2 class="closing__title on-film" data-split>We build with <span class="heart" role="img" aria-label="love"><svg viewBox="0 0 24 24" focusable="false" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></span></h2>
-              <p class="closing__sub on-film" data-reveal>Just like we build ours.</p>
-            </div>
-
-            <p class="lead on-film" style="text-align:inherit" data-reveal>
-              Tell us a little about your business. We'll get back to you within 24 hours.
-            </p>
-
-            <a class="btn btn--lg btn--accent" href="contact.html" data-reveal>
-              <span class="btn__label">Let's write yours</span>
-              <svg class="btn__arrow" aria-hidden="true"><use href="#i-arrow-r"/></svg>
-            </a>
-
-            <p class="closing__mail on-film" data-reveal>
-              No cost, no commitment. We'll send you a free mockup.<br>
-              Or just write to us: <a href="mailto:clients@siteyourstory.com">clients@siteyourstory.com</a>
-            </p>
-          </div>
-        </div>
-      </section>
-
-    </div><!-- /.film__stage -->
-  </div><!-- /.film -->
-
-</main>
-
-<!-- ===================== FOOTER ===================== -->
-<footer class="footer">
-  <div class="shell">
-    <div class="footer__top">
-      <div class="footer__brand-col">
-        <p class="footer__brand">Site Your Story<span>.</span></p>
-        <p class="footer__blurb">
-          Premium websites for Pilates studios, health and wellness brands, dentists,
-          medical practices, manufacturers and ambitious businesses. Backed by Surgex Digital.</p>
-        <p style="margin-top:1.5rem"><a class="link" href="mailto:clients@siteyourstory.com">clients@siteyourstory.com</a></p>
-      </div>
-
-      <div>
-        <p class="footer__head">Explore</p>
-        <ul class="footer__list">
-          <li><a href="#services">Services</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#process">Process</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </div>
-
-      <div>
-        <p class="footer__head">Services</p>
-        <ul class="footer__list">
-          <li><a href="#services">Website Design</a></li>
-          <li><a href="#services">Website Redesign</a></li>
-          <li><a href="#services">Brand Identity</a></li>
-          <li><a href="#services">SEO</a></li>
-          <li><a href="#services">Conversion Optimization</a></li>
-          <li><a href="#services">Website Maintenance</a></li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="footer__bar">
-      <span>&copy; <span data-year>2026</span> Site Your Story</span>
-      <nav class="footer__legal" aria-label="Legal">
-        <a href="privacy.html">Privacy Policy</a>
-        <a href="terms.html">Terms &amp; Conditions</a>
-      </nav>
-    </div>
+<!-- NAV -->
+<nav class="nav">
+  <a href="#top" class="nav-logo" data-cursor><img src="assets/warhouse/logo-clean.png" alt="" />WAR HOUSE</a>
+  <div class="nav-links">
+    <a href="#film" data-cursor>Walk In</a>
+    <a href="#membership" data-cursor>Membership</a>
+    <a href="#contact" data-cursor>Locations</a>
   </div>
-</footer>
-
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js" defer></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js" defer></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js" defer></script>
-<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.20/dist/lenis.min.js" defer></script>
-<!-- Fixed floating bottom-nav pill (ported). Hidden over the hero; slides up
-     once you scroll past it. Uses the site's own CTA — no new content. -->
-<nav class="botnav" aria-label="Quick">
-  <a class="botnav__brand" href="index.html" aria-label="Site Your Story, home"><span class="serif">S</span></a>
-  <a class="botnav__cta" href="contact.html">Tell us your story</a>
+  <a href="#membership" class="nav-cta" data-cursor>Become A Member</a>
 </nav>
 
-<script src="assets/js/main.js?v=20260731m" defer></script>
+<nav class="rail" id="rail"><button class="tick" data-to="0"><span>Enter</span></button>
+<button class="tick" data-to="2"><span>Arsenal</span></button>
+<button class="tick" data-to="24"><span>The Floor</span></button>
+<button class="tick" data-to="46"><span>Coaches</span></button>
+<button class="tick" data-to="51"><span>Members</span></button>
+<button class="tick" data-to="57"><span>Exit</span></button></nav>
+<div class="scroll-cue" id="scrollCue"><span class="mono">Scroll To Walk In</span><i></i></div>
+
+<main id="top">
+
+<!-- ONE CONTINUOUS FILM -->
+<section class="film" id="film">
+  <div class="film-stage" id="filmStage">
+<div class="frame hero title" data-frame="0">
+  <div class="frame-img"><img src="assets/warhouse/hero-training.jpg" alt="War House" loading="eager" decoding="async"></div>
+  <div class="hero-video" id="heroVideo" aria-hidden="true"></div>
+  <div class="frame-scrim hero-grade"></div>
+  <div class="cap title">
+    
+    <h2 class="ftitle">War House</h2>
+    <p class="fsub">Because you were born to send it</p>
+  </div>
+</div>
+<div class="frame big" data-frame="1">
+  <div class="frame-img"><img src="assets/warhouse/atmos-fear.jpg" alt="Fear Doesn&#x27;t<br>Live Here" loading="eager" decoding="async"></div>
+  
+  <div class="frame-scrim"></div>
+  <div class="cap big">
+    <span class="kick">The Doctrine</span>
+    <h2 class="ftitle">Fear Doesn&#x27;t<br>Live Here</h2>
+    <p class="fsub">Not a gym. A proving ground.</p>
+  </div>
+</div>
+<div class="frame" data-frame="2">
+  <div class="frame-img"><img src="assets/warhouse/machine-signature.jpg" alt="The Arsenal" loading="eager" decoding="async"></div>
+  
+  <div class="frame-scrim"></div>
+  <div class="cap">
+    <span class="kick">War Machines</span>
+    <h2 class="ftitle">The Arsenal</h2>
+    <p class="fsub">Designed &amp; fabricated by Atom Steel</p>
+  </div>
+</div>
+<div class="frame" data-frame="3">
+  <div class="frame-img"><img src="assets/warhouse/equip-howitzer.jpg" alt="Howitzer" loading="lazy" decoding="async"></div>
+  
+  <div class="frame-scrim"></div>
+  <div class="cap">
+    <span class="kick">War Machines · 01</span>
+    <h2 class="ftitle">Howitzer</h2>
+    <p class="fsub">Battle Hip Press</p>
+  </div>
+</div>
+<div class="frame" data-frame="4">
+  <div class="frame-img"><img src="assets/warhouse/equip-pendulum.jpg" alt="Pendulum" loading="lazy" decoding="async"></div>
+  
+  <div class="frame-scrim"></div>
+  <div class="cap">
+    <span class="kick">War Machines · 02</span>
+    <h2 class="ftitle">Pendulum</h2>
+    <p class="fsub">War Machine</p>
+  </div>
+</div>
+<div class="frame" data-frame="5">
+  <div class="frame-img"><img src="assets/warhouse/equip-juggernaut.jpg" alt="Juggernaut" loading="lazy" decoding="async"></div>
+  
+  <div class="frame-scrim"></div>
+  <div class="cap">
+    <span class="kick">War Machines · 03</span>
+    <h2 class="ftitle">Juggernaut</h2>
+    <p class="fsub">Total-body loading</p>
+  </div>
+</div>
+<div class="frame" data-frame="6">
+  <div class="frame-img"><img src="assets/warhouse/equip-jaeger.jpg" alt="Jaeger" loading="lazy" decoding="async"></div>
+  
+  <div class="frame-scrim"></div>
+  <div class="cap">
+    <span class="kick">War Machines · 04</span>
+    <h2 class="ftitle">Jaeger</h2>
+    <p class="fsub">Heavy compound</p>
+  </div>
+</div>
+<div class="frame" data-frame="7">
+  <div class="frame-img"><img src="assets/warhouse/equip-tbar.jpg" alt="T-Bar" loading="lazy" decoding="async"></div>
+  
+  <div class="frame-scrim"></div>
+  <div class="cap">
+    <span class="kick">War Machines · 05</span>
+    <h2 class="ftitle">T-Bar</h2>
+    <p class="fsub">Chest-supported row</p>
+  </div>
+</div>
+<div class="frame" data-frame="8">
+  <div class="frame-img"><img src="assets/warhouse/equip-mantis.jpg" alt="Mantis" loading="lazy" decoding="async"></div>
+  
+  <div class="frame-scrim"></div>
+  <div class="cap">
+    <span class="kick">War Machines · 06</span>
+    <h2 class="ftitle">Mantis</h2>
+    <p class="fsub">Pulldown / Row combo</p>
+  </div>
+</div>
+<div class="frame" data-frame="9">
+  <div class="frame-img"><img src="assets/warhouse/equip-deltron.jpg" alt="Deltron" loading="lazy" decoding="async"></div>
+  
+  <div class="frame-scrim"></div>
+  <div class="cap">
+    <span class="kick">War Machines · 07</span>
+    <h2 class="ftitle">Deltron</h2>
+    <p class="fsub">50 / 50 shoulders</p>
+  </div>
+</div>
+<div class="frame" data-frame="10">
+  <div class="frame-img"><img src="assets/warhouse/equip-beltsquat.jpg" alt="Belt Squat" loading="lazy" decoding="async"></div>
+  
+  <div class="frame-scrim"></div>
+  <div class="cap">
+    <span class="kick">War Machines · 08</span>
+    <h2 class="ftitle">Belt Squat</h2>
+    <p class="fsub">Custom Cloud Belt</p>
+  </div>
+</div>
+<div class="frame" data-frame="11">
+  <div class="frame-img"><img src="assets/warhouse/equip-asstograss.jpg" alt="ATG" loading="lazy" decoding="async"></div>
+  
+  <div class="frame-scrim"></div>
+  <div class="cap">
+    <span class="kick">War Machines · 09</span>
+    <h2 class="ftitle">ATG</h2>
+    <p class="fsub">Ass To Grass</p>
+  </div>
+</div>
+<div class="frame" data-frame="12">
+  <div class="frame-img"><img src="assets/warhouse/equip-jeepseat.jpg" alt="Jeep Seat" loading="lazy" decoding="async"></div>
+  
+  <div class="frame-scrim"></div>
+  <div class="cap">
+    <span class="kick">War Machines · 10</span>
+    <h2 class="ftitle">Jeep Seat</h2>
+    <p class="fsub">Iso-lateral leg ext.</p>
+  </div>
+</div>
+<div class="frame" data-frame="13">
+  <div class="frame-img"><img src="assets/warhouse/equip-reloader.jpg" alt="Reloader" loading="lazy" decoding="async"></div>
+  
+  <div class="frame-scrim"></div>
+  <div class="cap">
+    <span class="kick">War Machines · 11</span>
+    <h2 class="ftitle">Reloader</h2>
+    <p class="fsub">Posterior chain</p>
+  </div>
+</div>
+<div class="frame" data-frame="14">
+  <div class="frame-img"><img src="assets/warhouse/equip-hollyroller.jpg" alt="Holly Roller" loading="lazy" decoding="async"></div>
+  
+  <div class="frame-scrim"></div>
+  <div class="cap">
+    <span class="kick">War Machines · 12</span>
+    <h2 class="ftitle">Holly Roller</h2>
+    <p class="fsub">Signature steel</p>
+  </div>
+</div>
+<div class="frame" data-frame="15">
+  <div class="frame-img"><img src="assets/warhouse/equip-lowrider.jpg" alt="Low Rider" loading="lazy" decoding="async"></div>
+  
+  <div class="frame-scrim"></div>
+  <div class="cap">
+    <span class="kick">War Machines · 13</span>
+    <h2 class="ftitle">Low Rider</h2>
+    <p class="fsub">Ground &amp; pound</p>
+  </div>
+</div>
+<div class="frame" data-frame="16">
+  <div class="frame-img"><img src="assets/warhouse/equip-kickass.jpg" alt="Kick Ass" loading="lazy" decoding="async"></div>
+  
+  <div class="frame-scrim"></div>
+  <div class="cap">
+    <span class="kick">War Machines · 14</span>
+    <h2 class="ftitle">Kick Ass</h2>
+    <p class="fsub">No half reps</p>
+  </div>
+</div>
+<div class="frame" data-frame="17">
+  <div class="frame-img"><img src="assets/warhouse/equip-kickass2.jpg" alt="Kick Ass 2" loading="lazy" decoding="async"></div>
+  
+  <div class="frame-scrim"></div>
+  <div class="cap">
+    <span class="kick">War Machines · 15</span>
+    <h2 class="ftitle">Kick Ass 2</h2>
+    <p class="fsub">The sequel hits harder</p>
+  </div>
+</div>
+<div class="frame" data-frame="18">
+  <div class="frame-img"><img src="assets/warhouse/product-machine.jpg" alt="Fabricated" loading="lazy" decoding="async"></div>
+  
+  <div class="frame-scrim"></div>
+  <div class="cap">
+    <span class="kick">Atom Steel</span>
+    <h2 class="ftitle">Fabricated</h2>
+    <p class="fsub">War steel, built by hand</p>
+  </div>
+</div>
+<div class="frame" data-frame="19">
+  <div class="frame-img"><img src="assets/warhouse/product-bench.jpg" alt="Precision" loading="lazy" decoding="async"></div>
+  
+  <div class="frame-scrim"></div>
+  <div class="cap">
+    <span class="kick">Atom Steel</span>
+    <h2 class="ftitle">Precision</h2>
+    <p class="fsub">Every seam welded true</p>
+  </div>
+</div>
+<div class="frame" data-frame="20">
+  <div class="frame-img"><img src="assets/warhouse/detail-plates.jpg" alt="Plates" loading="lazy" decoding="async"></div>
+  
+  <div class="frame-scrim"></div>
+  <div class="cap">
+    <span class="kick">Load It</span>
+    <h2 class="ftitle">Plates</h2>
+    <p class="fsub">Then send it</p>
+  </div>
+</div>
+<div class="frame" data-frame="21">
+  <div class="frame-img"><img src="assets/warhouse/detail-bands.jpg" alt="Bands &amp; Cables" loading="lazy" decoding="async"></div>
+  
+  <div class="frame-scrim"></div>
+  <div class="cap">
+    <span class="kick">Tension</span>
+    <h2 class="ftitle">Bands &amp; Cables</h2>
+    <p class="fsub">Accommodating resistance</p>
+  </div>
+</div>
+<div class="frame" data-frame="22">
+  <div class="frame-img"><img src="assets/warhouse/detail-stone.jpg" alt="Atlas Stones" loading="lazy" decoding="async"></div>
+  
+  <div class="frame-scrim"></div>
+  <div class="cap">
+    <span class="kick">Old-School</span>
+    <h2 class="ftitle">Atlas Stones</h2>
+    <p class="fsub">Strong the hard way</p>
+  </div>
+</div>
+<div class="frame" data-frame="23">
+  <div class="frame-img"><img src="assets/warhouse/detail-dumbbells.jpg" alt="Dumbbells" loading="lazy" decoding="async"></div>
+  
+  <div class="frame-scrim"></div>
+  <div class="cap">
+    <span class="kick">Iron</span>
+    <h2 class="ftitle">Dumbbells</h2>
+    <p class="fsub">Racked &amp; ready</p>
+  </div>
+</div>
+<div class="frame" data-frame="24">
+  <div class="frame-img"><img src="assets/warhouse/zone-turf-wide.jpg" alt="The Turf" loading="lazy" decoding="async"></div>
+  
+  <div class="frame-scrim"></div>
+  <div class="cap">
+    <span class="kick">The Floor</span>
+    <h2 class="ftitle">The Turf</h2>
+    <p class="fsub">Sleds · prowlers · conditioning</p>
+  </div>
+</div>
+<div class="frame" data-frame="25">
+  <div class="frame-img"><img src="assets/warhouse/zone-turf-sled.jpg" alt="Push" loading="lazy" decoding="async"></div>
+  
+  <div class="frame-scrim"></div>
+  <div class="cap">
+    <span class="kick">The Floor</span>
+    <h2 class="ftitle">Push</h2>
+    <p class="fsub">Sled tracks</p>
+  </div>
+</div>
+<div class="frame" data-frame="26">
+  <div class="frame-img"><img src="assets/warhouse/zone-boxing.jpg" alt="The Pit" loading="lazy" decoding="async"></div>
+  
+  <div class="frame-scrim"></div>
+  <div class="cap">
+    <span class="kick">The Floor</span>
+    <h2 class="ftitle">The Pit</h2>
+    <p class="fsub">Bags · combat</p>
+  </div>
+</div>
+<div class="frame" data-frame="27">
+  <div class="frame-img"><img src="assets/warhouse/zone-boxing-2.jpg" alt="Strike" loading="lazy" decoding="async"></div>
+  
+  <div class="frame-scrim"></div>
+  <div class="cap">
+    <span class="kick">The Floor</span>
+    <h2 class="ftitle">Strike</h2>
+    <p class="fsub">Functional corner</p>
+  </div>
+</div>
+<div class="frame" data-frame="28">
+  <div class="frame-img"><img src="assets/warhouse/zone-functional.jpg" alt="The Rig" loading="lazy" decoding="async"></div>
+  
+  <div class="frame-scrim"></div>
+  <div class="cap">
+    <span class="kick">The Floor</span>
+    <h2 class="ftitle">The Rig</h2>
+    <p class="fsub">Rope · rings · bodyweight</p>
+  </div>
+</div>
+<div class="frame" data-frame="29">
+  <div class="frame-img"><img src="assets/warhouse/zone-cardio.jpg" alt="Cardio Theater" loading="lazy" decoding="async"></div>
+  
+  <div class="frame-scrim"></div>
+  <div class="cap">
+    <span class="kick">The Floor</span>
+    <h2 class="ftitle">Cardio Theater</h2>
+    <p class="fsub">Screens · treads · assault</p>
+  </div>
+</div>
+<div class="frame" data-frame="30">
+  <div class="frame-img"><img src="assets/warhouse/zone-cardio-2.jpg" alt="The Line" loading="lazy" decoding="async"></div>
+  
+  <div class="frame-scrim"></div>
+  <div class="cap">
+    <span class="kick">The Floor</span>
+    <h2 class="ftitle">The Line</h2>
+    <p class="fsub">Endless engines</p>
+  </div>
+</div>
+<div class="frame" data-frame="31">
+  <div class="frame-img"><img src="assets/warhouse/zone-projector.jpg" alt="The Screen" loading="lazy" decoding="async"></div>
+  
+  <div class="frame-scrim"></div>
+  <div class="cap">
+    <span class="kick">The Floor</span>
+    <h2 class="ftitle">The Screen</h2>
+    <p class="fsub">Train to the film</p>
+  </div>
+</div>
+<div class="frame" data-frame="32">
+  <div class="frame-img"><img src="assets/warhouse/zone-theater.jpg" alt="Theater" loading="lazy" decoding="async"></div>
+  
+  <div class="frame-scrim"></div>
+  <div class="cap">
+    <span class="kick">The Floor</span>
+    <h2 class="ftitle">Theater</h2>
+    <p class="fsub">Immersive cardio</p>
+  </div>
+</div>
+<div class="frame" data-frame="33">
+  <div class="frame-img"><img src="assets/warhouse/zone-theater-2.jpg" alt="Front Row" loading="lazy" decoding="async"></div>
+  
+  <div class="frame-scrim"></div>
+  <div class="cap">
+    <span class="kick">The Floor</span>
+    <h2 class="ftitle">Front Row</h2>
+    <p class="fsub">Every angle covered</p>
+  </div>
+</div>
+<div class="frame" data-frame="34">
+  <div class="frame-img"><img src="assets/warhouse/zone-studio.jpg" alt="The Studio" loading="lazy" decoding="async"></div>
+  
+  <div class="frame-scrim"></div>
+  <div class="cap">
+    <span class="kick">The Floor</span>
+    <h2 class="ftitle">The Studio</h2>
+    <p class="fsub">Classes · mobility · space</p>
+  </div>
+</div>
+<div class="frame" data-frame="35">
+  <div class="frame-img"><img src="assets/warhouse/zone-lounge.jpg" alt="The Lounge" loading="lazy" decoding="async"></div>
+  
+  <div class="frame-scrim"></div>
+  <div class="cap">
+    <span class="kick">The Floor</span>
+    <h2 class="ftitle">The Lounge</h2>
+    <p class="fsub">Recover · refuel · regroup</p>
+  </div>
+</div>
+<div class="frame" data-frame="36">
+  <div class="frame-img"><img src="assets/warhouse/zone-sauna.jpg" alt="Reset" loading="lazy" decoding="async"></div>
+  
+  <div class="frame-scrim"></div>
+  <div class="cap">
+    <span class="kick">Recovery</span>
+    <h2 class="ftitle">Reset</h2>
+    <p class="fsub">Sauna · cold · restore</p>
+  </div>
+</div>
+<div class="frame" data-frame="37">
+  <div class="frame-img"><img src="assets/warhouse/floor-flag.jpg" alt="The Main Floor" loading="lazy" decoding="async"></div>
+  
+  <div class="frame-scrim"></div>
+  <div class="cap">
+    <span class="kick">The Floor</span>
+    <h2 class="ftitle">The Main Floor</h2>
+    <p class="fsub">Iron · flag · everything</p>
+  </div>
+</div>
+<div class="frame" data-frame="38">
+  <div class="frame-img"><img src="assets/warhouse/floor-benches.jpg" alt="Press" loading="lazy" decoding="async"></div>
+  
+  <div class="frame-scrim"></div>
+  <div class="cap">
+    <span class="kick">The Floor</span>
+    <h2 class="ftitle">Press</h2>
+    <p class="fsub">Bench city</p>
+  </div>
+</div>
+<div class="frame" data-frame="39">
+  <div class="frame-img"><img src="assets/warhouse/floor-sled.jpg" alt="Drive" loading="lazy" decoding="async"></div>
+  
+  <div class="frame-scrim"></div>
+  <div class="cap">
+    <span class="kick">The Floor</span>
+    <h2 class="ftitle">Drive</h2>
+    <p class="fsub">Low and heavy</p>
+  </div>
+</div>
+<div class="frame" data-frame="40">
+  <div class="frame-img"><img src="assets/warhouse/floor-green.jpg" alt="Under Lights" loading="lazy" decoding="async"></div>
+  
+  <div class="frame-scrim"></div>
+  <div class="cap">
+    <span class="kick">The Floor</span>
+    <h2 class="ftitle">Under Lights</h2>
+    <p class="fsub">The green room</p>
+  </div>
+</div>
+<div class="frame" data-frame="41">
+  <div class="frame-img"><img src="assets/warhouse/floor-hall.jpg" alt="The Approach" loading="lazy" decoding="async"></div>
+  
+  <div class="frame-scrim"></div>
+  <div class="cap">
+    <span class="kick">The Floor</span>
+    <h2 class="ftitle">The Approach</h2>
+    <p class="fsub">Every hall leads to iron</p>
+  </div>
+</div>
+<div class="frame" data-frame="42">
+  <div class="frame-img"><img src="assets/warhouse/floor-hall-blue.jpg" alt="Deeper In" loading="lazy" decoding="async"></div>
+  
+  <div class="frame-scrim"></div>
+  <div class="cap">
+    <span class="kick">The Floor</span>
+    <h2 class="ftitle">Deeper In</h2>
+    <p class="fsub">Keep walking</p>
+  </div>
+</div>
+<div class="frame" data-frame="43">
+  <div class="frame-img"><img src="assets/warhouse/zone-turf-red.jpg" alt="Red Light" loading="lazy" decoding="async"></div>
+  
+  <div class="frame-scrim"></div>
+  <div class="cap">
+    <span class="kick">The Floor</span>
+    <h2 class="ftitle">Red Light</h2>
+    <p class="fsub">War mode</p>
+  </div>
+</div>
+<div class="frame" data-frame="44">
+  <div class="frame-img"><img src="assets/warhouse/zone-turf-blue.jpg" alt="Blue Hour" loading="lazy" decoding="async"></div>
+  
+  <div class="frame-scrim"></div>
+  <div class="cap">
+    <span class="kick">The Floor</span>
+    <h2 class="ftitle">Blue Hour</h2>
+    <p class="fsub">Still training</p>
+  </div>
+</div>
+<div class="frame" data-frame="45">
+  <div class="frame-img"><img src="assets/warhouse/hero-rig.jpg" alt="Steel Cathedral" loading="lazy" decoding="async"></div>
+  
+  <div class="frame-scrim"></div>
+  <div class="cap">
+    <span class="kick">The Floor</span>
+    <h2 class="ftitle">Steel Cathedral</h2>
+    <p class="fsub">Look up</p>
+  </div>
+</div>
+<div class="frame coach" data-frame="46">
+  <div class="frame-img"><img src="assets/warhouse/coach-1.jpg" alt="Strength &amp; Power" loading="lazy" decoding="async"></div>
+  
+  <div class="frame-scrim"></div>
+  <div class="cap coach">
+    <span class="kick">The Coaches</span>
+    <h2 class="ftitle">Strength &amp; Power</h2>
+    <p class="fsub">War House Coach</p>
+  </div>
+</div>
+<div class="frame coach" data-frame="47">
+  <div class="frame-img"><img src="assets/warhouse/coach-2.jpg" alt="Built Different" loading="lazy" decoding="async"></div>
+  
+  <div class="frame-scrim"></div>
+  <div class="cap coach">
+    <span class="kick">The Coaches</span>
+    <h2 class="ftitle">Built Different</h2>
+    <p class="fsub">War House Coach</p>
+  </div>
+</div>
+<div class="frame coach" data-frame="48">
+  <div class="frame-img"><img src="assets/warhouse/coach-3.jpg" alt="All In, Every Set" loading="lazy" decoding="async"></div>
+  
+  <div class="frame-scrim"></div>
+  <div class="cap coach">
+    <span class="kick">The Coaches</span>
+    <h2 class="ftitle">All In, Every Set</h2>
+    <p class="fsub">War House Coach</p>
+  </div>
+</div>
+<div class="frame coach" data-frame="49">
+  <div class="frame-img"><img src="assets/warhouse/coach-4.jpg" alt="Relentless" loading="lazy" decoding="async"></div>
+  
+  <div class="frame-scrim"></div>
+  <div class="cap coach">
+    <span class="kick">The Coaches</span>
+    <h2 class="ftitle">Relentless</h2>
+    <p class="fsub">War House Coach</p>
+  </div>
+</div>
+<div class="frame coach" data-frame="50">
+  <div class="frame-img"><img src="assets/warhouse/coach-5.jpg" alt="Unstoppable" loading="lazy" decoding="async"></div>
+  
+  <div class="frame-scrim"></div>
+  <div class="cap coach">
+    <span class="kick">The Coaches</span>
+    <h2 class="ftitle">Unstoppable</h2>
+    <p class="fsub">War House Coach</p>
+  </div>
+</div>
+<div class="frame" data-frame="51">
+  <div class="frame-img"><img src="assets/warhouse/action-coaching.jpg" alt="In The Trenches" loading="lazy" decoding="async"></div>
+  
+  <div class="frame-scrim"></div>
+  <div class="cap">
+    <span class="kick">The Members</span>
+    <h2 class="ftitle">In The Trenches</h2>
+    <p class="fsub">Coached, not babysat</p>
+  </div>
+</div>
+<div class="frame" data-frame="52">
+  <div class="frame-img"><img src="assets/warhouse/action-legmachine.jpg" alt="Put In Work" loading="lazy" decoding="async"></div>
+  
+  <div class="frame-scrim"></div>
+  <div class="cap">
+    <span class="kick">The Members</span>
+    <h2 class="ftitle">Put In Work</h2>
+    <p class="fsub">Every rep counts</p>
+  </div>
+</div>
+<div class="frame" data-frame="53">
+  <div class="frame-img"><img src="assets/warhouse/atmos-turf-back.jpg" alt="Send It" loading="lazy" decoding="async"></div>
+  
+  <div class="frame-scrim"></div>
+  <div class="cap">
+    <span class="kick">The Members</span>
+    <h2 class="ftitle">Send It</h2>
+    <p class="fsub">Every single day</p>
+  </div>
+</div>
+<div class="frame big" data-frame="54">
+  <div class="frame-img"><img src="assets/warhouse/community-group.jpg" alt="Earn Your Place" loading="lazy" decoding="async"></div>
+  
+  <div class="frame-scrim"></div>
+  <div class="cap big">
+    <span class="kick">The Brotherhood</span>
+    <h2 class="ftitle">Earn Your Place</h2>
+    <p class="fsub">You don&#x27;t join — you enlist</p>
+  </div>
+</div>
+<div class="frame" data-frame="55">
+  <div class="frame-img"><img src="assets/warhouse/brand-tee.jpg" alt="Wear It" loading="lazy" decoding="async"></div>
+  
+  <div class="frame-scrim"></div>
+  <div class="cap">
+    <span class="kick">The Colors</span>
+    <h2 class="ftitle">Wear It</h2>
+    <p class="fsub">War House ATX</p>
+  </div>
+</div>
+<div class="frame" data-frame="56">
+  <div class="frame-img"><img src="assets/warhouse/detail-dumbbells-red.jpg" alt="Closing Set" loading="lazy" decoding="async"></div>
+  
+  <div class="frame-scrim"></div>
+  <div class="cap">
+    <span class="kick">The Members</span>
+    <h2 class="ftitle">Closing Set</h2>
+    <p class="fsub">Leave nothing</p>
+  </div>
+</div>
+<div class="frame title" data-frame="57">
+  <div class="frame-img"><img src="assets/warhouse/hero-red.jpg" alt="Born To Send It" loading="lazy" decoding="async"></div>
+  
+  <div class="frame-scrim"></div>
+  <div class="cap title">
+    <span class="kick">The Exit</span>
+    <h2 class="ftitle">Born To Send It</h2>
+    <p class="fsub">This was War House</p>
+  </div>
+</div>
+  </div>
+</section>
+
+<!-- MEMBERSHIP -->
+<section class="mem" id="membership">
+  <div class="wrap">
+    <div class="mem-head">
+      <div class="chapter"><span class="no">01</span><span class="lbl">Enlistment</span></div>
+      <h2>BECOME A MEMBER</h2>
+      <p>Open 24/7 for members only. Every membership is individual — no buddy passes, no fees, no contracts. When the cap is hit, the doors close. One membership, both territories.</p>
+    </div>
+    <div class="pindex">
+      <a class="prow" href="https://warhousegyms.com/courses" target="_blank" rel="noopener" data-cursor><span class="term">Day Pass</span><span class="det">Drop in · feel the floor</span><span class="amt">$30</span><span class="go">&rarr;</span></a>
+      <a class="prow" href="https://warhousegyms.com/courses" target="_blank" rel="noopener" data-cursor><span class="term">Week Pass</span><span class="det">Seven days · full access</span><span class="amt">$70</span><span class="go">&rarr;</span></a>
+      <a class="prow" href="https://warhousegyms.com/program/monthly-membership" target="_blank" rel="noopener" data-cursor><span class="term">Monthly</span><span class="det">24/7 access · Full Access $150 adds sauna, cold plunge &amp; compression</span><span class="amt">$100<small>/mo</small></span><span class="go">&rarr;</span></a>
+      <a class="prow" href="https://warhousegyms.com/program/3-month-membership" target="_blank" rel="noopener" data-cursor><span class="term">3 Months</span><span class="det">Commit to a training block</span><span class="amt">$270</span><span class="go">&rarr;</span></a>
+      <a class="prow" href="https://warhousegyms.com/program/6-month-membership" target="_blank" rel="noopener" data-cursor><span class="term">6 Months</span><span class="det">Half a year of war · student rates available</span><span class="amt">$520</span><span class="go">&rarr;</span></a>
+      <a class="prow feature" href="https://warhousegyms.com/program/annual-membership" target="_blank" rel="noopener" data-cursor><span class="term">Annual <em>· IYKYK</em></span><span class="det">Best rate in the house · lock it before the cap fills</span><span class="amt">$1,000</span><span class="go">&rarr;</span></a>
+    </div>
+    <div class="mem-note">No fees · no contracts · individual only · membership cap <b>enforced</b> — we will never let the War House become a circus.</div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="terr" id="contact">
+  <div class="terr-media"><img src="assets/warhouse/hero-red.jpg" alt="WAR HOUSE floor" /></div>
+  <div class="terr-in">
+    <div class="wrap">
+      <div class="terr-head">
+        <div class="chapter" style="justify-content:center"><span class="no">02</span><span class="lbl">Report For Duty</span></div>
+        <h2>BORN TO<br><span class="stroke">SEND IT</span></h2>
+        <p>Two territories. One standard. Come feel the steel — walk in and enlist.</p>
+      </div>
+      <div class="terr-grid">
+        <div class="loc" data-cursor>
+          <div class="city">San Diego<small>California · Active</small></div>
+          <div class="rows">
+            <div class="row"><span class="k">Address</span><span class="v">3191 Commercial St<br>San Diego, CA 92113</span></div>
+            <div class="row"><span class="k">Phone</span><span class="v"><a href="tel:6193798511">619 · 379 · 8511</a></span></div>
+            <div class="row"><span class="k">Email</span><span class="v"><a href="mailto:warhouseoffice@gmail.com">warhouseoffice@gmail.com</a></span></div>
+            <div class="row" style="border:none"><span class="k">Staffed</span><span class="v">Mon–Sun · 6A–10P</span></div>
+          </div>
+        </div>
+        <div class="loc" data-cursor>
+          <div class="city">San Antonio<small>Texas · Active</small></div>
+          <div class="rows">
+            <div class="row"><span class="k">Address</span><span class="v">119 W LaChapelle St<br>San Antonio, TX 78204</span></div>
+            <div class="row"><span class="k">Phone</span><span class="v"><a href="tel:2106369655">210 · 636 · 9655</a></span></div>
+            <div class="row"><span class="k">Email</span><span class="v"><a href="mailto:info@warhousegymsatx.com">info@warhousegymsatx.com</a></span></div>
+            <div class="row" style="border:none"><span class="k">Staffed</span><span class="v">24 Hours</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="terr-cta"><a href="#membership" class="btn-primary" data-cursor>Become A Member <svg viewBox="0 0 24 24" width="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+    </div>
+  </div>
+  <footer class="footer">
+    <div class="footer-big">WAR HOUSE</div>
+    <div class="wrap"><div class="footer-row">
+      <span class="mono">© 2026 WAR HOUSE GYMS · BORN TO SEND IT</span>
+      <div class="footer-links">
+        <a href="#film" data-cursor>Walk In</a><a href="#membership" data-cursor>Membership</a>
+        <a href="https://www.youtube.com/@warhouse1577/featured" target="_blank" rel="noopener" data-cursor>YouTube</a>
+        <a href="#top" data-cursor>Back To Top</a>
+      </div>
+      <span class="mono">War Machines by Atom Steel</span>
+    </div></div>
+  </footer>
+</section>
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+<script>
+(function(){
+const REDUCE = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* cursor */
+(function(){
+  if(matchMedia('(hover:none)').matches)return;
+  document.documentElement.classList.add('custom-cursor');
+  const dot=document.querySelector('.cursor'),ring=document.querySelector('.cursor-ring');
+  let mx=innerWidth/2,my=innerHeight/2,rx=mx,ry=my;
+  addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;dot.style.transform=`translate(${mx}px,${my}px) translate(-50%,-50%)`;});
+  (function l(){rx+=(mx-rx)*.16;ry+=(my-ry)*.16;ring.style.transform=`translate(${rx}px,${ry}px) translate(-50%,-50%)`;requestAnimationFrame(l);})();
+  addEventListener('mouseover',e=>{if(e.target.closest('[data-cursor],a,button'))ring.classList.add('hover');});
+  addEventListener('mouseout',e=>{if(e.target.closest('[data-cursor],a,button'))ring.classList.remove('hover');});
+})();
+
+const intro=document.getElementById('intro');
+const frames=[...document.querySelectorAll('.frame')];
+const N=frames.length;
+
+/* HERO VIDEO — inject the real facility film only on the live domain.
+   The 'Inside Tour' Vimeo is privacy-locked to warhousegyms.com, so on any
+   other host (preview / staging) we keep the gym-photo hero rather than a
+   Vimeo error frame. Runs on all paths (works even without GSAP). */
+(function(){
+  var host=location.hostname||'';
+  var live=/(^|\.)warhousegyms\.com$/i.test(host);
+  var hv=document.getElementById('heroVideo');
+  if(live && hv){
+    var f=document.createElement('iframe');
+    f.src='https://player.vimeo.com/video/874861386?background=1&autoplay=1&loop=1&muted=1&autopause=0&dnt=1';
+    f.allow='autoplay; fullscreen; picture-in-picture';
+    f.title='Inside the WAR HOUSE';
+    hv.appendChild(f);
+    requestAnimationFrame(function(){hv.classList.add('on');});
+  }
+})();
+
+/* graceful degradation */
+if(typeof gsap==='undefined'){
+  if(intro){intro.style.transition='opacity .5s';intro.style.opacity='0';setTimeout(()=>intro.style.display='none',520);}
+  document.querySelector('.film').style.height='auto';
+  const st=document.getElementById('filmStage'); st.style.position='static'; st.style.height='auto';
+  frames.forEach(f=>{f.style.position='relative';f.style.opacity='1';f.style.height='100svh';});
+  ['rail','scrollCue','filmProgress'].forEach(id=>{const e=document.getElementById(id);if(e)e.style.display='none';});
+  document.body.style.overflow='';
+  return;
+}
+gsap.registerPlugin(ScrollTrigger);
+
+let lenis;
+function start(){
+  document.body.style.overflow='';
+  lenis=new Lenis({lerp:.08,smoothWheel:true});
+  lenis.on('scroll',ScrollTrigger.update);
+  gsap.ticker.add(t=>lenis.raf(t*1000)); gsap.ticker.lagSmoothing(0);
+  document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{
+    const el=document.querySelector(a.getAttribute('href')); if(!el)return;
+    e.preventDefault(); lenis.scrollTo(el,{duration:1.3});
+  }));
+  buildFilm();
+  gsap.from('.prow',{y:28,opacity:0,duration:.9,ease:'expo.out',stagger:.07,scrollTrigger:{trigger:'.pindex',start:'top 82%'}});
+  gsap.from('.loc',{y:36,opacity:0,duration:1,ease:'expo.out',stagger:.12,scrollTrigger:{trigger:'.terr-grid',start:'top 84%'}});
+  gsap.from('.mem-head h2,.terr-head h2',{yPercent:24,opacity:0,duration:1,ease:'expo.out',stagger:.1,scrollTrigger:{trigger:'.mem',start:'top 70%'}});
+  gsap.to('.footer-big',{xPercent:-3,ease:'none',scrollTrigger:{trigger:'.footer',start:'top bottom',end:'bottom top',scrub:true}});
+}
+
+/* OPENING — pure black; the white distressed mark materializes out of the
+   darkness, holds, then the camera pushes THROUGH the logo into the gym. */
+if(REDUCE){ intro.style.display='none'; frames.forEach(f=>{f.style.position='relative';f.style.opacity='1';f.style.height='100svh';}); }
+else{
+  document.body.style.overflow='hidden';
+  gsap.set('#introLogo',{opacity:0,scale:1.16,filter:'blur(26px)'});
+  gsap.timeline({defaults:{ease:'power2.out'},onComplete:()=>{intro.style.display='none';}})
+    // materialize slowly out of black (texture becomes readable)
+    .to('#introLogo',{opacity:1,filter:'blur(0px)',duration:2.1,delay:.35})
+    .to('#introLogo',{scale:1,duration:1.9,ease:'sine.out'},'<')
+    // hold — let the mark be recognised
+    .to('#introLogo',{scale:1.05,duration:1.1,ease:'sine.inOut'},'+=.35')
+    // camera pushes through the logo → portal into the gym
+    .to('#introLogo',{scale:6,opacity:0,filter:'blur(8px)',duration:1.25,ease:'power2.in'},'+=.15')
+    .to(intro,{opacity:0,duration:.85,ease:'power1.inOut'},'-=.95')
+    .add(start,'-=1.0');
+}
+
+/* THE FILM — crossfade + drift through every frame as one camera move */
+function buildFilm(){
+  gsap.set(frames,{opacity:0}); gsap.set(frames[0],{opacity:1});
+  const imgs=frames.map(f=>f.querySelector('.frame-img img'));
+  const caps=frames.map(f=>f.querySelector('.cap'));
+  const prog=document.getElementById('filmProgress');
+  const cue=document.getElementById('scrollCue');
+  const ticks=[...document.querySelectorAll('.rail .tick')];
+  const chapters=ticks.map(t=>+t.dataset.to);
+  let cur=-1;
+
+  function setActive(i){
+    if(i===cur)return; cur=i;
+    // caption enters with physical motion
+    const cap=caps[i]; if(cap){
+      const kids=[cap.querySelector('.kick'),cap.querySelector('.ftitle'),cap.querySelector('.fsub')].filter(Boolean);
+      gsap.fromTo(kids,{yPercent:60,opacity:0},{yPercent:0,opacity:1,duration:.9,ease:'expo.out',stagger:.06,overwrite:true});
+    }
+    // active rail tick
+    let ai=0; for(let k=0;k<chapters.length;k++) if(i>=chapters[k]) ai=k;
+    ticks.forEach((t,k)=>t.classList.toggle('on',k===ai));
+  }
+
+  ScrollTrigger.create({
+    trigger:'#film', start:'top top', end:'bottom bottom',
+    pin:'#filmStage', pinSpacing:false, scrub:true,
+    onUpdate:self=>{
+      const p=self.progress;
+      if(prog)prog.style.width=(p*100)+'%';
+      if(cue)cue.style.opacity = p>0.02?0:1;
+      const f=p*(N-1); const i=Math.min(N-1,Math.floor(f)); const t=f-i;
+      for(let k=0;k<N;k++){
+        let o = k<i?0 : k===i?1 : k===i+1?t : 0;
+        frames[k].style.opacity=o;
+        // drift/scale: each frame's image eases as the camera passes
+        const d=f-k;                      // <0 upcoming, 0 active, >0 passed
+        const s=1.06 - Math.max(-1,Math.min(1,d))*0.06;   // subtle push-in
+        const x=Math.max(-1,Math.min(1,d))* (k%2?2.5:-2.5); // alternate pan = camera changes direction
+        imgs[k].style.transform=`scale(${s}) translateX(${x}%)`;
+      }
+      setActive(Math.round(f));
+    }
+  });
+
+  ticks.forEach(t=>t.addEventListener('click',()=>{
+    const target=document.getElementById('film');
+    const to=(+t.dataset.to)/(N-1);
+    const st=target.offsetTop, len=target.offsetHeight-innerHeight;
+    lenis.scrollTo(st+len*to,{duration:1.2});
+  }));
+
+  ScrollTrigger.refresh();
+  addEventListener('load',()=>ScrollTrigger.refresh());
+}
+
+document.querySelectorAll('.btn-primary,.nav-cta').forEach(btn=>{
+  btn.addEventListener('mousemove',e=>{const r=btn.getBoundingClientRect();gsap.to(btn,{x:(e.clientX-r.left-r.width/2)*.2,y:(e.clientY-r.top-r.height/2)*.3,duration:.4});});
+  btn.addEventListener('mouseleave',()=>gsap.to(btn,{x:0,y:0,duration:.5,ease:'elastic.out(1,.4)'}));
+});
+})();
+</script>
 </body>
 </html>
