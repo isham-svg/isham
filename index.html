@@ -37,21 +37,11 @@ h1,h2,h3{font-weight:400;line-height:.9;letter-spacing:-.01em}
 .cursor-ring.hover{width:64px;height:64px;border-color:var(--red)}
 @media (hover:none){.cursor,.cursor-ring{display:none}}
 
-/* INTRO */
-.intro{position:fixed;inset:0;z-index:4000;background:var(--black);display:flex;align-items:center;justify-content:center;overflow:hidden}
-.intro-bg{position:absolute;inset:0;background:url(assets/warhouse/hero-training.jpg) center/cover;filter:blur(24px) brightness(.32);transform:scale(1.25)}
-.intro-scrim{position:absolute;inset:0;background:radial-gradient(circle at 50% 45%,rgba(8,8,10,.35),rgba(8,8,10,.92) 75%)}
-.intro-in{position:relative;z-index:2;text-align:center;width:min(90vw,760px)}
-.intro-logo{width:clamp(88px,13vw,140px);margin:0 auto;opacity:0;transform:translateY(12px) scale(.92)}
-.intro-logo img{width:100%;filter:drop-shadow(0 8px 30px rgba(0,0,0,.6))}
-.intro-word{margin-top:1.5rem;font-family:'Anton',sans-serif;text-transform:uppercase;font-size:clamp(1.05rem,3.2vw,1.9rem);letter-spacing:.05em;overflow:hidden}
-.intro-word span{display:inline-block;transform:translateY(110%)}
-.intro-word .a{color:var(--red)}
-.intro-meta{margin-top:1.4rem;display:flex;justify-content:center;align-items:center;gap:1rem;opacity:0}
-.intro-meta .mono{font-size:.58rem;color:var(--smoke)}
-.intro-bar{width:120px;height:1px;background:var(--line);position:relative;overflow:hidden}
-.intro-bar i{position:absolute;inset:0;background:var(--red);transform-origin:left;transform:scaleX(0)}
-.intro-count{font-family:'Oswald',sans-serif;font-weight:600;color:var(--red);font-variant-numeric:tabular-nums;font-size:.68rem}
+/* INTRO — pure black, logo only */
+.intro{position:fixed;inset:0;z-index:4000;background:#000;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.intro-in{position:relative;z-index:2;width:min(72vw,520px);display:flex;align-items:center;justify-content:center}
+.intro-logo{width:clamp(120px,20vw,300px);will-change:transform,opacity,filter}
+.intro-logo img{width:100%;display:block}
 
 /* NAV */
 .nav{position:fixed;top:0;left:0;width:100%;z-index:1500;display:flex;align-items:center;justify-content:space-between;padding:1.3rem clamp(1.1rem,4vw,3rem);mix-blend-mode:difference;pointer-events:none}
@@ -67,7 +57,7 @@ h1,h2,h3{font-weight:400;line-height:.9;letter-spacing:-.01em}
 @media(max-width:900px){.nav-links{display:none}}
 
 /* ============ THE FILM (one continuous pinned camera) ============ */
-.film{position:relative;height:2436vh;background:var(--black)}
+.film{position:relative;height:1856vh;background:var(--black)}
 .film-stage{position:sticky;top:0;height:100svh;overflow:hidden}
 .frame{position:absolute;inset:0;opacity:0;will-change:opacity}
 .frame-img{position:absolute;inset:0;overflow:hidden}
@@ -133,7 +123,7 @@ h1,h2,h3{font-weight:400;line-height:.9;letter-spacing:-.01em}
 .terr-in{position:relative;z-index:3;padding:clamp(6rem,13vw,11rem) 0}
 .terr-head{text-align:center;margin-bottom:clamp(3rem,7vw,5rem)}
 .terr-head h2{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:clamp(3rem,12vw,11rem);line-height:.82;letter-spacing:-.02em;margin:1rem 0}
-.terr-head .stroke{-webkit-text-stroke:1.4px var(--steel);color:transparent}
+.terr-head .stroke{-webkit-text-stroke:1.6px var(--bone);color:transparent;text-shadow:0 0 24px rgba(225,25,25,.35)}
 .terr-head p{color:var(--ash);max-width:40ch;margin:0 auto;font-size:1rem;line-height:1.7}
 .terr-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;max-width:1100px;margin:0 auto}
 .loc{border:1px solid var(--line);background:rgba(11,11,13,.5);backdrop-filter:blur(6px);padding:clamp(1.8rem,3.4vw,2.8rem);transition:.5s var(--ease)}
@@ -173,13 +163,10 @@ h1,h2,h3{font-weight:400;line-height:.9;letter-spacing:-.01em}
 <div class="cursor"></div><div class="cursor-ring"></div>
 <div class="film-progress" id="filmProgress"></div>
 
-<!-- OPENING -->
+<!-- OPENING — pure black; only the white distressed WAR HOUSE mark -->
 <div class="intro" id="intro">
-  <div class="intro-bg"></div><div class="intro-scrim"></div>
   <div class="intro-in">
-    <div class="intro-logo" id="introLogo"><img src="assets/warhouse/logo-clean.png" alt="WAR HOUSE" /></div>
-    <div class="intro-word" id="introWord"><span>W</span><span>E</span><span>L</span><span>C</span><span>O</span><span>M</span><span>E</span><span>&nbsp;</span><span>T</span><span>O</span><span>&nbsp;</span><span>T</span><span>H</span><span>E</span><span>&nbsp;</span><span class="a">W</span><span class="a">A</span><span class="a">R</span><span class="a">&nbsp;</span><span class="a">H</span><span class="a">O</span><span class="a">U</span><span class="a">S</span><span class="a">E</span></div>
-    <div class="intro-meta" id="introMeta"><span class="mono">Entering</span><span class="intro-bar"><i id="introBar"></i></span><span class="intro-count" id="introCount">00</span></div>
+    <div class="intro-logo" id="introLogo"><img src="assets/warhouse/logo-distressed.png" alt="WAR HOUSE" /></div>
   </div>
 </div>
 
@@ -852,25 +839,22 @@ function start(){
   gsap.to('.footer-big',{xPercent:-3,ease:'none',scrollTrigger:{trigger:'.footer',start:'top bottom',end:'bottom top',scrub:true}});
 }
 
-/* OPENING — logo emerges from branding, camera pushes into the gym */
+/* OPENING — pure black; the white distressed mark materializes out of the
+   darkness, holds, then the camera pushes THROUGH the logo into the gym. */
 if(REDUCE){ intro.style.display='none'; frames.forEach(f=>{f.style.position='relative';f.style.opacity='1';f.style.height='100svh';}); }
 else{
   document.body.style.overflow='hidden';
-  const c={v:0};
-  gsap.timeline()
-    .to('#introLogo',{opacity:1,y:0,scale:1,duration:1.1,ease:'expo.out',delay:.2})
-    .to('#introWord span',{y:0,duration:.85,ease:'expo.out',stagger:.02},'-=.5')
-    .to('#introMeta',{opacity:1,duration:.5},'-=.4');
-  gsap.to('#introBar',{scaleX:1,duration:1.8,ease:'power2.inOut',delay:.5});
-  gsap.to(c,{v:100,duration:1.8,ease:'power2.inOut',delay:.5,
-    onUpdate:()=>document.getElementById('introCount').textContent=String(Math.floor(c.v)).padStart(2,'0'),
-    onComplete:()=>{
-      gsap.timeline({onComplete:()=>{intro.style.display='none';}})
-        .to('.intro-bg',{scale:1.05,filter:'blur(0px) brightness(.7)',duration:1.3,ease:'power2.inOut'})
-        .to('.intro-in',{opacity:0,scale:1.12,duration:.8,ease:'power2.in'},'-=1.05')
-        .to(intro,{opacity:0,duration:.7,ease:'power2.inOut'},'-=.45')
-        .add(start,'-=.9');
-    }});
+  gsap.set('#introLogo',{opacity:0,scale:1.16,filter:'blur(26px)'});
+  gsap.timeline({defaults:{ease:'power2.out'},onComplete:()=>{intro.style.display='none';}})
+    // materialize slowly out of black (texture becomes readable)
+    .to('#introLogo',{opacity:1,filter:'blur(0px)',duration:2.1,delay:.35})
+    .to('#introLogo',{scale:1,duration:1.9,ease:'sine.out'},'<')
+    // hold — let the mark be recognised
+    .to('#introLogo',{scale:1.05,duration:1.1,ease:'sine.inOut'},'+=.35')
+    // camera pushes through the logo → portal into the gym
+    .to('#introLogo',{scale:6,opacity:0,filter:'blur(8px)',duration:1.25,ease:'power2.in'},'+=.15')
+    .to(intro,{opacity:0,duration:.85,ease:'power1.inOut'},'-=.95')
+    .add(start,'-=1.0');
 }
 
 /* THE FILM — crossfade + drift through every frame as one camera move */
