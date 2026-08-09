@@ -63,6 +63,12 @@ h1,h2,h3{font-weight:400;line-height:.9;letter-spacing:-.01em}
 .frame-img{position:absolute;inset:0;overflow:hidden}
 .frame-img img{position:absolute;inset:-6% -6%;width:112%;height:112%;object-fit:cover;will-change:transform}
 .frame.coach .frame-img img{object-position:50% 22%}
+/* hero facility video (Vimeo background) — 16:9 covering the viewport */
+.hero-video{position:absolute;inset:0;overflow:hidden;z-index:1;opacity:0;transition:opacity 1.2s ease;pointer-events:none}
+.hero-video.on{opacity:1}
+.hero-video iframe{position:absolute;top:50%;left:50%;width:100vw;height:56.25vw;min-height:100svh;min-width:177.78svh;transform:translate(-50%,-50%);border:0}
+.hero-grade{z-index:2;background:linear-gradient(0deg,rgba(8,8,10,.9) 2%,rgba(8,8,10,.12) 44%,rgba(8,8,10,.5)),radial-gradient(120% 90% at 50% 42%,rgba(225,25,25,.10),transparent 62%)}
+.frame.hero .cap{z-index:3}
 .frame-scrim{position:absolute;inset:0;background:linear-gradient(0deg,rgba(8,8,10,.9) 2%,rgba(8,8,10,.15) 42%,rgba(8,8,10,.55))}
 .frame.coach .frame-scrim{background:linear-gradient(90deg,rgba(8,8,10,.82),rgba(8,8,10,.15) 55%),linear-gradient(0deg,rgba(8,8,10,.8),transparent 45%)}
 .cap{position:absolute;left:clamp(1.1rem,5vw,4.5rem);bottom:clamp(3.6rem,10vw,7rem);z-index:3;max-width:min(90vw,1100px)}
@@ -194,9 +200,10 @@ h1,h2,h3{font-weight:400;line-height:.9;letter-spacing:-.01em}
 <!-- ONE CONTINUOUS FILM -->
 <section class="film" id="film">
   <div class="film-stage" id="filmStage">
-<div class="frame title" data-frame="0">
+<div class="frame hero title" data-frame="0">
   <div class="frame-img"><img src="assets/warhouse/hero-training.jpg" alt="War House" loading="eager" decoding="async"></div>
-  <div class="frame-scrim"></div>
+  <div class="hero-video" id="heroVideo" aria-hidden="true"></div>
+  <div class="frame-scrim hero-grade"></div>
   <div class="cap title">
     
     <h2 class="ftitle">War House</h2>
@@ -205,6 +212,7 @@ h1,h2,h3{font-weight:400;line-height:.9;letter-spacing:-.01em}
 </div>
 <div class="frame big" data-frame="1">
   <div class="frame-img"><img src="assets/warhouse/atmos-fear.jpg" alt="Fear Doesn&#x27;t<br>Live Here" loading="eager" decoding="async"></div>
+  
   <div class="frame-scrim"></div>
   <div class="cap big">
     <span class="kick">The Doctrine</span>
@@ -212,8 +220,9 @@ h1,h2,h3{font-weight:400;line-height:.9;letter-spacing:-.01em}
     <p class="fsub">Not a gym. A proving ground.</p>
   </div>
 </div>
-<div class="frame " data-frame="2">
+<div class="frame" data-frame="2">
   <div class="frame-img"><img src="assets/warhouse/machine-signature.jpg" alt="The Arsenal" loading="eager" decoding="async"></div>
+  
   <div class="frame-scrim"></div>
   <div class="cap">
     <span class="kick">War Machines</span>
@@ -221,8 +230,9 @@ h1,h2,h3{font-weight:400;line-height:.9;letter-spacing:-.01em}
     <p class="fsub">Designed &amp; fabricated by Atom Steel</p>
   </div>
 </div>
-<div class="frame " data-frame="3">
+<div class="frame" data-frame="3">
   <div class="frame-img"><img src="assets/warhouse/equip-howitzer.jpg" alt="Howitzer" loading="lazy" decoding="async"></div>
+  
   <div class="frame-scrim"></div>
   <div class="cap">
     <span class="kick">War Machines · 01</span>
@@ -230,8 +240,9 @@ h1,h2,h3{font-weight:400;line-height:.9;letter-spacing:-.01em}
     <p class="fsub">Battle Hip Press</p>
   </div>
 </div>
-<div class="frame " data-frame="4">
+<div class="frame" data-frame="4">
   <div class="frame-img"><img src="assets/warhouse/equip-pendulum.jpg" alt="Pendulum" loading="lazy" decoding="async"></div>
+  
   <div class="frame-scrim"></div>
   <div class="cap">
     <span class="kick">War Machines · 02</span>
@@ -239,8 +250,9 @@ h1,h2,h3{font-weight:400;line-height:.9;letter-spacing:-.01em}
     <p class="fsub">War Machine</p>
   </div>
 </div>
-<div class="frame " data-frame="5">
+<div class="frame" data-frame="5">
   <div class="frame-img"><img src="assets/warhouse/equip-juggernaut.jpg" alt="Juggernaut" loading="lazy" decoding="async"></div>
+  
   <div class="frame-scrim"></div>
   <div class="cap">
     <span class="kick">War Machines · 03</span>
@@ -248,8 +260,9 @@ h1,h2,h3{font-weight:400;line-height:.9;letter-spacing:-.01em}
     <p class="fsub">Total-body loading</p>
   </div>
 </div>
-<div class="frame " data-frame="6">
+<div class="frame" data-frame="6">
   <div class="frame-img"><img src="assets/warhouse/equip-jaeger.jpg" alt="Jaeger" loading="lazy" decoding="async"></div>
+  
   <div class="frame-scrim"></div>
   <div class="cap">
     <span class="kick">War Machines · 04</span>
@@ -257,8 +270,9 @@ h1,h2,h3{font-weight:400;line-height:.9;letter-spacing:-.01em}
     <p class="fsub">Heavy compound</p>
   </div>
 </div>
-<div class="frame " data-frame="7">
+<div class="frame" data-frame="7">
   <div class="frame-img"><img src="assets/warhouse/equip-tbar.jpg" alt="T-Bar" loading="lazy" decoding="async"></div>
+  
   <div class="frame-scrim"></div>
   <div class="cap">
     <span class="kick">War Machines · 05</span>
@@ -266,8 +280,9 @@ h1,h2,h3{font-weight:400;line-height:.9;letter-spacing:-.01em}
     <p class="fsub">Chest-supported row</p>
   </div>
 </div>
-<div class="frame " data-frame="8">
+<div class="frame" data-frame="8">
   <div class="frame-img"><img src="assets/warhouse/equip-mantis.jpg" alt="Mantis" loading="lazy" decoding="async"></div>
+  
   <div class="frame-scrim"></div>
   <div class="cap">
     <span class="kick">War Machines · 06</span>
@@ -275,8 +290,9 @@ h1,h2,h3{font-weight:400;line-height:.9;letter-spacing:-.01em}
     <p class="fsub">Pulldown / Row combo</p>
   </div>
 </div>
-<div class="frame " data-frame="9">
+<div class="frame" data-frame="9">
   <div class="frame-img"><img src="assets/warhouse/equip-deltron.jpg" alt="Deltron" loading="lazy" decoding="async"></div>
+  
   <div class="frame-scrim"></div>
   <div class="cap">
     <span class="kick">War Machines · 07</span>
@@ -284,8 +300,9 @@ h1,h2,h3{font-weight:400;line-height:.9;letter-spacing:-.01em}
     <p class="fsub">50 / 50 shoulders</p>
   </div>
 </div>
-<div class="frame " data-frame="10">
+<div class="frame" data-frame="10">
   <div class="frame-img"><img src="assets/warhouse/equip-beltsquat.jpg" alt="Belt Squat" loading="lazy" decoding="async"></div>
+  
   <div class="frame-scrim"></div>
   <div class="cap">
     <span class="kick">War Machines · 08</span>
@@ -293,8 +310,9 @@ h1,h2,h3{font-weight:400;line-height:.9;letter-spacing:-.01em}
     <p class="fsub">Custom Cloud Belt</p>
   </div>
 </div>
-<div class="frame " data-frame="11">
+<div class="frame" data-frame="11">
   <div class="frame-img"><img src="assets/warhouse/equip-asstograss.jpg" alt="ATG" loading="lazy" decoding="async"></div>
+  
   <div class="frame-scrim"></div>
   <div class="cap">
     <span class="kick">War Machines · 09</span>
@@ -302,8 +320,9 @@ h1,h2,h3{font-weight:400;line-height:.9;letter-spacing:-.01em}
     <p class="fsub">Ass To Grass</p>
   </div>
 </div>
-<div class="frame " data-frame="12">
+<div class="frame" data-frame="12">
   <div class="frame-img"><img src="assets/warhouse/equip-jeepseat.jpg" alt="Jeep Seat" loading="lazy" decoding="async"></div>
+  
   <div class="frame-scrim"></div>
   <div class="cap">
     <span class="kick">War Machines · 10</span>
@@ -311,8 +330,9 @@ h1,h2,h3{font-weight:400;line-height:.9;letter-spacing:-.01em}
     <p class="fsub">Iso-lateral leg ext.</p>
   </div>
 </div>
-<div class="frame " data-frame="13">
+<div class="frame" data-frame="13">
   <div class="frame-img"><img src="assets/warhouse/equip-reloader.jpg" alt="Reloader" loading="lazy" decoding="async"></div>
+  
   <div class="frame-scrim"></div>
   <div class="cap">
     <span class="kick">War Machines · 11</span>
@@ -320,8 +340,9 @@ h1,h2,h3{font-weight:400;line-height:.9;letter-spacing:-.01em}
     <p class="fsub">Posterior chain</p>
   </div>
 </div>
-<div class="frame " data-frame="14">
+<div class="frame" data-frame="14">
   <div class="frame-img"><img src="assets/warhouse/equip-hollyroller.jpg" alt="Holly Roller" loading="lazy" decoding="async"></div>
+  
   <div class="frame-scrim"></div>
   <div class="cap">
     <span class="kick">War Machines · 12</span>
@@ -329,8 +350,9 @@ h1,h2,h3{font-weight:400;line-height:.9;letter-spacing:-.01em}
     <p class="fsub">Signature steel</p>
   </div>
 </div>
-<div class="frame " data-frame="15">
+<div class="frame" data-frame="15">
   <div class="frame-img"><img src="assets/warhouse/equip-lowrider.jpg" alt="Low Rider" loading="lazy" decoding="async"></div>
+  
   <div class="frame-scrim"></div>
   <div class="cap">
     <span class="kick">War Machines · 13</span>
@@ -338,8 +360,9 @@ h1,h2,h3{font-weight:400;line-height:.9;letter-spacing:-.01em}
     <p class="fsub">Ground &amp; pound</p>
   </div>
 </div>
-<div class="frame " data-frame="16">
+<div class="frame" data-frame="16">
   <div class="frame-img"><img src="assets/warhouse/equip-kickass.jpg" alt="Kick Ass" loading="lazy" decoding="async"></div>
+  
   <div class="frame-scrim"></div>
   <div class="cap">
     <span class="kick">War Machines · 14</span>
@@ -347,8 +370,9 @@ h1,h2,h3{font-weight:400;line-height:.9;letter-spacing:-.01em}
     <p class="fsub">No half reps</p>
   </div>
 </div>
-<div class="frame " data-frame="17">
+<div class="frame" data-frame="17">
   <div class="frame-img"><img src="assets/warhouse/equip-kickass2.jpg" alt="Kick Ass 2" loading="lazy" decoding="async"></div>
+  
   <div class="frame-scrim"></div>
   <div class="cap">
     <span class="kick">War Machines · 15</span>
@@ -356,8 +380,9 @@ h1,h2,h3{font-weight:400;line-height:.9;letter-spacing:-.01em}
     <p class="fsub">The sequel hits harder</p>
   </div>
 </div>
-<div class="frame " data-frame="18">
+<div class="frame" data-frame="18">
   <div class="frame-img"><img src="assets/warhouse/product-machine.jpg" alt="Fabricated" loading="lazy" decoding="async"></div>
+  
   <div class="frame-scrim"></div>
   <div class="cap">
     <span class="kick">Atom Steel</span>
@@ -365,8 +390,9 @@ h1,h2,h3{font-weight:400;line-height:.9;letter-spacing:-.01em}
     <p class="fsub">War steel, built by hand</p>
   </div>
 </div>
-<div class="frame " data-frame="19">
+<div class="frame" data-frame="19">
   <div class="frame-img"><img src="assets/warhouse/product-bench.jpg" alt="Precision" loading="lazy" decoding="async"></div>
+  
   <div class="frame-scrim"></div>
   <div class="cap">
     <span class="kick">Atom Steel</span>
@@ -374,8 +400,9 @@ h1,h2,h3{font-weight:400;line-height:.9;letter-spacing:-.01em}
     <p class="fsub">Every seam welded true</p>
   </div>
 </div>
-<div class="frame " data-frame="20">
+<div class="frame" data-frame="20">
   <div class="frame-img"><img src="assets/warhouse/detail-plates.jpg" alt="Plates" loading="lazy" decoding="async"></div>
+  
   <div class="frame-scrim"></div>
   <div class="cap">
     <span class="kick">Load It</span>
@@ -383,8 +410,9 @@ h1,h2,h3{font-weight:400;line-height:.9;letter-spacing:-.01em}
     <p class="fsub">Then send it</p>
   </div>
 </div>
-<div class="frame " data-frame="21">
+<div class="frame" data-frame="21">
   <div class="frame-img"><img src="assets/warhouse/detail-bands.jpg" alt="Bands &amp; Cables" loading="lazy" decoding="async"></div>
+  
   <div class="frame-scrim"></div>
   <div class="cap">
     <span class="kick">Tension</span>
@@ -392,8 +420,9 @@ h1,h2,h3{font-weight:400;line-height:.9;letter-spacing:-.01em}
     <p class="fsub">Accommodating resistance</p>
   </div>
 </div>
-<div class="frame " data-frame="22">
+<div class="frame" data-frame="22">
   <div class="frame-img"><img src="assets/warhouse/detail-stone.jpg" alt="Atlas Stones" loading="lazy" decoding="async"></div>
+  
   <div class="frame-scrim"></div>
   <div class="cap">
     <span class="kick">Old-School</span>
@@ -401,8 +430,9 @@ h1,h2,h3{font-weight:400;line-height:.9;letter-spacing:-.01em}
     <p class="fsub">Strong the hard way</p>
   </div>
 </div>
-<div class="frame " data-frame="23">
+<div class="frame" data-frame="23">
   <div class="frame-img"><img src="assets/warhouse/detail-dumbbells.jpg" alt="Dumbbells" loading="lazy" decoding="async"></div>
+  
   <div class="frame-scrim"></div>
   <div class="cap">
     <span class="kick">Iron</span>
@@ -410,8 +440,9 @@ h1,h2,h3{font-weight:400;line-height:.9;letter-spacing:-.01em}
     <p class="fsub">Racked &amp; ready</p>
   </div>
 </div>
-<div class="frame " data-frame="24">
+<div class="frame" data-frame="24">
   <div class="frame-img"><img src="assets/warhouse/zone-turf-wide.jpg" alt="The Turf" loading="lazy" decoding="async"></div>
+  
   <div class="frame-scrim"></div>
   <div class="cap">
     <span class="kick">The Floor</span>
@@ -419,8 +450,9 @@ h1,h2,h3{font-weight:400;line-height:.9;letter-spacing:-.01em}
     <p class="fsub">Sleds · prowlers · conditioning</p>
   </div>
 </div>
-<div class="frame " data-frame="25">
+<div class="frame" data-frame="25">
   <div class="frame-img"><img src="assets/warhouse/zone-turf-sled.jpg" alt="Push" loading="lazy" decoding="async"></div>
+  
   <div class="frame-scrim"></div>
   <div class="cap">
     <span class="kick">The Floor</span>
@@ -428,8 +460,9 @@ h1,h2,h3{font-weight:400;line-height:.9;letter-spacing:-.01em}
     <p class="fsub">Sled tracks</p>
   </div>
 </div>
-<div class="frame " data-frame="26">
+<div class="frame" data-frame="26">
   <div class="frame-img"><img src="assets/warhouse/zone-boxing.jpg" alt="The Pit" loading="lazy" decoding="async"></div>
+  
   <div class="frame-scrim"></div>
   <div class="cap">
     <span class="kick">The Floor</span>
@@ -437,8 +470,9 @@ h1,h2,h3{font-weight:400;line-height:.9;letter-spacing:-.01em}
     <p class="fsub">Bags · combat</p>
   </div>
 </div>
-<div class="frame " data-frame="27">
+<div class="frame" data-frame="27">
   <div class="frame-img"><img src="assets/warhouse/zone-boxing-2.jpg" alt="Strike" loading="lazy" decoding="async"></div>
+  
   <div class="frame-scrim"></div>
   <div class="cap">
     <span class="kick">The Floor</span>
@@ -446,8 +480,9 @@ h1,h2,h3{font-weight:400;line-height:.9;letter-spacing:-.01em}
     <p class="fsub">Functional corner</p>
   </div>
 </div>
-<div class="frame " data-frame="28">
+<div class="frame" data-frame="28">
   <div class="frame-img"><img src="assets/warhouse/zone-functional.jpg" alt="The Rig" loading="lazy" decoding="async"></div>
+  
   <div class="frame-scrim"></div>
   <div class="cap">
     <span class="kick">The Floor</span>
@@ -455,8 +490,9 @@ h1,h2,h3{font-weight:400;line-height:.9;letter-spacing:-.01em}
     <p class="fsub">Rope · rings · bodyweight</p>
   </div>
 </div>
-<div class="frame " data-frame="29">
+<div class="frame" data-frame="29">
   <div class="frame-img"><img src="assets/warhouse/zone-cardio.jpg" alt="Cardio Theater" loading="lazy" decoding="async"></div>
+  
   <div class="frame-scrim"></div>
   <div class="cap">
     <span class="kick">The Floor</span>
@@ -464,8 +500,9 @@ h1,h2,h3{font-weight:400;line-height:.9;letter-spacing:-.01em}
     <p class="fsub">Screens · treads · assault</p>
   </div>
 </div>
-<div class="frame " data-frame="30">
+<div class="frame" data-frame="30">
   <div class="frame-img"><img src="assets/warhouse/zone-cardio-2.jpg" alt="The Line" loading="lazy" decoding="async"></div>
+  
   <div class="frame-scrim"></div>
   <div class="cap">
     <span class="kick">The Floor</span>
@@ -473,8 +510,9 @@ h1,h2,h3{font-weight:400;line-height:.9;letter-spacing:-.01em}
     <p class="fsub">Endless engines</p>
   </div>
 </div>
-<div class="frame " data-frame="31">
+<div class="frame" data-frame="31">
   <div class="frame-img"><img src="assets/warhouse/zone-projector.jpg" alt="The Screen" loading="lazy" decoding="async"></div>
+  
   <div class="frame-scrim"></div>
   <div class="cap">
     <span class="kick">The Floor</span>
@@ -482,8 +520,9 @@ h1,h2,h3{font-weight:400;line-height:.9;letter-spacing:-.01em}
     <p class="fsub">Train to the film</p>
   </div>
 </div>
-<div class="frame " data-frame="32">
+<div class="frame" data-frame="32">
   <div class="frame-img"><img src="assets/warhouse/zone-theater.jpg" alt="Theater" loading="lazy" decoding="async"></div>
+  
   <div class="frame-scrim"></div>
   <div class="cap">
     <span class="kick">The Floor</span>
@@ -491,8 +530,9 @@ h1,h2,h3{font-weight:400;line-height:.9;letter-spacing:-.01em}
     <p class="fsub">Immersive cardio</p>
   </div>
 </div>
-<div class="frame " data-frame="33">
+<div class="frame" data-frame="33">
   <div class="frame-img"><img src="assets/warhouse/zone-theater-2.jpg" alt="Front Row" loading="lazy" decoding="async"></div>
+  
   <div class="frame-scrim"></div>
   <div class="cap">
     <span class="kick">The Floor</span>
@@ -500,8 +540,9 @@ h1,h2,h3{font-weight:400;line-height:.9;letter-spacing:-.01em}
     <p class="fsub">Every angle covered</p>
   </div>
 </div>
-<div class="frame " data-frame="34">
+<div class="frame" data-frame="34">
   <div class="frame-img"><img src="assets/warhouse/zone-studio.jpg" alt="The Studio" loading="lazy" decoding="async"></div>
+  
   <div class="frame-scrim"></div>
   <div class="cap">
     <span class="kick">The Floor</span>
@@ -509,8 +550,9 @@ h1,h2,h3{font-weight:400;line-height:.9;letter-spacing:-.01em}
     <p class="fsub">Classes · mobility · space</p>
   </div>
 </div>
-<div class="frame " data-frame="35">
+<div class="frame" data-frame="35">
   <div class="frame-img"><img src="assets/warhouse/zone-lounge.jpg" alt="The Lounge" loading="lazy" decoding="async"></div>
+  
   <div class="frame-scrim"></div>
   <div class="cap">
     <span class="kick">The Floor</span>
@@ -518,8 +560,9 @@ h1,h2,h3{font-weight:400;line-height:.9;letter-spacing:-.01em}
     <p class="fsub">Recover · refuel · regroup</p>
   </div>
 </div>
-<div class="frame " data-frame="36">
+<div class="frame" data-frame="36">
   <div class="frame-img"><img src="assets/warhouse/zone-sauna.jpg" alt="Reset" loading="lazy" decoding="async"></div>
+  
   <div class="frame-scrim"></div>
   <div class="cap">
     <span class="kick">Recovery</span>
@@ -527,8 +570,9 @@ h1,h2,h3{font-weight:400;line-height:.9;letter-spacing:-.01em}
     <p class="fsub">Sauna · cold · restore</p>
   </div>
 </div>
-<div class="frame " data-frame="37">
+<div class="frame" data-frame="37">
   <div class="frame-img"><img src="assets/warhouse/floor-flag.jpg" alt="The Main Floor" loading="lazy" decoding="async"></div>
+  
   <div class="frame-scrim"></div>
   <div class="cap">
     <span class="kick">The Floor</span>
@@ -536,8 +580,9 @@ h1,h2,h3{font-weight:400;line-height:.9;letter-spacing:-.01em}
     <p class="fsub">Iron · flag · everything</p>
   </div>
 </div>
-<div class="frame " data-frame="38">
+<div class="frame" data-frame="38">
   <div class="frame-img"><img src="assets/warhouse/floor-benches.jpg" alt="Press" loading="lazy" decoding="async"></div>
+  
   <div class="frame-scrim"></div>
   <div class="cap">
     <span class="kick">The Floor</span>
@@ -545,8 +590,9 @@ h1,h2,h3{font-weight:400;line-height:.9;letter-spacing:-.01em}
     <p class="fsub">Bench city</p>
   </div>
 </div>
-<div class="frame " data-frame="39">
+<div class="frame" data-frame="39">
   <div class="frame-img"><img src="assets/warhouse/floor-sled.jpg" alt="Drive" loading="lazy" decoding="async"></div>
+  
   <div class="frame-scrim"></div>
   <div class="cap">
     <span class="kick">The Floor</span>
@@ -554,8 +600,9 @@ h1,h2,h3{font-weight:400;line-height:.9;letter-spacing:-.01em}
     <p class="fsub">Low and heavy</p>
   </div>
 </div>
-<div class="frame " data-frame="40">
+<div class="frame" data-frame="40">
   <div class="frame-img"><img src="assets/warhouse/floor-green.jpg" alt="Under Lights" loading="lazy" decoding="async"></div>
+  
   <div class="frame-scrim"></div>
   <div class="cap">
     <span class="kick">The Floor</span>
@@ -563,8 +610,9 @@ h1,h2,h3{font-weight:400;line-height:.9;letter-spacing:-.01em}
     <p class="fsub">The green room</p>
   </div>
 </div>
-<div class="frame " data-frame="41">
+<div class="frame" data-frame="41">
   <div class="frame-img"><img src="assets/warhouse/floor-hall.jpg" alt="The Approach" loading="lazy" decoding="async"></div>
+  
   <div class="frame-scrim"></div>
   <div class="cap">
     <span class="kick">The Floor</span>
@@ -572,8 +620,9 @@ h1,h2,h3{font-weight:400;line-height:.9;letter-spacing:-.01em}
     <p class="fsub">Every hall leads to iron</p>
   </div>
 </div>
-<div class="frame " data-frame="42">
+<div class="frame" data-frame="42">
   <div class="frame-img"><img src="assets/warhouse/floor-hall-blue.jpg" alt="Deeper In" loading="lazy" decoding="async"></div>
+  
   <div class="frame-scrim"></div>
   <div class="cap">
     <span class="kick">The Floor</span>
@@ -581,8 +630,9 @@ h1,h2,h3{font-weight:400;line-height:.9;letter-spacing:-.01em}
     <p class="fsub">Keep walking</p>
   </div>
 </div>
-<div class="frame " data-frame="43">
+<div class="frame" data-frame="43">
   <div class="frame-img"><img src="assets/warhouse/zone-turf-red.jpg" alt="Red Light" loading="lazy" decoding="async"></div>
+  
   <div class="frame-scrim"></div>
   <div class="cap">
     <span class="kick">The Floor</span>
@@ -590,8 +640,9 @@ h1,h2,h3{font-weight:400;line-height:.9;letter-spacing:-.01em}
     <p class="fsub">War mode</p>
   </div>
 </div>
-<div class="frame " data-frame="44">
+<div class="frame" data-frame="44">
   <div class="frame-img"><img src="assets/warhouse/zone-turf-blue.jpg" alt="Blue Hour" loading="lazy" decoding="async"></div>
+  
   <div class="frame-scrim"></div>
   <div class="cap">
     <span class="kick">The Floor</span>
@@ -599,8 +650,9 @@ h1,h2,h3{font-weight:400;line-height:.9;letter-spacing:-.01em}
     <p class="fsub">Still training</p>
   </div>
 </div>
-<div class="frame " data-frame="45">
+<div class="frame" data-frame="45">
   <div class="frame-img"><img src="assets/warhouse/hero-rig.jpg" alt="Steel Cathedral" loading="lazy" decoding="async"></div>
+  
   <div class="frame-scrim"></div>
   <div class="cap">
     <span class="kick">The Floor</span>
@@ -610,6 +662,7 @@ h1,h2,h3{font-weight:400;line-height:.9;letter-spacing:-.01em}
 </div>
 <div class="frame coach" data-frame="46">
   <div class="frame-img"><img src="assets/warhouse/coach-1.jpg" alt="Strength &amp; Power" loading="lazy" decoding="async"></div>
+  
   <div class="frame-scrim"></div>
   <div class="cap coach">
     <span class="kick">The Coaches</span>
@@ -619,6 +672,7 @@ h1,h2,h3{font-weight:400;line-height:.9;letter-spacing:-.01em}
 </div>
 <div class="frame coach" data-frame="47">
   <div class="frame-img"><img src="assets/warhouse/coach-2.jpg" alt="Built Different" loading="lazy" decoding="async"></div>
+  
   <div class="frame-scrim"></div>
   <div class="cap coach">
     <span class="kick">The Coaches</span>
@@ -628,6 +682,7 @@ h1,h2,h3{font-weight:400;line-height:.9;letter-spacing:-.01em}
 </div>
 <div class="frame coach" data-frame="48">
   <div class="frame-img"><img src="assets/warhouse/coach-3.jpg" alt="All In, Every Set" loading="lazy" decoding="async"></div>
+  
   <div class="frame-scrim"></div>
   <div class="cap coach">
     <span class="kick">The Coaches</span>
@@ -637,6 +692,7 @@ h1,h2,h3{font-weight:400;line-height:.9;letter-spacing:-.01em}
 </div>
 <div class="frame coach" data-frame="49">
   <div class="frame-img"><img src="assets/warhouse/coach-4.jpg" alt="Relentless" loading="lazy" decoding="async"></div>
+  
   <div class="frame-scrim"></div>
   <div class="cap coach">
     <span class="kick">The Coaches</span>
@@ -646,6 +702,7 @@ h1,h2,h3{font-weight:400;line-height:.9;letter-spacing:-.01em}
 </div>
 <div class="frame coach" data-frame="50">
   <div class="frame-img"><img src="assets/warhouse/coach-5.jpg" alt="Unstoppable" loading="lazy" decoding="async"></div>
+  
   <div class="frame-scrim"></div>
   <div class="cap coach">
     <span class="kick">The Coaches</span>
@@ -653,8 +710,9 @@ h1,h2,h3{font-weight:400;line-height:.9;letter-spacing:-.01em}
     <p class="fsub">War House Coach</p>
   </div>
 </div>
-<div class="frame " data-frame="51">
+<div class="frame" data-frame="51">
   <div class="frame-img"><img src="assets/warhouse/action-coaching.jpg" alt="In The Trenches" loading="lazy" decoding="async"></div>
+  
   <div class="frame-scrim"></div>
   <div class="cap">
     <span class="kick">The Members</span>
@@ -662,8 +720,9 @@ h1,h2,h3{font-weight:400;line-height:.9;letter-spacing:-.01em}
     <p class="fsub">Coached, not babysat</p>
   </div>
 </div>
-<div class="frame " data-frame="52">
+<div class="frame" data-frame="52">
   <div class="frame-img"><img src="assets/warhouse/action-legmachine.jpg" alt="Put In Work" loading="lazy" decoding="async"></div>
+  
   <div class="frame-scrim"></div>
   <div class="cap">
     <span class="kick">The Members</span>
@@ -671,8 +730,9 @@ h1,h2,h3{font-weight:400;line-height:.9;letter-spacing:-.01em}
     <p class="fsub">Every rep counts</p>
   </div>
 </div>
-<div class="frame " data-frame="53">
+<div class="frame" data-frame="53">
   <div class="frame-img"><img src="assets/warhouse/atmos-turf-back.jpg" alt="Send It" loading="lazy" decoding="async"></div>
+  
   <div class="frame-scrim"></div>
   <div class="cap">
     <span class="kick">The Members</span>
@@ -682,6 +742,7 @@ h1,h2,h3{font-weight:400;line-height:.9;letter-spacing:-.01em}
 </div>
 <div class="frame big" data-frame="54">
   <div class="frame-img"><img src="assets/warhouse/community-group.jpg" alt="Earn Your Place" loading="lazy" decoding="async"></div>
+  
   <div class="frame-scrim"></div>
   <div class="cap big">
     <span class="kick">The Brotherhood</span>
@@ -689,8 +750,9 @@ h1,h2,h3{font-weight:400;line-height:.9;letter-spacing:-.01em}
     <p class="fsub">You don&#x27;t join — you enlist</p>
   </div>
 </div>
-<div class="frame " data-frame="55">
+<div class="frame" data-frame="55">
   <div class="frame-img"><img src="assets/warhouse/brand-tee.jpg" alt="Wear It" loading="lazy" decoding="async"></div>
+  
   <div class="frame-scrim"></div>
   <div class="cap">
     <span class="kick">The Colors</span>
@@ -698,8 +760,9 @@ h1,h2,h3{font-weight:400;line-height:.9;letter-spacing:-.01em}
     <p class="fsub">War House ATX</p>
   </div>
 </div>
-<div class="frame " data-frame="56">
+<div class="frame" data-frame="56">
   <div class="frame-img"><img src="assets/warhouse/detail-dumbbells-red.jpg" alt="Closing Set" loading="lazy" decoding="async"></div>
+  
   <div class="frame-scrim"></div>
   <div class="cap">
     <span class="kick">The Members</span>
@@ -709,6 +772,7 @@ h1,h2,h3{font-weight:400;line-height:.9;letter-spacing:-.01em}
 </div>
 <div class="frame title" data-frame="57">
   <div class="frame-img"><img src="assets/warhouse/hero-red.jpg" alt="Born To Send It" loading="lazy" decoding="async"></div>
+  
   <div class="frame-scrim"></div>
   <div class="cap title">
     <span class="kick">The Exit</span>
@@ -809,6 +873,24 @@ const REDUCE = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const intro=document.getElementById('intro');
 const frames=[...document.querySelectorAll('.frame')];
 const N=frames.length;
+
+/* HERO VIDEO — inject the real facility film only on the live domain.
+   The 'Inside Tour' Vimeo is privacy-locked to warhousegyms.com, so on any
+   other host (preview / staging) we keep the gym-photo hero rather than a
+   Vimeo error frame. Runs on all paths (works even without GSAP). */
+(function(){
+  var host=location.hostname||'';
+  var live=/(^|\.)warhousegyms\.com$/i.test(host);
+  var hv=document.getElementById('heroVideo');
+  if(live && hv){
+    var f=document.createElement('iframe');
+    f.src='https://player.vimeo.com/video/874861386?background=1&autoplay=1&loop=1&muted=1&autopause=0&dnt=1';
+    f.allow='autoplay; fullscreen; picture-in-picture';
+    f.title='Inside the WAR HOUSE';
+    hv.appendChild(f);
+    requestAnimationFrame(function(){hv.classList.add('on');});
+  }
+})();
 
 /* graceful degradation */
 if(typeof gsap==='undefined'){
