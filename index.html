@@ -8,627 +8,757 @@
 <meta property="og:title" content="WAR HOUSE GYMS — Born To Send It" />
 <meta property="og:description" content="Not a gym. A proving ground. War Machines by Atom Steel." />
 <meta property="og:image" content="assets/warhouse/hero-training.jpg" />
-<meta property="og:type" content="website" />
-<meta name="theme-color" content="#0a0a0b" />
+<meta name="theme-color" content="#08080a" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
 <link rel="preload" as="image" href="assets/warhouse/hero-training.jpg" />
 <style>
 :root{
-  --black:#08080a;
-  --ink:#0b0b0d;
-  --steel:#26272c;
-  --smoke:#8b8c92;
-  --ash:#c3c4c9;
-  --bone:#f2f1ec;
-  --red:#e11919;
-  --red-2:#ff2e2e;
-  --line:rgba(242,241,236,.12);
-  --maxw:1640px;
+  --black:#08080a; --ink:#0b0b0d; --steel:#26272c; --smoke:#8b8c92; --ash:#c3c4c9;
+  --bone:#f2f1ec; --red:#e11919; --line:rgba(242,241,236,.12); --maxw:1640px;
   --ease:cubic-bezier(.16,1,.3,1);
 }
 *{margin:0;padding:0;box-sizing:border-box}
-html{-webkit-text-size-adjust:100%}
 html,body{background:var(--black);color:var(--bone)}
-body{font-family:'Inter',system-ui,sans-serif;line-height:1.5;overflow-x:hidden;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body{font-family:'Inter',system-ui,sans-serif;line-height:1.5;overflow-x:hidden;-webkit-font-smoothing:antialiased}
 html.custom-cursor body{cursor:none}
 @media (hover:none){html.custom-cursor body{cursor:auto}}
 ::selection{background:var(--red);color:#fff}
-a{color:inherit;text-decoration:none}
-img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none} img{max-width:100%;display:block}
 h1,h2,h3{font-weight:400;line-height:.9;letter-spacing:-.01em}
-.display{font-family:'Anton',sans-serif;text-transform:uppercase}
-.cond{font-family:'Oswald',sans-serif;text-transform:uppercase}
 .mono{font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.28em;font-weight:500}
-.italic{font-style:italic;transform:skewX(-6deg);display:inline-block}
 
-/* overlays */
 .grain{position:fixed;inset:0;z-index:2000;pointer-events:none;opacity:.045;mix-blend-mode:overlay;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
-.vignette{position:fixed;inset:0;z-index:1990;pointer-events:none;box-shadow:inset 0 0 260px 70px rgba(0,0,0,.66)}
-
+.vignette{position:fixed;inset:0;z-index:1990;pointer-events:none;box-shadow:inset 0 0 260px 70px rgba(0,0,0,.62)}
 .cursor{position:fixed;top:0;left:0;width:8px;height:8px;border-radius:50%;background:var(--red);z-index:3000;pointer-events:none;transform:translate(-50%,-50%);mix-blend-mode:difference}
-.cursor-ring{position:fixed;top:0;left:0;width:40px;height:40px;border:1px solid rgba(242,241,236,.55);border-radius:50%;z-index:2999;pointer-events:none;transform:translate(-50%,-50%);transition:width .3s var(--ease),height .3s var(--ease),background .3s,border-color .3s}
-.cursor-ring.hover{width:66px;height:66px;background:rgba(225,25,25,.1);border-color:var(--red)}
+.cursor-ring{position:fixed;top:0;left:0;width:40px;height:40px;border:1px solid rgba(242,241,236,.5);border-radius:50%;z-index:2999;pointer-events:none;transform:translate(-50%,-50%);transition:width .3s var(--ease),height .3s var(--ease),border-color .3s}
+.cursor-ring.hover{width:64px;height:64px;border-color:var(--red)}
 @media (hover:none){.cursor,.cursor-ring{display:none}}
 
-/* ===== INTRO / OPENING ===== */
+/* INTRO */
 .intro{position:fixed;inset:0;z-index:4000;background:var(--black);display:flex;align-items:center;justify-content:center;overflow:hidden}
-.intro-bg{position:absolute;inset:0;background:url(assets/warhouse/hero-training.jpg) center/cover;filter:blur(26px) brightness(.32) saturate(.7);transform:scale(1.25);will-change:filter,transform}
-.intro-scrim{position:absolute;inset:0;background:radial-gradient(circle at 50% 45%,rgba(8,8,10,.35),rgba(8,8,10,.9) 75%)}
-.intro-inner{position:relative;z-index:2;text-align:center;width:min(90vw,760px)}
-.intro-logo{width:clamp(90px,14vw,150px);margin:0 auto;opacity:0;transform:translateY(14px) scale(.9)}
+.intro-bg{position:absolute;inset:0;background:url(assets/warhouse/hero-training.jpg) center/cover;filter:blur(24px) brightness(.32);transform:scale(1.25)}
+.intro-scrim{position:absolute;inset:0;background:radial-gradient(circle at 50% 45%,rgba(8,8,10,.35),rgba(8,8,10,.92) 75%)}
+.intro-in{position:relative;z-index:2;text-align:center;width:min(90vw,760px)}
+.intro-logo{width:clamp(88px,13vw,140px);margin:0 auto;opacity:0;transform:translateY(12px) scale(.92)}
 .intro-logo img{width:100%;filter:drop-shadow(0 8px 30px rgba(0,0,0,.6))}
-.intro-word{margin-top:1.6rem;font-family:'Anton',sans-serif;text-transform:uppercase;font-size:clamp(1.1rem,3.4vw,2rem);letter-spacing:.04em;color:var(--bone);overflow:hidden}
+.intro-word{margin-top:1.5rem;font-family:'Anton',sans-serif;text-transform:uppercase;font-size:clamp(1.05rem,3.2vw,1.9rem);letter-spacing:.05em;overflow:hidden}
 .intro-word span{display:inline-block;transform:translateY(110%)}
-.intro-word .accent{color:var(--red)}
-.intro-meta{margin-top:1.5rem;display:flex;justify-content:center;align-items:center;gap:1rem;opacity:0}
-.intro-meta .mono{font-size:.6rem;color:var(--smoke)}
+.intro-word .a{color:var(--red)}
+.intro-meta{margin-top:1.4rem;display:flex;justify-content:center;align-items:center;gap:1rem;opacity:0}
+.intro-meta .mono{font-size:.58rem;color:var(--smoke)}
 .intro-bar{width:120px;height:1px;background:var(--line);position:relative;overflow:hidden}
 .intro-bar i{position:absolute;inset:0;background:var(--red);transform-origin:left;transform:scaleX(0)}
-.intro-count{font-family:'Oswald',sans-serif;font-weight:600;color:var(--red);font-variant-numeric:tabular-nums;font-size:.7rem}
+.intro-count{font-family:'Oswald',sans-serif;font-weight:600;color:var(--red);font-variant-numeric:tabular-nums;font-size:.68rem}
 
-/* ===== NAV ===== */
-.nav{position:fixed;top:0;left:0;width:100%;z-index:1500;display:flex;align-items:center;justify-content:space-between;padding:1.4rem clamp(1.1rem,4vw,3rem);mix-blend-mode:difference;pointer-events:none}
+/* NAV */
+.nav{position:fixed;top:0;left:0;width:100%;z-index:1500;display:flex;align-items:center;justify-content:space-between;padding:1.3rem clamp(1.1rem,4vw,3rem);mix-blend-mode:difference;pointer-events:none}
 .nav>*{pointer-events:auto}
-.nav-logo{display:flex;align-items:center;gap:.6rem;font-family:'Anton',sans-serif;text-transform:uppercase;font-size:1.05rem;letter-spacing:.02em;color:#fff}
-.nav-logo img{width:26px;filter:invert(1)}
-.nav-links{display:flex;gap:2rem;align-items:center}
-.nav-links a{font-family:'Oswald',sans-serif;text-transform:uppercase;font-size:.7rem;letter-spacing:.2em;font-weight:500;color:#fff;position:relative}
+.nav-logo{display:flex;align-items:center;gap:.6rem;font-family:'Anton',sans-serif;text-transform:uppercase;font-size:1.02rem;letter-spacing:.02em;color:#fff}
+.nav-logo img{width:24px;filter:invert(1)}
+.nav-links{display:flex;gap:1.9rem;align-items:center}
+.nav-links a{font-family:'Oswald',sans-serif;text-transform:uppercase;font-size:.68rem;letter-spacing:.2em;font-weight:500;color:#fff;position:relative}
 .nav-links a::after{content:"";position:absolute;left:0;bottom:-4px;width:0;height:1px;background:var(--red);transition:width .4s var(--ease)}
 .nav-links a:hover::after{width:100%}
-.nav-cta{font-family:'Oswald',sans-serif;text-transform:uppercase;font-size:.7rem;letter-spacing:.18em;font-weight:600;border:1px solid #fff;padding:.55rem 1.1rem;color:#fff;transition:.4s var(--ease)}
+.nav-cta{font-family:'Oswald',sans-serif;text-transform:uppercase;font-size:.68rem;letter-spacing:.18em;font-weight:600;border:1px solid #fff;padding:.55rem 1.1rem;color:#fff;transition:.4s var(--ease)}
 .nav-cta:hover{background:#fff;color:#000}
 @media(max-width:900px){.nav-links{display:none}}
 
-/* ===== SHARED ===== */
-.wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 clamp(1.1rem,4vw,3rem)}
-.eyebrow{font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.32em;font-size:.66rem;font-weight:500;color:var(--red);display:inline-flex;align-items:center;gap:.7rem}
-.eyebrow::before{content:"";width:26px;height:1px;background:var(--red);display:inline-block}
-.rl{overflow:hidden;display:block}
-.rl>span{display:block;will-change:transform}
-/* editorial chapter marker */
-.chapter{display:flex;align-items:baseline;gap:1.2rem}
-.chapter .no{font-family:'Anton',sans-serif;font-size:clamp(1rem,1.4vw,1.3rem);color:var(--red);letter-spacing:0}
-.chapter .lbl{font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.34em;font-size:.64rem;font-weight:500;color:var(--smoke)}
-.chapter .ln{flex:1;height:1px;background:var(--line);transform-origin:left}
-/* oversized editorial statement (kinetic type on negative space) */
-.statement{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:clamp(4rem,12vw,10rem) 0;background:var(--black);position:relative;overflow:hidden}
-.statement .lead{font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.3em;font-size:.66rem;color:var(--red);font-weight:500;margin-bottom:clamp(2rem,5vw,3.5rem)}
-.statement h2{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:clamp(2.6rem,10.5vw,11rem);line-height:.9;letter-spacing:-.02em;color:var(--bone)}
-.statement h2 .g{color:transparent;-webkit-text-stroke:1.4px var(--steel)}
-.statement h2 .r{color:var(--red)}
-.statement .foot{margin-top:clamp(2.5rem,6vw,4.5rem);display:flex;justify-content:space-between;gap:2rem;flex-wrap:wrap;align-items:flex-end}
-.statement .foot p{max-width:40ch;color:var(--ash);font-size:.98rem;line-height:1.75}
-.statement .foot .mono{font-size:.6rem;color:var(--smoke)}
-.char{display:inline-block;will-change:transform}
-.statement h2 .word{overflow:hidden;display:inline-block;vertical-align:top;padding-bottom:.08em}
-.stage{position:relative;overflow:hidden}
-.media{position:absolute;inset:0;overflow:hidden}
-.media img{position:absolute;inset:-8% 0;width:100%;height:116%;object-fit:cover;will-change:transform}
-.scrim-b{position:absolute;inset:0;background:linear-gradient(0deg,rgba(8,8,10,.92) 2%,rgba(8,8,10,.25) 45%,rgba(8,8,10,.5))}
-.scrim-l{position:absolute;inset:0;background:linear-gradient(90deg,rgba(8,8,10,.82),transparent 60%)}
+/* ============ THE FILM (one continuous pinned camera) ============ */
+.film{position:relative;height:2436vh;background:var(--black)}
+.film-stage{position:sticky;top:0;height:100svh;overflow:hidden}
+.frame{position:absolute;inset:0;opacity:0;will-change:opacity}
+.frame-img{position:absolute;inset:0;overflow:hidden}
+.frame-img img{position:absolute;inset:-6% -6%;width:112%;height:112%;object-fit:cover;will-change:transform}
+.frame.coach .frame-img img{object-position:50% 22%}
+.frame-scrim{position:absolute;inset:0;background:linear-gradient(0deg,rgba(8,8,10,.9) 2%,rgba(8,8,10,.15) 42%,rgba(8,8,10,.55))}
+.frame.coach .frame-scrim{background:linear-gradient(90deg,rgba(8,8,10,.82),rgba(8,8,10,.15) 55%),linear-gradient(0deg,rgba(8,8,10,.8),transparent 45%)}
+.cap{position:absolute;left:clamp(1.1rem,5vw,4.5rem);bottom:clamp(3.6rem,10vw,7rem);z-index:3;max-width:min(90vw,1100px)}
+.cap .kick{display:block;font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.32em;font-size:clamp(.6rem,1vw,.72rem);font-weight:600;color:var(--red);margin-bottom:1rem;will-change:transform,opacity}
+.cap .ftitle{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:clamp(3rem,11vw,10rem);line-height:.86;letter-spacing:-.02em;color:var(--bone);will-change:transform}
+.cap .fsub{font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.14em;font-weight:500;font-size:clamp(.8rem,1.5vw,1.1rem);color:var(--ash);margin-top:1.1rem;will-change:transform,opacity}
+.cap.title .ftitle{font-size:clamp(4rem,17vw,17rem)}
+.cap.big .ftitle{font-size:clamp(2.6rem,8.4vw,8rem)}
+.cap.coach{bottom:auto;top:50%;transform:translateY(-50%)}
+.cap.coach .ftitle{font-size:clamp(2.6rem,7.5vw,7rem)}
+.cap .ln .word{display:inline-block;overflow:hidden}
 
-/* ===== HERO ===== */
-.hero{height:100svh;min-height:640px;display:flex;align-items:flex-end}
-.hero .media img{filter:contrast(1.05) saturate(1.02)}
-.hero-content{position:relative;z-index:3;width:100%;padding-bottom:clamp(3.4rem,8vw,6rem)}
-.hero-title{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:clamp(4.2rem,19vw,19rem);line-height:.82;letter-spacing:-.02em;color:var(--bone)}
-.hero-title .stroke{-webkit-text-stroke:1.4px var(--ash);color:transparent}
-.hero-row{display:flex;justify-content:space-between;align-items:flex-end;gap:2rem;margin-top:1.6rem;flex-wrap:wrap}
-.hero-tag{max-width:34ch}
-.hero-tag .mono{font-size:.64rem;color:var(--red);display:block;margin-bottom:.7rem}
-.hero-tag p{font-family:'Oswald',sans-serif;text-transform:uppercase;font-weight:500;font-size:clamp(1rem,2.3vw,1.5rem);line-height:1.08;color:var(--ash)}
-.btn-primary{display:inline-flex;align-items:center;gap:.9rem;font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.14em;font-weight:600;font-size:.82rem;padding:1.05rem 1.9rem;background:var(--red);color:#fff;border-radius:2px;transition:background .4s var(--ease);will-change:transform}
-.btn-primary svg{width:15px;height:15px}
-.btn-primary:hover{background:var(--bone);color:#000}
-.scroll-cue{position:absolute;right:clamp(1.1rem,4vw,3rem);bottom:clamp(5rem,10vw,8rem);z-index:4;display:flex;flex-direction:column;align-items:center;gap:.7rem}
-.scroll-cue .mono{writing-mode:vertical-rl;font-size:.56rem;color:var(--smoke);letter-spacing:.4em}
-.scroll-cue i{width:1px;height:50px;background:var(--line);position:relative;overflow:hidden}
-.scroll-cue i::after{content:"";position:absolute;inset:0;background:var(--red);animation:cue 2.2s var(--ease) infinite}
+/* scrubbing rail */
+.rail{position:fixed;right:clamp(1rem,2.2vw,2rem);top:50%;transform:translateY(-50%);z-index:1400;display:flex;flex-direction:column;gap:.9rem;mix-blend-mode:difference}
+.rail .tick{background:none;border:0;cursor:pointer;display:flex;align-items:center;justify-content:flex-end;gap:.6rem;color:#fff;font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.2em;font-size:.56rem;font-weight:500;opacity:.5;transition:opacity .3s}
+.rail .tick span{opacity:0;transform:translateX(6px);transition:.35s var(--ease)}
+.rail .tick::after{content:"";width:22px;height:1px;background:#fff;transition:width .35s var(--ease)}
+.rail .tick:hover{opacity:1} .rail .tick:hover span{opacity:1;transform:none}
+.rail .tick.on{opacity:1} .rail .tick.on::after{width:40px;background:var(--red)}
+@media(max-width:760px){.rail{display:none}}
+.film-progress{position:fixed;left:0;top:0;height:2px;width:0;background:var(--red);z-index:1600}
+.scroll-cue{position:fixed;left:50%;bottom:2rem;transform:translateX(-50%);z-index:1400;display:flex;flex-direction:column;align-items:center;gap:.5rem;mix-blend-mode:difference;transition:opacity .5s}
+.scroll-cue .mono{font-size:.54rem;color:#fff;letter-spacing:.34em}
+.scroll-cue i{width:1px;height:34px;background:rgba(255,255,255,.4);position:relative;overflow:hidden}
+.scroll-cue i::after{content:"";position:absolute;inset:0;background:#fff;animation:cue 2s var(--ease) infinite}
 @keyframes cue{0%{transform:translateY(-100%)}50%{transform:translateY(0)}100%{transform:translateY(100%)}}
-@media(max-width:900px){.scroll-cue{display:none}}
-.ticker{position:absolute;bottom:0;left:0;width:100%;z-index:5;border-top:1px solid var(--line);padding:.65rem 0;overflow:hidden;white-space:nowrap;background:rgba(8,8,10,.45);backdrop-filter:blur(4px)}
-.ticker .t{display:inline-block;will-change:transform}
-.ticker span{font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.22em;font-weight:500;font-size:.7rem;color:var(--smoke);padding:0 1.5rem}
-.ticker b{color:var(--red)}
 
-/* ===== THRESHOLD ===== */
-.threshold{height:100svh;min-height:600px;display:flex;align-items:center}
-.threshold .media img{filter:brightness(.7) contrast(1.05)}
-.threshold-in{position:relative;z-index:3;width:100%}
-.threshold h2{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:clamp(2rem,6.4vw,6rem);line-height:.98;max-width:20ch}
-.threshold h2 em{font-style:normal;color:var(--red)}
-.threshold .word{display:inline-block;opacity:.16;will-change:opacity}
-.threshold p{margin-top:2rem;max-width:46ch;color:var(--ash);font-size:1rem;line-height:1.75}
-
-/* ===== ZONES (tracking shot) ===== */
-.zones{position:relative;background:var(--ink)}
-.zones-intro{padding:clamp(5rem,11vw,9rem) 0 clamp(2rem,5vw,3.5rem)}
-.zones-intro h2{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:clamp(2.4rem,8vw,7rem);line-height:.85;letter-spacing:-.02em}
-.zones-intro .stroke{-webkit-text-stroke:1.4px var(--steel);color:transparent}
-.zones-intro p{max-width:36ch;color:var(--ash);font-size:.95rem;line-height:1.7;margin-top:1rem}
-.zpin{position:relative;height:100svh;overflow:hidden}
-.ztrack{position:absolute;top:0;left:0;height:100%;display:flex;align-items:center;will-change:transform;padding:0 clamp(1.1rem,4vw,3rem)}
-.zone{position:relative;height:78vh;min-height:520px;width:min(70vw,720px);margin-right:clamp(1.2rem,2.4vw,2.4rem);flex:none;overflow:hidden;border:1px solid var(--line)}
-.zone img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.12);will-change:transform;filter:brightness(.82)}
-.zone .cap{position:absolute;left:0;bottom:0;z-index:2;padding:clamp(1.4rem,3vw,2.4rem);width:100%;background:linear-gradient(0deg,rgba(8,8,10,.85),transparent)}
-.zone .cap .n{font-family:'Oswald',sans-serif;font-weight:600;font-size:.6rem;letter-spacing:.24em;color:var(--red);text-transform:uppercase}
-.zone .cap h3{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:clamp(1.6rem,3.4vw,2.6rem);line-height:.95;margin-top:.5rem}
-.zone .cap p{font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.06em;font-size:.7rem;color:var(--ash);margin-top:.5rem}
-.zone.wide{width:min(84vw,980px)}
-@media(max-width:900px){.zone{width:84vw;height:70vh}}
-.track-progress{position:absolute;left:clamp(1.1rem,4vw,3rem);bottom:clamp(1.3rem,3vw,2.2rem);z-index:6;display:flex;align-items:center;gap:1rem}
-.track-progress .bar{width:120px;height:2px;background:var(--line);position:relative}
-.track-progress .bar i{position:absolute;left:0;top:0;height:100%;width:0;background:var(--red)}
-.track-progress .mono{font-size:.56rem;color:var(--smoke)}
-
-/* ===== MACHINES ===== */
-.machines{position:relative;background:var(--black)}
-.machines-intro{padding:clamp(5rem,11vw,9rem) 0 clamp(2rem,5vw,3.5rem);text-align:center}
-.machines-intro h2{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:clamp(2.4rem,8vw,7rem);line-height:.85;letter-spacing:-.02em;margin-top:1rem}
-.machines-intro p{max-width:52ch;margin:1.2rem auto 0;color:var(--ash);font-size:.95rem;line-height:1.7}
-.machines-intro b{color:var(--red)}
-.mtrack{position:absolute;top:0;left:0;height:100%;display:flex;align-items:center;will-change:transform;padding:0 clamp(1.1rem,4vw,3rem)}
-.machine{position:relative;height:80vh;min-height:540px;width:min(64vw,620px);margin-right:clamp(1.2rem,2.4vw,2.4rem);flex:none;overflow:hidden;border:1px solid var(--line);background:#000}
-.machine img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.1);will-change:transform}
-.machine::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(8,8,10,.7),transparent 55%)}
-.machine .info{position:absolute;left:0;bottom:0;z-index:3;padding:clamp(1.4rem,3vw,2.4rem);width:100%;display:flex;justify-content:space-between;align-items:flex-end;gap:1rem}
-.machine .info .k{font-family:'Oswald',sans-serif;font-weight:600;font-size:.58rem;letter-spacing:.22em;color:var(--red);text-transform:uppercase}
-.machine .info .spec{font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.05em;font-size:.66rem;color:var(--ash);margin-top:.4rem}
-.machine .idx{font-family:'Oswald',sans-serif;font-weight:600;color:var(--bone);font-size:.8rem;letter-spacing:.14em;opacity:.7}
-.machine.signature{width:min(84vw,1000px)}
-.machine.end{border:none;background:none;width:min(60vw,420px);display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:clamp(1.4rem,3vw,2.4rem)}
-.machine.end::after{display:none}
-.machine.end h3{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:clamp(2rem,5vw,3.4rem);line-height:.9}
-.machine.end .arrow{margin-top:1.4rem;width:74px;height:74px;border-radius:50%;border:1px solid var(--red);display:flex;align-items:center;justify-content:center;color:var(--red)}
-@media(max-width:900px){.machine{width:82vw;height:70vh}}
-
-/* ===== COACHES ===== */
-.coaches{background:var(--ink)}
-.coaches-intro{padding:clamp(5rem,11vw,9rem) 0 clamp(1rem,3vw,2rem)}
-.coaches-intro h2{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:clamp(2.4rem,8vw,7rem);line-height:.85;letter-spacing:-.02em;margin-top:1rem}
-.coaches-intro .stroke{-webkit-text-stroke:1.4px var(--steel);color:transparent}
-.coach{position:relative;height:100svh;min-height:620px;display:flex;align-items:flex-end;overflow:hidden;border-top:1px solid var(--line)}
-.coach .media img{filter:brightness(.72) contrast(1.06)}
-.coach .beam{position:absolute;top:-20%;left:58%;width:46vw;height:150%;transform:translateX(-50%) rotate(6deg);background:linear-gradient(180deg,rgba(225,25,25,.16),transparent 62%);filter:blur(30px);opacity:0;pointer-events:none;z-index:1}
-.coach-in{position:relative;z-index:3;width:100%;padding-bottom:clamp(3rem,7vw,5.5rem);display:flex;justify-content:space-between;align-items:flex-end;gap:2rem;flex-wrap:wrap}
-.coach-name{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:clamp(3rem,11vw,10rem);line-height:.8;letter-spacing:-.02em}
-.coach-name .l2{-webkit-text-stroke:1.4px var(--red);color:transparent}
-.coach-role{font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.22em;font-size:.7rem;color:var(--red);font-weight:600;margin-bottom:1rem}
-.coach-meta{text-align:right;min-width:220px}
-.coach-meta .r{margin-bottom:1.1rem}
-.coach-meta .r .v{font-family:'Anton',sans-serif;font-size:clamp(1.4rem,2.6vw,2rem);line-height:1;color:var(--bone)}
-.coach-meta .r .k{font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.18em;font-size:.56rem;color:var(--smoke);margin-top:.3rem;font-weight:500}
-@media(max-width:760px){.coach-meta{text-align:left;min-width:0}}
-.roster{padding:clamp(4rem,9vw,7rem) 0;border-top:1px solid var(--line)}
-.roster-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,4rem)}
-.roster h4{font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.16em;font-size:.72rem;color:var(--red);font-weight:600;padding-bottom:1rem;border-bottom:1px solid var(--line);margin-bottom:1rem}
-.roster ul{list-style:none;display:flex;flex-direction:column;gap:.6rem}
-.roster li{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:clamp(1.3rem,3vw,2rem);line-height:1;color:var(--ash);transition:color .3s,transform .4s var(--ease)}
-.roster li:hover{color:var(--bone);transform:translateX(8px)}
-.roster li:hover span{color:var(--red)}
-@media(max-width:760px){.roster-grid{grid-template-columns:1fr;gap:2.4rem}}
-
-/* ===== COMMUNITY ===== */
-.community{position:relative;height:100svh;min-height:600px;display:flex;align-items:center;overflow:hidden}
-.community .media img{filter:brightness(.55) contrast(1.05)}
-.community-in{position:relative;z-index:3;width:100%;text-align:center}
-.community h2{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:clamp(2.2rem,7vw,6.5rem);line-height:.95;max-width:22ch;margin:0 auto}
-.community h2 em{font-style:normal;color:var(--red)}
-.community .marq{margin-top:clamp(2.4rem,6vw,4rem);overflow:hidden;white-space:nowrap;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:1.1rem 0}
-.community .marq .t{display:inline-block;will-change:transform}
-.community .marq span{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:clamp(1.4rem,3.6vw,2.6rem);color:transparent;-webkit-text-stroke:1px var(--steel);padding:0 1.3rem}
-.community .marq span.solid{-webkit-text-stroke:0;color:var(--red)}
-
-/* ===== GALLERY (dissolve journey) ===== */
-.gallery{position:relative;height:100svh;min-height:600px;overflow:hidden;background:#000}
-.gallery .slide{position:absolute;inset:0;opacity:0;will-change:opacity}
-.gallery .slide img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.12);will-change:transform}
-.gallery .slide::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(8,8,10,.7),transparent 60%)}
-.gallery-cap{position:absolute;left:clamp(1.1rem,4vw,3rem);bottom:clamp(2.4rem,6vw,4rem);z-index:5}
-.gallery-cap .mono{font-size:.6rem;color:var(--red)}
-.gallery-cap h2{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:clamp(2rem,6vw,5rem);line-height:.9;margin-top:.6rem}
-.gallery-count{position:absolute;right:clamp(1.1rem,4vw,3rem);bottom:clamp(2.4rem,6vw,4rem);z-index:5;font-family:'Oswald',sans-serif;font-weight:600;color:var(--bone);font-variant-numeric:tabular-nums;font-size:.8rem;opacity:.8}
-
-/* ===== MEMBERSHIP ===== */
-.mem{padding:clamp(6rem,13vw,12rem) 0;position:relative;overflow:hidden;background:var(--ink)}
-.mem-head{text-align:center;margin-bottom:clamp(3rem,6vw,5rem)}
-.mem-head h2{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:clamp(2.6rem,8vw,7rem);line-height:.85;letter-spacing:-.02em;margin-top:1rem}
-.mem-head p{color:var(--ash);max-width:50ch;margin:1.3rem auto 0;font-size:.95rem;line-height:1.7}
-/* editorial price index */
+/* ============ MEMBERSHIP (editorial index) ============ */
+.mem{padding:clamp(6rem,13vw,11rem) 0;position:relative;overflow:hidden;background:var(--ink)}
+.wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 clamp(1.1rem,4vw,3rem)}
+.chapter{display:flex;align-items:baseline;gap:1.1rem;margin-bottom:1.4rem}
+.chapter .no{font-family:'Anton',sans-serif;font-size:1.1rem;color:var(--red)}
+.chapter .lbl{font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.32em;font-size:.62rem;font-weight:500;color:var(--smoke)}
+.mem-head{text-align:center;margin-bottom:clamp(2.6rem,6vw,4.5rem)}
+.mem-head .chapter{justify-content:center}
+.mem-head h2{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:clamp(2.6rem,8vw,7rem);line-height:.85;letter-spacing:-.02em}
+.mem-head p{color:var(--ash);max-width:50ch;margin:1.2rem auto 0;font-size:.95rem;line-height:1.7}
 .pindex{max-width:1160px;margin:0 auto;border-top:1px solid var(--line)}
 .prow{position:relative;display:grid;grid-template-columns:minmax(180px,1fr) 2fr auto 40px;align-items:center;gap:2rem;padding:clamp(1.5rem,3.2vw,2.5rem) .4rem;border-bottom:1px solid var(--line);overflow:hidden;transition:padding .5s var(--ease)}
 .prow::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(225,25,25,.10),transparent 70%);transform:scaleX(0);transform-origin:left;transition:transform .6s var(--ease);z-index:-1}
-.prow:hover{padding-left:1.4rem}
-.prow:hover::before{transform:scaleX(1)}
+.prow:hover{padding-left:1.4rem} .prow:hover::before{transform:scaleX(1)}
 .prow .term{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:clamp(1.5rem,3.6vw,2.6rem);line-height:.95;color:var(--bone)}
 .prow .term em{font-style:normal;font-family:'Oswald',sans-serif;font-weight:600;font-size:.5em;letter-spacing:.16em;color:var(--red);vertical-align:middle;margin-left:.4em}
 .prow .det{font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.08em;font-size:.68rem;color:var(--smoke);line-height:1.5}
 .prow .amt{font-family:'Anton',sans-serif;font-size:clamp(1.6rem,3.6vw,2.8rem);line-height:1;color:var(--bone);white-space:nowrap;justify-self:end}
 .prow .amt small{font-family:'Oswald',sans-serif;font-weight:500;font-size:.34em;letter-spacing:.1em;color:var(--smoke);margin-left:.2em}
 .prow .go{justify-self:end;color:var(--smoke);font-size:1.1rem;transition:.4s var(--ease);transform:translateX(-6px);opacity:0}
-.prow:hover .go{transform:translateX(0);opacity:1;color:var(--red)}
+.prow:hover .go{transform:none;opacity:1;color:var(--red)}
 .prow.feature .term,.prow.feature .amt{color:var(--red)}
-@media(max-width:760px){
-  .prow{grid-template-columns:1fr auto;gap:.4rem 1rem;row-gap:.5rem}
-  .prow .det{grid-column:1 / -1;order:3}
-  .prow .go{display:none}
-}
+@media(max-width:760px){.prow{grid-template-columns:1fr auto;gap:.4rem 1rem}.prow .det{grid-column:1 / -1;order:3}.prow .go{display:none}}
 .mem-note{text-align:center;margin-top:2.4rem;font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.14em;font-size:.64rem;color:var(--smoke)}
 .mem-note b{color:var(--red)}
 
-/* ===== TERRITORIES / CONTACT ===== */
+/* ============ CONTACT ============ */
 .terr{position:relative;overflow:hidden;background:var(--black)}
-.terr .media img{filter:brightness(.4) contrast(1.04)}
-.terr-in{position:relative;z-index:3;padding:clamp(6rem,13vw,12rem) 0}
+.terr-media{position:absolute;inset:0}
+.terr-media img{width:100%;height:100%;object-fit:cover;filter:brightness(.34) contrast(1.04)}
+.terr-in{position:relative;z-index:3;padding:clamp(6rem,13vw,11rem) 0}
 .terr-head{text-align:center;margin-bottom:clamp(3rem,7vw,5rem)}
 .terr-head h2{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:clamp(3rem,12vw,11rem);line-height:.82;letter-spacing:-.02em;margin:1rem 0}
 .terr-head .stroke{-webkit-text-stroke:1.4px var(--steel);color:transparent}
 .terr-head p{color:var(--ash);max-width:40ch;margin:0 auto;font-size:1rem;line-height:1.7}
 .terr-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;max-width:1100px;margin:0 auto}
 .loc{border:1px solid var(--line);background:rgba(11,11,13,.5);backdrop-filter:blur(6px);padding:clamp(1.8rem,3.4vw,2.8rem);transition:.5s var(--ease)}
-.loc:hover{border-color:rgba(225,25,25,.4);background:rgba(11,11,13,.7)}
+.loc:hover{border-color:rgba(225,25,25,.4);background:rgba(11,11,13,.72)}
 .loc .city{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:clamp(1.8rem,4vw,2.8rem);line-height:.95}
-.loc .city small{display:block;font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.2em;font-size:.6rem;color:var(--red);margin-top:.5rem;font-weight:600}
+.loc .city small{display:block;font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.2em;font-size:.58rem;color:var(--red);margin-top:.5rem;font-weight:600}
 .loc .rows{margin-top:1.6rem;display:flex;flex-direction:column;gap:1rem}
 .loc .row{display:flex;justify-content:space-between;gap:1rem;border-bottom:1px solid var(--line);padding-bottom:1rem}
-.loc .row .k{font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.16em;font-size:.56rem;color:var(--smoke);font-weight:500}
-.loc .row .v{font-family:'Oswald',sans-serif;font-weight:500;font-size:.86rem;color:var(--ash);text-align:right}
+.loc .row .k{font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.16em;font-size:.55rem;color:var(--smoke);font-weight:500}
+.loc .row .v{font-family:'Oswald',sans-serif;font-weight:500;font-size:.85rem;color:var(--ash);text-align:right}
 .loc .row .v a:hover{color:var(--red)}
-.loc.soon{opacity:.55}
+.btn-primary{display:inline-flex;align-items:center;gap:.9rem;font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.14em;font-weight:600;font-size:.82rem;padding:1.05rem 2rem;background:var(--red);color:#fff;border-radius:2px;transition:background .4s var(--ease);will-change:transform}
+.btn-primary:hover{background:var(--bone);color:#000}
 .terr-cta{text-align:center;margin-top:clamp(3rem,6vw,4.5rem)}
 @media(max-width:760px){.terr-grid{grid-template-columns:1fr}}
-
-/* ===== FOOTER ===== */
-.footer{border-top:1px solid var(--line);padding:clamp(3rem,6vw,5rem) 0 2rem;position:relative;background:var(--black)}
+.footer{border-top:1px solid var(--line);padding:clamp(3rem,6vw,5rem) 0 2rem;background:var(--black)}
 .footer-big{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:clamp(3rem,19vw,16rem);line-height:.78;letter-spacing:-.02em;color:transparent;-webkit-text-stroke:1px var(--steel);text-align:center;user-select:none;overflow:hidden;margin-bottom:2rem}
 .footer-row{display:flex;justify-content:space-between;gap:1.4rem;flex-wrap:wrap;align-items:center;color:var(--smoke)}
-.footer-row .mono{font-size:.58rem}
-.footer-links{display:flex;gap:1.4rem;flex-wrap:wrap}
-.footer-links a{font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.14em;font-size:.62rem;color:var(--smoke);transition:.3s}
+.footer-row .mono{font-size:.56rem}
+.footer-links{display:flex;gap:1.3rem;flex-wrap:wrap}
+.footer-links a{font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.14em;font-size:.6rem;color:var(--smoke);transition:.3s}
 .footer-links a:hover{color:var(--red)}
 
 @media (prefers-reduced-motion:reduce){
   *{animation-duration:.001ms!important;transition-duration:.001ms!important}
   .intro{display:none}
-  .rl>span,.intro-word span{transform:none!important}
-  .char{transform:none!important}
-  .statement h2 .word{overflow:visible}
-  .zpin,.machines .zpin{height:auto}
-  .statement{min-height:0;padding:5rem 0}
-  .coach,.community,.gallery,.threshold,.hero{height:auto;min-height:0;padding:4rem 0}
-  .gallery .slide{position:relative;opacity:1}
-  .zone img,.machine img,.gallery .slide img,.media img{transform:none;position:relative;height:auto}
+  .film{height:auto} .film-stage{position:static;height:auto}
+  .frame{position:relative;opacity:1;height:100svh}
+  .frame-img img{transform:none}
+  .rail,.scroll-cue,.film-progress{display:none}
 }
 </style>
 </head>
 <body>
-
 <div class="grain"></div>
 <div class="vignette"></div>
-<div class="cursor"></div>
-<div class="cursor-ring"></div>
+<div class="cursor"></div><div class="cursor-ring"></div>
+<div class="film-progress" id="filmProgress"></div>
 
-<!-- ===== OPENING ===== -->
+<!-- OPENING -->
 <div class="intro" id="intro">
-  <div class="intro-bg" id="introBg"></div>
-  <div class="intro-scrim"></div>
-  <div class="intro-inner">
+  <div class="intro-bg"></div><div class="intro-scrim"></div>
+  <div class="intro-in">
     <div class="intro-logo" id="introLogo"><img src="assets/warhouse/logo-clean.png" alt="WAR HOUSE" /></div>
-    <div class="intro-word" id="introWord">
-      <span>W</span><span>E</span><span>L</span><span>C</span><span>O</span><span>M</span><span>E</span><span>&nbsp;</span><span>T</span><span>O</span><span>&nbsp;</span><span>T</span><span>H</span><span>E</span><span>&nbsp;</span><span class="accent">W</span><span class="accent">A</span><span class="accent">R</span><span class="accent">&nbsp;</span><span class="accent">H</span><span class="accent">O</span><span class="accent">U</span><span class="accent">S</span><span class="accent">E</span>
-    </div>
-    <div class="intro-meta" id="introMeta">
-      <span class="mono">Entering</span>
-      <span class="intro-bar"><i id="introBar"></i></span>
-      <span class="intro-count" id="introCount">00</span>
-    </div>
+    <div class="intro-word" id="introWord"><span>W</span><span>E</span><span>L</span><span>C</span><span>O</span><span>M</span><span>E</span><span>&nbsp;</span><span>T</span><span>O</span><span>&nbsp;</span><span>T</span><span>H</span><span>E</span><span>&nbsp;</span><span class="a">W</span><span class="a">A</span><span class="a">R</span><span class="a">&nbsp;</span><span class="a">H</span><span class="a">O</span><span class="a">U</span><span class="a">S</span><span class="a">E</span></div>
+    <div class="intro-meta" id="introMeta"><span class="mono">Entering</span><span class="intro-bar"><i id="introBar"></i></span><span class="intro-count" id="introCount">00</span></div>
   </div>
 </div>
 
-<!-- ===== NAV ===== -->
+<!-- NAV -->
 <nav class="nav">
   <a href="#top" class="nav-logo" data-cursor><img src="assets/warhouse/logo-clean.png" alt="" />WAR HOUSE</a>
   <div class="nav-links">
-    <a href="#floor" data-cursor>The Floor</a>
-    <a href="#machines" data-cursor>War Machines</a>
-    <a href="#coaches" data-cursor>Coaches</a>
+    <a href="#film" data-cursor>Walk In</a>
     <a href="#membership" data-cursor>Membership</a>
     <a href="#contact" data-cursor>Locations</a>
   </div>
   <a href="#membership" class="nav-cta" data-cursor>Become A Member</a>
 </nav>
 
+<nav class="rail" id="rail"><button class="tick" data-to="0"><span>Enter</span></button>
+<button class="tick" data-to="2"><span>Arsenal</span></button>
+<button class="tick" data-to="24"><span>The Floor</span></button>
+<button class="tick" data-to="46"><span>Coaches</span></button>
+<button class="tick" data-to="51"><span>Members</span></button>
+<button class="tick" data-to="57"><span>Exit</span></button></nav>
+<div class="scroll-cue" id="scrollCue"><span class="mono">Scroll To Walk In</span><i></i></div>
+
 <main id="top">
 
-<!-- ===== HERO / ENTRANCE ===== -->
-<section class="hero stage" id="hero">
-  <div class="media"><img src="assets/warhouse/hero-training.jpg" alt="Inside the WAR HOUSE training floor" data-parallax="12" /></div>
-  <div class="scrim-b"></div>
-  <div class="wrap hero-content">
-    <h1 class="hero-title">
-      <span class="rl"><span>WAR</span></span>
-      <span class="rl"><span class="stroke">HOUSE</span></span>
-    </h1>
-    <div class="hero-row">
-      <div class="hero-tag">
-        <span class="mono">San Diego · San Antonio</span>
-        <p>Because you were born to send it. Not a gym — a proving ground.</p>
-      </div>
-      <a href="#membership" class="btn-primary" data-cursor>
-        Become A Member
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-      </a>
-    </div>
+<!-- ONE CONTINUOUS FILM -->
+<section class="film" id="film">
+  <div class="film-stage" id="filmStage">
+<div class="frame title" data-frame="0">
+  <div class="frame-img"><img src="assets/warhouse/hero-training.jpg" alt="War House" loading="eager" decoding="async"></div>
+  <div class="frame-scrim"></div>
+  <div class="cap title">
+    
+    <h2 class="ftitle">War House</h2>
+    <p class="fsub">Because you were born to send it</p>
   </div>
-  <div class="scroll-cue"><span class="mono">Enter</span><i></i></div>
-  <div class="ticker">
-    <div class="t" id="heroTicker">
-      <span>Open 24/7 <b>·</b> Members Only</span><span>War Machines by <b>Atom Steel</b></span><span>Born To Send It</span><span>Membership Cap Enforced</span><span>Two Territories <b>·</b> One Standard</span>
-      <span>Open 24/7 <b>·</b> Members Only</span><span>War Machines by <b>Atom Steel</b></span><span>Born To Send It</span><span>Membership Cap Enforced</span><span>Two Territories <b>·</b> One Standard</span>
-    </div>
+</div>
+<div class="frame big" data-frame="1">
+  <div class="frame-img"><img src="assets/warhouse/atmos-fear.jpg" alt="Fear Doesn&#x27;t<br>Live Here" loading="eager" decoding="async"></div>
+  <div class="frame-scrim"></div>
+  <div class="cap big">
+    <span class="kick">The Doctrine</span>
+    <h2 class="ftitle">Fear Doesn&#x27;t<br>Live Here</h2>
+    <p class="fsub">Not a gym. A proving ground.</p>
+  </div>
+</div>
+<div class="frame " data-frame="2">
+  <div class="frame-img"><img src="assets/warhouse/machine-signature.jpg" alt="The Arsenal" loading="eager" decoding="async"></div>
+  <div class="frame-scrim"></div>
+  <div class="cap">
+    <span class="kick">War Machines</span>
+    <h2 class="ftitle">The Arsenal</h2>
+    <p class="fsub">Designed &amp; fabricated by Atom Steel</p>
+  </div>
+</div>
+<div class="frame " data-frame="3">
+  <div class="frame-img"><img src="assets/warhouse/equip-howitzer.jpg" alt="Howitzer" loading="lazy" decoding="async"></div>
+  <div class="frame-scrim"></div>
+  <div class="cap">
+    <span class="kick">War Machines · 01</span>
+    <h2 class="ftitle">Howitzer</h2>
+    <p class="fsub">Battle Hip Press</p>
+  </div>
+</div>
+<div class="frame " data-frame="4">
+  <div class="frame-img"><img src="assets/warhouse/equip-pendulum.jpg" alt="Pendulum" loading="lazy" decoding="async"></div>
+  <div class="frame-scrim"></div>
+  <div class="cap">
+    <span class="kick">War Machines · 02</span>
+    <h2 class="ftitle">Pendulum</h2>
+    <p class="fsub">War Machine</p>
+  </div>
+</div>
+<div class="frame " data-frame="5">
+  <div class="frame-img"><img src="assets/warhouse/equip-juggernaut.jpg" alt="Juggernaut" loading="lazy" decoding="async"></div>
+  <div class="frame-scrim"></div>
+  <div class="cap">
+    <span class="kick">War Machines · 03</span>
+    <h2 class="ftitle">Juggernaut</h2>
+    <p class="fsub">Total-body loading</p>
+  </div>
+</div>
+<div class="frame " data-frame="6">
+  <div class="frame-img"><img src="assets/warhouse/equip-jaeger.jpg" alt="Jaeger" loading="lazy" decoding="async"></div>
+  <div class="frame-scrim"></div>
+  <div class="cap">
+    <span class="kick">War Machines · 04</span>
+    <h2 class="ftitle">Jaeger</h2>
+    <p class="fsub">Heavy compound</p>
+  </div>
+</div>
+<div class="frame " data-frame="7">
+  <div class="frame-img"><img src="assets/warhouse/equip-tbar.jpg" alt="T-Bar" loading="lazy" decoding="async"></div>
+  <div class="frame-scrim"></div>
+  <div class="cap">
+    <span class="kick">War Machines · 05</span>
+    <h2 class="ftitle">T-Bar</h2>
+    <p class="fsub">Chest-supported row</p>
+  </div>
+</div>
+<div class="frame " data-frame="8">
+  <div class="frame-img"><img src="assets/warhouse/equip-mantis.jpg" alt="Mantis" loading="lazy" decoding="async"></div>
+  <div class="frame-scrim"></div>
+  <div class="cap">
+    <span class="kick">War Machines · 06</span>
+    <h2 class="ftitle">Mantis</h2>
+    <p class="fsub">Pulldown / Row combo</p>
+  </div>
+</div>
+<div class="frame " data-frame="9">
+  <div class="frame-img"><img src="assets/warhouse/equip-deltron.jpg" alt="Deltron" loading="lazy" decoding="async"></div>
+  <div class="frame-scrim"></div>
+  <div class="cap">
+    <span class="kick">War Machines · 07</span>
+    <h2 class="ftitle">Deltron</h2>
+    <p class="fsub">50 / 50 shoulders</p>
+  </div>
+</div>
+<div class="frame " data-frame="10">
+  <div class="frame-img"><img src="assets/warhouse/equip-beltsquat.jpg" alt="Belt Squat" loading="lazy" decoding="async"></div>
+  <div class="frame-scrim"></div>
+  <div class="cap">
+    <span class="kick">War Machines · 08</span>
+    <h2 class="ftitle">Belt Squat</h2>
+    <p class="fsub">Custom Cloud Belt</p>
+  </div>
+</div>
+<div class="frame " data-frame="11">
+  <div class="frame-img"><img src="assets/warhouse/equip-asstograss.jpg" alt="ATG" loading="lazy" decoding="async"></div>
+  <div class="frame-scrim"></div>
+  <div class="cap">
+    <span class="kick">War Machines · 09</span>
+    <h2 class="ftitle">ATG</h2>
+    <p class="fsub">Ass To Grass</p>
+  </div>
+</div>
+<div class="frame " data-frame="12">
+  <div class="frame-img"><img src="assets/warhouse/equip-jeepseat.jpg" alt="Jeep Seat" loading="lazy" decoding="async"></div>
+  <div class="frame-scrim"></div>
+  <div class="cap">
+    <span class="kick">War Machines · 10</span>
+    <h2 class="ftitle">Jeep Seat</h2>
+    <p class="fsub">Iso-lateral leg ext.</p>
+  </div>
+</div>
+<div class="frame " data-frame="13">
+  <div class="frame-img"><img src="assets/warhouse/equip-reloader.jpg" alt="Reloader" loading="lazy" decoding="async"></div>
+  <div class="frame-scrim"></div>
+  <div class="cap">
+    <span class="kick">War Machines · 11</span>
+    <h2 class="ftitle">Reloader</h2>
+    <p class="fsub">Posterior chain</p>
+  </div>
+</div>
+<div class="frame " data-frame="14">
+  <div class="frame-img"><img src="assets/warhouse/equip-hollyroller.jpg" alt="Holly Roller" loading="lazy" decoding="async"></div>
+  <div class="frame-scrim"></div>
+  <div class="cap">
+    <span class="kick">War Machines · 12</span>
+    <h2 class="ftitle">Holly Roller</h2>
+    <p class="fsub">Signature steel</p>
+  </div>
+</div>
+<div class="frame " data-frame="15">
+  <div class="frame-img"><img src="assets/warhouse/equip-lowrider.jpg" alt="Low Rider" loading="lazy" decoding="async"></div>
+  <div class="frame-scrim"></div>
+  <div class="cap">
+    <span class="kick">War Machines · 13</span>
+    <h2 class="ftitle">Low Rider</h2>
+    <p class="fsub">Ground &amp; pound</p>
+  </div>
+</div>
+<div class="frame " data-frame="16">
+  <div class="frame-img"><img src="assets/warhouse/equip-kickass.jpg" alt="Kick Ass" loading="lazy" decoding="async"></div>
+  <div class="frame-scrim"></div>
+  <div class="cap">
+    <span class="kick">War Machines · 14</span>
+    <h2 class="ftitle">Kick Ass</h2>
+    <p class="fsub">No half reps</p>
+  </div>
+</div>
+<div class="frame " data-frame="17">
+  <div class="frame-img"><img src="assets/warhouse/equip-kickass2.jpg" alt="Kick Ass 2" loading="lazy" decoding="async"></div>
+  <div class="frame-scrim"></div>
+  <div class="cap">
+    <span class="kick">War Machines · 15</span>
+    <h2 class="ftitle">Kick Ass 2</h2>
+    <p class="fsub">The sequel hits harder</p>
+  </div>
+</div>
+<div class="frame " data-frame="18">
+  <div class="frame-img"><img src="assets/warhouse/product-machine.jpg" alt="Fabricated" loading="lazy" decoding="async"></div>
+  <div class="frame-scrim"></div>
+  <div class="cap">
+    <span class="kick">Atom Steel</span>
+    <h2 class="ftitle">Fabricated</h2>
+    <p class="fsub">War steel, built by hand</p>
+  </div>
+</div>
+<div class="frame " data-frame="19">
+  <div class="frame-img"><img src="assets/warhouse/product-bench.jpg" alt="Precision" loading="lazy" decoding="async"></div>
+  <div class="frame-scrim"></div>
+  <div class="cap">
+    <span class="kick">Atom Steel</span>
+    <h2 class="ftitle">Precision</h2>
+    <p class="fsub">Every seam welded true</p>
+  </div>
+</div>
+<div class="frame " data-frame="20">
+  <div class="frame-img"><img src="assets/warhouse/detail-plates.jpg" alt="Plates" loading="lazy" decoding="async"></div>
+  <div class="frame-scrim"></div>
+  <div class="cap">
+    <span class="kick">Load It</span>
+    <h2 class="ftitle">Plates</h2>
+    <p class="fsub">Then send it</p>
+  </div>
+</div>
+<div class="frame " data-frame="21">
+  <div class="frame-img"><img src="assets/warhouse/detail-bands.jpg" alt="Bands &amp; Cables" loading="lazy" decoding="async"></div>
+  <div class="frame-scrim"></div>
+  <div class="cap">
+    <span class="kick">Tension</span>
+    <h2 class="ftitle">Bands &amp; Cables</h2>
+    <p class="fsub">Accommodating resistance</p>
+  </div>
+</div>
+<div class="frame " data-frame="22">
+  <div class="frame-img"><img src="assets/warhouse/detail-stone.jpg" alt="Atlas Stones" loading="lazy" decoding="async"></div>
+  <div class="frame-scrim"></div>
+  <div class="cap">
+    <span class="kick">Old-School</span>
+    <h2 class="ftitle">Atlas Stones</h2>
+    <p class="fsub">Strong the hard way</p>
+  </div>
+</div>
+<div class="frame " data-frame="23">
+  <div class="frame-img"><img src="assets/warhouse/detail-dumbbells.jpg" alt="Dumbbells" loading="lazy" decoding="async"></div>
+  <div class="frame-scrim"></div>
+  <div class="cap">
+    <span class="kick">Iron</span>
+    <h2 class="ftitle">Dumbbells</h2>
+    <p class="fsub">Racked &amp; ready</p>
+  </div>
+</div>
+<div class="frame " data-frame="24">
+  <div class="frame-img"><img src="assets/warhouse/zone-turf-wide.jpg" alt="The Turf" loading="lazy" decoding="async"></div>
+  <div class="frame-scrim"></div>
+  <div class="cap">
+    <span class="kick">The Floor</span>
+    <h2 class="ftitle">The Turf</h2>
+    <p class="fsub">Sleds · prowlers · conditioning</p>
+  </div>
+</div>
+<div class="frame " data-frame="25">
+  <div class="frame-img"><img src="assets/warhouse/zone-turf-sled.jpg" alt="Push" loading="lazy" decoding="async"></div>
+  <div class="frame-scrim"></div>
+  <div class="cap">
+    <span class="kick">The Floor</span>
+    <h2 class="ftitle">Push</h2>
+    <p class="fsub">Sled tracks</p>
+  </div>
+</div>
+<div class="frame " data-frame="26">
+  <div class="frame-img"><img src="assets/warhouse/zone-boxing.jpg" alt="The Pit" loading="lazy" decoding="async"></div>
+  <div class="frame-scrim"></div>
+  <div class="cap">
+    <span class="kick">The Floor</span>
+    <h2 class="ftitle">The Pit</h2>
+    <p class="fsub">Bags · combat</p>
+  </div>
+</div>
+<div class="frame " data-frame="27">
+  <div class="frame-img"><img src="assets/warhouse/zone-boxing-2.jpg" alt="Strike" loading="lazy" decoding="async"></div>
+  <div class="frame-scrim"></div>
+  <div class="cap">
+    <span class="kick">The Floor</span>
+    <h2 class="ftitle">Strike</h2>
+    <p class="fsub">Functional corner</p>
+  </div>
+</div>
+<div class="frame " data-frame="28">
+  <div class="frame-img"><img src="assets/warhouse/zone-functional.jpg" alt="The Rig" loading="lazy" decoding="async"></div>
+  <div class="frame-scrim"></div>
+  <div class="cap">
+    <span class="kick">The Floor</span>
+    <h2 class="ftitle">The Rig</h2>
+    <p class="fsub">Rope · rings · bodyweight</p>
+  </div>
+</div>
+<div class="frame " data-frame="29">
+  <div class="frame-img"><img src="assets/warhouse/zone-cardio.jpg" alt="Cardio Theater" loading="lazy" decoding="async"></div>
+  <div class="frame-scrim"></div>
+  <div class="cap">
+    <span class="kick">The Floor</span>
+    <h2 class="ftitle">Cardio Theater</h2>
+    <p class="fsub">Screens · treads · assault</p>
+  </div>
+</div>
+<div class="frame " data-frame="30">
+  <div class="frame-img"><img src="assets/warhouse/zone-cardio-2.jpg" alt="The Line" loading="lazy" decoding="async"></div>
+  <div class="frame-scrim"></div>
+  <div class="cap">
+    <span class="kick">The Floor</span>
+    <h2 class="ftitle">The Line</h2>
+    <p class="fsub">Endless engines</p>
+  </div>
+</div>
+<div class="frame " data-frame="31">
+  <div class="frame-img"><img src="assets/warhouse/zone-projector.jpg" alt="The Screen" loading="lazy" decoding="async"></div>
+  <div class="frame-scrim"></div>
+  <div class="cap">
+    <span class="kick">The Floor</span>
+    <h2 class="ftitle">The Screen</h2>
+    <p class="fsub">Train to the film</p>
+  </div>
+</div>
+<div class="frame " data-frame="32">
+  <div class="frame-img"><img src="assets/warhouse/zone-theater.jpg" alt="Theater" loading="lazy" decoding="async"></div>
+  <div class="frame-scrim"></div>
+  <div class="cap">
+    <span class="kick">The Floor</span>
+    <h2 class="ftitle">Theater</h2>
+    <p class="fsub">Immersive cardio</p>
+  </div>
+</div>
+<div class="frame " data-frame="33">
+  <div class="frame-img"><img src="assets/warhouse/zone-theater-2.jpg" alt="Front Row" loading="lazy" decoding="async"></div>
+  <div class="frame-scrim"></div>
+  <div class="cap">
+    <span class="kick">The Floor</span>
+    <h2 class="ftitle">Front Row</h2>
+    <p class="fsub">Every angle covered</p>
+  </div>
+</div>
+<div class="frame " data-frame="34">
+  <div class="frame-img"><img src="assets/warhouse/zone-studio.jpg" alt="The Studio" loading="lazy" decoding="async"></div>
+  <div class="frame-scrim"></div>
+  <div class="cap">
+    <span class="kick">The Floor</span>
+    <h2 class="ftitle">The Studio</h2>
+    <p class="fsub">Classes · mobility · space</p>
+  </div>
+</div>
+<div class="frame " data-frame="35">
+  <div class="frame-img"><img src="assets/warhouse/zone-lounge.jpg" alt="The Lounge" loading="lazy" decoding="async"></div>
+  <div class="frame-scrim"></div>
+  <div class="cap">
+    <span class="kick">The Floor</span>
+    <h2 class="ftitle">The Lounge</h2>
+    <p class="fsub">Recover · refuel · regroup</p>
+  </div>
+</div>
+<div class="frame " data-frame="36">
+  <div class="frame-img"><img src="assets/warhouse/zone-sauna.jpg" alt="Reset" loading="lazy" decoding="async"></div>
+  <div class="frame-scrim"></div>
+  <div class="cap">
+    <span class="kick">Recovery</span>
+    <h2 class="ftitle">Reset</h2>
+    <p class="fsub">Sauna · cold · restore</p>
+  </div>
+</div>
+<div class="frame " data-frame="37">
+  <div class="frame-img"><img src="assets/warhouse/floor-flag.jpg" alt="The Main Floor" loading="lazy" decoding="async"></div>
+  <div class="frame-scrim"></div>
+  <div class="cap">
+    <span class="kick">The Floor</span>
+    <h2 class="ftitle">The Main Floor</h2>
+    <p class="fsub">Iron · flag · everything</p>
+  </div>
+</div>
+<div class="frame " data-frame="38">
+  <div class="frame-img"><img src="assets/warhouse/floor-benches.jpg" alt="Press" loading="lazy" decoding="async"></div>
+  <div class="frame-scrim"></div>
+  <div class="cap">
+    <span class="kick">The Floor</span>
+    <h2 class="ftitle">Press</h2>
+    <p class="fsub">Bench city</p>
+  </div>
+</div>
+<div class="frame " data-frame="39">
+  <div class="frame-img"><img src="assets/warhouse/floor-sled.jpg" alt="Drive" loading="lazy" decoding="async"></div>
+  <div class="frame-scrim"></div>
+  <div class="cap">
+    <span class="kick">The Floor</span>
+    <h2 class="ftitle">Drive</h2>
+    <p class="fsub">Low and heavy</p>
+  </div>
+</div>
+<div class="frame " data-frame="40">
+  <div class="frame-img"><img src="assets/warhouse/floor-green.jpg" alt="Under Lights" loading="lazy" decoding="async"></div>
+  <div class="frame-scrim"></div>
+  <div class="cap">
+    <span class="kick">The Floor</span>
+    <h2 class="ftitle">Under Lights</h2>
+    <p class="fsub">The green room</p>
+  </div>
+</div>
+<div class="frame " data-frame="41">
+  <div class="frame-img"><img src="assets/warhouse/floor-hall.jpg" alt="The Approach" loading="lazy" decoding="async"></div>
+  <div class="frame-scrim"></div>
+  <div class="cap">
+    <span class="kick">The Floor</span>
+    <h2 class="ftitle">The Approach</h2>
+    <p class="fsub">Every hall leads to iron</p>
+  </div>
+</div>
+<div class="frame " data-frame="42">
+  <div class="frame-img"><img src="assets/warhouse/floor-hall-blue.jpg" alt="Deeper In" loading="lazy" decoding="async"></div>
+  <div class="frame-scrim"></div>
+  <div class="cap">
+    <span class="kick">The Floor</span>
+    <h2 class="ftitle">Deeper In</h2>
+    <p class="fsub">Keep walking</p>
+  </div>
+</div>
+<div class="frame " data-frame="43">
+  <div class="frame-img"><img src="assets/warhouse/zone-turf-red.jpg" alt="Red Light" loading="lazy" decoding="async"></div>
+  <div class="frame-scrim"></div>
+  <div class="cap">
+    <span class="kick">The Floor</span>
+    <h2 class="ftitle">Red Light</h2>
+    <p class="fsub">War mode</p>
+  </div>
+</div>
+<div class="frame " data-frame="44">
+  <div class="frame-img"><img src="assets/warhouse/zone-turf-blue.jpg" alt="Blue Hour" loading="lazy" decoding="async"></div>
+  <div class="frame-scrim"></div>
+  <div class="cap">
+    <span class="kick">The Floor</span>
+    <h2 class="ftitle">Blue Hour</h2>
+    <p class="fsub">Still training</p>
+  </div>
+</div>
+<div class="frame " data-frame="45">
+  <div class="frame-img"><img src="assets/warhouse/hero-rig.jpg" alt="Steel Cathedral" loading="lazy" decoding="async"></div>
+  <div class="frame-scrim"></div>
+  <div class="cap">
+    <span class="kick">The Floor</span>
+    <h2 class="ftitle">Steel Cathedral</h2>
+    <p class="fsub">Look up</p>
+  </div>
+</div>
+<div class="frame coach" data-frame="46">
+  <div class="frame-img"><img src="assets/warhouse/coach-1.jpg" alt="Strength &amp; Power" loading="lazy" decoding="async"></div>
+  <div class="frame-scrim"></div>
+  <div class="cap coach">
+    <span class="kick">The Coaches</span>
+    <h2 class="ftitle">Strength &amp; Power</h2>
+    <p class="fsub">War House Coach</p>
+  </div>
+</div>
+<div class="frame coach" data-frame="47">
+  <div class="frame-img"><img src="assets/warhouse/coach-2.jpg" alt="Built Different" loading="lazy" decoding="async"></div>
+  <div class="frame-scrim"></div>
+  <div class="cap coach">
+    <span class="kick">The Coaches</span>
+    <h2 class="ftitle">Built Different</h2>
+    <p class="fsub">War House Coach</p>
+  </div>
+</div>
+<div class="frame coach" data-frame="48">
+  <div class="frame-img"><img src="assets/warhouse/coach-3.jpg" alt="All In, Every Set" loading="lazy" decoding="async"></div>
+  <div class="frame-scrim"></div>
+  <div class="cap coach">
+    <span class="kick">The Coaches</span>
+    <h2 class="ftitle">All In, Every Set</h2>
+    <p class="fsub">War House Coach</p>
+  </div>
+</div>
+<div class="frame coach" data-frame="49">
+  <div class="frame-img"><img src="assets/warhouse/coach-4.jpg" alt="Relentless" loading="lazy" decoding="async"></div>
+  <div class="frame-scrim"></div>
+  <div class="cap coach">
+    <span class="kick">The Coaches</span>
+    <h2 class="ftitle">Relentless</h2>
+    <p class="fsub">War House Coach</p>
+  </div>
+</div>
+<div class="frame coach" data-frame="50">
+  <div class="frame-img"><img src="assets/warhouse/coach-5.jpg" alt="Unstoppable" loading="lazy" decoding="async"></div>
+  <div class="frame-scrim"></div>
+  <div class="cap coach">
+    <span class="kick">The Coaches</span>
+    <h2 class="ftitle">Unstoppable</h2>
+    <p class="fsub">War House Coach</p>
+  </div>
+</div>
+<div class="frame " data-frame="51">
+  <div class="frame-img"><img src="assets/warhouse/action-coaching.jpg" alt="In The Trenches" loading="lazy" decoding="async"></div>
+  <div class="frame-scrim"></div>
+  <div class="cap">
+    <span class="kick">The Members</span>
+    <h2 class="ftitle">In The Trenches</h2>
+    <p class="fsub">Coached, not babysat</p>
+  </div>
+</div>
+<div class="frame " data-frame="52">
+  <div class="frame-img"><img src="assets/warhouse/action-legmachine.jpg" alt="Put In Work" loading="lazy" decoding="async"></div>
+  <div class="frame-scrim"></div>
+  <div class="cap">
+    <span class="kick">The Members</span>
+    <h2 class="ftitle">Put In Work</h2>
+    <p class="fsub">Every rep counts</p>
+  </div>
+</div>
+<div class="frame " data-frame="53">
+  <div class="frame-img"><img src="assets/warhouse/atmos-turf-back.jpg" alt="Send It" loading="lazy" decoding="async"></div>
+  <div class="frame-scrim"></div>
+  <div class="cap">
+    <span class="kick">The Members</span>
+    <h2 class="ftitle">Send It</h2>
+    <p class="fsub">Every single day</p>
+  </div>
+</div>
+<div class="frame big" data-frame="54">
+  <div class="frame-img"><img src="assets/warhouse/community-group.jpg" alt="Earn Your Place" loading="lazy" decoding="async"></div>
+  <div class="frame-scrim"></div>
+  <div class="cap big">
+    <span class="kick">The Brotherhood</span>
+    <h2 class="ftitle">Earn Your Place</h2>
+    <p class="fsub">You don&#x27;t join — you enlist</p>
+  </div>
+</div>
+<div class="frame " data-frame="55">
+  <div class="frame-img"><img src="assets/warhouse/brand-tee.jpg" alt="Wear It" loading="lazy" decoding="async"></div>
+  <div class="frame-scrim"></div>
+  <div class="cap">
+    <span class="kick">The Colors</span>
+    <h2 class="ftitle">Wear It</h2>
+    <p class="fsub">War House ATX</p>
+  </div>
+</div>
+<div class="frame " data-frame="56">
+  <div class="frame-img"><img src="assets/warhouse/detail-dumbbells-red.jpg" alt="Closing Set" loading="lazy" decoding="async"></div>
+  <div class="frame-scrim"></div>
+  <div class="cap">
+    <span class="kick">The Members</span>
+    <h2 class="ftitle">Closing Set</h2>
+    <p class="fsub">Leave nothing</p>
+  </div>
+</div>
+<div class="frame title" data-frame="57">
+  <div class="frame-img"><img src="assets/warhouse/hero-red.jpg" alt="Born To Send It" loading="lazy" decoding="async"></div>
+  <div class="frame-scrim"></div>
+  <div class="cap title">
+    <span class="kick">The Exit</span>
+    <h2 class="ftitle">Born To Send It</h2>
+    <p class="fsub">This was War House</p>
+  </div>
+</div>
   </div>
 </section>
 
-<!-- ===== THRESHOLD ===== -->
-<section class="threshold stage" id="threshold">
-  <div class="media"><img src="assets/warhouse/atmos-fear.jpg" alt="Fear doesn't live here" data-parallax="16" /></div>
-  <div class="scrim-l"></div>
-  <div class="wrap threshold-in">
-    <span class="eyebrow" style="margin-bottom:1.6rem">Inside The War House</span>
-    <h2 id="thresholdText">Fear doesn't live here. This is where you find out <em>what you're made of</em>.</h2>
-    <p>Warehouse ceilings, red steel and the American flag. Every plate you touch was chosen to break plateaus — not bodies. Walk in ordinary. Walk out dangerous.</p>
-  </div>
-</section>
-
-<!-- ===== STATEMENT (editorial kinetic type) ===== -->
-<section class="statement" id="doctrine">
-  <div class="wrap">
-    <div class="chapter" style="margin-bottom:clamp(2.4rem,6vw,4rem)"><span class="no">01</span><span class="lbl">The Doctrine</span><span class="ln"></span></div>
-    <div class="lead">Every plate has a purpose</div>
-    <h2 id="stmt">We will never let the <span class="r">War House</span> <span class="g">become</span> a circus.</h2>
-    <div class="foot">
-      <p>Individual memberships. A hard cap on the door. No fluff, no fees, no contracts — only the people who showed up to work. That is the promise, and we have never broken it.</p>
-      <span class="mono">No Circus · No Exceptions</span>
-    </div>
-  </div>
-</section>
-
-<!-- ===== THE FLOOR / ZONES ===== -->
-<section class="zones" id="floor">
-  <div class="wrap zones-intro">
-    <div class="chapter" style="margin-bottom:2rem"><span class="no">02</span><span class="lbl">The Walkthrough</span><span class="ln"></span></div>
-    <h2>WALK THE<br><span class="stroke">FLOOR</span></h2>
-    <p>Keep moving. Every zone is built for a different kind of war — scroll to track through the house.</p>
-  </div>
-  <div class="zpin" id="zonePin">
-    <div class="ztrack" id="ztrack">
-      <article class="zone wide" data-cursor><img src="assets/warhouse/zone-turf-wide.jpg" alt="Turf field" data-zimg><div class="cap"><div class="n">Zone 01</div><h3>The Turf</h3><p>Sleds · Prowlers · Conditioning</p></div></article>
-      <article class="zone" data-cursor><img src="assets/warhouse/zone-boxing.jpg" alt="Boxing and functional area" data-zimg><div class="cap"><div class="n">Zone 02</div><h3>The Pit</h3><p>Bags · Functional · Combat</p></div></article>
-      <article class="zone" data-cursor><img src="assets/warhouse/zone-functional.jpg" alt="Functional rig" data-zimg><div class="cap"><div class="n">Zone 03</div><h3>The Rig</h3><p>Rope · Rings · Bodyweight</p></div></article>
-      <article class="zone wide" data-cursor><img src="assets/warhouse/zone-cardio.jpg" alt="Cardio theater" data-zimg><div class="cap"><div class="n">Zone 04</div><h3>Cardio Theater</h3><p>Screens · Treads · Assault</p></div></article>
-      <article class="zone" data-cursor><img src="assets/warhouse/zone-studio.jpg" alt="Studio room" data-zimg><div class="cap"><div class="n">Zone 05</div><h3>The Studio</h3><p>Classes · Mobility · Space</p></div></article>
-      <article class="zone" data-cursor><img src="assets/warhouse/zone-lounge.jpg" alt="Members lounge" data-zimg><div class="cap"><div class="n">Zone 06</div><h3>The Lounge</h3><p>Recover · Refuel · Regroup</p></div></article>
-      <article class="zone" data-cursor><img src="assets/warhouse/zone-sauna.jpg" alt="Sauna recovery" data-zimg><div class="cap"><div class="n">Zone 07</div><h3>Recovery</h3><p>Sauna · Cold · Reset</p></div></article>
-      <article class="zone wide" data-cursor><img src="assets/warhouse/floor-flag.jpg" alt="Main floor with flag" data-zimg><div class="cap"><div class="n">Zone 08</div><h3>The Main Floor</h3><p>Iron · Flag · Everything</p></div></article>
-    </div>
-    <div class="track-progress"><span class="bar"><i id="zoneProg"></i></span><span class="mono">Tracking Shot</span></div>
-  </div>
-</section>
-
-<!-- ===== WAR MACHINES ===== -->
-<section class="machines" id="machines">
-  <div class="wrap machines-intro">
-    <div class="chapter" style="justify-content:center;margin-bottom:1.4rem"><span class="no">03</span><span class="lbl">The Arsenal</span></div>
-    <h2>THE WAR MACHINES</h2>
-    <p>Home to the one and only War Machines — <b>designed and fabricated by Atom Steel</b>. Dolly past the arsenal.</p>
-  </div>
-  <div class="zpin" id="machinePin">
-    <div class="mtrack" id="mtrack">
-      <article class="machine signature" data-cursor><img src="assets/warhouse/machine-signature.jpg" alt="The signature WAR HOUSE machine by Atom Steel" data-mimg><div class="info"><div><div class="k">Atom Steel · Original</div><div class="spec">The one that started the house</div></div><div class="idx">00</div></div></article>
-      <article class="machine" data-cursor><img src="assets/warhouse/equip-howitzer.jpg" alt="The Howitzer Battle Hip Press" data-mimg><div class="info"><div><div class="k">Hip Dominant</div><div class="spec">Howitzer Battle Hip Press</div></div><div class="idx">01</div></div></article>
-      <article class="machine" data-cursor><img src="assets/warhouse/equip-pendulum.jpg" alt="The Pendulum War Machine" data-mimg><div class="info"><div><div class="k">Legs · Squat</div><div class="spec">Pendulum War Machine</div></div><div class="idx">02</div></div></article>
-      <article class="machine" data-cursor><img src="assets/warhouse/equip-juggernaut.jpg" alt="The Juggernaut" data-mimg><div class="info"><div><div class="k">Full Body</div><div class="spec">The Juggernaut</div></div><div class="idx">03</div></div></article>
-      <article class="machine" data-cursor><img src="assets/warhouse/equip-tbar.jpg" alt="The T-Bar Row" data-mimg><div class="info"><div><div class="k">Back · Rows</div><div class="spec">T-Bar Row</div></div><div class="idx">04</div></div></article>
-      <article class="machine" data-cursor><img src="assets/warhouse/equip-mantis.jpg" alt="The Mantis Pulldown Row Combo" data-mimg><div class="info"><div><div class="k">Back · Pull</div><div class="spec">Mantis Pulldown / Row</div></div><div class="idx">05</div></div></article>
-      <article class="machine" data-cursor><img src="assets/warhouse/equip-deltron.jpg" alt="The Deltron 50/50" data-mimg><div class="info"><div><div class="k">Shoulders</div><div class="spec">The Deltron 50/50</div></div><div class="idx">06</div></div></article>
-      <article class="machine" data-cursor><img src="assets/warhouse/equip-beltsquat.jpg" alt="The Belt Squat with Cloud Belt" data-mimg><div class="info"><div><div class="k">Legs · Loaded</div><div class="spec">Belt Squat · Cloud Belt</div></div><div class="idx">07</div></div></article>
-      <article class="machine" data-cursor><img src="assets/warhouse/equip-asstograss.jpg" alt="ATG Ass To Grass" data-mimg><div class="info"><div><div class="k">Legs · Full ROM</div><div class="spec">&ldquo;ATG&rdquo; Ass To Grass</div></div><div class="idx">08</div></div></article>
-      <article class="machine" data-cursor><img src="assets/warhouse/equip-jeepseat.jpg" alt="Jeep Seat Iso-Lateral Leg Extension" data-mimg><div class="info"><div><div class="k">Legs · Iso</div><div class="spec">Jeep Seat Iso Leg Ext.</div></div><div class="idx">09</div></div></article>
-      <article class="machine" data-cursor><img src="assets/warhouse/equip-jaeger.jpg" alt="The Jaeger" data-mimg><div class="info"><div><div class="k">Heavy · Compound</div><div class="spec">The Jaeger</div></div><div class="idx">10</div></div></article>
-      <article class="machine" data-cursor><img src="assets/warhouse/equip-reloader.jpg" alt="The Reloader" data-mimg><div class="info"><div><div class="k">Posterior</div><div class="spec">The Reloader</div></div><div class="idx">11</div></div></article>
-      <article class="machine end" data-cursor><h3>Every rep<br>is fabricated<br>to break you<br><span class="italic" style="color:var(--red)">bigger.</span></h3><a href="#coaches" class="arrow"><svg viewBox="0 0 24 24" width="24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></article>
-    </div>
-    <div class="track-progress"><span class="bar"><i id="machineProg"></i></span><span class="mono">Dolly · The Arsenal</span></div>
-  </div>
-</section>
-
-<!-- ===== COACHES ===== -->
-<section class="coaches" id="coaches">
-  <div class="wrap coaches-intro">
-    <div class="chapter" style="margin-bottom:2rem"><span class="no">04</span><span class="lbl">The Ones Who Forge You</span><span class="ln"></span></div>
-    <h2>THE<br><span class="stroke">COACHES</span></h2>
-  </div>
-
-  <article class="coach stage" data-coach>
-    <div class="media"><img src="assets/warhouse/coach-1.jpg" alt="WAR HOUSE coach" data-parallax="10" /></div>
-    <div class="beam"></div>
-    <div class="wrap coach-in">
-      <div>
-        <div class="coach-role">War House Coach</div>
-        <h2 class="coach-name"><span class="rl"><span>STRENGTH</span></span><span class="rl"><span class="l2">&amp; POWER</span></span></h2>
-      </div>
-      <div class="coach-meta">
-        <div class="r"><div class="v">Raw</div><div class="k">Discipline</div></div>
-        <div class="r"><div class="v">Heavy</div><div class="k">Standard</div></div>
-      </div>
-    </div>
-  </article>
-
-  <article class="coach stage" data-coach>
-    <div class="media"><img src="assets/warhouse/coach-2.jpg" alt="WAR HOUSE coach" data-parallax="10" /></div>
-    <div class="beam"></div>
-    <div class="wrap coach-in">
-      <div>
-        <div class="coach-role">War House Coach</div>
-        <h2 class="coach-name"><span class="rl"><span>BUILT</span></span><span class="rl"><span class="l2">DIFFERENT</span></span></h2>
-      </div>
-      <div class="coach-meta">
-        <div class="r"><div class="v">1-on-1</div><div class="k">Coaching</div></div>
-        <div class="r"><div class="v">No</div><div class="k">Excuses</div></div>
-      </div>
-    </div>
-  </article>
-
-  <article class="coach stage" data-coach>
-    <div class="media"><img src="assets/warhouse/coach-3.jpg" alt="WAR HOUSE coach" data-parallax="10" /></div>
-    <div class="beam"></div>
-    <div class="wrap coach-in">
-      <div>
-        <div class="coach-role">War House Coach</div>
-        <h2 class="coach-name"><span class="rl"><span>SEND</span></span><span class="rl"><span class="l2">IT</span></span></h2>
-      </div>
-      <div class="coach-meta">
-        <div class="r"><div class="v">All In</div><div class="k">Every Set</div></div>
-        <div class="r"><div class="v">Elite</div><div class="k">Programming</div></div>
-      </div>
-    </div>
-  </article>
-
-  <article class="coach stage" data-coach>
-    <div class="media"><img src="assets/warhouse/coach-4.jpg" alt="WAR HOUSE coach" data-parallax="10" /></div>
-    <div class="beam"></div>
-    <div class="wrap coach-in">
-      <div>
-        <div class="coach-role">War House Coach</div>
-        <h2 class="coach-name"><span class="rl"><span>RELENT</span></span><span class="rl"><span class="l2">-LESS</span></span></h2>
-      </div>
-      <div class="coach-meta">
-        <div class="r"><div class="v">Grit</div><div class="k">Trademark</div></div>
-        <div class="r"><div class="v">Daily</div><div class="k">On The Floor</div></div>
-      </div>
-    </div>
-  </article>
-
-  <article class="coach stage" data-coach>
-    <div class="media"><img src="assets/warhouse/coach-5.jpg" alt="WAR HOUSE coach" data-parallax="10" /></div>
-    <div class="beam"></div>
-    <div class="wrap coach-in">
-      <div>
-        <div class="coach-role">War House Coach</div>
-        <h2 class="coach-name"><span class="rl"><span>UN-</span></span><span class="rl"><span class="l2">STOPPABLE</span></span></h2>
-      </div>
-      <div class="coach-meta">
-        <div class="r"><div class="v">Certified</div><div class="k">Specialist</div></div>
-        <div class="r"><div class="v">Strong</div><div class="k">By Design</div></div>
-      </div>
-    </div>
-  </article>
-
-  <div class="wrap roster">
-    <div class="roster-grid">
-      <div>
-        <h4>San Diego, CA</h4>
-        <ul>
-          <li>Melissa <span style="color:var(--smoke)">Dominguez</span></li>
-          <li>Arthur <span style="color:var(--smoke)">Baker</span></li>
-          <li>Chris <span style="color:var(--smoke)">Reyes</span></li>
-          <li>Marquis <span style="color:var(--smoke)">Lion</span></li>
-          <li>Andre <span style="color:var(--smoke)">Henderson</span></li>
-          <li>Jim <span style="color:var(--smoke)">Madsen</span></li>
-        </ul>
-      </div>
-      <div>
-        <h4>San Antonio, TX</h4>
-        <ul>
-          <li>Coach <span style="color:var(--smoke)">Mitch</span></li>
-          <li>Azhar <span style="color:var(--smoke)">Gonzalez</span></li>
-          <li><span style="color:var(--ash)">JT</span></li>
-          <li>Nathalie <span style="color:var(--smoke)">Arroyo</span></li>
-        </ul>
-        <p style="font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.06em;font-size:.66rem;color:var(--smoke);margin-top:1.4rem;line-height:1.6">Coach Mitch — B.S. Exercise Science · NASM CPT · NASM Nutrition Coach · NASM Corrective Exercise · CrossFit L1.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== COMMUNITY ===== -->
-<section class="community stage" id="community">
-  <div class="media"><img src="assets/warhouse/community-group.jpg" alt="The WAR HOUSE community" data-parallax="14" /></div>
-  <div class="community-in">
-    <div class="wrap">
-      <span class="eyebrow" style="justify-content:center;display:inline-flex;margin-bottom:1.6rem">The Brotherhood</span>
-      <h2>You don't join the War House.<br>You <em>earn</em> your place in it.</h2>
-    </div>
-    <div class="marq"><div class="t" id="commTicker">
-      <span>DISCIPLINE</span><span class="solid">·</span><span>GRIT</span><span class="solid">·</span><span>IRON</span><span class="solid">·</span><span>BROTHERHOOD</span><span class="solid">·</span><span>NO CIRCUS</span><span class="solid">·</span>
-      <span>DISCIPLINE</span><span class="solid">·</span><span>GRIT</span><span class="solid">·</span><span>IRON</span><span class="solid">·</span><span>BROTHERHOOD</span><span class="solid">·</span><span>NO CIRCUS</span><span class="solid">·</span>
-    </div></div>
-  </div>
-</section>
-
-<!-- ===== GALLERY / DISSOLVE JOURNEY ===== -->
-<section class="gallery" id="gallery">
-  <div class="slide"><img src="assets/warhouse/hero-rig.jpg" alt="WAR HOUSE rig"></div>
-  <div class="slide"><img src="assets/warhouse/zone-turf-red.jpg" alt="Turf under red light"></div>
-  <div class="slide"><img src="assets/warhouse/detail-dumbbells.jpg" alt="Dumbbell rack"></div>
-  <div class="slide"><img src="assets/warhouse/floor-benches.jpg" alt="Benches"></div>
-  <div class="slide"><img src="assets/warhouse/zone-boxing-2.jpg" alt="Boxing area"></div>
-  <div class="slide"><img src="assets/warhouse/floor-sled.jpg" alt="Sled"></div>
-  <div class="slide"><img src="assets/warhouse/zone-cardio-2.jpg" alt="Cardio with screens"></div>
-  <div class="slide"><img src="assets/warhouse/detail-plates.jpg" alt="Weight plates"></div>
-  <div class="slide"><img src="assets/warhouse/zone-turf-blue.jpg" alt="Turf blue light"></div>
-  <div class="slide"><img src="assets/warhouse/floor-green.jpg" alt="Floor green light"></div>
-  <div class="slide"><img src="assets/warhouse/atmos-turf-back.jpg" alt="On the turf"></div>
-  <div class="slide"><img src="assets/warhouse/detail-stone.jpg" alt="Atlas stone"></div>
-  <div class="slide"><img src="assets/warhouse/zone-projector.jpg" alt="Projector room"></div>
-  <div class="slide"><img src="assets/warhouse/floor-hall.jpg" alt="Hall"></div>
-  <div class="slide"><img src="assets/warhouse/hero-red.jpg" alt="Red-lit floor"></div>
-  <div class="gallery-cap"><span class="mono">Inside The War House</span><h2 id="galCap">THE HOUSE</h2></div>
-  <div class="gallery-count"><span id="galNum">01</span> / 15</div>
-</section>
-
-<!-- ===== MEMBERSHIP ===== -->
+<!-- MEMBERSHIP -->
 <section class="mem" id="membership">
   <div class="wrap">
     <div class="mem-head">
-      <div class="chapter" style="justify-content:center;margin-bottom:1.4rem"><span class="no">05</span><span class="lbl">Enlistment</span></div>
+      <div class="chapter"><span class="no">01</span><span class="lbl">Enlistment</span></div>
       <h2>BECOME A MEMBER</h2>
       <p>Open 24/7 for members only. Every membership is individual — no buddy passes, no fees, no contracts. When the cap is hit, the doors close. One membership, both territories.</p>
     </div>
     <div class="pindex">
-      <a class="prow" href="https://warhousegyms.com/courses" target="_blank" rel="noopener" data-cursor>
-        <span class="term">Day Pass</span><span class="det">Drop in · feel the floor</span><span class="amt">$30</span><span class="go">→</span>
-      </a>
-      <a class="prow" href="https://warhousegyms.com/courses" target="_blank" rel="noopener" data-cursor>
-        <span class="term">Week Pass</span><span class="det">Seven days · full access</span><span class="amt">$70</span><span class="go">→</span>
-      </a>
-      <a class="prow" href="https://warhousegyms.com/program/monthly-membership" target="_blank" rel="noopener" data-cursor>
-        <span class="term">Monthly</span><span class="det">24/7 access · Full Access $150 adds sauna, cold plunge &amp; compression</span><span class="amt">$100<small>/mo</small></span><span class="go">→</span>
-      </a>
-      <a class="prow" href="https://warhousegyms.com/program/3-month-membership" target="_blank" rel="noopener" data-cursor>
-        <span class="term">3 Months</span><span class="det">Commit to a training block</span><span class="amt">$270</span><span class="go">→</span>
-      </a>
-      <a class="prow" href="https://warhousegyms.com/program/6-month-membership" target="_blank" rel="noopener" data-cursor>
-        <span class="term">6 Months</span><span class="det">Half a year of war · student rates available</span><span class="amt">$520</span><span class="go">→</span>
-      </a>
-      <a class="prow feature" href="https://warhousegyms.com/program/annual-membership" target="_blank" rel="noopener" data-cursor>
-        <span class="term">Annual <em>· IYKYK</em></span><span class="det">The best rate in the house · lock it before the cap fills</span><span class="amt">$1,000</span><span class="go">→</span>
-      </a>
+      <a class="prow" href="https://warhousegyms.com/courses" target="_blank" rel="noopener" data-cursor><span class="term">Day Pass</span><span class="det">Drop in · feel the floor</span><span class="amt">$30</span><span class="go">&rarr;</span></a>
+      <a class="prow" href="https://warhousegyms.com/courses" target="_blank" rel="noopener" data-cursor><span class="term">Week Pass</span><span class="det">Seven days · full access</span><span class="amt">$70</span><span class="go">&rarr;</span></a>
+      <a class="prow" href="https://warhousegyms.com/program/monthly-membership" target="_blank" rel="noopener" data-cursor><span class="term">Monthly</span><span class="det">24/7 access · Full Access $150 adds sauna, cold plunge &amp; compression</span><span class="amt">$100<small>/mo</small></span><span class="go">&rarr;</span></a>
+      <a class="prow" href="https://warhousegyms.com/program/3-month-membership" target="_blank" rel="noopener" data-cursor><span class="term">3 Months</span><span class="det">Commit to a training block</span><span class="amt">$270</span><span class="go">&rarr;</span></a>
+      <a class="prow" href="https://warhousegyms.com/program/6-month-membership" target="_blank" rel="noopener" data-cursor><span class="term">6 Months</span><span class="det">Half a year of war · student rates available</span><span class="amt">$520</span><span class="go">&rarr;</span></a>
+      <a class="prow feature" href="https://warhousegyms.com/program/annual-membership" target="_blank" rel="noopener" data-cursor><span class="term">Annual <em>· IYKYK</em></span><span class="det">Best rate in the house · lock it before the cap fills</span><span class="amt">$1,000</span><span class="go">&rarr;</span></a>
     </div>
     <div class="mem-note">No fees · no contracts · individual only · membership cap <b>enforced</b> — we will never let the War House become a circus.</div>
   </div>
 </section>
 
-<!-- ===== TERRITORIES / CONTACT ===== -->
-<section class="terr stage" id="contact">
-  <div class="media"><img src="assets/warhouse/hero-red.jpg" alt="WAR HOUSE floor" data-parallax="12" /></div>
+<!-- CONTACT -->
+<section class="terr" id="contact">
+  <div class="terr-media"><img src="assets/warhouse/hero-red.jpg" alt="WAR HOUSE floor" /></div>
   <div class="terr-in">
     <div class="wrap">
       <div class="terr-head">
-        <span class="eyebrow" style="justify-content:center;display:inline-flex">Report For Duty</span>
+        <div class="chapter" style="justify-content:center"><span class="no">02</span><span class="lbl">Report For Duty</span></div>
         <h2>BORN TO<br><span class="stroke">SEND IT</span></h2>
         <p>Two territories. One standard. Come feel the steel — walk in and enlist.</p>
       </div>
@@ -639,7 +769,7 @@ h1,h2,h3{font-weight:400;line-height:.9;letter-spacing:-.01em}
             <div class="row"><span class="k">Address</span><span class="v">3191 Commercial St<br>San Diego, CA 92113</span></div>
             <div class="row"><span class="k">Phone</span><span class="v"><a href="tel:6193798511">619 · 379 · 8511</a></span></div>
             <div class="row"><span class="k">Email</span><span class="v"><a href="mailto:warhouseoffice@gmail.com">warhouseoffice@gmail.com</a></span></div>
-            <div class="row" style="border:none"><span class="k">Staffed</span><span class="v">Mon–Sun · 6AM–10PM</span></div>
+            <div class="row" style="border:none"><span class="k">Staffed</span><span class="v">Mon–Sun · 6A–10P</span></div>
           </div>
         </div>
         <div class="loc" data-cursor>
@@ -652,258 +782,154 @@ h1,h2,h3{font-weight:400;line-height:.9;letter-spacing:-.01em}
           </div>
         </div>
       </div>
-      <div class="terr-cta">
-        <a href="#membership" class="btn-primary" data-cursor>Become A Member
-          <svg viewBox="0 0 24 24" width="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-        </a>
-      </div>
+      <div class="terr-cta"><a href="#membership" class="btn-primary" data-cursor>Become A Member <svg viewBox="0 0 24 24" width="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
     </div>
   </div>
-
   <footer class="footer">
     <div class="footer-big">WAR HOUSE</div>
-    <div class="wrap">
-      <div class="footer-row">
-        <span class="mono">© 2026 WAR HOUSE GYMS · BORN TO SEND IT</span>
-        <div class="footer-links">
-          <a href="#floor" data-cursor>The Floor</a>
-          <a href="#machines" data-cursor>War Machines</a>
-          <a href="#coaches" data-cursor>Coaches</a>
-          <a href="#membership" data-cursor>Membership</a>
-          <a href="https://www.youtube.com/@warhouse1577/featured" target="_blank" rel="noopener" data-cursor>YouTube</a>
-          <a href="#top" data-cursor>Back To Top</a>
-        </div>
-        <span class="mono">War Machines by Atom Steel</span>
+    <div class="wrap"><div class="footer-row">
+      <span class="mono">© 2026 WAR HOUSE GYMS · BORN TO SEND IT</span>
+      <div class="footer-links">
+        <a href="#film" data-cursor>Walk In</a><a href="#membership" data-cursor>Membership</a>
+        <a href="https://www.youtube.com/@warhouse1577/featured" target="_blank" rel="noopener" data-cursor>YouTube</a>
+        <a href="#top" data-cursor>Back To Top</a>
       </div>
-    </div>
+      <span class="mono">War Machines by Atom Steel</span>
+    </div></div>
   </footer>
 </section>
-
 </main>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/split-type@0.3.4/umd/index.min.js"></script>
 <script>
 (function(){
-const REDUCE = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const REDUCE = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-/* ===== CUSTOM CURSOR (independent of motion libs) ===== */
+/* cursor */
 (function(){
-  if(window.matchMedia('(hover:none)').matches)return;
+  if(matchMedia('(hover:none)').matches)return;
   document.documentElement.classList.add('custom-cursor');
   const dot=document.querySelector('.cursor'),ring=document.querySelector('.cursor-ring');
   let mx=innerWidth/2,my=innerHeight/2,rx=mx,ry=my;
-  window.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;
-    dot.style.transform=`translate(${mx}px,${my}px) translate(-50%,-50%)`;});
-  (function loop(){rx+=(mx-rx)*.16;ry+=(my-ry)*.16;
-    ring.style.transform=`translate(${rx}px,${ry}px) translate(-50%,-50%)`;requestAnimationFrame(loop);})();
-  document.addEventListener('mouseover',e=>{if(e.target.closest('[data-cursor],a,button'))ring.classList.add('hover');});
-  document.addEventListener('mouseout',e=>{if(e.target.closest('[data-cursor],a,button'))ring.classList.remove('hover');});
+  addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;dot.style.transform=`translate(${mx}px,${my}px) translate(-50%,-50%)`;});
+  (function l(){rx+=(mx-rx)*.16;ry+=(my-ry)*.16;ring.style.transform=`translate(${rx}px,${ry}px) translate(-50%,-50%)`;requestAnimationFrame(l);})();
+  addEventListener('mouseover',e=>{if(e.target.closest('[data-cursor],a,button'))ring.classList.add('hover');});
+  addEventListener('mouseout',e=>{if(e.target.closest('[data-cursor],a,button'))ring.classList.remove('hover');});
 })();
 
 const intro=document.getElementById('intro');
+const frames=[...document.querySelectorAll('.frame')];
+const N=frames.length;
 
-/* Graceful degradation if motion libs unavailable */
+/* graceful degradation */
 if(typeof gsap==='undefined'){
-  if(intro){intro.style.transition='opacity .5s ease';intro.style.opacity='0';setTimeout(()=>{if(intro)intro.style.display='none';},520);}
+  if(intro){intro.style.transition='opacity .5s';intro.style.opacity='0';setTimeout(()=>intro.style.display='none',520);}
+  document.querySelector('.film').style.height='auto';
+  const st=document.getElementById('filmStage'); st.style.position='static'; st.style.height='auto';
+  frames.forEach(f=>{f.style.position='relative';f.style.opacity='1';f.style.height='100svh';});
+  ['rail','scrollCue','filmProgress'].forEach(id=>{const e=document.getElementById(id);if(e)e.style.display='none';});
   document.body.style.overflow='';
   return;
 }
 gsap.registerPlugin(ScrollTrigger);
 
-function startSite(){ document.body.style.overflow=''; initLenis(); buildScroll(); }
+let lenis;
+function start(){
+  document.body.style.overflow='';
+  lenis=new Lenis({lerp:.08,smoothWheel:true});
+  lenis.on('scroll',ScrollTrigger.update);
+  gsap.ticker.add(t=>lenis.raf(t*1000)); gsap.ticker.lagSmoothing(0);
+  document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{
+    const el=document.querySelector(a.getAttribute('href')); if(!el)return;
+    e.preventDefault(); lenis.scrollTo(el,{duration:1.3});
+  }));
+  buildFilm();
+  gsap.from('.prow',{y:28,opacity:0,duration:.9,ease:'expo.out',stagger:.07,scrollTrigger:{trigger:'.pindex',start:'top 82%'}});
+  gsap.from('.loc',{y:36,opacity:0,duration:1,ease:'expo.out',stagger:.12,scrollTrigger:{trigger:'.terr-grid',start:'top 84%'}});
+  gsap.from('.mem-head h2,.terr-head h2',{yPercent:24,opacity:0,duration:1,ease:'expo.out',stagger:.1,scrollTrigger:{trigger:'.mem',start:'top 70%'}});
+  gsap.to('.footer-big',{xPercent:-3,ease:'none',scrollTrigger:{trigger:'.footer',start:'top bottom',end:'bottom top',scrub:true}});
+}
 
-/* ===== OPENING (no fire — logo emerges, camera pushes into the gym) ===== */
-if(REDUCE){ intro.style.display='none'; startSite(); }
+/* OPENING — logo emerges from branding, camera pushes into the gym */
+if(REDUCE){ intro.style.display='none'; frames.forEach(f=>{f.style.position='relative';f.style.opacity='1';f.style.height='100svh';}); }
 else{
   document.body.style.overflow='hidden';
-  const count={v:0};
+  const c={v:0};
   gsap.timeline()
     .to('#introLogo',{opacity:1,y:0,scale:1,duration:1.1,ease:'expo.out',delay:.2})
-    .to('#introWord span',{y:0,duration:.9,ease:'expo.out',stagger:.02},'-=.5')
+    .to('#introWord span',{y:0,duration:.85,ease:'expo.out',stagger:.02},'-=.5')
     .to('#introMeta',{opacity:1,duration:.5},'-=.4');
-  gsap.to('#introBar',{scaleX:1,duration:1.9,ease:'power2.inOut',delay:.5});
-  gsap.to(count,{v:100,duration:1.9,ease:'power2.inOut',delay:.5,
-    onUpdate:()=>{document.getElementById('introCount').textContent=String(Math.floor(count.v)).padStart(2,'0');},
+  gsap.to('#introBar',{scaleX:1,duration:1.8,ease:'power2.inOut',delay:.5});
+  gsap.to(c,{v:100,duration:1.8,ease:'power2.inOut',delay:.5,
+    onUpdate:()=>document.getElementById('introCount').textContent=String(Math.floor(c.v)).padStart(2,'0'),
     onComplete:()=>{
       gsap.timeline({onComplete:()=>{intro.style.display='none';}})
-        .to('#introBg',{filter:'blur(0px) brightness(.6) saturate(1)',scale:1.05,duration:1.4,ease:'power2.inOut'})
-        .to('.intro-inner',{opacity:0,scale:1.15,duration:.9,ease:'power2.in'},'-=1.1')
-        .to(intro,{opacity:0,duration:.8,ease:'power2.inOut'},'-=.5')
-        .add(startSite,'-=1.0')
-        .add(()=>heroIn());
+        .to('.intro-bg',{scale:1.05,filter:'blur(0px) brightness(.7)',duration:1.3,ease:'power2.inOut'})
+        .to('.intro-in',{opacity:0,scale:1.12,duration:.8,ease:'power2.in'},'-=1.05')
+        .to(intro,{opacity:0,duration:.7,ease:'power2.inOut'},'-=.45')
+        .add(start,'-=.9');
     }});
 }
 
-/* ===== LENIS ===== */
-let lenis;
-function initLenis(){
-  if(REDUCE)return;
-  lenis=new Lenis({lerp:.085,wheelMultiplier:1,smoothWheel:true});
-  lenis.on('scroll',ScrollTrigger.update);
-  gsap.ticker.add((t)=>lenis.raf(t*1000));
-  gsap.ticker.lagSmoothing(0);
-  document.querySelectorAll('a[href^="#"]').forEach(a=>{
-    a.addEventListener('click',e=>{
-      const id=a.getAttribute('href'); if(id.length<2)return;
-      const el=document.querySelector(id); if(!el)return;
-      e.preventDefault(); lenis.scrollTo(el,{offset:0,duration:1.4});
-    });
-  });
-}
+/* THE FILM — crossfade + drift through every frame as one camera move */
+function buildFilm(){
+  gsap.set(frames,{opacity:0}); gsap.set(frames[0],{opacity:1});
+  const imgs=frames.map(f=>f.querySelector('.frame-img img'));
+  const caps=frames.map(f=>f.querySelector('.cap'));
+  const prog=document.getElementById('filmProgress');
+  const cue=document.getElementById('scrollCue');
+  const ticks=[...document.querySelectorAll('.rail .tick')];
+  const chapters=ticks.map(t=>+t.dataset.to);
+  let cur=-1;
 
-/* ===== HERO ENTRANCE ===== */
-function heroIn(){
-  if(REDUCE)return;
-  gsap.set('.hero-title .rl>span',{yPercent:110});
-  gsap.timeline()
-    .to('.hero-title .rl>span',{yPercent:0,duration:1.2,ease:'expo.out',stagger:.1})
-    .from('.hero-tag',{y:26,opacity:0,duration:1,ease:'expo.out'},'-=.7')
-    .from('.btn-primary',{y:26,opacity:0,duration:1,ease:'expo.out'},'-=.8')
-    .from('.scroll-cue',{opacity:0,duration:1},'-=.6');
-  gsap.to('#heroTicker',{xPercent:-50,duration:24,ease:'none',repeat:-1});
-}
+  function setActive(i){
+    if(i===cur)return; cur=i;
+    // caption enters with physical motion
+    const cap=caps[i]; if(cap){
+      const kids=[cap.querySelector('.kick'),cap.querySelector('.ftitle'),cap.querySelector('.fsub')].filter(Boolean);
+      gsap.fromTo(kids,{yPercent:60,opacity:0},{yPercent:0,opacity:1,duration:.9,ease:'expo.out',stagger:.06,overwrite:true});
+    }
+    // active rail tick
+    let ai=0; for(let k=0;k<chapters.length;k++) if(i>=chapters[k]) ai=k;
+    ticks.forEach((t,k)=>t.classList.toggle('on',k===ai));
+  }
 
-/* ===== SCROLL CHOREOGRAPHY ===== */
-function buildScroll(){
-  if(REDUCE)return;
-
-  /* parallax "camera" on every full-bleed media image */
-  gsap.utils.toArray('[data-parallax]').forEach(img=>{
-    const amt=parseFloat(img.dataset.parallax)||10;
-    gsap.fromTo(img,{yPercent:-amt},{yPercent:amt,ease:'none',
-      scrollTrigger:{trigger:img.closest('.stage'),start:'top bottom',end:'bottom top',scrub:true}});
-  });
-
-  /* hero image scales up slightly as we leave (push-through) */
-  gsap.to('#hero .media img',{scale:1.12,ease:'none',
-    scrollTrigger:{trigger:'#hero',start:'top top',end:'bottom top',scrub:true}});
-  gsap.to('.hero-content',{yPercent:-16,opacity:.3,ease:'none',
-    scrollTrigger:{trigger:'#hero',start:'top top',end:'bottom top',scrub:true}});
-
-  /* threshold word reveal */
-  const tt=new SplitType('#thresholdText',{types:'words'});
-  gsap.set(tt.words,{opacity:.16});
-  gsap.to(tt.words,{opacity:1,stagger:.05,ease:'none',
-    scrollTrigger:{trigger:'#thresholdText',start:'top 80%',end:'bottom 60%',scrub:true}});
-
-  /* intro headings rise */
-  gsap.utils.toArray('.zones-intro h2,.machines-intro h2,.coaches-intro h2,.mem-head h2,.terr-head h2').forEach(el=>{
-    gsap.from(el,{yPercent:36,opacity:0,duration:1.1,ease:'expo.out',
-      scrollTrigger:{trigger:el,start:'top 88%'}});
-  });
-
-  /* chapter markers — line grows, label + numeral settle */
-  gsap.utils.toArray('.chapter').forEach(ch=>{
-    const tl=gsap.timeline({scrollTrigger:{trigger:ch,start:'top 90%'}});
-    tl.from(ch.querySelector('.no'),{opacity:0,x:-10,duration:.6,ease:'expo.out'})
-      .from(ch.querySelector('.lbl'),{opacity:0,x:-8,duration:.6,ease:'expo.out'},'-=.4');
-    const ln=ch.querySelector('.ln');
-    if(ln)tl.from(ln,{scaleX:0,duration:1,ease:'expo.inOut'},'-=.4');
-  });
-
-  /* STATEMENT — oversized kinetic char reveal (restrained, elegant) */
-  const stmt=new SplitType('#stmt',{types:'chars,words'});
-  gsap.set(stmt.chars,{yPercent:115});
-  gsap.to(stmt.chars,{yPercent:0,duration:1,ease:'expo.out',stagger:.018,
-    scrollTrigger:{trigger:'#stmt',start:'top 78%'}});
-  gsap.from('#doctrine .lead',{opacity:0,y:14,duration:.8,ease:'expo.out',
-    scrollTrigger:{trigger:'#doctrine .lead',start:'top 88%'}});
-  gsap.from('#doctrine .foot > *',{opacity:0,y:20,duration:.9,ease:'expo.out',stagger:.12,
-    scrollTrigger:{trigger:'#doctrine .foot',start:'top 86%'}});
-
-  /* ---- ZONES tracking shot (horizontal) ---- */
-  horizontal('#zonePin','#ztrack','#zoneProg','[data-zimg]',1.12);
-
-  /* ---- MACHINES dolly (horizontal) ---- */
-  horizontal('#machinePin','#mtrack','#machineProg','[data-mimg]',1.1);
-
-  /* ---- COACHES: cinematic entrances ---- */
-  gsap.utils.toArray('[data-coach]').forEach(c=>{
-    const names=c.querySelectorAll('.coach-name .rl>span');
-    gsap.set(names,{yPercent:110});
-    gsap.timeline({scrollTrigger:{trigger:c,start:'top 60%'}})
-      .to(c.querySelector('.beam'),{opacity:1,duration:1.3,ease:'power2.out'})
-      .to(names,{yPercent:0,duration:1.1,ease:'expo.out',stagger:.1},'-=1.0')
-      .from(c.querySelector('.coach-role'),{y:18,opacity:0,duration:.7,ease:'expo.out'},'-=.7')
-      .from(c.querySelectorAll('.coach-meta .r'),{x:24,opacity:0,duration:.7,ease:'expo.out',stagger:.1},'-=.6');
-  });
-  gsap.from('.roster li',{y:24,opacity:0,duration:.7,ease:'expo.out',stagger:.06,
-    scrollTrigger:{trigger:'.roster',start:'top 82%'}});
-
-  /* community marquee */
-  gsap.to('#commTicker',{xPercent:-50,duration:26,ease:'none',repeat:-1});
-
-  /* ---- GALLERY dissolve journey (pinned crossfade) ---- */
-  buildGallery();
-
-  /* price index rows — editorial line reveal */
-  gsap.utils.toArray('.prow').forEach((row,i)=>{
-    gsap.from(row,{y:30,opacity:0,duration:.9,ease:'expo.out',
-      scrollTrigger:{trigger:'.pindex',start:'top 82%'},delay:i*0.07});
-  });
-  gsap.from('.loc',{y:40,opacity:0,duration:1,ease:'expo.out',stagger:.12,
-    scrollTrigger:{trigger:'.terr-grid',start:'top 84%'}});
-
-  /* footer drift */
-  gsap.to('.footer-big',{xPercent:-3,ease:'none',
-    scrollTrigger:{trigger:'.footer',start:'top bottom',end:'bottom top',scrub:true}});
-
-  window.addEventListener('load',()=>ScrollTrigger.refresh());
-  ScrollTrigger.refresh();
-}
-
-/* generic horizontal camera track */
-function horizontal(pinSel,trackSel,progSel,imgSel,imgScale){
-  const track=document.querySelector(trackSel);
-  const pin=document.querySelector(pinSel);
-  const prog=document.querySelector(progSel);
-  if(!track||!pin)return;
-  const amount=()=>track.scrollWidth-window.innerWidth+(window.innerWidth*0.06);
-  const anim=gsap.to(track,{x:()=>-amount(),ease:'none',
-    scrollTrigger:{trigger:pin,start:'top top',end:()=>'+='+amount(),
-      scrub:1,pin:true,anticipatePin:1,invalidateOnRefresh:true,
-      onUpdate:s=>{if(prog)prog.style.width=(s.progress*100)+'%';}}});
-  /* parallax inside each panel image as it crosses */
-  gsap.utils.toArray(imgSel).forEach(img=>{
-    gsap.fromTo(img,{xPercent:-6,scale:imgScale},{xPercent:6,ease:'none',
-      scrollTrigger:{trigger:img.parentElement,containerAnimation:anim,start:'left right',end:'right left',scrub:true}});
-  });
-}
-
-/* gallery pinned crossfade */
-function buildGallery(){
-  const slides=gsap.utils.toArray('#gallery .slide');
-  const caps=['THE HOUSE','THE TURF','THE IRON','THE FLOOR','THE PIT','CONDITIONING','CARDIO','THE PLATES','THE TURF','THE GLOW','THE GRIND','THE STONE','THE THEATER','THE HALL','THE HOUSE'];
-  const num=document.getElementById('galNum');
-  const capEl=document.getElementById('galCap');
-  gsap.set(slides,{opacity:0}); gsap.set(slides[0],{opacity:1});
-  const st=ScrollTrigger.create({
-    trigger:'#gallery',start:'top top',end:'+='+(slides.length*60)+'%',
-    pin:true,scrub:1,invalidateOnRefresh:true,
-    onUpdate:s=>{
-      const i=Math.min(slides.length-1,Math.floor(s.progress*slides.length));
-      slides.forEach((sl,k)=>gsap.to(sl,{opacity:k===i?1:0,duration:.4,overwrite:'auto'}));
-      if(num)num.textContent=String(i+1).padStart(2,'0');
-      if(capEl&&capEl.dataset.i!=i){capEl.dataset.i=i;capEl.textContent=caps[i]||'THE HOUSE';}
+  ScrollTrigger.create({
+    trigger:'#film', start:'top top', end:'bottom bottom',
+    pin:'#filmStage', pinSpacing:false, scrub:true,
+    onUpdate:self=>{
+      const p=self.progress;
+      if(prog)prog.style.width=(p*100)+'%';
+      if(cue)cue.style.opacity = p>0.02?0:1;
+      const f=p*(N-1); const i=Math.min(N-1,Math.floor(f)); const t=f-i;
+      for(let k=0;k<N;k++){
+        let o = k<i?0 : k===i?1 : k===i+1?t : 0;
+        frames[k].style.opacity=o;
+        // drift/scale: each frame's image eases as the camera passes
+        const d=f-k;                      // <0 upcoming, 0 active, >0 passed
+        const s=1.06 - Math.max(-1,Math.min(1,d))*0.06;   // subtle push-in
+        const x=Math.max(-1,Math.min(1,d))* (k%2?2.5:-2.5); // alternate pan = camera changes direction
+        imgs[k].style.transform=`scale(${s}) translateX(${x}%)`;
+      }
+      setActive(Math.round(f));
     }
   });
-  /* slow ken-burns on active */
-  slides.forEach(sl=>{
-    const im=sl.querySelector('img');
-    gsap.to(im,{scale:1.02,ease:'none',
-      scrollTrigger:{trigger:'#gallery',start:'top top',end:'bottom top',scrub:true}});
-  });
+
+  ticks.forEach(t=>t.addEventListener('click',()=>{
+    const target=document.getElementById('film');
+    const to=(+t.dataset.to)/(N-1);
+    const st=target.offsetTop, len=target.offsetHeight-innerHeight;
+    lenis.scrollTo(st+len*to,{duration:1.2});
+  }));
+
+  ScrollTrigger.refresh();
+  addEventListener('load',()=>ScrollTrigger.refresh());
 }
 
-/* ===== MAGNETIC CTA ===== */
 document.querySelectorAll('.btn-primary,.nav-cta').forEach(btn=>{
-  btn.addEventListener('mousemove',e=>{
-    const r=btn.getBoundingClientRect();
-    gsap.to(btn,{x:(e.clientX-r.left-r.width/2)*.22,y:(e.clientY-r.top-r.height/2)*.3,duration:.4});
-  });
+  btn.addEventListener('mousemove',e=>{const r=btn.getBoundingClientRect();gsap.to(btn,{x:(e.clientX-r.left-r.width/2)*.2,y:(e.clientY-r.top-r.height/2)*.3,duration:.4});});
   btn.addEventListener('mouseleave',()=>gsap.to(btn,{x:0,y:0,duration:.5,ease:'elastic.out(1,.4)'}));
 });
 })();
